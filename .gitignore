@@ -1,0 +1,35 @@
+# Root .gitignore for Kisan-Mitra
+
+# Dependencies
+node_modules/
+
+# Environment files - Keep secrets out of git!
+.env
+.env.local
+.env.*.local
+*.env
+*.env.local
+!.env.example
+!**/.env.example
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+.vercel/
+/generated/prisma
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo

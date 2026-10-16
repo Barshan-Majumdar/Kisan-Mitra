@@ -17,8 +17,8 @@ export const getPrediction = async (req: Request, res: Response): Promise<void> 
       Soil: Soil || "Unknown"
     };
 
-    // 3. YOUR RENDER URL (Already added for you)
-    const RENDER_API_URL = 'https://crop-model-api.onrender.com/predict';
+    // 3. ML Model Service URL (configurable via env)
+    const RENDER_API_URL = process.env.CROP_PREDICTION_API_URL || 'https://crop-model-api.onrender.com/predict';
 
     console.log("🚀 Sending data to Render AI Service:", modelInput);
 
