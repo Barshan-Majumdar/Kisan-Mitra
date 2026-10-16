@@ -67,18 +67,23 @@ export interface ToDoItem {
 }
 
 export interface Scheme {
-  id: number;
+  id: number | string;
   name: string;
   description: string;
   eligibilityCriteria?: string;
   applicationLink?: string;
-  deadline?: string;
-  // Mapped fields for backward compatibility if needed, or remove and update components
+  deadline?: string | null;
+  category?: string;
+  funding?: string;
+  state?: string;
+  source?: string;
+  isLiveGovData?: boolean;
+  // Mapped fields for backward compatibility if needed
   eligibility?: string; 
 }
 
 export interface MarketPrice {
-  id: number;
+  id: number | string;
   cropId?: number;
   marketName: string;
   price: number;
@@ -87,8 +92,14 @@ export interface MarketPrice {
   state?: string;
   district?: string;
   crop?: Crop;
-  // Mapped fields
+  // Mapped fields & data.gov.in AGMARKNET fields
   market?: string;
+  commodity?: string;
+  variety?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  source?: string;
+  isLiveGovData?: boolean;
   trend?: 'up' | 'down' | 'stable';
 }
 

@@ -98,17 +98,21 @@ export const AdvisoryHistory: React.FC = () => {
   }
 
   return (
-    <div className="space-y-6 animate-fade-in">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Advisory History</h1>
-          <p className="text-gray-600">View your past and current crop advisories. Click to view details.</p>
+    <div className="space-y-6 animate-fade-in px-1">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+            Crop Advisory Records
+          </h1>
+          <p className="text-sm sm:text-base text-stone-600">
+            Precision farming guides and nutrient schedules generated for your farm plots.
+          </p>
         </div>
         <button
           onClick={() => navigate('/input')}
-          className="btn bg-primary-600 text-white hover:bg-primary-700"
+          className="inline-flex items-center justify-center rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 text-sm shadow-soft hover:shadow-card active:scale-[0.98] transition-all"
         >
-          <Plus className="h-5 w-5 mr-2" />
+          <Plus className="h-4 w-4 mr-2" />
           New Advisory
         </button>
       </div>
@@ -117,105 +121,110 @@ export const AdvisoryHistory: React.FC = () => {
         {history.map((item) => (
           <Card
             key={item.id}
-            className="p-4 hover:bg-gray-50 transition-colors cursor-pointer"
+            padding="none"
+            className="rounded-3xl border border-stone-200/80 bg-white shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden"
           >
             <div
-              className="flex items-center justify-between"
+              className="p-5 sm:p-6 flex items-center justify-between cursor-pointer hover:bg-[#FAF9F5]/70 transition-colors"
               onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
             >
               <div className="flex items-center gap-4">
-                <div className={`h-12 w-12 rounded-full flex items-center justify-center ${item.status === 'active' ? 'bg-green-100 text-green-600' : 'bg-gray-100 text-gray-600'
-                  }`}>
-                  <Calendar className="h-6 w-6" />
+                <div className={`h-12 w-12 rounded-2xl flex items-center justify-center shadow-soft shrink-0 ${
+                  item.status === 'active' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200/80' : 'bg-stone-100 text-stone-600 border border-stone-200'
+                }`}>
+                  <Calendar className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">{item.crop} Advisory</h3>
-                  <div className="flex items-center text-sm text-gray-500 gap-3 mt-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-lg font-extrabold text-stone-900 tracking-tight">{item.crop} Advisory</h3>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
+                      {item.stage || 'Agronomy'}
+                    </span>
+                  </div>
+                  <div className="flex items-center text-xs text-stone-500 gap-2.5 mt-1 font-medium">
                     <span className="flex items-center">
-                      <MapPin className="h-3 w-3 mr-1" />
+                      <MapPin className="h-3 w-3 mr-1 text-stone-400" />
                       {item.location}
                     </span>
                     <span>•</span>
-                    <span>{new Date(item.date).toLocaleDateString()}</span>
+                    <span>{new Date(item.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
                   <button
                     onClick={() => handleAddTask(item)}
-                    className="px-3 py-1 text-sm font-medium text-primary-600 bg-primary-50 rounded-md hover:bg-primary-100 transition-colors"
+                    className="px-3.5 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100/80 rounded-full border border-emerald-200/80 transition-all active:scale-95 shadow-sm"
                   >
                     Add Task
                   </button>
                   <button
                     onClick={() => handleRemoveAdvisory(item.id)}
-                    className="px-3 py-1 text-sm font-medium text-red-600 bg-red-50 rounded-md hover:bg-red-100 transition-colors"
+                    className="px-3 py-1.5 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100/80 rounded-full border border-rose-200/80 transition-all active:scale-95"
                   >
                     Remove
                   </button>
                 </div>
-                {expandedId === item.id ? (
-                  <ChevronRight className="h-5 w-5 text-gray-400 rotate-90 transition-transform" />
-                ) : (
-                  <ChevronRight className="h-5 w-5 text-gray-400 transition-transform" />
-                )}
+                <div className="p-2 rounded-2xl bg-[#FAF9F5] border border-stone-200/80 text-stone-500">
+                  <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${expandedId === item.id ? 'rotate-90 text-emerald-700' : ''}`} />
+                </div>
               </div>
             </div>
 
             {/* Expanded Content: The AI Plan */}
             {expandedId === item.id && (
               <div
-                className="mt-4 pt-4 border-t border-gray-100 text-gray-700 font-sans text-sm leading-relaxed cursor-text"
+                className="px-6 pb-6 pt-2 border-t border-stone-100 text-stone-700 text-sm leading-relaxed cursor-text bg-[#FCFCFA]"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="font-bold text-gray-900 text-base flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Detailed Farming Advisory Plan
+                <div className="flex items-center justify-between mb-4 pt-4 border-b border-stone-200/60 pb-3">
+                  <h4 className="font-bold text-stone-900 text-base flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                    Detailed Agronomic Schedule & Field Strategy
                   </h4>
-                  <span className="text-xs bg-emerald-50 text-emerald-700 font-medium px-2.5 py-1 rounded-full border border-emerald-200">
-                    Precision Agronomy
+                  <span className="text-xs bg-white text-stone-700 font-semibold px-3 py-1 rounded-full border border-stone-200/80 shadow-soft">
+                    Precision Protocol
                   </span>
                 </div>
-                <div className="prose prose-sm max-w-none prose-emerald">
+                <div className="prose prose-sm max-w-none">
                   <ReactMarkdown
                     remarkPlugins={[remarkMath, remarkGfm]}
                     rehypePlugins={[rehypeKatex, rehypeRaw]}
                     components={{
-                      h1: ({ ...props }) => <h1 className="text-xl sm:text-2xl font-extrabold text-gray-900 mt-5 mb-3 border-b pb-2 border-gray-100" {...props} />,
-                      h2: ({ ...props }) => <h2 className="text-lg sm:text-xl font-bold text-gray-900 mt-5 mb-2.5 flex items-center gap-2 text-emerald-800" {...props} />,
-                      h3: ({ ...props }) => <h3 className="text-base font-semibold text-gray-800 mt-4 mb-2" {...props} />,
-                      ul: ({ ...props }) => <ul className="list-disc pl-5 mb-3 space-y-1.5 text-gray-700" {...props} />,
-                      ol: ({ ...props }) => <ol className="list-decimal pl-5 mb-3 space-y-1.5 text-gray-700" {...props} />,
-                      li: ({ ...props }) => <li className="text-gray-700 leading-relaxed" {...props} />,
-                      strong: ({ ...props }) => <strong className="font-semibold text-gray-900" {...props} />,
-                      p: ({ ...props }) => <p className="mb-3 text-gray-700 leading-relaxed" {...props} />,
+                      h1: ({ ...props }) => <h1 className="text-xl sm:text-2xl font-extrabold text-stone-900 mt-6 mb-3 border-b pb-2 border-stone-200 tracking-tight" {...props} />,
+                      h2: ({ ...props }) => <h2 className="text-lg sm:text-xl font-bold text-emerald-900 mt-6 mb-2.5 flex items-center gap-2 tracking-tight" {...props} />,
+                      h3: ({ ...props }) => <h3 className="text-base font-bold text-stone-800 mt-5 mb-2" {...props} />,
+                      ul: ({ ...props }) => <ul className="list-disc pl-5 mb-3.5 space-y-1.5 text-stone-700" {...props} />,
+                      ol: ({ ...props }) => <ol className="list-decimal pl-5 mb-3.5 space-y-1.5 text-stone-700" {...props} />,
+                      li: ({ ...props }) => <li className="text-stone-700 leading-relaxed" {...props} />,
+                      strong: ({ ...props }) => <strong className="font-bold text-stone-900" {...props} />,
+                      p: ({ ...props }) => <p className="mb-3.5 text-stone-700 leading-relaxed" {...props} />,
                       table: ({ ...props }) => (
-                        <div className="overflow-x-auto my-5 rounded-xl border border-gray-200 shadow-sm bg-white">
-                          <table className="min-w-full divide-y divide-gray-200 text-left text-xs sm:text-sm" {...props} />
+                        <div className="overflow-x-auto my-5 rounded-2xl border border-stone-200/90 shadow-soft bg-white">
+                          <table className="min-w-full divide-y divide-stone-200 text-left text-xs sm:text-sm" {...props} />
                         </div>
                       ),
-                      thead: ({ ...props }) => <thead className="bg-emerald-50/90 text-emerald-950 font-semibold" {...props} />,
-                      tbody: ({ ...props }) => <tbody className="divide-y divide-gray-100 bg-white" {...props} />,
-                      tr: ({ ...props }) => <tr className="hover:bg-gray-50/80 transition-colors" {...props} />,
-                      th: ({ ...props }) => <th className="px-4 py-3 font-semibold text-gray-900 tracking-wide text-xs uppercase" {...props} />,
-                      td: ({ ...props }) => <td className="px-4 py-3 text-gray-700 align-top leading-relaxed border-r border-gray-50 last:border-r-0" {...props} />,
+                      thead: ({ ...props }) => <thead className="bg-[#FAF9F5] text-stone-900 font-bold border-b border-stone-200" {...props} />,
+                      tbody: ({ ...props }) => <tbody className="divide-y divide-stone-100 bg-white" {...props} />,
+                      tr: ({ ...props }) => <tr className="hover:bg-[#FAF9F5]/80 transition-colors" {...props} />,
+                      th: ({ ...props }) => <th className="px-4 py-3.5 font-bold text-stone-900 tracking-wider text-xs uppercase" {...props} />,
+                      td: ({ ...props }) => <td className="px-4 py-3 text-stone-700 align-top leading-relaxed border-r border-stone-50 last:border-r-0" {...props} />,
                       pre: ({ ...props }) => (
-                        <div className="overflow-x-auto my-4 p-4 bg-gray-900 text-emerald-300 font-mono text-xs rounded-xl shadow-inner border border-gray-800">
+                        <div className="overflow-x-auto my-4 p-4 bg-stone-900 text-emerald-300 font-mono text-xs rounded-2xl shadow-inner border border-stone-800">
                           <pre {...props} />
                         </div>
                       ),
                       code: ({ inline, ...props }: any) =>
                         inline ? (
-                          <code className="bg-gray-100 text-emerald-800 font-mono text-xs px-1.5 py-0.5 rounded border border-gray-200 font-semibold" {...props} />
+                          <code className="bg-[#F5F5F0] text-emerald-900 font-mono text-xs px-2 py-0.5 rounded-lg border border-stone-200 font-semibold" {...props} />
                         ) : (
                           <code className="font-mono text-xs text-emerald-300" {...props} />
                         ),
-                      hr: () => <hr className="my-5 border-gray-200" />,
+                      hr: () => <hr className="my-6 border-stone-200" />,
                       blockquote: ({ ...props }) => (
-                        <blockquote className="border-l-4 border-emerald-500 pl-4 py-2 my-3 bg-emerald-50/50 text-gray-700 italic rounded-r-lg" {...props} />
+                        <blockquote className="border-l-4 border-emerald-600 pl-4 py-2.5 my-3.5 bg-emerald-50/50 text-stone-700 italic rounded-r-2xl" {...props} />
                       )
                     }}
                   >

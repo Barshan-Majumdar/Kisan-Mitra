@@ -1,51 +1,116 @@
-import { Menu, Bell, Sprout } from 'lucide-react';
+import { Menu, Bell, Sprout, Search } from 'lucide-react';
 import { UserButton, useUser } from '@clerk/clerk-react';
+import { useWeather } from '../../context/WeatherContext';
+import { WeatherIcon } from '../WeatherIcon';
 
 interface HeaderProps {
   onMenuClick: () => void;
+  onOpenCommandPalette?: () => void;
 }
 
-export const Header = ({ onMenuClick }: HeaderProps) => {
+export const Header = ({ onMenuClick, onOpenCommandPalette }: HeaderProps) => {
   const { user } = useUser();
+  const weather = useWeather();
 
   return (
-    <header className="sticky top-0 z-30 flex h-14 sm:h-16 items-center gap-x-2 sm:gap-x-4 border-b border-gray-200/50 bg-white/80 backdrop-blur-md px-3 sm:px-4 shadow-sm lg:px-8 transition-all duration-300">
-      <button
-        type="button"
-        className="-m-2 p-2 text-gray-700 lg:hidden hover:text-primary-600 transition-colors touch-target"
-        onClick={onMenuClick}
-      >
-        <span className="sr-only">Open sidebar</span>
-        <Menu className="h-6 w-6" aria-hidden="true" />
-      </button>
+    <header className="sticky top-0 z-30 shrink-0 flex h-16 items-center justify-between border-b border-stone-200/80 bg-white/95 backdrop-blur-md px-4 sm:px-6 transition-all duration-300 shadow-xs">
+      {/* Left Area: Mobile Menu Toggle & Brand / Desktop Breadcrumb */}
+      <div className="flex items-center gap-3">
+        {/* Mobile Hamburger */}
+        <button
+          type="button"
+          className="p-2 text-stone-700 lg:hidden hover:text-emerald-700 transition-colors rounded-2xl bg-stone-100 hover:bg-stone-200/60"
+          onClick={onMenuClick}
+        >
+          <span className="sr-only">Open sidebar</span>
+          <Menu className="h-5 w-5" aria-hidden="true" />
+        </button>
 
-      <div className="flex flex-1 gap-x-2 sm:gap-x-4 self-stretch lg:gap-x-6">
-        <div className="flex flex-1 items-center gap-1.5 sm:gap-2">
-          <div className="bg-primary-600 p-1 sm:p-1.5 rounded-lg shadow-sm">
-            <Sprout className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+        {/* Mobile Brand Title */}
+        <div className="flex lg:hidden items-center gap-2">
+          <div className="bg-emerald-700 p-1.5 rounded-xl text-white shadow-soft">
+            <Sprout className="h-4 w-4" />
           </div>
-          <h1 className="text-base sm:text-xl font-bold bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text text-transparent tracking-tight truncate">
-            Kisan Mitra
-          </h1>
+          <span className="text-base font-extrabold text-stone-900 tracking-tight">Kisan Mitra</span>
         </div>
-        <div className="flex items-center gap-x-2 sm:gap-x-4 lg:gap-x-6">
-          <button type="button" className="-m-2 p-2 text-gray-500 hover:text-primary-600 transition-colors relative touch-target">
-            <span className="sr-only">View notifications</span>
-            <Bell className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
-            <span className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
-          </button>
-          <div className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" />
-          <div className="flex items-center gap-x-2 sm:gap-x-4 lg:flex">
-            <div className="flex items-center gap-x-2 sm:gap-x-3">
-              <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors">
-                <UserButton afterSignOutUrl="/login" />
-                <span className="hidden lg:flex lg:items-center">
-                  <span className="text-sm font-semibold leading-6 text-gray-700 truncate max-w-[120px]" aria-hidden="true">
-                    {user?.firstName || 'Farmer'}
-                  </span>
-                </span>
-              </div>
-            </div>
+
+        {/* Desktop Breadcrumb & Season Status */}
+        <div className="hidden lg:flex items-center gap-2.5">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/80 text-xs font-semibold text-stone-700 shadow-soft">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Agronomic Workspace</span>
+            <span className="text-stone-300">•</span>
+            <span className="text-emerald-800 font-bold">
+              {weather.isLiveLocation ? (weather.district ? `${weather.district}, ${weather.state || 'India'}` : weather.locationName) : 'Kharif 2026'}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Center Area: Modern Command Search Pill (Linear / Raycast Style) */}
+      <div className="flex-1 max-w-md mx-4 hidden md:block">
+        <button
+          type="button"
+          onClick={onOpenCommandPalette}
+          className="w-full flex items-center justify-between px-4 py-2 rounded-2xl bg-[#FAF9F5] hover:bg-white border border-stone-200/80 hover:border-emerald-300 text-stone-400 hover:text-stone-700 text-xs font-medium shadow-soft transition-all group"
+        >
+          <div className="flex items-center gap-2.5">
+            <Search className="h-4 w-4 text-stone-400 group-hover:text-emerald-700 transition-colors" />
+            <span>Search 50 crops, mandi rates, disease diagnostic...</span>
+          </div>
+          <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-mono font-bold text-stone-500 bg-white border border-stone-200 rounded-md shadow-sm">
+            ⌘K
+          </kbd>
+        </button>
+      </div>
+
+      {/* Right Area: Telemetry, Notifications & User Pill */}
+      <div className="flex items-center gap-3">
+        {/* Mobile Search Button */}
+        <button
+          type="button"
+          onClick={onOpenCommandPalette}
+          className="md:hidden p-2 text-stone-600 hover:text-emerald-800 bg-[#FAF9F5] border border-stone-200/80 rounded-2xl shadow-soft"
+        >
+          <Search className="h-4 w-4" />
+        </button>
+
+        {/* Live Weather Capsule (Open-Meteo Dynamic Telemetry) */}
+        <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/80 text-xs font-semibold text-stone-700 shadow-soft">
+          <WeatherIcon
+            weatherCode={weather.weatherCode}
+            isDay={weather.isDay}
+            size="sm"
+            showContainer={false}
+          />
+          <span className="font-mono">{weather.temperature.toFixed(1)}°C</span>
+          <span className="text-stone-300">•</span>
+          <span className="text-stone-500 font-mono text-[11px]">{weather.humidity}% Hum</span>
+          {weather.isLiveLocation && (
+            <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200/60">
+              {weather.district}
+            </span>
+          )}
+        </div>
+
+        {/* Notification Bell */}
+        <button
+          type="button"
+          className="p-2.5 text-stone-600 hover:text-emerald-800 bg-white hover:bg-[#FAF9F5] border border-stone-200/80 rounded-2xl shadow-soft transition-all active:scale-95 relative"
+        >
+          <span className="sr-only">View notifications</span>
+          <Bell className="h-4 w-4" aria-hidden="true" />
+          <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-emerald-600 ring-2 ring-white"></span>
+        </button>
+
+        {/* Farmer Profile Pill */}
+        <div className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:border-stone-300 transition-all">
+          <UserButton afterSignOutUrl="/login" />
+          <div className="hidden sm:flex flex-col text-left pr-1">
+            <span className="text-xs font-bold text-stone-800 leading-tight">
+              {user?.firstName || 'Farmer'}
+            </span>
+            <span className="text-[10px] text-emerald-800 font-semibold">Verified Field</span>
           </div>
         </div>
       </div>

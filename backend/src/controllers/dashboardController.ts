@@ -17,6 +17,7 @@ export const getUserStats = async (req: Request, res: Response) => {
       // Return empty stats for new users
       return res.json({
         totalTasks: 0,
+        pendingTasks: 0,
         completedTasks: 0,
         activeAdvisories: 0,
         totalAdvisories: 0
@@ -36,6 +37,7 @@ export const getUserStats = async (req: Request, res: Response) => {
     console.warn('⚠️ Database offline, returning default user stats:', error);
     res.json({
       totalTasks: 0,
+      pendingTasks: 0,
       completedTasks: 0,
       activeAdvisories: 0,
       totalAdvisories: 0

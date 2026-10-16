@@ -16,24 +16,24 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const variants = {
-    primary: 'bg-primary-600 text-white hover:bg-primary-700 shadow-sm active:bg-primary-800',
-    secondary: 'bg-secondary-100 text-secondary-900 hover:bg-secondary-200 active:bg-secondary-300',
-    outline: 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50 active:bg-primary-100',
-    ghost: 'text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 active:bg-secondary-100',
-    danger: 'bg-red-600 text-white hover:bg-red-700 shadow-sm active:bg-red-800',
+    primary: 'bg-emerald-700 text-white hover:bg-emerald-800 shadow-soft hover:shadow-card active:bg-emerald-900 border border-emerald-800/40',
+    secondary: 'bg-[#F5F5F0] text-stone-800 hover:bg-[#EBEBE3] border border-stone-200/90 active:bg-stone-200',
+    outline: 'border border-stone-300/90 bg-white text-stone-700 hover:bg-[#FAF9F5] hover:border-stone-400 active:bg-stone-100 shadow-sm',
+    ghost: 'text-stone-600 hover:bg-stone-100/80 hover:text-stone-900 active:bg-stone-200',
+    danger: 'bg-rose-600 text-white hover:bg-rose-700 shadow-soft active:bg-rose-800 border border-rose-700',
   };
 
   const sizes = {
-    sm: 'h-10 px-3 text-sm',
-    md: 'h-11 px-4 text-base',
-    lg: 'h-12 px-6 text-lg',
+    sm: 'h-9 px-3.5 text-xs sm:text-sm rounded-xl',
+    md: 'h-11 px-5 text-sm sm:text-base rounded-2xl',
+    lg: 'h-12 px-6 text-base rounded-2xl',
   };
 
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]',
-        'min-h-[44px]', // Ensure touch-friendly minimum
+        'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none',
+        'min-h-[44px]',
         variants[variant],
         sizes[size],
         className

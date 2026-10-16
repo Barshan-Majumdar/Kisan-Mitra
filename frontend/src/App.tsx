@@ -12,6 +12,7 @@ import { Schemes } from './pages/Schemes';
 import { DiseaseDetect } from './pages/DiseaseDetect';
 import { MarketPrices } from './pages/MarketPrices';
 import { AdvisoryHistory } from './pages/AdvisoryHistory';
+import { SoilCalibration } from './pages/SoilCalibration';
 
 
 
@@ -19,7 +20,7 @@ import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
 
-// ... imports
+import { WeatherProvider } from './context/WeatherContext';
 
 function App() {
   return (
@@ -31,7 +32,9 @@ function App() {
         <Route path="/" element={
           <>
             <SignedIn>
-              <MainLayout />
+              <WeatherProvider>
+                <MainLayout />
+              </WeatherProvider>
             </SignedIn>
             <SignedOut>
               <RedirectToSignIn />
@@ -42,6 +45,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="input" element={<FarmerInput />} />
           <Route path="advisory-history" element={<AdvisoryHistory />} />
+          <Route path="calibrate" element={<SoilCalibration />} />
           <Route path="predict" element={<SystemPredicts />} />
           <Route path="recommendations" element={<CropRecommendation />} />
           <Route path="todos" element={<ToDoList />} />

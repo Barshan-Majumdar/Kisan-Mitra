@@ -113,36 +113,42 @@ export const FarmerInput: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-4 sm:space-y-6 animate-fade-in px-1">
-      <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">🌾 Start New Crop Advisory</h2>
-        <p className="text-sm sm:text-base text-gray-600 mt-1">
-          Enter your location and farm parameters to get AI-powered crop recommendations and expected harvest yields.
+    <div className="max-w-2xl mx-auto space-y-6 animate-fade-in px-1">
+      <div className="space-y-1">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-800">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          Step 1 of 3: Farm Diagnostics
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+          Field & Agronomic Parameters
+        </h2>
+        <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+          Specify your regional location, soil type, and irrigation capabilities to compute AI recommendations.
         </p>
       </div>
 
-      <Card padding="lg">
-        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+      <Card padding="lg" className="border border-stone-200/80 rounded-3xl shadow-card bg-white">
+        <form onSubmit={handleSubmit} className="space-y-6">
 
           {/* State and District Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* State Selection */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Select State</label>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Select State</label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none z-10" />
+                <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10" />
                 <select
                   value={formData.state}
                   onChange={(e) => handleStateChange(e.target.value)}
-                  className="w-full pl-9 pr-8 py-2.5 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none bg-white appearance-none truncate"
+                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium"
                   required
                 >
                   {statesList.map((st) => (
                     <option key={st} value={st}>{st}</option>
                   ))}
                 </select>
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="h-4 w-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -151,13 +157,13 @@ export const FarmerInput: React.FC = () => {
 
             {/* District Selection */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Select District</label>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Select District</label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none z-10" />
+                <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10" />
                 <select
                   value={formData.district}
                   onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                  className="w-full pl-9 pr-8 py-2.5 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none bg-white appearance-none truncate"
+                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium"
                   required
                 >
                   <option value="">-- Choose District --</option>
@@ -165,8 +171,8 @@ export const FarmerInput: React.FC = () => {
                     <option key={d} value={d}>{d}</option>
                   ))}
                 </select>
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="h-4 w-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -178,21 +184,21 @@ export const FarmerInput: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Season Selection */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Crop Season</label>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Crop Season</label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none z-10" />
+                <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10" />
                 <select
                   value={formData.season}
                   onChange={(e) => setFormData({ ...formData, season: e.target.value })}
-                  className="w-full pl-9 pr-8 py-2.5 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none bg-white appearance-none truncate"
+                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium"
                   required
                 >
                   {seasonsList.map((s) => (
                     <option key={s} value={s}>{s}</option>
                   ))}
                 </select>
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="h-4 w-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -201,21 +207,21 @@ export const FarmerInput: React.FC = () => {
 
             {/* Soil Type Selection */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Soil Type</label>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Soil Classification</label>
               <div className="relative">
-                <Layers className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none z-10" />
+                <Layers className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10" />
                 <select
                   value={formData.soilType}
                   onChange={(e) => setFormData({ ...formData, soilType: e.target.value })}
-                  className="w-full pl-9 pr-8 py-2.5 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none bg-white appearance-none truncate"
+                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium"
                   required
                 >
                   {soilTypesList.map((s) => (
                     <option key={s} value={s}>{s.replace(' (proxy)', '')}</option>
                   ))}
                 </select>
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="h-4 w-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -224,11 +230,11 @@ export const FarmerInput: React.FC = () => {
           </div>
 
           {/* Farm Landholding Area */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Landholding Size
+          <div className="space-y-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
+              Cultivated Field Area
             </label>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <div className="flex-1">
                 <Input
                   type="number"
@@ -237,34 +243,34 @@ export const FarmerInput: React.FC = () => {
                   placeholder="e.g. 2.5"
                   value={formData.area}
                   onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                  icon={<Ruler className="h-5 w-5" />}
+                  icon={<Ruler className="h-4 w-4 text-stone-400" />}
                   required
                 />
               </div>
-              <div className="w-32">
+              <div className="w-36">
                 <select
                   value={formData.areaUnit}
                   onChange={(e) => setFormData({ ...formData, areaUnit: e.target.value })}
-                  className="w-full h-[42px] px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none bg-white"
+                  className="w-full h-[46px] px-3.5 py-2.5 text-sm font-semibold rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none text-stone-800 transition-all"
                 >
                   <option value="Acres">Acres</option>
                   <option value="Hectares">Hectares</option>
                 </select>
               </div>
             </div>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-stone-500 font-medium">
               {formData.areaUnit === 'Acres'
-                ? `≈ ${(parseFloat(formData.area || '0') / 2.47105).toFixed(2)} Hectares (used to calculate total harvest yield)`
-                : `≈ ${(parseFloat(formData.area || '0') * 2.47105).toFixed(2)} Acres`}
+                ? `Standard conversion: ≈ ${(parseFloat(formData.area || '0') / 2.47105).toFixed(2)} Hectares (used for precise nutrient dosages)`
+                : `Standard conversion: ≈ ${(parseFloat(formData.area || '0') * 2.47105).toFixed(2)} Acres`}
             </p>
           </div>
 
           {/* Irrigation Availability */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2 sm:mb-3">
-              Irrigation Availability
+          <div className="space-y-2.5">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
+              Irrigation Infrastructure
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {IRRIGATION_TYPES.map((item) => {
                 const isSelected = formData.irrigationType === item.id;
                 return (
@@ -272,16 +278,16 @@ export const FarmerInput: React.FC = () => {
                     key={item.id}
                     onClick={() => setFormData({ ...formData, irrigationType: item.id })}
                     className={`
-                      cursor-pointer rounded-xl border p-3 sm:p-4 text-center transition-all touch-target
+                      cursor-pointer rounded-2xl border p-3.5 text-center transition-all duration-200 select-none
                       ${isSelected
-                        ? 'border-primary-500 bg-primary-50 text-primary-700 ring-2 ring-primary-500 shadow-sm'
-                        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                        ? 'border-emerald-700 bg-emerald-50 text-emerald-900 ring-2 ring-emerald-700/20 shadow-soft font-semibold'
+                        : 'border-stone-200/90 bg-[#FAF9F5] hover:border-stone-300 hover:bg-stone-100/60 text-stone-700'
                       }
                     `}
                   >
-                    <Droplets className={`mx-auto h-5 w-5 sm:h-6 sm:w-6 mb-1.5 sm:mb-2 ${isSelected ? 'text-primary-600' : 'text-gray-400'}`} />
-                    <span className="text-xs sm:text-sm font-medium block">{item.label}</span>
-                    <span className="text-[10px] sm:text-xs text-gray-500 block mt-0.5">{item.sub}</span>
+                    <Droplets className={`mx-auto h-5 w-5 mb-1.5 ${isSelected ? 'text-emerald-700' : 'text-stone-400'}`} />
+                    <span className="text-xs sm:text-sm font-semibold block leading-tight">{item.label}</span>
+                    <span className="text-[10px] text-stone-500 block mt-1">{item.sub}</span>
                   </div>
                 );
               })}
@@ -289,14 +295,14 @@ export const FarmerInput: React.FC = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-2 sm:pt-4">
+          <div className="pt-3">
             <Button
               type="submit"
-              className="w-full"
+              className="w-full text-base py-3.5 font-bold rounded-2xl"
               size="lg"
               isLoading={isLoading}
             >
-              Analyze Environmental Data <ArrowRight className="ml-2 h-5 w-5" />
+              Fetch Field Environmental Profile <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </form>
