@@ -1,0 +1,19 @@
+{
+    "greeting": "Hello",
+    "dashboard": "Dashboard",
+    "crops": "Crops",
+    "advisory": "Advisory",
+    "weather": "Weather",
+    "market": "Market",
+    "schemes": "Schemes",
+    "tasks": "My Tasks",
+    "soil": "Soil Health",
+    "logout": "Logout",
+    "welcome": "Welcome back",
+    "today_overview": "Here's what's happening on your farm today.",
+    "active_advisories": "Active Advisories",
+    "pending_tasks": "Pending Tasks",
+    "disease_detect": "Disease Detect",
+    "market_trends": "Market Trends",
+    "chatbot": "Chatbot"
+}

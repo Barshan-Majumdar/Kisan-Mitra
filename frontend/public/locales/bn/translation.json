@@ -1,0 +1,19 @@
+{
+    "greeting": "হ্যালো",
+    "dashboard": "ড্যাশবোর্ড",
+    "crops": "ফসল",
+    "advisory": "পরামর্শ",
+    "weather": "আবহাওয়া",
+    "market": "বাজার",
+    "schemes": "প্রকল্প",
+    "tasks": "আমার কাজ",
+    "soil": "মাটির স্বাস্থ্য",
+    "logout": "লগ আউট",
+    "welcome": "স্বাগতম",
+    "today_overview": "আজ আপনার খামারে কি ঘটছে তা এখানে দেখুন।",
+    "active_advisories": "সক্রিয় পরামর্শ",
+    "pending_tasks": "অমীমাংসিত কাজ",
+    "disease_detect": "রোগ নির্ণয় করুন",
+    "market_trends": "বাজারের প্রবণতা",
+    "chatbot": "চ্যাটবট"
+}

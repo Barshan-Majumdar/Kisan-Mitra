@@ -1,0 +1,155 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  name      String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  soilData   SoilData[]
+  tasks      Task[]
+  advisories CropAdvisory[]
+}
+
+
+// --- Agricultural Database Models ---
+
+model Crop {
+  id               Int               @id @default(autoincrement())
+  name             String
+  scientificName   String?
+  duration         String? // e.g., "120-150 days"
+  waterRequirement String? // e.g., "High", "Medium", "Low"
+  description      String?
+  imageUrl         String?
+  marketPrices     MarketPrice[]
+  suitability      CropSuitability[]
+  advisories       CropAdvisory[]
+  districtCrops    DistrictCrop[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+}
+
+model SoilType {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique // e.g., "Alluvial", "Black", "Red"
+  description     String?
+  characteristics String?
+  crops           CropSuitability[]
+  districtCrops   DistrictCrop[]
+}
+
+model Season {
+  id     Int               @id @default(autoincrement())
+  name   String            @unique // e.g., "Kharif", "Rabi", "Zaid"
+  months String? // e.g., "June-October"
+  crops  CropSuitability[]
+  districtCrops DistrictCrop[]
+}
+
+// Mapping table for Crop-Soil-Season relationships
+model CropSuitability {
+  id         Int      @id @default(autoincrement())
+  cropId     Int
+  soilTypeId Int
+  seasonId   Int
+  crop       Crop     @relation(fields: [cropId], references: [id])
+  soilType   SoilType @relation(fields: [soilTypeId], references: [id])
+  season     Season   @relation(fields: [seasonId], references: [id])
+
+  @@unique([cropId, soilTypeId, seasonId])
+}
+
+model MarketPrice {
+  id         Int      @id @default(autoincrement())
+  cropId     Int
+  marketName String
+  price      Float
+  currency   String   @default("INR")
+  date       DateTime @default(now())
+  state      String?
+  district   String?
+  crop       Crop     @relation(fields: [cropId], references: [id])
+}
+
+model GovernmentScheme {
+  id                  Int      @id @default(autoincrement())
+  name                String
+  description         String
+  eligibilityCriteria String?
+  applicationLink     String?
+  deadline            DateTime?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model SoilData {
+  id         Int      @id @default(autoincrement())
+  userId     Int?
+  nitrogen   Float?
+  phosphorus Float?
+  potassium  Float?
+  ph         Float?
+  location   String?
+  testedAt   DateTime @default(now())
+  user       User?    @relation(fields: [userId], references: [id])
+}
+
+model WeatherData {
+  id          Int      @id @default(autoincrement())
+  location    String
+  date        DateTime @default(now())
+  temperature Float?
+  humidity    Float?
+  rainfall    Float?
+  windSpeed   Float?
+  forecast    String? // JSON or text description
+}
+
+model Task {
+  id        Int      @id @default(autoincrement())
+  category  String   // 'Sowing', 'Preparation', 'Irrigation', etc.
+  task      String
+  dueDate   DateTime
+  completed Boolean  @default(false)
+  userId    Int?     // Optional link to user
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CropAdvisory {
+  id        Int      @id @default(autoincrement())
+  cropId    Int
+  crop      Crop     @relation(fields: [cropId], references: [id])
+  location  String
+  stage     String   // 'Vegetative', 'Flowering', 'Harvest', etc.
+  status    String   // 'active', 'completed'
+  date      DateTime @default(now())
+  message   String?  // The actual advisory content
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
+}
+
+model DistrictCrop {
+  id          Int      @id @default(autoincrement())
+  district    String
+  pinCode     String
+  cropId      Int
+  crop        Crop     @relation(fields: [cropId], references: [id])
+  seasonId    Int
+  season      Season   @relation(fields: [seasonId], references: [id])
+  soilTypeId  Int
+  soilType    SoilType @relation(fields: [soilTypeId], references: [id])
+  minTemp     Float
+  maxTemp     Float
+  
+  @@unique([district, cropId, seasonId])
+}
