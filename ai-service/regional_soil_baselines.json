@@ -1,0 +1,4808 @@
+{
+ "district_baselines": {
+  "Andaman and Nicobar Islands|Nicobars": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Andaman and Nicobar Islands|North And Middle Andaman": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Andaman and Nicobar Islands|South Andamans": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Andhra Pradesh|Anantapur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Chittoor": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|East Godavari": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Guntur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Kadapa": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Krishna": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 20.9
+  },
+  "Andhra Pradesh|Kurnool": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Prakasam": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Spsr Nellore": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Srikakulam": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Visakhapatanam": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Andhra Pradesh|Vizianagaram": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 20.4
+  },
+  "Andhra Pradesh|West Godavari": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Arunachal Pradesh|Anjaw": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|Changlang": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|Dibang Valley": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|East Kameng": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 43.5
+  },
+  "Arunachal Pradesh|East Siang": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|Kurung Kumey": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 46.2
+  },
+  "Arunachal Pradesh|Lohit": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|Longding": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 46.2
+  },
+  "Arunachal Pradesh|Lower Dibang Valley": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|Lower Subansiri": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 46.2
+  },
+  "Arunachal Pradesh|Namsai": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Arunachal Pradesh|Papum Pare": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|Tawang": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 43.5
+  },
+  "Arunachal Pradesh|Tirap": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|Upper Siang": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 46.2
+  },
+  "Arunachal Pradesh|Upper Subansiri": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Arunachal Pradesh|West Kameng": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 43.5
+  },
+  "Arunachal Pradesh|West Siang": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Assam|Baksa": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Barpeta": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Bongaigaon": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Cachar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Chirang": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 32.1
+  },
+  "Assam|Darrang": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Dhemaji": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Dhubri": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Dibrugarh": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Dima Hasao": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Goalpara": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Golaghat": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Hailakandi": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Jorhat": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Kamrup": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Kamrup Metro": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 32.1
+  },
+  "Assam|Karbi Anglong": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Karimganj": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Kokrajhar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Lakhimpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Marigaon": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Nagaon": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Nalbari": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Sivasagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Sonitpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Tinsukia": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Assam|Udalguri": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 32.1
+  },
+  "Bihar|Araria": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Arwal": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Aurangabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Banka": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.7
+  },
+  "Bihar|Begusarai": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Bhagalpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Bhojpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Buxar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.7
+  },
+  "Bihar|Darbhanga": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Gaya": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Gopalganj": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Jamui": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.3
+  },
+  "Bihar|Jehanabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Kaimur (Bhabua)": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Katihar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Khagaria": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Kishanganj": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Lakhisarai": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.8
+  },
+  "Bihar|Madhepura": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Madhubani": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Munger": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.7
+  },
+  "Bihar|Muzaffarpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Nalanda": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Nawada": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Pashchim Champaran": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Patna": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Purbi Champaran": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Purnia": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Rohtas": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Saharsa": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Samastipur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Saran": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Sheikhpura": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.8
+  },
+  "Bihar|Sheohar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Sitamarhi": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Siwan": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Supaul": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Bihar|Vaishali": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Chandigarh|Chandigarh": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Chhattisgarh|Balod": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Baloda Bazar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Balrampur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 23.8
+  },
+  "Chhattisgarh|Bastar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 23.8
+  },
+  "Chhattisgarh|Bemetara": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Bijapur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Bilaspur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Dantewada": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 23.3
+  },
+  "Chhattisgarh|Dhamtari": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Durg": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Gariyaband": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Janjgir-Champa": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Jashpur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Kabirdham": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Kanker": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Kondagaon": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 23.8
+  },
+  "Chhattisgarh|Korba": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Korea": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Mahasamund": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Mungeli": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Narayanpur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Raigarh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Raipur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Rajnandgaon": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Sukma": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Surajpur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Chhattisgarh|Surguja": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 23.8
+  },
+  "Dadra and Nagar Haveli|Dadra And Nagar Haveli": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.1
+  },
+  "Goa|North Goa": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 37.2
+  },
+  "Goa|South Goa": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 46.2
+  },
+  "Gujarat|Ahmadabad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Amreli": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Anand": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Banas Kantha": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Bharuch": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Bhavnagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Dang": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Dohad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Gandhinagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Jamnagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Junagadh": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Kachchh": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.5
+  },
+  "Gujarat|Kheda": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Mahesana": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Narmada": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Navsari": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Panch Mahals": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Patan": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Porbandar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Rajkot": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Sabar Kantha": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Surat": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Surendranagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Tapi": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Vadodara": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Gujarat|Valsad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Haryana|Ambala": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.7
+  },
+  "Haryana|Bhiwani": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Faridabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Fatehabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.7
+  },
+  "Haryana|Gurgaon": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Hisar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Jhajjar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Jind": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Kaithal": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Haryana|Karnal": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Kurukshetra": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.7
+  },
+  "Haryana|Mahendragarh": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Mewat": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Palwal": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Panchkula": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Panipat": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 22.3
+  },
+  "Haryana|Rewari": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Rohtak": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Haryana|Sirsa": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.7
+  },
+  "Haryana|Sonipat": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.7
+  },
+  "Haryana|Yamunanagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.7
+  },
+  "Himachal Pradesh|Bilaspur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Chamba": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Hamirpur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Kangra": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Kinnaur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Kullu": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Lahul And Spiti": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Mandi": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Shimla": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Sirmaur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Solan": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Himachal Pradesh|Una": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Jammu and Kashmir|Anantnag": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Badgam": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Bandipora": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Baramulla": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Doda": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Ganderbal": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Jammu": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Kargil": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 15.4
+  },
+  "Jammu and Kashmir|Kathua": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Kishtwar": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 17.4
+  },
+  "Jammu and Kashmir|Kulgam": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 17.4
+  },
+  "Jammu and Kashmir|Kupwara": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 20.8
+  },
+  "Jammu and Kashmir|Leh Ladakh": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 15.4
+  },
+  "Jammu and Kashmir|Poonch": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 20.8
+  },
+  "Jammu and Kashmir|Pulwama": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Rajauri": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Ramban": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 15.4
+  },
+  "Jammu and Kashmir|Reasi": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 17.4
+  },
+  "Jammu and Kashmir|Samba": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.1
+  },
+  "Jammu and Kashmir|Shopian": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 17.4
+  },
+  "Jammu and Kashmir|Srinagar": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jammu and Kashmir|Udhampur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jharkhand|Bokaro": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.6
+  },
+  "Jharkhand|Chatra": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.1
+  },
+  "Jharkhand|Deoghar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.2
+  },
+  "Jharkhand|Dhanbad": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.6
+  },
+  "Jharkhand|Dumka": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.2
+  },
+  "Jharkhand|East Singhbum": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.0
+  },
+  "Jharkhand|Garhwa": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.1
+  },
+  "Jharkhand|Giridih": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.0
+  },
+  "Jharkhand|Godda": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.0
+  },
+  "Jharkhand|Gumla": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.1
+  },
+  "Jharkhand|Hazaribagh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.2
+  },
+  "Jharkhand|Jamtara": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.2
+  },
+  "Jharkhand|Khunti": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 16.5
+  },
+  "Jharkhand|Koderma": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.1
+  },
+  "Jharkhand|Latehar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.1
+  },
+  "Jharkhand|Lohardaga": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.1
+  },
+  "Jharkhand|Pakur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.0
+  },
+  "Jharkhand|Palamu": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.1
+  },
+  "Jharkhand|Ramgarh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 16.5
+  },
+  "Jharkhand|Ranchi": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.2
+  },
+  "Jharkhand|Sahebganj": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.0
+  },
+  "Jharkhand|Saraikela Kharsawan": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.2
+  },
+  "Jharkhand|Simdega": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.6
+  },
+  "Jharkhand|West Singhbhum": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.0
+  },
+  "Karnataka|Bagalkot": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Bangalore Rural": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Belgaum": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Bellary": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Bengaluru Urban": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Bidar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Bijapur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Chamarajanagar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Chikballapur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Chikmagalur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Karnataka|Chitradurga": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Dakshin Kannad": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 26.7
+  },
+  "Karnataka|Davangere": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Dharwad": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Gadag": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Gulbarga": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Hassan": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Karnataka|Haveri": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Kodagu": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 24.9
+  },
+  "Karnataka|Kolar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Koppal": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Mandya": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Mysore": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Raichur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Ramanagara": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Karnataka|Shimoga": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Tumkur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Udupi": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 24.5
+  },
+  "Karnataka|Uttar Kannad": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Karnataka|Yadgir": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Kerala|Alappuzha": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Ernakulam": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Idukki": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Kannur": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Kasaragod": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Kollam": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Kottayam": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Kozhikode": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Malappuram": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Palakkad": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Pathanamthitta": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Thiruvananthapuram": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Thrissur": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Kerala|Wayanad": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Madhya Pradesh|Agar Malwa": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Madhya Pradesh|Alirajpur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 23.4
+  },
+  "Madhya Pradesh|Anuppur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Ashoknagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Balaghat": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Barwani": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 23.4
+  },
+  "Madhya Pradesh|Betul": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Bhind": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 21.4
+  },
+  "Madhya Pradesh|Bhopal": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Burhanpur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Chhatarpur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Chhindwara": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Damoh": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 21.4
+  },
+  "Madhya Pradesh|Datia": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Dewas": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Dhar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Dindori": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Guna": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Gwalior": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 21.4
+  },
+  "Madhya Pradesh|Harda": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Hoshangabad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 21.4
+  },
+  "Madhya Pradesh|Indore": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Jabalpur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Jhabua": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Katni": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Khandwa": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Khargone": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Mandla": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Mandsaur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Morena": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 21.4
+  },
+  "Madhya Pradesh|Narsinghpur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Neemuch": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Panna": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Raisen": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Rajgarh": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Ratlam": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Rewa": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Sagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Satna": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Sehore": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Seoni": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Shahdol": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Shajapur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Sheopur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 21.4
+  },
+  "Madhya Pradesh|Shivpuri": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Sidhi": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Singrauli": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 23.4
+  },
+  "Madhya Pradesh|Tikamgarh": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Ujjain": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Umaria": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Madhya Pradesh|Vidisha": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Maharashtra|Ahmednagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Akola": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Amravati": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Aurangabad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Beed": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Bhandara": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Buldhana": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Chandrapur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Dhule": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Gadchiroli": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Gondia": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Hingoli": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Jalgaon": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Jalna": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Kolhapur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Latur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Mumbai": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.1
+  },
+  "Maharashtra|Nagpur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Nanded": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Nandurbar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Nashik": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Osmanabad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Palghar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Parbhani": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Pune": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Raigad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Ratnagiri": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Sangli": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Satara": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Sindhudurg": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Solapur": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Thane": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Wardha": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Washim": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Maharashtra|Yavatmal": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Manipur|Bishnupur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.5
+  },
+  "Manipur|Chandel": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.5
+  },
+  "Manipur|Churachandpur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 32.5
+  },
+  "Manipur|Imphal East": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 36.5
+  },
+  "Manipur|Imphal West": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 36.5
+  },
+  "Manipur|Senapati": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 32.5
+  },
+  "Manipur|Tamenglong": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.5
+  },
+  "Manipur|Thoubal": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.5
+  },
+  "Manipur|Ukhrul": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.5
+  },
+  "Meghalaya|East Garo Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Meghalaya|East Jaintia Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Meghalaya|East Khasi Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Meghalaya|North Garo Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Meghalaya|Ri Bhoi": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Meghalaya|South Garo Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Meghalaya|South West Garo Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Meghalaya|South West Khasi Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 41.9
+  },
+  "Meghalaya|West Garo Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 39.9
+  },
+  "Meghalaya|West Jaintia Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 41.9
+  },
+  "Meghalaya|West Khasi Hills": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Mizoram|Aizawl": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 34.8
+  },
+  "Mizoram|Champhai": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.8
+  },
+  "Mizoram|Kolasib": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 34.8
+  },
+  "Mizoram|Lawngtlai": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.8
+  },
+  "Mizoram|Lunglei": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 34.8
+  },
+  "Mizoram|Mamit": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 34.8
+  },
+  "Mizoram|Saiha": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 34.8
+  },
+  "Mizoram|Serchhip": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.8
+  },
+  "Nagaland|Dimapur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Kiphire": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Kohima": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Longleng": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Mokokchung": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Mon": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Peren": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Phek": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Tuensang": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Wokha": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Nagaland|Zunheboto": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Odisha|Anugul": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Balangir": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Baleshwar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Bargarh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.6
+  },
+  "Odisha|Bhadrak": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Boudh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Cuttack": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Deogarh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Dhenkanal": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Gajapati": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Odisha|Ganjam": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.3
+  },
+  "Odisha|Jagatsinghapur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Jajapur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.3
+  },
+  "Odisha|Jharsuguda": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Kalahandi": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Kandhamal": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Kendrapara": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Kendujhar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Khordha": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.3
+  },
+  "Odisha|Koraput": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Malkangiri": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Mayurbhanj": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Nabarangpur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Nayagarh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Nuapada": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Puri": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Rayagada": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Sambalpur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Odisha|Sonepur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.9
+  },
+  "Odisha|Sundargarh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Puducherry|Karaikal": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 26.1
+  },
+  "Puducherry|Mahe": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 30.3
+  },
+  "Puducherry|Pondicherry": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 23.3
+  },
+  "Puducherry|Yanam": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 23.3
+  },
+  "Punjab|Amritsar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Barnala": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Bathinda": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Faridkot": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Punjab|Fatehgarh Sahib": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Fazilka": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.4
+  },
+  "Punjab|Firozepur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Gurdaspur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Hoshiarpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Jalandhar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Kapurthala": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Ludhiana": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Mansa": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Moga": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Muktsar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Nawanshahr": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Pathankot": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Patiala": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Rupnagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|S.A.S Nagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Sangrur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Punjab|Tarn Taran": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Rajasthan|Ajmer": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Alwar": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Banswara": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Baran": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Barmer": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Bharatpur": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Bhilwara": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Bikaner": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Bundi": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Chittorgarh": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Churu": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Dausa": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Dholpur": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Dungarpur": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Ganganagar": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Hanumangarh": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.5
+  },
+  "Rajasthan|Jaipur": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Jaisalmer": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Jalore": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.5
+  },
+  "Rajasthan|Jhalawar": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Jhunjhunu": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Jodhpur": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Karauli": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Kota": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Nagaur": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Pali": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Pratapgarh": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Rajsamand": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Sawai Madhopur": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Sikar": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Sirohi": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Rajasthan|Tonk": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Rajasthan|Udaipur": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 16.0
+  },
+  "Sikkim|East District": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 33.5
+  },
+  "Sikkim|North District": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 33.5
+  },
+  "Sikkim|South District": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 33.5
+  },
+  "Sikkim|West District": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 33.5
+  },
+  "Tamil Nadu|Ariyalur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 24.9
+  },
+  "Tamil Nadu|Coimbatore": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Cuddalore": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Dharmapuri": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Dindigul": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Erode": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Kanchipuram": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Kanniyakumari": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 29.1
+  },
+  "Tamil Nadu|Karur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Krishnagiri": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Madurai": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Nagapattinam": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 27.1
+  },
+  "Tamil Nadu|Namakkal": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Perambalur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Pudukkottai": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Ramanathapuram": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Salem": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Sivaganga": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Thanjavur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|The Nilgiris": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 29.1
+  },
+  "Tamil Nadu|Theni": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Thiruvallur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Thiruvarur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 27.6
+  },
+  "Tamil Nadu|Tiruchirappalli": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Tirunelveli": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Tiruppur": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Tiruvannamalai": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Tuticorin": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Vellore": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Villupuram": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Tamil Nadu|Virudhunagar": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Telangana|Adilabad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Telangana|Hyderabad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 26.8
+  },
+  "Telangana|Karimnagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Telangana|Khammam": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Telangana|Mahbubnagar": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Telangana|Medak": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Telangana|Nalgonda": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Telangana|Nizamabad": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Telangana|Rangareddi": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Telangana|Warangal": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Tripura|Dhalai": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Tripura|Gomati": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Tripura|Khowai": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Tripura|North Tripura": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Tripura|Sepahijala": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Tripura|South Tripura": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Tripura|Unakoti": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Tripura|West Tripura": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Uttar Pradesh|Agra": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Aligarh": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Allahabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Ambedkar Nagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 19.6
+  },
+  "Uttar Pradesh|Amethi": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.3
+  },
+  "Uttar Pradesh|Amroha": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Auraiya": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Azamgarh": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Baghpat": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Bahraich": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Ballia": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 19.6
+  },
+  "Uttar Pradesh|Balrampur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Banda": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Barabanki": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Bareilly": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Basti": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.3
+  },
+  "Uttar Pradesh|Bijnor": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Budaun": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Bulandshahr": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Chandauli": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Chitrakoot": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Deoria": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Etah": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Etawah": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Faizabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.6
+  },
+  "Uttar Pradesh|Farrukhabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Fatehpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Firozabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Gautam Buddha Nagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Ghaziabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.6
+  },
+  "Uttar Pradesh|Ghazipur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Gonda": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 19.6
+  },
+  "Uttar Pradesh|Gorakhpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Hamirpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Hapur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.3
+  },
+  "Uttar Pradesh|Hardoi": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Hathras": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Jalaun": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Jaunpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Jhansi": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Kannauj": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Kanpur Dehat": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Kanpur Nagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Kasganj": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.3
+  },
+  "Uttar Pradesh|Kaushambi": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Kheri": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Kushi Nagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Lalitpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Lucknow": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Maharajganj": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.6
+  },
+  "Uttar Pradesh|Mahoba": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Mainpuri": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Mathura": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Mau": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Meerut": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Mirzapur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Moradabad": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Muzaffarnagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 19.6
+  },
+  "Uttar Pradesh|Pilibhit": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Pratapgarh": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Rae Bareli": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Rampur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Saharanpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Sambhal": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.6
+  },
+  "Uttar Pradesh|Sant Kabeer Nagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Sant Ravidas Nagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Shahjahanpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Shamli": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.3
+  },
+  "Uttar Pradesh|Shravasti": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Siddharth Nagar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 18.6
+  },
+  "Uttar Pradesh|Sitapur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Sonbhadra": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Sultanpur": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Unnao": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttar Pradesh|Varanasi": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttarakhand|Almora": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Bageshwar": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Chamoli": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Champawat": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Dehradun": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Haridwar": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Nainital": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Pauri Garhwal": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Pithoragarh": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Rudra Prayag": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Tehri Garhwal": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Udam Singh Nagar": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "Uttarakhand|Uttar Kashi": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "West Bengal|24 Paraganas North": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 25.2
+  },
+  "West Bengal|24 Paraganas South": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 25.2
+  },
+  "West Bengal|Bankura": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 26.5
+  },
+  "West Bengal|Bardhaman": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 25.2
+  },
+  "West Bengal|Birbhum": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 25.2
+  },
+  "West Bengal|Coochbehar": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 25.2
+  },
+  "West Bengal|Darjeeling": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 20.9
+  },
+  "West Bengal|Dinajpur Dakshin": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 26.5
+  },
+  "West Bengal|Dinajpur Uttar": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 20.2
+  },
+  "West Bengal|Hooghly": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 25.9
+  },
+  "West Bengal|Howrah": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 26.5
+  },
+  "West Bengal|Jalpaiguri": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 21.0
+  },
+  "West Bengal|Maldah": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 21.0
+  },
+  "West Bengal|Medinipur East": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 26.5
+  },
+  "West Bengal|Medinipur West": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 25.2
+  },
+  "West Bengal|Murshidabad": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 20.0
+  },
+  "West Bengal|Nadia": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 21.0
+  },
+  "West Bengal|Purulia": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 26.5
+  }
+ },
+ "state_baselines": {
+  "Andaman and Nicobar Islands": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Andhra Pradesh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Arunachal Pradesh": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 45.2
+  },
+  "Assam": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 33.1
+  },
+  "Bihar": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 21.9
+  },
+  "Chandigarh": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 19.9
+  },
+  "Chhattisgarh": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 22.8
+  },
+  "Dadra and Nagar Haveli": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.1
+  },
+  "Goa": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 37.2
+  },
+  "Gujarat": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 18.5
+  },
+  "Haryana": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 16.7
+  },
+  "Himachal Pradesh": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 22.5
+  },
+  "Jammu and Kashmir": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 18.8
+  },
+  "Jharkhand": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 17.1
+  },
+  "Karnataka": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 21.5
+  },
+  "Kerala": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 48.0
+  },
+  "Madhya Pradesh": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 22.4
+  },
+  "Maharashtra": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 20.7
+  },
+  "Manipur": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 35.5
+  },
+  "Meghalaya": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 40.9
+  },
+  "Mizoram": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 34.8
+  },
+  "Nagaland": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 27.9
+  },
+  "Odisha": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 18.4
+  },
+  "Puducherry": {
+   "Nitrogen_N": 220.0,
+   "Phosphorus_P": 17.0,
+   "Potassium_K": 165.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 24.3
+  },
+  "Punjab": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 17.5
+  },
+  "Rajasthan": {
+   "Nitrogen_N": 140.0,
+   "Phosphorus_P": 12.0,
+   "Potassium_K": 180.0,
+   "Soil_pH": 8.0,
+   "Soil_Moisture_pct": 15.0
+  },
+  "Sikkim": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 33.5
+  },
+  "Tamil Nadu": {
+   "Nitrogen_N": 190.0,
+   "Phosphorus_P": 15.0,
+   "Potassium_K": 145.0,
+   "Soil_pH": 6.2,
+   "Soil_Moisture_pct": 25.1
+  },
+  "Telangana": {
+   "Nitrogen_N": 230.0,
+   "Phosphorus_P": 18.0,
+   "Potassium_K": 300.0,
+   "Soil_pH": 7.7,
+   "Soil_Moisture_pct": 19.7
+  },
+  "Tripura": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 31.4
+  },
+  "Uttar Pradesh": {
+   "Nitrogen_N": 270.0,
+   "Phosphorus_P": 22.0,
+   "Potassium_K": 185.0,
+   "Soil_pH": 7.1,
+   "Soil_Moisture_pct": 20.0
+  },
+  "Uttarakhand": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 20.0,
+   "Potassium_K": 160.0,
+   "Soil_pH": 5.8,
+   "Soil_Moisture_pct": 25.7
+  },
+  "West Bengal": {
+   "Nitrogen_N": 280.0,
+   "Phosphorus_P": 24.0,
+   "Potassium_K": 190.0,
+   "Soil_pH": 6.5,
+   "Soil_Moisture_pct": 25.2
+  }
+ },
+ "national_baseline": {
+  "Nitrogen_N": 230.0,
+  "Phosphorus_P": 18.0,
+  "Potassium_K": 185.0,
+  "Soil_pH": 7.1,
+  "Soil_Moisture_pct": 21.4
+ }
+}

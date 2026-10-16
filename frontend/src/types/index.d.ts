@@ -17,6 +17,45 @@ export interface Crop {
   imageUrl?: string;
   suitabilityScore?: number; // Keep for frontend logic if needed
   reason?: string; // Keep for frontend logic if needed
+  popularIndianName?: string;
+  expectedYieldTonnesPerHa?: number;
+  expectedTotalHarvestTonnes?: number;
+}
+
+export interface Stage1DomainResult {
+  category: string;
+  confidence_pct: number;
+}
+
+export interface Stage2CropRecommendation {
+  rank: number;
+  crop_name: string;
+  popular_indian_name?: string;
+  confidence_pct: number;
+  expected_yield_tonnes_per_ha: number;
+  expected_total_harvest_tonnes: number;
+  cropDetails?: Crop;
+}
+
+export interface FarmSummary {
+  location: string;
+  state?: string;
+  district?: string;
+  cultivated_area_ha: number;
+  cultivated_area_acres?: number;
+  season: string;
+  soil_type: string;
+  soil_moisture_pct?: number;
+  soil_ph?: number;
+  npk_used?: {
+    Nitrogen_N?: number;
+    Phosphorus_P?: number;
+    Potassium_K?: number;
+    N?: number;
+    P?: number;
+    K?: number;
+    source?: string;
+  };
 }
 
 export interface ToDoItem {

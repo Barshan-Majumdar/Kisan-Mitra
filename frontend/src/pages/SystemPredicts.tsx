@@ -11,7 +11,9 @@ export const SystemPredicts: React.FC = () => {
   const navigate = useNavigate();
   // Retrieve passed state
   const location = useLocation();
+  const state = location.state?.state || 'West Bengal';
   const district = location.state?.district;
+  const season = location.state?.season || 'Kharif';
   const irrigation = location.state?.irrigation;
   const manualSoilType = location.state?.soilType;
   const area = location.state?.area;
@@ -179,10 +181,28 @@ export const SystemPredicts: React.FC = () => {
           className="flex-1"
           onClick={() => navigate('/recommendations', {
             state: {
+              state,
               district,
+              season,
               irrigation,
               area, // Pass area through
-              envData: { ...rawData, Soil: data.soilType }
+              envData: {
+                ...rawData,
+                State: state,
+                District: district,
+                Crop_Season: season,
+                Soil: data.soilType,
+                Soil_Type: data.soilType,
+                Cultivated_Area_ha: Number(area || 2.0),
+                Rainfall_mm: rawData.Rainfall,
+                Average_Temperature_C: rawData.Temp,
+                Irrigation_Availability: irrigation,
+                Soil_Moisture_pct: rawData.Humidity > 0 ? rawData.Humidity : 25.0,
+                Soil_pH: rawData.pH > 0 ? rawData.pH : 7.0,
+                Nitrogen_N: rawData.N_Ratio > 0 ? rawData.N_Ratio : null,
+                Phosphorus_P: rawData.P_Ratio > 0 ? rawData.P_Ratio : null,
+                Potassium_K: rawData.K_Ratio > 0 ? rawData.K_Ratio : null,
+              }
             }
           })}
         >

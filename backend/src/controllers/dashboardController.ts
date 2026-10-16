@@ -33,7 +33,12 @@ export const getUserStats = async (req: Request, res: Response) => {
 
     res.json(stats);
   } catch (error) {
-    console.error('Error fetching user stats:', error);
-    res.status(500).json({ error: 'Failed to fetch user stats' });
+    console.warn('⚠️ Database offline, returning default user stats:', error);
+    res.json({
+      totalTasks: 0,
+      completedTasks: 0,
+      activeAdvisories: 0,
+      totalAdvisories: 0
+    });
   }
 };
