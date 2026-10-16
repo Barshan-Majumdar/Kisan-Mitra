@@ -6,8 +6,18 @@ import { Card } from '../components/ui/Card';
 import api from '../services/api';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import 'katex/dist/katex.min.css';
+
+const normalizeMarkdown = (rawText: string) => {
+  if (!rawText) return "";
+  return String(rawText)
+    .replace(/\\r\\n/g, '\n')
+    .replace(/\\n/g, '\n')
+    .trim();
+};
 
 interface Message {
   id: string;
@@ -114,17 +124,27 @@ export const Chatbot: React.FC = () => {
                 >
                   <div className={`text-sm sm:text-base break-words prose ${msg.sender === 'user' ? 'prose-invert' : 'prose-sm'}`}>
                     <ReactMarkdown
-                      remarkPlugins={[remarkMath]}
-                      rehypePlugins={[rehypeKatex]}
+                      remarkPlugins={[remarkMath, remarkGfm]}
+                      rehypePlugins={[rehypeKatex, rehypeRaw]}
                       components={{
-                        p: ({ ...props }) => <p className="mb-1" {...props} />,
-                        ul: ({ ...props }) => <ul className="list-disc pl-4 mb-2" {...props} />,
-                        ol: ({ ...props }) => <ol className="list-decimal pl-4 mb-2" {...props} />,
+                        p: ({ ...props }) => <p className="mb-2 leading-relaxed" {...props} />,
+                        ul: ({ ...props }) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
+                        ol: ({ ...props }) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
                         li: ({ ...props }) => <li className="mb-0.5" {...props} />,
-                        strong: ({ ...props }) => <strong className="font-semibold" {...props} />,
+                        strong: ({ ...props }) => <strong className="font-semibold text-gray-900" {...props} />,
+                        table: ({ ...props }) => (
+                          <div className="overflow-x-auto my-3 rounded-lg border border-gray-200 bg-white">
+                            <table className="min-w-full divide-y divide-gray-200 text-left text-xs" {...props} />
+                          </div>
+                        ),
+                        thead: ({ ...props }) => <thead className="bg-gray-50 text-gray-900 font-semibold" {...props} />,
+                        tbody: ({ ...props }) => <tbody className="divide-y divide-gray-100 bg-white" {...props} />,
+                        tr: ({ ...props }) => <tr className="hover:bg-gray-50/70" {...props} />,
+                        th: ({ ...props }) => <th className="px-3 py-2 font-semibold text-gray-800 uppercase text-[10px] tracking-wider" {...props} />,
+                        td: ({ ...props }) => <td className="px-3 py-2 text-gray-700 align-top" {...props} />,
                       }}
                     >
-                      {msg.text}
+                      {normalizeMarkdown(msg.text)}
                     </ReactMarkdown>
                   </div>
                   <span className={`text-xs mt-1 block ${msg.sender === 'user' ? 'text-primary-100' : 'text-gray-400'}`}>
