@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import {
   Search,
@@ -83,12 +84,24 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
     navigate(path);
   };
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-start justify-center pt-20 px-4">
+  useEffect(() => {
+    if (!isOpen) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-start justify-center pt-16 sm:pt-20 px-4 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-stone-900/40 backdrop-blur-md transition-opacity animate-fade-in"
+        className="fixed inset-0 bg-stone-900/50 backdrop-blur-md transition-opacity animate-fade-in"
         onClick={onClose}
+        aria-hidden="true"
       />
 
       {/* Palette Card */}
@@ -171,6 +184,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

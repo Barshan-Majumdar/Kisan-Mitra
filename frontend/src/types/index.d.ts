@@ -103,10 +103,32 @@ export interface MarketPrice {
   trend?: 'up' | 'down' | 'stable';
 }
 
+export interface DifferentialDiagnosis {
+  className: string;
+  crop: string;
+  disease: string;
+  confidence: number;
+  isHealthy: boolean;
+}
+
 export interface DiseaseResult {
-  id: string;
-  diseaseName: string;
-  severity: 'Low' | 'Medium' | 'High';
-  description: string;
-  remedy: string[];
+  success?: boolean;
+  className?: string;
+  crop: string;
+  disease: string;
+  isHealthy: boolean;
+  confidence: number;
+  pathogen: string;
+  severity: string;
+  symptoms: string;
+  chemicalTreatment: string;
+  organicTreatment: string;
+  prevention: string;
+  differentialDiagnosis?: DifferentialDiagnosis[];
+  modelArchitecture?: string;
+  // Legacy backward-compatibility
+  id?: string;
+  diseaseName?: string;
+  description?: string;
+  remedy?: string[];
 }

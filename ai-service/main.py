@@ -431,6 +431,35 @@ def recommend_crop(req: CropPredictionRequest):
     }
 
 
+# ==============================================================================
+# Crop Disease Pathology Vision Diagnostics (model_v1.pt - EfficientNet-B0)
+# ==============================================================================
+
+class DiseasePredictRequest(BaseModel):
+    image: str = Field(..., description="Base64 encoded foliar image or data URI")
+
+@app.post("/predict-disease")
+@app.post("/disease/predict")
+async def predict_disease_api(req: DiseasePredictRequest):
+    """
+    Diagnoses foliar plant diseases using fine-tuned EfficientNet-B0 (model_v1.pt).
+    Supports 38 disease categories across 14 crops with precision fungicide treatments.
+    """
+    try:
+        from predict_disease import predict_from_base64
+        result = predict_from_base64(req.image)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Vision pathology diagnosis failed: {str(e)}")
+
+@app.get("/disease/classes")
+async def get_disease_classes():
+    """Returns the list of 38 recognizable foliar disease classes"""
+    from predict_disease import CLASS_NAMES
+    return {"classes": CLASS_NAMES, "total": len(CLASS_NAMES)}
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
+

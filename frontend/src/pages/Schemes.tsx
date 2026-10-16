@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import {
   Calendar,
-  ExternalLink,
   Info,
   Search,
   Landmark,
   ShieldCheck,
   Banknote,
   Sparkles,
-  ArrowUpRight,
   Filter,
 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
@@ -257,17 +255,15 @@ export const Schemes: React.FC = () => {
 
                 {/* Primary Action Buttons: Apply Now & Inspect Guidelines */}
                 <div className="pt-2 flex items-center gap-2.5">
-                  <Button
-                    variant="primary"
-                    className="flex-1 rounded-2xl font-bold text-xs py-2.5 flex items-center justify-center gap-1.5 shadow-sm"
+                  <button
+                    className="flex-1 py-2.5 px-4 rounded-xl font-bold text-xs text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 transition-colors shadow-xs flex items-center justify-center cursor-pointer text-center"
                     onClick={(e) => handleApplyClick(scheme.applicationLink, e)}
                   >
-                    <span>Apply Now</span>
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Button>
+                    Apply Now
+                  </button>
                   <Button
                     variant="outline"
-                    className="flex-1 rounded-2xl font-bold text-xs py-2.5 text-stone-700 hover:text-stone-900 border-stone-300"
+                    className="flex-1 rounded-xl font-bold text-xs py-2.5 text-stone-700 hover:text-stone-900 border-stone-300"
                     onClick={() => setSelectedScheme(scheme)}
                   >
                     Guidelines
@@ -336,22 +332,20 @@ export const Schemes: React.FC = () => {
           </div>
 
           {/* Action Footer */}
-          <div className="pt-3 flex gap-3">
-            <Button
-              variant="outline"
-              className="flex-1 rounded-2xl font-bold"
+          <div className="pt-4 border-t border-stone-200/70 flex flex-col-reverse sm:flex-row items-center justify-end gap-3 w-full">
+            <button
+              type="button"
+              className="w-full sm:w-auto px-6 py-3 rounded-full font-bold text-sm text-stone-600 hover:text-stone-900 border border-stone-200 hover:bg-stone-100 transition-colors cursor-pointer shrink-0 text-center"
               onClick={() => setSelectedScheme(null)}
             >
               Close
-            </Button>
-            <Button
-              variant="primary"
-              className="flex-1 rounded-2xl font-bold flex items-center justify-center gap-2"
+            </button>
+            <button
               onClick={() => handleApplyClick(selectedScheme?.applicationLink)}
+              className="w-full sm:flex-1 py-3 px-6 rounded-full font-bold text-sm sm:text-base text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 transition-colors shadow-sm flex items-center justify-center cursor-pointer whitespace-nowrap text-center"
             >
-              <span>Apply on Official Portal</span>
-              <ExternalLink className="h-4 w-4" />
-            </Button>
+              Apply on Official Portal
+            </button>
           </div>
         </div>
       </Modal>

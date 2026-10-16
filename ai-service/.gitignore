@@ -14,6 +14,7 @@ ENV/
 # Note: Host on cloud storage (e.g. S3/HuggingFace/Render/Releases) or use Git LFS
 *.pkl
 *.joblib
+*.pt
 
 # Large Training Datasets (Not needed on production web server as per implementation plan)
 *.csv

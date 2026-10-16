@@ -8,6 +8,7 @@ import taskRoutes from './taskRoutes';
 import weatherRoutes from './weatherRoutes';
 import dashboardRoutes from './dashboardRoutes';
 import chatRoutes from './chatRoutes';
+import diseaseRoutes from './diseaseRoutes';
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use('/todos', taskRoutes);
 router.use('/weather', weatherRoutes);
 router.use('/dashboard', dashboardRoutes);
 router.use('/chat', chatRoutes);
+router.use('/disease', diseaseRoutes);
 
 export default router;
