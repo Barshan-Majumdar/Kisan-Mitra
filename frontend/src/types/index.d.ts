@@ -34,6 +34,7 @@ export interface Stage2CropRecommendation {
   confidence_pct: number;
   expected_yield_tonnes_per_ha: number;
   expected_total_harvest_tonnes: number;
+  imageUrl?: string;
   cropDetails?: Crop;
 }
 
