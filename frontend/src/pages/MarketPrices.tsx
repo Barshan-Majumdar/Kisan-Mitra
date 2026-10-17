@@ -153,33 +153,132 @@ export const MarketPrices: React.FC = () => {
     });
   }, [filteredData, sortConfig]);
 
+  const renderEmptyState = () => {
+    if (selectedDistrict && selectedDistrict.toLowerCase().includes('kolkata')) {
+      return (
+        <div className="max-w-2xl mx-auto p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-50/90 to-emerald-50/40 border border-amber-200/90 text-left shadow-soft animate-fade-in">
+          <div className="flex items-start gap-3.5">
+            <div className="p-2.5 bg-amber-100/90 rounded-2xl text-amber-800 shrink-0 mt-0.5 shadow-xs">
+              <Building2 className="h-5 w-5" />
+            </div>
+            <div className="space-y-2 flex-1">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h3 className="text-base font-extrabold text-stone-900 tracking-tight">
+                  No Direct APMC Mandis in Kolkata District
+                </h3>
+                <span className="px-2.5 py-0.5 rounded-full bg-amber-200/60 text-amber-900 text-[11px] font-bold">
+                  Urban Municipal District
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                <strong>Kolkata is a metropolitan urban district</strong> and does not have agricultural crop harvesting mandis registered on the Government of India's <strong>AGMARKNET</strong> portal.
+              </p>
+              <p className="text-xs text-stone-600 leading-relaxed">
+                Fresh produce for Kolkata's major consumer and wholesale markets (Posta, Sealdah Koley Market, Mechua) arrives via APMC wholesale mandis located across neighboring agricultural districts:
+              </p>
+              
+              <div className="pt-2">
+                <span className="text-[11px] font-bold text-stone-800 uppercase tracking-wider block mb-2">
+                  Recommended Nearby Wholesale APMC Mandis:
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedDistrict('Howrah')}
+                    className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
+                  >
+                    📍 Howrah Mandi
+                  </button>
+                  <button
+                    onClick={() => setSelectedDistrict('North 24 Parganas')}
+                    className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
+                  >
+                    📍 North 24 Parganas
+                  </button>
+                  <button
+                    onClick={() => setSelectedDistrict('Hooghly')}
+                    className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
+                  >
+                    📍 Hooghly
+                  </button>
+                  <button
+                    onClick={() => setSelectedDistrict('Nadia')}
+                    className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
+                  >
+                    📍 Nadia
+                  </button>
+                  <button
+                    onClick={() => setSelectedDistrict('')}
+                    className="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 shadow-soft transition-all"
+                  >
+                    🌾 Show All West Bengal Mandis
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (selectedDistrict) {
+      return (
+        <div className="max-w-md mx-auto p-6 rounded-3xl bg-stone-50 border border-stone-200/80 text-center shadow-soft animate-fade-in space-y-3">
+          <div className="inline-flex p-3 bg-stone-100 rounded-2xl text-stone-600">
+            <Info className="h-5 w-5" />
+          </div>
+          <h3 className="text-sm font-bold text-stone-800">
+            No APMC arrivals recorded for "{selectedDistrict}" today
+          </h3>
+          <p className="text-xs text-stone-500 leading-relaxed">
+            Daily mandi arrivals depend on reports submitted by local Agricultural Produce Market Committees to the Ministry of Agriculture (AGMARKNET).
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 pt-1">
+            <button
+              onClick={() => setSelectedDistrict('')}
+              className="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 transition-colors shadow-soft"
+            >
+              View All {selectedState} Mandis
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-1 py-4">
+        <p className="text-sm font-semibold text-stone-700">No mandi records found for {selectedState}.</p>
+        <p className="text-xs text-stone-400">Try clearing the search query or selecting a different state.</p>
+      </div>
+    );
+  };
+
   return (
     <div className="space-y-6 animate-fade-in w-full max-w-full">
       {/* Header & Live Status Strip */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-800">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-800">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
             <span>Real-time Mandi Intelligence</span>
             {weather.isLiveLocation && (
               <>
                 <span className="text-emerald-300">•</span>
                 <span className="flex items-center gap-1 text-[11px] font-bold">
-                  <MapPin className="h-3 w-3" /> {weather.district ? `${weather.district}, ${weather.state || 'India'}` : weather.locationName}
+                  <MapPin className="h-3 w-3 shrink-0" /> {weather.district ? `${weather.district}, ${weather.state || 'India'}` : weather.locationName}
                 </span>
               </>
             )}
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
             Agricultural Mandi & APMC Rates
           </h2>
-          <p className="text-sm text-stone-600">
+          <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
             Real-time spot market commodity prices fetched directly via Government of India's{' '}
             <strong className="text-stone-800">data.gov.in (AGMARKNET)</strong> portal.
           </p>
         </div>
 
-        {/* Live Feed Status Pill */}
+        {/* Live Feed Status Pill & Refresh Action */}
         <div className="flex items-center gap-2 self-start md:self-auto shrink-0">
           {isLiveGovFeed ? (
             <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-800 shadow-soft">
@@ -207,9 +306,9 @@ export const MarketPrices: React.FC = () => {
       <Card padding="none" className="overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-card animate-slide-up w-full">
         {/* Filters Tray */}
         <div className="p-4 sm:p-5 border-b border-stone-200/80 bg-[#FAF9F5] flex flex-col gap-3">
-          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 w-full">
             {/* State Selector */}
-            <div className="w-full sm:w-52 shrink-0">
+            <div className="w-full sm:w-auto lg:w-52 lg:shrink-0 min-w-0">
               <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">State / Province</label>
               <select
                 value={selectedState}
@@ -226,7 +325,7 @@ export const MarketPrices: React.FC = () => {
             </div>
 
             {/* District Filter Input */}
-            <div className="w-full sm:w-56 shrink-0">
+            <div className="w-full sm:w-auto lg:w-56 lg:shrink-0 min-w-0">
               <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">District (Optional)</label>
               <div className="relative">
                 <input
@@ -249,14 +348,14 @@ export const MarketPrices: React.FC = () => {
             </div>
 
             {/* Keyword Search Input */}
-            <div className="w-full sm:flex-1">
+            <div className="w-full sm:col-span-2 lg:col-span-1 lg:flex-1 min-w-0">
               <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">Search Commodity / Mandi</label>
               <Input
                 placeholder="Search Wheat, Mustard, Rice, APMC..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 icon={<Search className="h-4 w-4 text-stone-400" />}
-                className="bg-white rounded-2xl text-xs sm:text-sm"
+                className="bg-white rounded-2xl text-xs sm:text-sm w-full"
               />
             </div>
           </div>
@@ -264,12 +363,12 @@ export const MarketPrices: React.FC = () => {
           {/* Quick Active Reporting District Pills */}
           {availableDistricts.length > 0 && (
             <div className="flex flex-wrap items-center gap-1.5 pt-2.5 border-t border-stone-200/60 text-xs">
-              <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex items-center gap-1 mr-1">
-                <MapPinned className="h-3.5 w-3.5 text-emerald-600" /> Active APMCs in {selectedState}:
+              <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex items-center gap-1 mr-1 w-full sm:w-auto mb-1 sm:mb-0">
+                <MapPinned className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Active APMCs in {selectedState}:
               </span>
               <button
                 onClick={() => setSelectedDistrict('')}
-                className={`px-2.5 py-1 rounded-xl text-xs font-semibold transition-all ${
+                className={`px-2.5 py-1 rounded-xl text-xs font-semibold transition-all shrink-0 ${
                   !selectedDistrict
                     ? 'bg-emerald-600 text-white shadow-xs'
                     : 'bg-white hover:bg-stone-200 text-stone-600 border border-stone-200'
@@ -283,7 +382,7 @@ export const MarketPrices: React.FC = () => {
                   <button
                     key={dist}
                     onClick={() => setSelectedDistrict(dist)}
-                    className={`px-2.5 py-1 rounded-xl text-xs font-semibold transition-all ${
+                    className={`px-2.5 py-1 rounded-xl text-xs font-semibold transition-all shrink-0 ${
                       isSelected
                         ? 'bg-emerald-600 text-white shadow-xs'
                         : 'bg-white hover:bg-stone-200 text-stone-700 border border-stone-200'
@@ -297,14 +396,174 @@ export const MarketPrices: React.FC = () => {
           )}
         </div>
 
-        {/* Market Rates Data Table - 100% Fit, Zero Horizontal Scroll on Desktop */}
-        <div className="w-full overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+        {/* Mobile View: Sort Controls & Vertical Market Cards */}
+        <div className="block md:hidden">
+          {/* Mobile Sort Control Strip */}
+          <div className="p-3 border-b border-stone-200/70 bg-[#FAF9F5]/70 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 shrink-0">
+              Sort By:
+            </span>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <button
+                onClick={() => handleSort('price')}
+                className={`px-2.5 py-1 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all ${
+                  sortConfig?.key === 'price'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-white text-stone-700 border border-stone-200/80 hover:bg-stone-50'
+                }`}
+              >
+                <span>Price</span>
+                {sortConfig?.key === 'price' && (
+                  <span className="text-[10px]">{sortConfig?.direction === 'asc' ? '↑' : '↓'}</span>
+                )}
+              </button>
+              <button
+                onClick={() => handleSort('commodity')}
+                className={`px-2.5 py-1 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all ${
+                  sortConfig?.key === 'commodity'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-white text-stone-700 border border-stone-200/80 hover:bg-stone-50'
+                }`}
+              >
+                <span>Commodity</span>
+                {sortConfig?.key === 'commodity' && (
+                  <span className="text-[10px]">{sortConfig?.direction === 'asc' ? '↑' : '↓'}</span>
+                )}
+              </button>
+              <button
+                onClick={() => handleSort('date')}
+                className={`px-2.5 py-1 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all ${
+                  sortConfig?.key === 'date'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-white text-stone-700 border border-stone-200/80 hover:bg-stone-50'
+                }`}
+              >
+                <span>Date</span>
+                {sortConfig?.key === 'date' && (
+                  <span className="text-[10px]">{sortConfig?.direction === 'asc' ? '↑' : '↓'}</span>
+                )}
+              </button>
+              <button
+                onClick={() => handleSort('trend')}
+                className={`px-2.5 py-1 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all ${
+                  sortConfig?.key === 'trend'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-white text-stone-700 border border-stone-200/80 hover:bg-stone-50'
+                }`}
+              >
+                <span>Trend</span>
+                {sortConfig?.key === 'trend' && (
+                  <span className="text-[10px]">{sortConfig?.direction === 'asc' ? '↑' : '↓'}</span>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Content: Loading, Empty, or Market Cards */}
+          {loading ? (
+            <div className="py-12 px-4 text-center text-stone-500">
+              <RefreshCw className="h-6 w-6 animate-spin mx-auto text-emerald-700 mb-2" />
+              <span className="text-sm font-semibold">Querying Mandi data for {selectedState}...</span>
+            </div>
+          ) : sortedData.length === 0 ? (
+            <div className="py-8 px-4 text-center">
+              {renderEmptyState()}
+            </div>
+          ) : (
+            <div className="divide-y divide-stone-100">
+              {sortedData.map((item) => (
+                <div key={item.id} className="p-4 space-y-3 hover:bg-[#FAF9F5]/60 transition-colors">
+                  {/* Top: Commodity & Variety + Day Trend */}
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="space-y-1 min-w-0 flex-1">
+                      <div className="text-base font-extrabold text-stone-900 leading-snug break-words">
+                        {item.commodity || item.crop?.name || 'Produce'}
+                      </div>
+                      {item.variety && item.variety !== 'Standard' && (
+                        <span className="inline-block text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/50">
+                          {item.variety}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Day Trend Badge */}
+                    <div className="shrink-0 pt-0.5">
+                      {item.trend === 'up' && (
+                        <Badge variant="success" size="sm" className="gap-1 font-bold whitespace-nowrap">
+                          <ArrowUp className="h-3 w-3 text-emerald-700" /> +Bullish
+                        </Badge>
+                      )}
+                      {item.trend === 'down' && (
+                        <Badge variant="error" size="sm" className="gap-1 font-bold whitespace-nowrap">
+                          <ArrowDown className="h-3 w-3 text-rose-700" /> -Bearish
+                        </Badge>
+                      )}
+                      {item.trend === 'stable' && (
+                        <Badge variant="neutral" size="sm" className="gap-1 font-semibold whitespace-nowrap">
+                          <Minus className="h-3 w-3 text-stone-500" /> Steady
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Mandi & District Block */}
+                  <div className="p-2.5 rounded-2xl bg-stone-50 border border-stone-200/70">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-0.5">
+                      APMC Mandi & District
+                    </span>
+                    <div className="text-xs sm:text-sm font-bold text-stone-800 leading-snug">
+                      {item.marketName || item.market}
+                    </div>
+                    <div className="text-xs text-stone-500 flex items-center gap-1 mt-0.5">
+                      <MapPin className="h-3 w-3 text-stone-400 shrink-0" />
+                      <span className="truncate">{item.district || selectedState}</span>
+                    </div>
+                  </div>
+
+                  {/* Modal Price & Arrival Date Grid */}
+                  <div className="grid grid-cols-2 gap-3 pt-1 border-t border-stone-100">
+                    {/* Modal Price & Range */}
+                    <div className="min-w-0">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-0.5">
+                        Modal Price
+                      </span>
+                      <div className="text-sm sm:text-base font-extrabold text-stone-900 font-mono leading-tight">
+                        ₹{item.price.toLocaleString()} <span className="text-[11px] font-normal text-stone-400">/qtl</span>
+                      </div>
+                      <div className="text-[11px] font-mono text-stone-500 mt-0.5 break-words">
+                        {item.minPrice && item.maxPrice && item.minPrice !== item.maxPrice ? (
+                          <span>₹{item.minPrice.toLocaleString()} – ₹{item.maxPrice.toLocaleString()}</span>
+                        ) : (
+                          <span>Spot modal rate</span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Arrival Date */}
+                    <div className="min-w-0">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-0.5">
+                        Arrival Date
+                      </span>
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-700 mt-1">
+                        <Calendar className="h-3.5 w-3.5 text-stone-400 shrink-0" />
+                        <span className="truncate">{item.date || 'Today'}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Desktop & Tablet Table: 5 Columns, Local Scroll on Narrow Tablet, Zero Whole-Page Scroll */}
+        <div className="hidden md:block w-full overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[700px] lg:min-w-0">
             <thead className="bg-[#FAF9F5] border-b border-stone-200/80">
               <tr>
                 <th
                   scope="col"
-                  className="px-4 py-3.5 text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer hover:bg-stone-200/50 transition-colors w-[28%]"
+                  className="px-4 py-3.5 text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer hover:bg-stone-200/50 transition-colors w-[26%] lg:w-[28%]"
                   onClick={() => handleSort('commodity')}
                 >
                   <div className="flex items-center gap-1.5">
@@ -315,7 +574,7 @@ export const MarketPrices: React.FC = () => {
 
                 <th
                   scope="col"
-                  className="px-4 py-3.5 text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer hover:bg-stone-200/50 transition-colors w-[28%]"
+                  className="px-4 py-3.5 text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer hover:bg-stone-200/50 transition-colors w-[26%] lg:w-[28%]"
                   onClick={() => handleSort('market')}
                 >
                   <div className="flex items-center gap-1.5">
@@ -337,7 +596,7 @@ export const MarketPrices: React.FC = () => {
 
                 <th
                   scope="col"
-                  className="px-4 py-3.5 text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer hover:bg-stone-200/50 transition-colors w-[11%]"
+                  className="px-4 py-3.5 text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer hover:bg-stone-200/50 transition-colors w-[13%] lg:w-[11%]"
                   onClick={() => handleSort('date')}
                 >
                   <div className="flex items-center gap-1.5">
@@ -348,7 +607,7 @@ export const MarketPrices: React.FC = () => {
 
                 <th
                   scope="col"
-                  className="px-4 py-3.5 text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer hover:bg-stone-200/50 transition-colors w-[11%] text-right pr-6"
+                  className="px-4 py-3.5 text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer hover:bg-stone-200/50 transition-colors w-[13%] lg:w-[11%] text-right pr-6"
                   onClick={() => handleSort('trend')}
                 >
                   <div className="flex items-center justify-end gap-1.5">
@@ -369,94 +628,7 @@ export const MarketPrices: React.FC = () => {
               ) : sortedData.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="py-12 px-4 sm:px-6 text-center">
-                    {selectedDistrict && selectedDistrict.toLowerCase().includes('kolkata') ? (
-                      <div className="max-w-2xl mx-auto p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-50/90 to-emerald-50/40 border border-amber-200/90 text-left shadow-soft animate-fade-in">
-                        <div className="flex items-start gap-3.5">
-                          <div className="p-2.5 bg-amber-100/90 rounded-2xl text-amber-800 shrink-0 mt-0.5 shadow-xs">
-                            <Building2 className="h-5 w-5" />
-                          </div>
-                          <div className="space-y-2 flex-1">
-                            <div className="flex flex-wrap items-center justify-between gap-2">
-                              <h3 className="text-base font-extrabold text-stone-900 tracking-tight">
-                                No Direct APMC Mandis in Kolkata District
-                              </h3>
-                              <span className="px-2.5 py-0.5 rounded-full bg-amber-200/60 text-amber-900 text-[11px] font-bold">
-                                Urban Municipal District
-                              </span>
-                            </div>
-                            <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
-                              <strong>Kolkata is a metropolitan urban district</strong> and does not have agricultural crop harvesting mandis registered on the Government of India's <strong>AGMARKNET</strong> portal.
-                            </p>
-                            <p className="text-xs text-stone-600 leading-relaxed">
-                              Fresh produce for Kolkata's major consumer and wholesale markets (Posta, Sealdah Koley Market, Mechua) arrives via APMC wholesale mandis located across neighboring agricultural districts:
-                            </p>
-                            
-                            <div className="pt-2">
-                              <span className="text-[11px] font-bold text-stone-800 uppercase tracking-wider block mb-2">
-                                Recommended Nearby Wholesale APMC Mandis:
-                              </span>
-                              <div className="flex flex-wrap gap-2">
-                                <button
-                                  onClick={() => setSelectedDistrict('Howrah')}
-                                  className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
-                                >
-                                  📍 Howrah Mandi
-                                </button>
-                                <button
-                                  onClick={() => setSelectedDistrict('North 24 Parganas')}
-                                  className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
-                                >
-                                  📍 North 24 Parganas
-                                </button>
-                                <button
-                                  onClick={() => setSelectedDistrict('Hooghly')}
-                                  className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
-                                >
-                                  📍 Hooghly
-                                </button>
-                                <button
-                                  onClick={() => setSelectedDistrict('Nadia')}
-                                  className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
-                                >
-                                  📍 Nadia
-                                </button>
-                                <button
-                                  onClick={() => setSelectedDistrict('')}
-                                  className="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 shadow-soft transition-all"
-                                >
-                                  🌾 Show All West Bengal Mandis
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ) : selectedDistrict ? (
-                      <div className="max-w-md mx-auto p-6 rounded-3xl bg-stone-50 border border-stone-200/80 text-center shadow-soft animate-fade-in space-y-3">
-                        <div className="inline-flex p-3 bg-stone-100 rounded-2xl text-stone-600">
-                          <Info className="h-5 w-5" />
-                        </div>
-                        <h3 className="text-sm font-bold text-stone-800">
-                          No APMC arrivals recorded for "{selectedDistrict}" today
-                        </h3>
-                        <p className="text-xs text-stone-500 leading-relaxed">
-                          Daily mandi arrivals depend on reports submitted by local Agricultural Produce Market Committees to the Ministry of Agriculture (AGMARKNET).
-                        </p>
-                        <div className="flex flex-wrap justify-center gap-2 pt-1">
-                          <button
-                            onClick={() => setSelectedDistrict('')}
-                            className="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 transition-colors shadow-soft"
-                          >
-                            View All {selectedState} Mandis
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-1">
-                        <p className="text-sm font-semibold text-stone-700">No mandi records found for {selectedState}.</p>
-                        <p className="text-xs text-stone-400">Try clearing the search query or selecting a different state.</p>
-                      </div>
-                    )}
+                    {renderEmptyState()}
                   </td>
                 </tr>
               ) : (
@@ -536,13 +708,13 @@ export const MarketPrices: React.FC = () => {
 
         {/* Footer Info Strip */}
         <div className="p-4 border-t border-stone-200/80 bg-[#FAF9F5] flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-2">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          <div className="flex items-center gap-2 text-center sm:text-left">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
             <span>
               Showing <strong>{sortedData.length}</strong> mandi market quotes for <strong>{selectedState}</strong>
             </span>
           </div>
-          <div className="text-[11px] text-stone-400">
+          <div className="text-[11px] text-stone-400 text-center sm:text-right">
             Source: data.gov.in Ministry of Agriculture & Farmers Welfare (AGMARKNET)
           </div>
         </div>
