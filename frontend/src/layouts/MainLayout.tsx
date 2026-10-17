@@ -21,7 +21,8 @@ export const MainLayout: React.FC = () => {
       <div className="flex-1 lg:ml-[19.25rem] h-full lg:h-[calc(100vh-1.75rem)] flex flex-col min-w-0 overflow-hidden relative">
         {/* Top Navigation Bar Section */}
         <Header
-          onMenuClick={() => setSidebarOpen(true)}
+          onMenuClick={() => setSidebarOpen((prev) => !prev)}
+          isSidebarOpen={sidebarOpen}
           onOpenCommandPalette={() => setCommandPaletteOpen(true)}
         />
 

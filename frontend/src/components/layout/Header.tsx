@@ -6,9 +6,10 @@ import { WeatherIcon } from '../WeatherIcon';
 interface HeaderProps {
   onMenuClick: () => void;
   onOpenCommandPalette?: () => void;
+  isSidebarOpen?: boolean;
 }
 
-export const Header = ({ onMenuClick, onOpenCommandPalette }: HeaderProps) => {
+export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = false }: HeaderProps) => {
   const { user } = useUser();
   const weather = useWeather();
 
@@ -16,13 +17,17 @@ export const Header = ({ onMenuClick, onOpenCommandPalette }: HeaderProps) => {
     <header className="sticky top-0 z-30 shrink-0 flex h-16 items-center justify-between border border-stone-200/80 bg-white/95 backdrop-blur-md px-3 sm:px-4 lg:px-5 transition-all duration-300 shadow-soft mx-2.5 mt-2.5 mb-2 sm:mx-3 sm:mt-3 sm:mb-2.5 lg:mx-0 lg:mt-0 lg:mb-3 min-w-0" style={{ borderRadius: 'clamp(14px, 1.25vw, 20px)' }}>
       {/* Left Area: Mobile Menu Toggle & Brand / Desktop Breadcrumb */}
       <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 min-w-0">
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger / Navigation Toggle */}
         <button
           type="button"
-          className="p-2 text-stone-700 lg:hidden hover:text-emerald-700 transition-colors rounded-2xl bg-stone-100 hover:bg-stone-200/60 shrink-0"
+          id="sidebar-toggle-btn"
+          aria-label={isSidebarOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={isSidebarOpen}
+          aria-controls="main-sidebar"
+          className="p-2 text-stone-700 lg:hidden hover:text-emerald-700 transition-colors rounded-2xl bg-stone-100 hover:bg-stone-200/60 shrink-0 focus:outline-none focus:ring-2 focus:ring-emerald-600/40 active:scale-95 cursor-pointer flex items-center justify-center touch-target"
           onClick={onMenuClick}
         >
-          <span className="sr-only">Open sidebar</span>
+          <span className="sr-only">{isSidebarOpen ? "Close navigation" : "Open navigation"}</span>
           <Menu className="h-5 w-5" aria-hidden="true" />
         </button>
 
@@ -31,7 +36,7 @@ export const Header = ({ onMenuClick, onOpenCommandPalette }: HeaderProps) => {
           <div className="bg-emerald-700 p-1.5 rounded-xl text-white shadow-soft shrink-0">
             <Sprout className="h-4 w-4" />
           </div>
-          <span className="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight whitespace-nowrap">Kisan Mitra</span>
+          <span className="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight whitespace-nowrap hidden min-[360px]:inline">Kisan Mitra</span>
         </div>
 
         {/* Desktop Breadcrumb & Season Status */}
