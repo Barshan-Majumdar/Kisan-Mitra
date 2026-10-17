@@ -40,7 +40,7 @@ export const Header = ({ onMenuClick, onOpenCommandPalette }: HeaderProps) => {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
             <span className="shrink-0 hidden 2xl:inline text-stone-600">Agronomic Workspace</span>
             <span className="text-stone-300 hidden 2xl:inline">•</span>
-            <span className="text-emerald-800 font-bold truncate max-w-[130px] xl:max-w-[190px] 2xl:max-w-[240px]">
+            <span className="text-emerald-800 font-bold truncate max-w-[160px] xl:max-w-[260px] 2xl:max-w-none">
               {weather.isLiveLocation ? (weather.district ? `${weather.district}, ${weather.state || 'India'}` : weather.locationName) : 'Kharif 2026'}
             </span>
           </div>
@@ -90,8 +90,8 @@ export const Header = ({ onMenuClick, onOpenCommandPalette }: HeaderProps) => {
           <span className="font-mono text-xs whitespace-nowrap">{weather.temperature.toFixed(1)}°C</span>
           <span className="text-stone-300 hidden sm:inline">•</span>
           <span className="text-stone-500 font-mono text-[11px] hidden sm:inline whitespace-nowrap">{weather.humidity}% Hum</span>
-          {weather.isLiveLocation && (
-            <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200/60 hidden 2xl:inline max-w-[85px] truncate">
+          {weather.isLiveLocation && weather.district && (
+            <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60 whitespace-nowrap hidden md:inline">
               {weather.district}
             </span>
           )}
