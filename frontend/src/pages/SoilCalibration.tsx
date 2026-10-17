@@ -219,7 +219,7 @@ export const SoilCalibration: React.FC = () => {
         {/* Two Asymmetric Calibration Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
           {/* Card 1: Soil Chemistry & Edaphic Parameters (7 cols) */}
-          <div className="lg:col-span-7 rounded-4xl bg-white border border-stone-200/80 p-6 sm:p-7 shadow-soft space-y-6">
+          <div className="lg:col-span-7 rounded-3xl bg-white border border-stone-200/80 p-6 sm:p-7 shadow-soft space-y-6">
             <div className="flex items-center justify-between border-b border-stone-100 pb-4">
               <div>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-stone-400">Edaphic Layer</span>
@@ -343,7 +343,7 @@ export const SoilCalibration: React.FC = () => {
           </div>
 
           {/* Card 2: Microclimate & Atmospheric Readings (5 cols) */}
-          <div className="lg:col-span-5 rounded-4xl bg-white border border-stone-200/80 p-6 sm:p-7 shadow-soft flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-5 rounded-3xl bg-white border border-stone-200/80 p-6 sm:p-7 shadow-soft flex flex-col justify-between space-y-6">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-stone-100 pb-4">
                 <div>

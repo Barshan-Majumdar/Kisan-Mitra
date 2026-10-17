@@ -13,7 +13,7 @@ export const Header = ({ onMenuClick, onOpenCommandPalette }: HeaderProps) => {
   const weather = useWeather();
 
   return (
-    <header className="sticky top-0 z-30 shrink-0 flex h-16 items-center justify-between border-b border-stone-200/80 bg-white/95 backdrop-blur-md px-4 sm:px-6 transition-all duration-300 shadow-xs">
+    <header className="sticky top-0 z-30 shrink-0 flex h-16 items-center justify-between border border-stone-200/80 bg-white/95 backdrop-blur-md px-4 sm:px-6 transition-all duration-300 shadow-soft mx-2.5 mt-2.5 mb-2 sm:mx-3 sm:mt-3 sm:mb-2.5 lg:mx-0 lg:mt-0 lg:mb-3" style={{ borderRadius: 'clamp(14px, 1.25vw, 20px)' }}>
       {/* Left Area: Mobile Menu Toggle & Brand / Desktop Breadcrumb */}
       <div className="flex items-center gap-3">
         {/* Mobile Hamburger */}

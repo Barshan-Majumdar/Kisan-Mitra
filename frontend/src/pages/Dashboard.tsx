@@ -185,7 +185,7 @@ export const Dashboard: React.FC = () => {
       {/* Top Bento Row: 8 cols Hero + 4 cols Microclimate & Soil Gauge */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-3.5">
         {/* Main Hero Bento Tile (8 cols) */}
-        <div className="lg:col-span-8 relative overflow-hidden rounded-3xl sm:rounded-4xl bg-gradient-to-br from-[#0c261b] via-[#123626] to-[#1a4a35] text-white p-4 sm:p-5 lg:p-6 shadow-island border border-emerald-900/30 flex flex-col justify-between min-h-[220px] sm:min-h-[235px]">
+        <div className="lg:col-span-8 relative overflow-hidden rounded-3xl sm:rounded-3xl bg-gradient-to-br from-[#0c261b] via-[#123626] to-[#1a4a35] text-white p-4 sm:p-5 lg:p-6 shadow-island border border-emerald-900/30 flex flex-col justify-between min-h-[220px] sm:min-h-[235px]">
           {/* Subtle isometric soil contour overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
           <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -254,7 +254,7 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* Microclimate & Soil Telemetry Bento (4 cols) - 100% Dynamic Open-Meteo */}
-        <div className="lg:col-span-4 rounded-3xl sm:rounded-4xl bg-[#FAF9F5] border border-stone-200/90 p-3.5 sm:p-4 shadow-soft flex flex-col justify-between min-h-[220px] sm:min-h-[235px]">
+        <div className="lg:col-span-4 rounded-3xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 p-3.5 sm:p-4 shadow-soft flex flex-col justify-between min-h-[220px] sm:min-h-[235px]">
           <div className="space-y-2 sm:space-y-2.5">
             <div className="flex items-center justify-between">
               <div>

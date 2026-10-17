@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenComma
       {/* Floating Curved Navigation Island */}
       <aside
         className={`
-          fixed top-3.5 left-3.5 bottom-3.5 w-72 bg-[#FAF9F5] border border-stone-200/90 shadow-island rounded-[2.5rem] z-30 flex flex-col justify-between p-4 transition-all duration-300 ease-in-out
+          fixed top-3.5 left-3.5 bottom-3.5 w-72 bg-[#FAF9F5] border border-stone-200/90 shadow-island rounded-[1.25rem] z-30 flex flex-col justify-between p-4 transition-all duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-[calc(100%+1.5rem)] lg:translate-x-0'}
         `}
       >

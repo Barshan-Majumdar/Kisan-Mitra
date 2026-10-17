@@ -189,7 +189,7 @@ export const LandingPage: React.FC = () => {
 
         {/* Live Interactive Workspace Preview Showcase Card */}
         <div className="mt-12 sm:mt-16 mx-auto max-w-6xl">
-          <div className="relative rounded-[2.5rem] bg-white p-4 sm:p-6 lg:p-8 border border-stone-200/90 shadow-island overflow-hidden">
+          <div className="relative rounded-[1.375rem] bg-white p-4 sm:p-6 lg:p-8 border border-stone-200/90 shadow-island overflow-hidden">
             {/* Top Workspace Header Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-stone-100 gap-3">
               <div className="flex items-center gap-3">
@@ -414,7 +414,7 @@ export const LandingPage: React.FC = () => {
       {/* Technology & Architecture Section */}
       <section id="technology" className="py-20 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <div className="rounded-[3rem] bg-gradient-to-br from-[#0c261b] via-[#133c2a] to-[#1c543c] p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-island">
+          <div className="rounded-[1.5rem] bg-gradient-to-br from-[#0c261b] via-[#133c2a] to-[#1c543c] p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-island">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="max-w-2xl space-y-4">
@@ -518,7 +518,7 @@ export const LandingPage: React.FC = () => {
 
       {/* Call to Action Banner */}
       <section className="py-16 px-4 sm:px-6">
-        <div className="mx-auto max-w-5xl rounded-[2.75rem] bg-emerald-800 p-8 sm:p-14 text-center text-white space-y-6 shadow-island relative overflow-hidden">
+        <div className="mx-auto max-w-5xl rounded-[1.375rem] bg-emerald-800 p-8 sm:p-14 text-center text-white space-y-6 shadow-island relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-600/30 rounded-full blur-[90px] pointer-events-none" />
           <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
             Ready to Cultivate Smarter Yields?
