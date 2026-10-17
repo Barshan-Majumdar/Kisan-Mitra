@@ -1,0 +1,402 @@
+{
+  "Arecanut": {
+    "cropName": "Arecanut",
+    "popular": "Supari / Betel Nut",
+    "wikiArticle": "Areca_catechu",
+    "title": "Areca catechu",
+    "description": "Species of palm",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Areca_Palm_Seeds_Forming_Coorg_Feb24_A7C_09499.jpg/800px-Areca_Palm_Seeds_Forming_Coorg_Feb24_A7C_09499.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Arhar/Tur": {
+    "cropName": "Arhar/Tur",
+    "popular": "Toor Dal / Pigeon Pea",
+    "wikiArticle": "Pigeon_pea",
+    "title": "Pigeon pea",
+    "description": "Species of perennial legume",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Cajanus_cajan_Blanco1.167-cropped.jpg/800px-Cajanus_cajan_Blanco1.167-cropped.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Bajra": {
+    "cropName": "Bajra",
+    "popular": "Pearl Millet / Bajra",
+    "wikiArticle": "Pearl_millet",
+    "title": "Pearl millet",
+    "description": "Species of cultivated grass",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Grain_millet%2C_early_grain_fill%2C_Tifton%2C_7-3-02.jpg/800px-Grain_millet%2C_early_grain_fill%2C_Tifton%2C_7-3-02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Banana": {
+    "cropName": "Banana",
+    "popular": "Banana / Kela",
+    "wikiArticle": "Banana",
+    "title": "Banana",
+    "description": "Tropical, edible, staple fruit",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Bananavarieties.jpg/800px-Bananavarieties.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Barley": {
+    "cropName": "Barley",
+    "popular": "Barley / Jau",
+    "wikiArticle": "Barley",
+    "title": "Barley",
+    "description": "Cereal grain",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Barley_%28Hordeum_vulgare%29_-_United_States_National_Arboretum_-_24_May_2009.jpg/800px-Barley_%28Hordeum_vulgare%29_-_United_States_National_Arboretum_-_24_May_2009.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Black pepper": {
+    "cropName": "Black pepper",
+    "popular": "Black Pepper / Kali Mirch",
+    "wikiArticle": "Black_pepper",
+    "title": "Black pepper",
+    "description": "Ground fruit of the family Piperaceae",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Piper_nigrum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-107.jpg/800px-Piper_nigrum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-107.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Cardamom": {
+    "cropName": "Cardamom",
+    "popular": "Cardamom / Elaichi",
+    "wikiArticle": "Cardamom",
+    "title": "Cardamom",
+    "description": "Spice",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/02017_0119_Kardamom%2C_Winter_in_den_Beskiden.jpg/800px-02017_0119_Kardamom%2C_Winter_in_den_Beskiden.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Cashewnut": {
+    "cropName": "Cashewnut",
+    "popular": "Cashew Nut / Kaju",
+    "wikiArticle": "Cashew",
+    "title": "Cashew",
+    "description": "Flowering plant in the family Anacardiaceae",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Cashew_apples.jpg/800px-Cashew_apples.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Castor seed": {
+    "cropName": "Castor seed",
+    "popular": "Castor / Arandi",
+    "wikiArticle": "Ricinus",
+    "title": "Ricinus",
+    "description": "Monotypic genus of plant in the spurge family",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Ricinus_March_2010-1.jpg/800px-Ricinus_March_2010-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Coriander": {
+    "cropName": "Coriander",
+    "popular": "Coriander / Dhania",
+    "wikiArticle": "Coriander",
+    "title": "Coriander",
+    "description": "Annual herb",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Coriandrum_sativum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-193.jpg/800px-Coriandrum_sativum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-193.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Cotton(lint)": {
+    "cropName": "Cotton(lint)",
+    "popular": "Cotton / Kapas",
+    "wikiArticle": "Gossypium_hirsutum",
+    "title": "Gossypium hirsutum",
+    "description": "Species of flowering plant in the mallow family",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/CottonPlant.JPG/800px-CottonPlant.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Cowpea(Lobia)": {
+    "cropName": "Cowpea(Lobia)",
+    "popular": "Cowpea / Lobia",
+    "wikiArticle": "Cowpea",
+    "title": "Cowpea",
+    "description": "Species of plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Lobia.jpg/800px-Lobia.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Dry chillies": {
+    "cropName": "Dry chillies",
+    "popular": "Red Chilli / Lal Mirch",
+    "wikiArticle": "Chili_pepper",
+    "title": "Chili pepper",
+    "description": "Varieties of pepper of the genus ''Capsicum''",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Madame_Jeanette_and_other_chillies.jpg/800px-Madame_Jeanette_and_other_chillies.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Dry ginger": {
+    "cropName": "Dry ginger",
+    "popular": "Ginger / Adrak / Sonth",
+    "wikiArticle": "Ginger",
+    "title": "Ginger",
+    "description": "Species of plant used as a spice",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Koeh-146-no_text.jpg/800px-Koeh-146-no_text.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Garlic": {
+    "cropName": "Garlic",
+    "popular": "Garlic / Lahsun",
+    "wikiArticle": "Garlic",
+    "title": "Garlic",
+    "description": "Species of edible plant",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/Allium_sativum_Woodwill_1793.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "Gram": {
+    "cropName": "Gram",
+    "popular": "Chickpea / Chana",
+    "wikiArticle": "Chickpea",
+    "title": "Chickpea",
+    "description": "Species of flowering plant with edible seeds",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Chickpea_BNC.jpg/800px-Chickpea_BNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Groundnut": {
+    "cropName": "Groundnut",
+    "popular": "Peanut / Groundnut / Moongphali",
+    "wikiArticle": "Peanut",
+    "title": "Peanut",
+    "description": "Legume cultivated as a grain and oil crop",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Arachis_hypogaea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-163.jpg/800px-Arachis_hypogaea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-163.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Guar seed": {
+    "cropName": "Guar seed",
+    "popular": "Cluster Bean / Guar",
+    "wikiArticle": "Guar",
+    "title": "Guar",
+    "description": "Species of flowering plant in the bean family Fabaceae",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Cluster_bean-guar-Cyamopsis_psoralioides-Cyamopsis_tetragonolobus-TAMIL_NADU73.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "Horse-gram": {
+    "cropName": "Horse-gram",
+    "popular": "Horse Gram / Kulthi",
+    "wikiArticle": "Macrotyloma_uniflorum",
+    "title": "Macrotyloma uniflorum",
+    "description": "Species of legume",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Horse_Gram_BNC.jpg/800px-Horse_Gram_BNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Jowar": {
+    "cropName": "Jowar",
+    "popular": "Sorghum / Jowar",
+    "wikiArticle": "Sorghum_bicolor",
+    "title": "Sorghum",
+    "description": "Species of grain",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Sorghum_bicolor03.jpg/800px-Sorghum_bicolor03.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Jute": {
+    "cropName": "Jute",
+    "popular": "Jute / Patson",
+    "wikiArticle": "Jute",
+    "title": "Jute",
+    "description": "Bast fiber from the genus ''Corchorus''",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Jute_-_Kolkata_2003-10-31_00538.JPG/800px-Jute_-_Kolkata_2003-10-31_00538.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Khesari": {
+    "cropName": "Khesari",
+    "popular": "Grass Pea / Khesari",
+    "wikiArticle": "Lathyrus_sativus",
+    "title": "Lathyrus sativus",
+    "description": "Species of plant in the pea family",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Lathyrus_sativus_flowers_Bangladesh_cropped.JPG/800px-Lathyrus_sativus_flowers_Bangladesh_cropped.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Linseed": {
+    "cropName": "Linseed",
+    "popular": "Flaxseed / Linseed / Alsi",
+    "wikiArticle": "Flax",
+    "title": "Flax",
+    "description": "Species of flowering plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/K%C3%B6hler%27s_Medizinal-Pflanzen_in_naturgetreuen_Abbildungen_mit_kurz_erl%C3%A4uterndem_Texte_%28Plate_16%29_BHL303594.jpg/800px-K%C3%B6hler%27s_Medizinal-Pflanzen_in_naturgetreuen_Abbildungen_mit_kurz_erl%C3%A4uterndem_Texte_%28Plate_16%29_BHL303594.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Maize": {
+    "cropName": "Maize",
+    "popular": "Corn / Maize / Makka",
+    "wikiArticle": "Maize",
+    "title": "Maize",
+    "description": "Species of grass cultivated as a food crop",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Zea_mays_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-283.jpg/800px-Zea_mays_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-283.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Mango": {
+    "cropName": "Mango",
+    "popular": "Mango / Aam",
+    "wikiArticle": "Mango",
+    "title": "Mango",
+    "description": "Tropical fruit",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Mangos_-_single_and_halved.jpg/800px-Mangos_-_single_and_halved.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Masoor": {
+    "cropName": "Masoor",
+    "popular": "Red Lentil / Masoor",
+    "wikiArticle": "Lentil",
+    "title": "Lentil",
+    "description": "Species of plant with edible seeds",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/3_types_of_lentil.png/800px-3_types_of_lentil.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Mesta": {
+    "cropName": "Mesta",
+    "popular": "Roselle / Mesta",
+    "wikiArticle": "Roselle_(plant)",
+    "title": "Roselle (plant)",
+    "description": "Species of flowering plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Roselle%2C_Hibiscus_sabdariffa%2C_2014_01.JPG/800px-Roselle%2C_Hibiscus_sabdariffa%2C_2014_01.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Moong(Green Gram)": {
+    "cropName": "Moong(Green Gram)",
+    "popular": "Mung Bean / Moong",
+    "wikiArticle": "Mung_bean",
+    "title": "Mung bean",
+    "description": "Species of plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Mung_beans_%28Vigna_radiata%29.jpg/800px-Mung_beans_%28Vigna_radiata%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Moth": {
+    "cropName": "Moth",
+    "popular": "Moth Bean / Matki",
+    "wikiArticle": "Vigna_aconitifolia",
+    "title": "Vigna aconitifolia",
+    "description": "Species of flowering plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Matki.JPG/800px-Matki.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Niger seed": {
+    "cropName": "Niger seed",
+    "popular": "Niger Seed / Ramtil",
+    "wikiArticle": "Guizotia_abyssinica",
+    "title": "Guizotia abyssinica",
+    "description": "Species of flowering plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Guizotia_abyssinica_niger.jpg/800px-Guizotia_abyssinica_niger.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Onion": {
+    "cropName": "Onion",
+    "popular": "Onion / Pyaz",
+    "wikiArticle": "Onion",
+    "title": "Onion",
+    "description": "Bulbous vegetable",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Mixed_onions.jpg/800px-Mixed_onions.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Papaya": {
+    "cropName": "Papaya",
+    "popular": "Papaya / Papita",
+    "wikiArticle": "Papaya",
+    "title": "Papaya",
+    "description": "Species of tropical fruit plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg/800px-Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Peas & beans (Pulses)": {
+    "cropName": "Peas & beans (Pulses)",
+    "popular": "Green Peas / Matar",
+    "wikiArticle": "Pea",
+    "title": "Pea",
+    "description": "Species of plant with edible seeds",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Doperwt_rijserwt_peulen_Pisum_sativum.jpg/800px-Doperwt_rijserwt_peulen_Pisum_sativum.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Potato": {
+    "cropName": "Potato",
+    "popular": "Potato / Aloo",
+    "wikiArticle": "Potato",
+    "title": "Potato",
+    "description": "Starchy tuber used as a staple food",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Patates.jpg/800px-Patates.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Ragi": {
+    "cropName": "Ragi",
+    "popular": "Finger Millet / Ragi",
+    "wikiArticle": "Eleusine_coracana",
+    "title": "Finger millet",
+    "description": "Species of grass",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Finger_millet_3_11-21-02.jpg/800px-Finger_millet_3_11-21-02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Rapeseed &Mustard": {
+    "cropName": "Rapeseed &Mustard",
+    "popular": "Mustard / Sarson / Rai",
+    "wikiArticle": "Mustard_seed",
+    "title": "Mustard seed",
+    "description": "Seeds of various mustard plants",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Mustard.png/800px-Mustard.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Rice": {
+    "cropName": "Rice",
+    "popular": "Rice / Paddy / Dhan",
+    "wikiArticle": "Rice",
+    "title": "Rice",
+    "description": "Cereal grain and staple food",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg/800px-20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Safflower": {
+    "cropName": "Safflower",
+    "popular": "Safflower / Kusum",
+    "wikiArticle": "Safflower",
+    "title": "Safflower",
+    "description": "Species of plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Safflower.jpg/800px-Safflower.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Sannhamp": {
+    "cropName": "Sannhamp",
+    "popular": "Sunn Hemp / Sanai",
+    "wikiArticle": "Crotalaria_juncea",
+    "title": "Crotalaria juncea",
+    "description": "Species of legume",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Crotalaria_juncea_Da220020.JPG/800px-Crotalaria_juncea_Da220020.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Sesamum": {
+    "cropName": "Sesamum",
+    "popular": "Sesame / Til",
+    "wikiArticle": "Sesame",
+    "title": "Sesame",
+    "description": "Plant cultivated for its edible seeds",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Sesamum_indicum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-129.jpg/800px-Sesamum_indicum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-129.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Small millets": {
+    "cropName": "Small millets",
+    "popular": "Millets / Kodo / Kutki",
+    "wikiArticle": "Millet",
+    "title": "Millet",
+    "description": "Group of grasses (food grain)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Grain_millet%2C_early_grain_fill%2C_Tifton%2C_7-3-02.jpg/800px-Grain_millet%2C_early_grain_fill%2C_Tifton%2C_7-3-02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Soyabean": {
+    "cropName": "Soyabean",
+    "popular": "Soybean / Soyabean",
+    "wikiArticle": "Soybean",
+    "title": "Soybean",
+    "description": "Legume grown for its edible bean",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Soybean.USDA.jpg/800px-Soybean.USDA.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Sugarcane": {
+    "cropName": "Sugarcane",
+    "popular": "Sugarcane / Ganna",
+    "wikiArticle": "Sugarcane",
+    "title": "Sugarcane",
+    "description": "Several species of grass used for sugar production",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Saccharum_officinarum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-125.jpg/800px-Saccharum_officinarum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-125.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Sunflower": {
+    "cropName": "Sunflower",
+    "popular": "Sunflower / Surajmukhi",
+    "wikiArticle": "Helianthus_annuus",
+    "title": "Common sunflower",
+    "description": "Species of flowering plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Sunflower_sky_backdrop.jpg/800px-Sunflower_sky_backdrop.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Sweet potato": {
+    "cropName": "Sweet potato",
+    "popular": "Sweet Potato / Shakarkand",
+    "wikiArticle": "Sweet_potato",
+    "title": "Sweet potato",
+    "description": "Species of edible plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Ipomoea_batatas_006.JPG/800px-Ipomoea_batatas_006.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Tapioca": {
+    "cropName": "Tapioca",
+    "popular": "Cassava / Tapioca / Sabudana",
+    "wikiArticle": "Cassava",
+    "title": "Cassava",
+    "description": "Staple crop",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Manihot_esculenta_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-090.jpg/800px-Manihot_esculenta_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-090.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Tobacco": {
+    "cropName": "Tobacco",
+    "popular": "Tobacco / Tambaku",
+    "wikiArticle": "Nicotiana_tabacum",
+    "title": "Nicotiana tabacum",
+    "description": "Species of plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Tabak_P9290021.JPG/800px-Tabak_P9290021.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Turmeric": {
+    "cropName": "Turmeric",
+    "popular": "Turmeric / Haldi",
+    "wikiArticle": "Turmeric",
+    "title": "Turmeric",
+    "description": "Plant used as spice",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Turmeric_inflorescence.jpg/800px-Turmeric_inflorescence.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Urad": {
+    "cropName": "Urad",
+    "popular": "Black Gram / Urad",
+    "wikiArticle": "Vigna_mungo",
+    "title": "Vigna mungo",
+    "description": "Species of plant",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Black_gram.jpg/800px-Black_gram.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "Wheat": {
+    "cropName": "Wheat",
+    "popular": "Wheat / Gehun",
+    "wikiArticle": "Wheat",
+    "title": "Wheat",
+    "description": "Genus of grass cultivated for grain",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Vehn%C3%A4pelto_6.jpg/800px-Vehn%C3%A4pelto_6.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  }
+}

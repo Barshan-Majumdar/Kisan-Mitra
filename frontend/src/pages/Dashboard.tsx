@@ -230,6 +230,13 @@ export const Dashboard: React.FC = () => {
                 Run Crop Advisory
               </button>
               <button
+                onClick={() => navigate('/recommendations')}
+                className="inline-flex items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-xs sm:text-sm font-semibold text-white backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all active:scale-[0.98]"
+              >
+                Recommendations History
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+              </button>
+              <button
                 onClick={() => navigate('/market')}
                 className="inline-flex items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-xs sm:text-sm font-semibold text-white backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all active:scale-[0.98]"
               >

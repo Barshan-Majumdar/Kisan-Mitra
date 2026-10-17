@@ -12,7 +12,8 @@ import {
   ScrollText,
   MessageCircle,
   Command,
-  Activity
+  Activity,
+  Sparkles
 } from 'lucide-react';
 import { LanguageToggle } from '../LanguageToggle';
 
@@ -28,6 +29,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenComma
   const menuItems = [
     { icon: LayoutDashboard, label: t('dashboard'), path: '/dashboard', badge: 'Live' },
     { icon: Sprout, label: t('crops'), path: '/input', badge: '50 Crops' },
+    { icon: Sparkles, label: t('recommendations'), path: '/recommendations', badge: 'History' },
     { icon: ScrollText, label: t('advisory'), path: '/advisory-history' },
     { icon: ScanLine, label: t('disease_detect'), path: '/disease' },
     { icon: LineChart, label: t('market'), path: '/market', badge: 'APMC' },

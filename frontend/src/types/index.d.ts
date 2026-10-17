@@ -126,9 +126,57 @@ export interface DiseaseResult {
   prevention: string;
   differentialDiagnosis?: DifferentialDiagnosis[];
   modelArchitecture?: string;
+  historyId?: number;
+  createdAt?: string;
   // Legacy backward-compatibility
   id?: string;
   diseaseName?: string;
   description?: string;
   remedy?: string[];
+}
+
+export interface DiseaseHistoryItem {
+  id: number;
+  userId?: number | null;
+  userEmail?: string | null;
+  crop: string;
+  disease: string;
+  isHealthy: boolean;
+  confidence: number;
+  pathogen?: string | null;
+  severity?: string | null;
+  symptoms?: string | null;
+  chemicalTreatment?: string | null;
+  organicTreatment?: string | null;
+  prevention?: string | null;
+  imageUrl?: string | null;
+  differentialDiagnosis?: DifferentialDiagnosis[] | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface RecommendationHistoryItem {
+  id: number;
+  userId?: number | null;
+  userEmail?: string | null;
+  state: string;
+  district: string;
+  season: string;
+  cultivatedArea: number;
+  areaUnit?: string;
+  soilType?: string;
+  irrigationType?: string;
+  nitrogen?: number | null;
+  phosphorus?: number | null;
+  potassium?: number | null;
+  ph?: number | null;
+  temperature?: number | null;
+  humidity?: number | null;
+  rainfall?: number | null;
+  topPrediction: string;
+  recommendedCrops: Stage2CropRecommendation[];
+  farmSummary?: FarmSummary;
+  stage1Domains?: Stage1DomainResult[];
+  createdAt: string;
+  updatedAt: string;
 }

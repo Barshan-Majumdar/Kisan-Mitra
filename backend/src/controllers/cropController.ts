@@ -3,9 +3,13 @@ import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import prisma from '../prisma';
+import { fetchCropImagesFromGemini } from '../services/geminiService';
 
 // Cache for dropdown options schema
 let cachedOptions: any = null;
+
+// In-flight prediction lock map to coalesce concurrent duplicate requests
+const inFlightPredictions = new Map<string, Promise<any>>();
 
 /**
  * Returns dropdown options schema (33 States, 652 Districts, Soil Types, Seasons, Irrigation tiers)
@@ -84,12 +88,23 @@ export const getPrediction = async (req: Request, res: Response): Promise<void> 
       Soil: Soil_Type || Soil || 'Alluvial plains (proxy)'
     };
 
-    // 2. Determine target AI Service endpoint
-    // Priority: 1. Environment URL (defaults to local FastAPI port 8000), 2. Remote Render Fallback
-    const PRIMARY_AI_URL = process.env.CROP_PREDICTION_API_URL || 'http://127.0.0.1:8000/predict';
-    const REMOTE_FALLBACK_URL = 'https://crop-model-api.onrender.com/predict';
+    // 2. Concurrency Lock: Deduplicate concurrent or identical requests within an active window
+    const userEmail = req.body.userEmail ? String(req.body.userEmail).toLowerCase().trim() : 'guest';
+    const lockKey = `${userEmail}_${modelInput.State}_${modelInput.District}_${modelInput.Crop_Season}_${modelInput.Cultivated_Area_ha}_${modelInput.Soil_Type}`;
 
-    console.log('🚀 Sending crop advisory request to AI Service:', modelInput.State, modelInput.District, modelInput.Crop_Season);
+    if (inFlightPredictions.has(lockKey)) {
+      console.log(`⚡ [In-Flight Deduplication] Reusing active prediction promise for lockKey: ${lockKey}`);
+      const cachedResult = await inFlightPredictions.get(lockKey);
+      res.json(cachedResult);
+      return;
+    }
+
+    const runPredictionTask = async () => {
+      // Determine target AI Service endpoint
+      const PRIMARY_AI_URL = process.env.CROP_PREDICTION_API_URL || 'http://127.0.0.1:8000/predict';
+      const REMOTE_FALLBACK_URL = 'https://crop-model-api.onrender.com/predict';
+
+      console.log('🚀 Sending crop advisory request to AI Service:', modelInput.State, modelInput.District, modelInput.Crop_Season);
 
     let aiResponse: any = null;
     try {
@@ -112,90 +127,211 @@ export const getPrediction = async (req: Request, res: Response): Promise<void> 
     const aiData = aiResponse.data;
     const topPredictionName: string = aiData.prediction || (aiData.stage2_recommendations?.[0]?.crop_name) || 'Rice';
 
-    // 3. Enrich Top-1 Crop from Database (Preserving original schema for backward compatibility)
-    let dbCrop: any = null;
+    // 3. Enrich Crops from Database using a Single Efficient Query
+    let allDbCrops: any[] = [];
     try {
-      dbCrop = await prisma.crop.findFirst({
-        where: { name: { equals: topPredictionName, mode: 'insensitive' } }
-      });
-
-      if (!dbCrop) {
-        const baseName = topPredictionName.split(/[ (/]/)[0];
-        if (baseName && baseName !== topPredictionName) {
-          dbCrop = await prisma.crop.findFirst({
-            where: { name: { contains: baseName, mode: 'insensitive' } }
-          });
-        }
-      }
+      allDbCrops = await prisma.crop.findMany();
     } catch (dbErr: any) {
       console.warn('⚠️ Database disconnected, proceeding with AI prediction metadata:', dbErr.message);
     }
 
-    // 4. Enrich Stage 2 Basket of Recommendations with Database Records
+    const findCropMatch = (nameToMatch: string) => {
+      if (!nameToMatch) return null;
+      const clean = nameToMatch.toLowerCase().trim();
+      const exact = allDbCrops.find(c => c.name.toLowerCase() === clean);
+      if (exact) return exact;
+      const rootWord = clean.split(/[ (/]/)[0];
+      if (rootWord && rootWord.length > 2) {
+        return allDbCrops.find(c => c.name.toLowerCase().includes(rootWord));
+      }
+      return null;
+    };
+
+    const dbCrop = findCropMatch(topPredictionName);
+
+    // 4. Enrich Stage 2 Basket of Recommendations with Dynamic Gemini Images & in-memory matching
     const rawStage2 = aiData.stage2_recommendations || [];
-    const enrichedStage2 = await Promise.all(
-      rawStage2.map(async (rec: any) => {
-        const cName = rec.crop_name;
-        let matched: any = null;
-        try {
-          matched = await prisma.crop.findFirst({
-            where: { name: { equals: cName, mode: 'insensitive' } }
-          });
 
-          if (!matched) {
-            const rootWord = cName.split(/[ (/]/)[0];
-            if (rootWord && rootWord.length > 2) {
-              matched = await prisma.crop.findFirst({
-                where: { name: { contains: rootWord, mode: 'insensitive' } }
-              });
-            }
-          }
-        } catch {
-          // If database is disconnected, fallback gracefully to AI metadata
+    // Dynamically query Gemini for authentic produce images for all predicted crops
+    const cropsToQuery: { name: string; popularName?: string }[] = rawStage2.map((rec: any) => ({
+      name: rec.crop_name,
+      popularName: rec.popular_indian_name
+    }));
+
+    if (topPredictionName && !cropsToQuery.some(c => c.name.toLowerCase() === topPredictionName.toLowerCase())) {
+      cropsToQuery.push({ name: topPredictionName, popularName: topPredictionName });
+    }
+
+    let geminiImages: Record<string, string> = {};
+    if (cropsToQuery.length > 0) {
+      try {
+        geminiImages = await fetchCropImagesFromGemini(cropsToQuery);
+      } catch (imgErr: any) {
+        console.warn('⚠️ [Gemini] Could not fetch dynamic crop images:', imgErr.message);
+      }
+    }
+
+    const getDynamicImageUrl = (cName: string, popName?: string) => {
+      if (!cName) return '';
+      const clean = cName.toLowerCase().trim();
+      for (const [key, val] of Object.entries(geminiImages)) {
+        if (key.toLowerCase().trim() === clean && typeof val === 'string' && val.startsWith('http')) return val;
+      }
+      if (popName) {
+        const cleanPop = popName.toLowerCase().trim();
+        for (const [key, val] of Object.entries(geminiImages)) {
+          if (key.toLowerCase().trim() === cleanPop && typeof val === 'string' && val.startsWith('http')) return val;
         }
+      }
+      return '';
+    };
 
-        const aiImageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(rec.popular_indian_name || cName)}%20agriculture%20crop%20field?width=800&height=600&nologo=true`;
+    const enrichedStage2 = rawStage2.map((rec: any) => {
+      const cName = rec.crop_name;
+      const matched = findCropMatch(cName);
+      const dynamicImageUrl = getDynamicImageUrl(cName, rec.popular_indian_name);
 
-        return {
-          ...rec,
-          cropDetails: matched ? {
-            ...matched,
-            imageUrl: matched.imageUrl || aiImageUrl
-          } : {
-            id: Math.floor(Math.random() * 1000000) + 1000000,
-            name: cName,
-            imageUrl: aiImageUrl,
-            cropType: 'Recommended',
-            durationDays: 120
-          }
-        };
-      })
-    );
-
-    // 5. Build Final Response for Frontend
-    res.json({
-      success: true,
-      prediction: topPredictionName,
-      crop: dbCrop,
-      farm_summary: aiData.farm_summary || {
-        location: `${modelInput.District}, ${modelInput.State}`,
-        season: modelInput.Crop_Season,
-        cultivated_area_ha: modelInput.Cultivated_Area_ha,
-        soil_type: modelInput.Soil_Type
-      },
-      stage1_domain: aiData.stage1_domain || [],
-      stage2_recommendations: enrichedStage2.length > 0 ? enrichedStage2 : [
-        {
-          rank: 1,
-          crop_name: topPredictionName,
-          popular_indian_name: topPredictionName,
-          confidence_pct: 90.0,
-          expected_yield_tonnes_per_ha: 3.5,
-          expected_total_harvest_tonnes: Number((3.5 * modelInput.Cultivated_Area_ha).toFixed(2)),
-          cropDetails: dbCrop
+      return {
+        ...rec,
+        imageUrl: dynamicImageUrl || matched?.imageUrl,
+        cropDetails: matched ? {
+          ...matched,
+          imageUrl: dynamicImageUrl || matched.imageUrl
+        } : {
+          id: Math.floor(Math.random() * 1000000) + 1000000,
+          name: cName,
+          imageUrl: dynamicImageUrl,
+          cropType: 'Recommended',
+          durationDays: 120
         }
-      ]
+      };
     });
+
+    // 5. Automatically Persist Recommendation History into Database
+    let savedRecordId: number | null = null;
+    const fallbackTopImg = getDynamicImageUrl(topPredictionName);
+    const finalStage2 = enrichedStage2.length > 0 ? enrichedStage2 : [
+      {
+        rank: 1,
+        crop_name: topPredictionName,
+        popular_indian_name: topPredictionName,
+        confidence_pct: 90.0,
+        expected_yield_tonnes_per_ha: 3.5,
+        expected_total_harvest_tonnes: Number((3.5 * modelInput.Cultivated_Area_ha).toFixed(2)),
+        imageUrl: fallbackTopImg || dbCrop?.imageUrl,
+        cropDetails: dbCrop ? {
+          ...dbCrop,
+          imageUrl: fallbackTopImg || dbCrop.imageUrl
+        } : {
+          id: 1,
+          name: topPredictionName,
+          imageUrl: fallbackTopImg,
+          cropType: 'Recommended',
+          durationDays: 120
+        }
+      }
+    ];
+
+    const finalFarmSummary = aiData.farm_summary || {
+      location: `${modelInput.District}, ${modelInput.State}`,
+      season: modelInput.Crop_Season,
+      cultivated_area_ha: modelInput.Cultivated_Area_ha,
+      soil_type: modelInput.Soil_Type
+    };
+
+    try {
+      let userId: number | null = null;
+      const userEmail = req.body.userEmail;
+      if (userEmail) {
+        const user = await prisma.user.upsert({
+          where: { email: String(userEmail) },
+          update: {},
+          create: {
+            email: String(userEmail),
+            name: String(userEmail).split('@')[0]
+          }
+        });
+        userId = user.id;
+      }
+
+      // Deduplication Guard: Check if an identical recommendation was saved within the last 15 seconds
+      const fifteenSecondsAgo = new Date(Date.now() - 15000);
+      const existingDuplicate = await prisma.recommendationHistory.findFirst({
+        where: {
+          OR: [
+            ...(userId ? [{ userId }] : []),
+            ...(userEmail ? [{ userEmail: String(userEmail) }] : []),
+            ...(!userId && !userEmail ? [{ userEmail: null }] : [])
+          ],
+          state: modelInput.State,
+          district: modelInput.District,
+          season: modelInput.Crop_Season,
+          cultivatedArea: modelInput.Cultivated_Area_ha,
+          topPrediction: topPredictionName,
+          createdAt: { gte: fifteenSecondsAgo }
+        },
+        orderBy: { createdAt: 'desc' }
+      });
+
+      if (existingDuplicate) {
+        console.log(`⚡ [Deduplication] Prevented duplicate recommendation record. Using existing record #${existingDuplicate.id}`);
+        savedRecordId = existingDuplicate.id;
+      } else {
+        const record = await prisma.recommendationHistory.create({
+          data: {
+            userId,
+            userEmail: userEmail ? String(userEmail) : null,
+            state: modelInput.State,
+            district: modelInput.District,
+            season: modelInput.Crop_Season,
+            cultivatedArea: modelInput.Cultivated_Area_ha,
+            areaUnit: req.body.areaUnit || 'Hectares',
+            soilType: modelInput.Soil_Type,
+            irrigationType: modelInput.Irrigation_Availability,
+            nitrogen: modelInput.Nitrogen_N !== null ? Number(modelInput.Nitrogen_N) : null,
+            phosphorus: modelInput.Phosphorus_P !== null ? Number(modelInput.Phosphorus_P) : null,
+            potassium: modelInput.Potassium_K !== null ? Number(modelInput.Potassium_K) : null,
+            ph: modelInput.Soil_pH !== null ? Number(modelInput.Soil_pH) : null,
+            temperature: modelInput.Average_Temperature_C !== null ? Number(modelInput.Average_Temperature_C) : null,
+            humidity: modelInput.Soil_Moisture_pct !== null ? Number(modelInput.Soil_Moisture_pct) : null,
+            rainfall: modelInput.Rainfall_mm !== null ? Number(modelInput.Rainfall_mm) : null,
+            topPrediction: topPredictionName,
+            recommendedCrops: finalStage2,
+            farmSummary: finalFarmSummary,
+            stage1Domains: aiData.stage1_domain || []
+          }
+        });
+        savedRecordId = record.id;
+        console.log(`✅ Automatically saved crop recommendation history record #${record.id} for ${userEmail || 'guest'}`);
+      }
+    } catch (saveErr: any) {
+      console.warn('⚠️ Could not save recommendation history record:', saveErr.message);
+    }
+
+      // 6. Return Final Result Payload
+      return {
+        success: true,
+        recommendation_id: savedRecordId,
+        prediction: topPredictionName,
+        crop: dbCrop,
+        farm_summary: finalFarmSummary,
+        stage1_domain: aiData.stage1_domain || [],
+        stage2_recommendations: finalStage2
+      };
+    };
+
+    const taskPromise = runPredictionTask();
+    inFlightPredictions.set(lockKey, taskPromise);
+
+    try {
+      const finalResult = await taskPromise;
+      res.json(finalResult);
+    } finally {
+      // Retain in deduplication map for 8 seconds to coalesce any rapid subsequent calls
+      setTimeout(() => {
+        inFlightPredictions.delete(lockKey);
+      }, 8000);
+    }
 
   } catch (err: any) {
     console.error('❌ AI Recommendation Controller Error:', err.message);
@@ -204,5 +340,97 @@ export const getPrediction = async (req: Request, res: Response): Promise<void> 
       message: 'AI Model service is warming up or temporarily unavailable. Please verify the AI Service is running.',
       error: err.message
     });
+  }
+};
+
+/**
+ * Retrieves all saved recommendation history records for a user
+ */
+export const getRecommendationHistory = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { userEmail } = req.query;
+    const cleanEmail = userEmail ? String(userEmail).trim().toLowerCase() : null;
+
+    let whereClause: any = {};
+    if (cleanEmail) {
+      whereClause = {
+        OR: [
+          { userEmail: { equals: cleanEmail, mode: 'insensitive' } },
+          { user: { email: { equals: cleanEmail, mode: 'insensitive' } } }
+        ]
+      };
+    }
+
+    let history: any[] = [];
+    try {
+      history = await prisma.recommendationHistory.findMany({
+        where: whereClause,
+        orderBy: { createdAt: 'desc' },
+        take: 50
+      });
+    } catch (dbErr: any) {
+      console.warn('⚠️ Transient connection pool delay, retrying in 1000ms...', dbErr.message);
+      try {
+        await new Promise(r => setTimeout(r, 1000));
+        history = await prisma.recommendationHistory.findMany({
+          where: whereClause,
+          orderBy: { createdAt: 'desc' },
+          take: 50
+        });
+      } catch (retryErr: any) {
+        console.warn('⚠️ History query retry exhausted, returning empty array gracefully:', retryErr.message);
+        history = [];
+      }
+    }
+
+    res.json({
+      success: true,
+      history
+    });
+  } catch (err: any) {
+    console.error('Error fetching recommendation history:', err.message);
+    res.json({ success: true, history: [] });
+  }
+};
+
+/**
+ * Retrieves a single recommendation record by ID
+ */
+export const getRecommendationById = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const record = await prisma.recommendationHistory.findUnique({
+      where: { id: Number(id) }
+    });
+
+    if (!record) {
+      res.status(404).json({ success: false, error: 'Recommendation record not found' });
+      return;
+    }
+
+    res.json({
+      success: true,
+      record
+    });
+  } catch (err: any) {
+    console.error('Error fetching recommendation record:', err.message);
+    res.status(500).json({ success: false, error: 'Failed to fetch recommendation record' });
+  }
+};
+
+/**
+ * Deletes a recommendation record by ID
+ */
+export const deleteRecommendation = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+    await prisma.recommendationHistory.delete({
+      where: { id: Number(id) }
+    });
+
+    res.json({ success: true, message: 'Recommendation record deleted successfully' });
+  } catch (err: any) {
+    console.error('Error deleting recommendation record:', err.message);
+    res.status(500).json({ success: false, error: 'Failed to delete recommendation record' });
   }
 };

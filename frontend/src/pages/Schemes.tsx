@@ -38,7 +38,7 @@ export const Schemes: React.FC = () => {
     const fetchSchemes = async () => {
       try {
         setLoading(true);
-        // Fetches directly from backend which connects to data.gov.in resource c8942b03-5182-4bf5-85df-a040b2f5cf12
+        // Fetches directly from backend which connects to API Mitra schemes directory (api.apimitra.in)
         const response = await api.get('/schemes');
         setSchemes(response.data);
       } catch (error) {
@@ -326,7 +326,7 @@ export const Schemes: React.FC = () => {
             <div className="p-3.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/80">
               <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">Source & Jurisdiction</h4>
               <p className="text-stone-800 text-sm font-semibold truncate">
-                {selectedScheme?.source || 'data.gov.in Official Portal'}
+                {selectedScheme?.source || 'Official Portal (API Mitra)'}
               </p>
             </div>
           </div>

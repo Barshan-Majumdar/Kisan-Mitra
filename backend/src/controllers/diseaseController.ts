@@ -4,16 +4,96 @@ import { execFile } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
+import prisma from '../prisma';
 
 const AI_SERVICE_URL = process.env.AI_SERVICE_URL || 'http://127.0.0.1:8000';
 const SCRIPT_PATH = path.resolve(__dirname, '../../../ai-service/predict_disease.py');
+
+/**
+ * Formats remedy/dosage strings into clean, human-readable text.
+ * Strips '@' symbols, cleans measurement spacing (e.g. '2.5 g/L'), and removes special characters.
+ */
+export const formatSuggestionText = (text?: string): string => {
+  if (!text) return '';
+  return text
+    // Replace '@ 2g/L' or '@2g/L' with 'at 2 g/L'
+    .replace(/@\s*/g, 'at ')
+    // Ensure space between numbers and units: e.g. '2g/L' -> '2 g/L', '1ml/L' -> '1 ml/L'
+    .replace(/(\d+(?:\.\d+)?)\s*(g|ml|kg|l)\s*\/\s*(L|ha|acre)/gi, '$1 $2/$3')
+    // Remove unwanted special characters like raw tildes or carets
+    .replace(/[~^`]/g, '')
+    // Clean up multiple spaces
+    .replace(/\s+/g, ' ')
+    .trim();
+};
+
+/**
+ * Normalizes, formats, and persists diagnosis into database history
+ */
+const persistAndFormatDiagnosis = async (
+  rawResult: any,
+  image: string,
+  userEmail?: string
+) => {
+  // 1. Sanitize suggestions
+  const chemicalTreatment = formatSuggestionText(rawResult.chemicalTreatment);
+  const organicTreatment = formatSuggestionText(rawResult.organicTreatment);
+  const prevention = formatSuggestionText(rawResult.prevention);
+  const symptoms = formatSuggestionText(rawResult.symptoms);
+
+  const enrichedResult = {
+    ...rawResult,
+    chemicalTreatment,
+    organicTreatment,
+    prevention,
+    symptoms
+  };
+
+  // 2. Persist to PostgreSQL DiseaseHistory
+  try {
+    const cleanEmail = userEmail ? String(userEmail).trim().toLowerCase() : null;
+    let userRecord = null;
+    if (cleanEmail) {
+      userRecord = await prisma.user.findUnique({ where: { email: cleanEmail } });
+    }
+
+    // Keep leaf image thumbnail (capped to 500KB to ensure fast DB retrieval)
+    const thumbnail = image.length > 500000 ? image.substring(0, 500000) : image;
+
+    const saved = await prisma.diseaseHistory.create({
+      data: {
+        userId: userRecord?.id || null,
+        userEmail: cleanEmail || null,
+        crop: enrichedResult.crop,
+        disease: enrichedResult.disease,
+        isHealthy: Boolean(enrichedResult.isHealthy),
+        confidence: Number(enrichedResult.confidence || 0),
+        pathogen: enrichedResult.pathogen || null,
+        severity: enrichedResult.severity || null,
+        symptoms: enrichedResult.symptoms || null,
+        chemicalTreatment: enrichedResult.chemicalTreatment || null,
+        organicTreatment: enrichedResult.organicTreatment || null,
+        prevention: enrichedResult.prevention || null,
+        imageUrl: thumbnail,
+        differentialDiagnosis: enrichedResult.differentialDiagnosis || null
+      }
+    });
+
+    enrichedResult.historyId = saved.id;
+    enrichedResult.createdAt = saved.createdAt;
+  } catch (dbErr: any) {
+    console.warn('⚠️ Non-fatal notice: Could not write disease diagnosis to DB history:', dbErr.message);
+  }
+
+  return enrichedResult;
+};
 
 /**
  * Predicts crop disease from a foliar leaf image using model_v1.pt (EfficientNet-B0)
  */
 export const predictCropDisease = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { image } = req.body;
+    const { image, userEmail } = req.body;
 
     if (!image || typeof image !== 'string' || image.trim().length === 0) {
       res.status(400).json({
@@ -35,14 +115,15 @@ export const predictCropDisease = async (req: Request, res: Response): Promise<v
 
       if (apiResp.data && apiResp.data.success) {
         console.log(`✅ Diagnosis via FastAPI: ${apiResp.data.crop} - ${apiResp.data.disease} (${apiResp.data.confidence}%)`);
-        res.json(apiResp.data);
+        const formatted = await persistAndFormatDiagnosis(apiResp.data, image, userEmail);
+        res.json(formatted);
         return;
       }
     } catch (apiErr: any) {
       console.log(`ℹ️ FastAPI microservice on port 8000 not reachable (${apiErr.message}). Engaging direct Python PyTorch runtime...`);
     }
 
-    // 2. Direct embedded Python PyTorch execution (guaranteed to work even if uvicorn is offline)
+    // 2. Direct embedded Python PyTorch execution (guaranteed fallback)
     if (!fs.existsSync(SCRIPT_PATH)) {
       res.status(500).json({
         success: false,
@@ -64,7 +145,7 @@ export const predictCropDisease = async (req: Request, res: Response): Promise<v
       fs.writeFileSync(tempFilePath, Buffer.from(base64Clean, 'base64'));
 
       // Execute Python predict_disease.py directly
-      execFile('python', [SCRIPT_PATH, tempFilePath], { maxBuffer: 10 * 1024 * 1024, timeout: 25000 }, (error, stdout, stderr) => {
+      execFile('python', [SCRIPT_PATH, tempFilePath], { maxBuffer: 10 * 1024 * 1024, timeout: 25000 }, async (error, stdout, stderr) => {
         // Clean up temp image
         try {
           if (fs.existsSync(tempFilePath)) {
@@ -88,7 +169,8 @@ export const predictCropDisease = async (req: Request, res: Response): Promise<v
           const result = JSON.parse(stdout.trim());
           if (result.success) {
             console.log(`✅ Diagnosis via Direct PyTorch: ${result.crop} - ${result.disease} (${result.confidence}%)`);
-            res.json(result);
+            const formatted = await persistAndFormatDiagnosis(result, image, userEmail);
+            res.json(formatted);
           } else {
             res.status(500).json({ success: false, error: result.error || 'Diagnosis failed' });
           }
@@ -119,15 +201,82 @@ export const predictCropDisease = async (req: Request, res: Response): Promise<v
 };
 
 /**
+ * Retrieves past disease diagnostic history records for a user
+ */
+export const getDiseaseHistory = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { userEmail } = req.query;
+    const cleanEmail = userEmail ? String(userEmail).trim().toLowerCase() : null;
+
+    let whereClause: any = {};
+    if (cleanEmail) {
+      whereClause = {
+        OR: [
+          { userEmail: { equals: cleanEmail, mode: 'insensitive' } },
+          { user: { email: { equals: cleanEmail, mode: 'insensitive' } } }
+        ]
+      };
+    }
+
+    const history = await prisma.diseaseHistory.findMany({
+      where: whereClause,
+      orderBy: { createdAt: 'desc' },
+      take: 50
+    });
+
+    res.json({
+      success: true,
+      history
+    });
+  } catch (err: any) {
+    console.error('Error fetching disease history:', err.message);
+    res.json({ success: true, history: [] });
+  }
+};
+
+/**
+ * Retrieves a single disease diagnostic record by ID
+ */
+export const getDiseaseHistoryById = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const record = await prisma.diseaseHistory.findUnique({
+      where: { id: Number(id) }
+    });
+
+    if (!record) {
+      res.status(404).json({ success: false, error: 'Diagnostic record not found' });
+      return;
+    }
+
+    res.json({ success: true, record });
+  } catch (err: any) {
+    console.error('Error fetching disease diagnostic record:', err.message);
+    res.status(500).json({ success: false, error: 'Failed to fetch diagnostic record' });
+  }
+};
+
+/**
+ * Deletes a disease diagnostic record by ID
+ */
+export const deleteDiseaseHistory = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+    await prisma.diseaseHistory.delete({
+      where: { id: Number(id) }
+    });
+
+    res.json({ success: true, message: 'Diagnostic record deleted successfully' });
+  } catch (err: any) {
+    console.error('Error deleting disease diagnostic record:', err.message);
+    res.status(500).json({ success: false, error: 'Failed to delete diagnostic record' });
+  }
+};
+
+/**
  * Returns supported foliar disease categories
  */
 export const getSupportedDiseases = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const { CLASS_NAMES } = require(path.resolve(__dirname, '../../../ai-service/predict_disease.py'));
-  } catch {
-    // Return statically if python cannot be directly imported into JS
-  }
-
   // 38 canonical PlantVillage classes
   const classes = [
     { crop: 'Apple', disease: 'Apple Scab', pathogen: 'Fungal' },

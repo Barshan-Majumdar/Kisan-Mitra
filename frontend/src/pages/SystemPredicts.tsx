@@ -221,6 +221,8 @@ export const SystemPredicts: React.FC = () => {
               season,
               irrigation,
               area,
+              soilType: data.soilType,
+              areaUnit: location.state?.areaUnit || 'Hectares',
               envData: {
                 ...rawData,
                 State: state,

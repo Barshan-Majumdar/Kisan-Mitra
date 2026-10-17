@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
-import { Plus, Calendar, ChevronRight, MapPin } from 'lucide-react';
+import { Plus, Calendar, ChevronRight, MapPin, RefreshCw, Sprout, Sparkles } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import api from '../services/api';
 import ReactMarkdown from 'react-markdown';
@@ -27,35 +27,37 @@ export const AdvisoryHistory: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
+  const fetchAdvisories = async () => {
+    setLoading(true);
+    try {
+      const userEmail = user?.primaryEmailAddress?.emailAddress || 'demo@agriculture.com'; // Fallback for dev/demo if auth skipped
+
+      const response = await api.get('/advisories', {
+        params: { userEmail }
+      });
+
+      // Map backend data safely to frontend structure
+      const rawList = Array.isArray(response.data) ? response.data : (response.data?.advisories || []);
+      const mappedData = rawList.map((item: any) => ({
+        id: item.id,
+        date: item.date,
+        crop: item.crop?.name || 'Unknown Crop',
+        location: item.location,
+        status: item.status,
+        stage: item.stage,
+        message: item.message // Include the plan
+      }));
+      setHistory(mappedData);
+    } catch (error) {
+      console.error('Failed to fetch advisories:', error);
+      setHistory([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchAdvisories = async () => {
-      if (!isLoaded) return; // Wait for Clerk to load
-
-      try {
-        const userEmail = user?.primaryEmailAddress?.emailAddress || 'demo@agriculture.com'; // Fallback for dev/demo if auth skipped
-
-        const response = await api.get('/advisories', {
-          params: { userEmail }
-        });
-
-        // Map backend data to frontend structure
-        const mappedData = response.data.map((item: any) => ({
-          id: item.id,
-          date: item.date,
-          crop: item.crop?.name || 'Unknown Crop',
-          location: item.location,
-          status: item.status,
-          stage: item.stage,
-          message: item.message // Include the plan
-        }));
-        setHistory(mappedData);
-      } catch (error) {
-        console.error('Failed to fetch advisories:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
+    if (!isLoaded) return; // Wait for Clerk to load
     fetchAdvisories();
   }, [isLoaded, user]);
 
@@ -94,7 +96,25 @@ export const AdvisoryHistory: React.FC = () => {
   };
 
   if (loading) {
-    return <div className="text-center py-10">Loading history...</div>;
+    return (
+      <div className="space-y-6 animate-fade-in px-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+              Crop Advisory Records
+            </h1>
+            <p className="text-sm sm:text-base text-stone-600">
+              Precision farming guides and nutrient schedules generated for your farm plots.
+            </p>
+          </div>
+        </div>
+        <div className="p-12 text-center rounded-3xl bg-white border border-stone-200/80 shadow-soft">
+          <RefreshCw className="h-8 w-8 animate-spin mx-auto text-emerald-700 mb-3" />
+          <p className="text-sm font-semibold text-stone-700">Loading your crop advisories...</p>
+          <p className="text-xs text-stone-400 mt-1">Connecting to agricultural database</p>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -108,16 +128,43 @@ export const AdvisoryHistory: React.FC = () => {
             Precision farming guides and nutrient schedules generated for your farm plots.
           </p>
         </div>
-        <button
-          onClick={() => navigate('/input')}
-          className="inline-flex items-center justify-center rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 text-sm shadow-soft hover:shadow-card active:scale-[0.98] transition-all"
-        >
-          <Plus className="h-4 w-4 mr-2" />
-          New Advisory
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={fetchAdvisories}
+            className="p-3 rounded-2xl bg-white border border-stone-200/80 hover:bg-[#FAF9F5] text-stone-600 shadow-soft transition-all active:scale-95"
+            title="Refresh advisories"
+          >
+            <RefreshCw className="h-4 w-4" />
+          </button>
+          <button
+            onClick={() => navigate('/input')}
+            className="inline-flex items-center justify-center rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 text-sm shadow-soft hover:shadow-card active:scale-[0.98] transition-all"
+          >
+            <Plus className="h-4 w-4 mr-2" />
+            New Advisory
+          </button>
+        </div>
       </div>
 
-      <div className="grid gap-4">
+      {history.length === 0 ? (
+        <Card className="p-8 sm:p-12 text-center rounded-3xl border border-stone-200/80 bg-white shadow-soft">
+          <div className="inline-flex p-4 rounded-3xl bg-emerald-50 text-emerald-700 mb-4 border border-emerald-200/60">
+            <Sprout className="h-8 w-8" />
+          </div>
+          <h3 className="text-lg font-extrabold text-stone-900 mb-2">No Saved Crop Advisories Yet</h3>
+          <p className="text-sm text-stone-600 max-w-md mx-auto mb-6 leading-relaxed">
+            Generate customized AI farming guides, complete with land preparation, critical irrigation timings, and pest management schedules for your crops.
+          </p>
+          <button
+            onClick={() => navigate('/input')}
+            className="inline-flex items-center justify-center rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3 text-sm shadow-soft hover:shadow-card active:scale-[0.98] transition-all"
+          >
+            <Sparkles className="h-4 w-4 mr-2" />
+            Generate First Advisory
+          </button>
+        </Card>
+      ) : (
+        <div className="grid gap-4">
         {history.map((item) => (
           <Card
             key={item.id}
@@ -233,9 +280,10 @@ export const AdvisoryHistory: React.FC = () => {
                 </div>
               </div>
             )}
-          </Card>
-        ))}
-      </div>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

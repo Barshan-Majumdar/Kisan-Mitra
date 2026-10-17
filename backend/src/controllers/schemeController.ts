@@ -3,10 +3,9 @@ import axios from 'axios';
 import https from 'https';
 import prisma from '../prisma';
 
-// Government Open Data (OGD) Resource for Schemes (Configurable via DATA_GOV_SCHEMES_RESOURCE_ID)
-const DEFAULT_SCHEME_RESOURCE_ID = 'c8942b03-5182-4bf5-85df-a040b2f5cf12';
-const getSchemeResourceId = () => process.env.DATA_GOV_SCHEMES_RESOURCE_ID || DEFAULT_SCHEME_RESOURCE_ID;
-const getSchemeApiUrl = () => `https://api.data.gov.in/resource/${getSchemeResourceId()}`;
+// API Mitra Government Schemes (India) Endpoint (https://api.apimitra.in)
+const API_MITRA_SCHEMES_URL = 'https://api.apimitra.in/schemes';
+const getApiMitraKey = () => (process.env.API_MITRA_API_KEY || process.env.APIMITRA_API_KEY || '').trim();
 
 // Keep-Alive HTTPS Agent to reuse TLS connections and prevent connection drops
 const httpsAgent = new https.Agent({
@@ -37,28 +36,6 @@ interface CachedSchemesData {
 }
 let schemeCache: CachedSchemesData | null = null;
 const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes fresh cache
-
-// Helper to execute axios with retry on socket drops / stream aborts
-async function fetchWithRetry(url: string, params: Record<string, any>, retries = 1): Promise<any> {
-  try {
-    return await axios.get(url, {
-      params,
-      timeout: 18000,
-      httpsAgent,
-    });
-  } catch (err: any) {
-    if (retries > 0) {
-      console.warn(`⚠️ data.gov.in scheme API network hiccup (${err.message}). Retrying once after 600ms...`);
-      await new Promise((resolve) => setTimeout(resolve, 600));
-      return await axios.get(url, {
-        params,
-        timeout: 20000,
-        httpsAgent,
-      });
-    }
-    throw err;
-  }
-}
 
 // Verified National & State Agricultural Schemes Catalog with authentic official application portals
 const VERIFIED_GOV_SCHEMES: GovernmentSchemeItem[] = [
@@ -246,66 +223,65 @@ const VERIFIED_GOV_SCHEMES: GovernmentSchemeItem[] = [
   }
 ];
 
-// Helper to sanitize and normalize live records returned by data.gov.in
-function parseGovSchemeRecord(rec: any, idx: number): GovernmentSchemeItem {
+// Helper to sanitize and normalize live records returned by API Mitra (mirrored from myScheme.gov.in)
+function parseApiMitraSchemeRecord(rec: any, idx: number): GovernmentSchemeItem {
   const name =
     rec.scheme_name ||
-    rec.name_of_the_scheme ||
-    rec.scheme ||
+    rec.short_title ||
     rec.title ||
-    rec.scheme_title ||
+    rec.name ||
     `Government Agricultural Scheme #${idx + 1}`;
 
   const description =
+    rec.brief ||
     rec.description ||
-    rec.brief_description ||
     rec.details ||
-    rec.objective ||
     rec.scheme_objectives ||
     'Official government subsidy and welfare initiative designed to provide financial, operational, and technological empowerment to farmers.';
 
-  const eligibility =
+  let eligibility =
     rec.eligibility ||
     rec.eligibility_criteria ||
+    (rec.scheme_for ? `Target Beneficiary: ${rec.scheme_for}` : '') ||
     rec.target_beneficiary ||
     rec.beneficiary_criteria ||
-    rec.target_group ||
     'All verified landholding and tenant farmers meeting state/central agricultural criteria.';
+
+  const slug = rec.slug ? String(rec.slug).trim() : '';
 
   let applyLink =
     rec.application_link ||
     rec.apply_link ||
-    rec.portal_url ||
     rec.url ||
     rec.link ||
-    rec.web_link ||
-    rec.website ||
-    '';
+    (slug ? `https://www.myscheme.gov.in/schemes/${slug}` : '');
 
-  // If no direct link is embedded in the record, point to official myScheme or Ministry portal
+  // If no direct link is embedded, point to official myScheme or search portal
   if (!applyLink || !applyLink.startsWith('http')) {
     applyLink = `https://www.myscheme.gov.in/search?q=${encodeURIComponent(name.replace(/\([^)]*\)/g, '').trim())}`;
   }
 
   const category =
+    rec.categories ||
     rec.category ||
     rec.sector ||
-    rec.scheme_type ||
-    rec.type ||
-    'Agricultural Support';
+    'Agricultural Welfare';
 
   const funding =
     rec.funding ||
     rec.pattern_of_assistance ||
     rec.financial_assistance ||
-    rec.subsidy_pattern ||
-    rec.assistance ||
-    'Government Financial Subsidy';
+    (rec.level ? `${rec.level} Government Scheme` : 'Direct Government Benefit / Subsidy');
 
-  const state = rec.state || rec.state_name || 'National';
+  const state =
+    rec.beneficiary_state && rec.beneficiary_state !== 'All'
+      ? rec.beneficiary_state
+      : (rec.level === 'Central' ? 'National' : rec.state || 'National');
+
+  const ministry = rec.ministry ? `${rec.ministry}` : 'myScheme.gov.in';
 
   return {
-    id: `gov-scheme-${rec.id || idx}-${name.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30)}`,
+    id: slug || rec.id || `api-mitra-${idx}-${name.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30)}`,
     name,
     description,
     eligibilityCriteria: eligibility,
@@ -313,16 +289,16 @@ function parseGovSchemeRecord(rec: any, idx: number): GovernmentSchemeItem {
     category,
     funding,
     state,
-    deadline: rec.deadline || rec.last_date || rec.valid_till || null,
-    source: 'data.gov.in (Official API)',
+    deadline: rec.close_date || rec.deadline || null,
+    source: `${ministry} (API Mitra)`,
     isLiveGovData: true,
   };
 }
 
 export const getSchemes = async (req: Request, res: Response) => {
   try {
-    const { category, search, state, limit = 100 } = req.query;
-    const apiKey = process.env.DATA_GOV_IN_API_KEY || process.env.MANDI_API_KEY;
+    const { category, search, state, limit = 50, page } = req.query;
+    const apiKey = getApiMitraKey();
 
     // 1. Check in-memory cache first (instant response, zero server latency)
     if (schemeCache && Date.now() - schemeCache.timestamp < CACHE_TTL_MS && schemeCache.records.length > 0) {
@@ -332,32 +308,62 @@ export const getSchemes = async (req: Request, res: Response) => {
 
     let liveRecords: GovernmentSchemeItem[] = [];
 
-    // 2. Query data.gov.in schemes resource endpoint
-    const resourceId = getSchemeResourceId();
-    const apiUrl = getSchemeApiUrl();
-    if (apiKey && apiKey.trim().length > 0 && apiKey !== 'YOUR_DATA_GOV_IN_API_KEY_HERE') {
+    // 2. Query API Mitra schemes endpoint
+    if (apiKey && apiKey.length > 0 && apiKey !== 'YOUR_API_KEY') {
       try {
-        console.log(`🏛️ Connecting to data.gov.in schemes endpoint (Resource ID: ${resourceId})...`);
+        console.log(`🏛️ Connecting to API Mitra schemes endpoint (api.apimitra.in/schemes)...`);
         const queryParams: Record<string, any> = {
-          'api-key': apiKey.trim(),
-          format: 'json',
-          limit: Number(limit) || 100,
+          limit: Math.min(Number(limit) || 20, 100),
         };
 
-        const response = await fetchWithRetry(apiUrl, queryParams);
-
-        if (response.data && Array.isArray(response.data.records) && response.data.records.length > 0) {
-          console.log(`✅ Loaded ${response.data.records.length} live government schemes from data.gov.in`);
-          liveRecords = response.data.records.map((rec: any, idx: number) => parseGovSchemeRecord(rec, idx));
-        } else {
-          console.log(`🏛️ Serving authenticated schemes catalog from official government portals with direct application links.`);
+        // State filter (defaults to 'west bengal' as requested if none provided)
+        if (state && state !== 'All') {
+          queryParams.state = String(state).toLowerCase().trim();
+        } else if (!state) {
+          queryParams.state = 'west bengal';
         }
-      } catch (govErr: any) {
-        console.log(`🏛️ Serving authenticated schemes catalog from official government portals with direct application links.`);
+
+        if (search) {
+          queryParams.q = String(search).trim();
+        }
+
+        if (category && category !== 'All') {
+          queryParams.category = String(category).toLowerCase().trim();
+        }
+
+        if (page) {
+          queryParams.page = Number(page) || 1;
+        }
+
+        const response = await axios.get(API_MITRA_SCHEMES_URL, {
+          params: queryParams,
+          headers: {
+            'x-api-key': apiKey,
+            'Accept': 'application/json',
+          },
+          timeout: 15000,
+          httpsAgent,
+        });
+
+        if (response.data && Array.isArray(response.data.data) && response.data.data.length > 0) {
+          console.log(`✅ Loaded ${response.data.data.length} live government schemes from API Mitra.`);
+          liveRecords = response.data.data.map((rec: any, idx: number) => parseApiMitraSchemeRecord(rec, idx));
+        } else if (response.data?.code === 'service_not_activated') {
+          console.warn(`⚠️ API Mitra notice: ${response.data.message} (${response.data.request_url})`);
+        }
+      } catch (apiErr: any) {
+        if (apiErr.response?.data?.code === 'service_not_activated') {
+          console.warn(`⚠️ API Mitra: Service 'schemes' is pending activation for this API key.`);
+          console.warn(`👉 To activate live API Mitra schemes, request access from your dashboard: ${apiErr.response.data.request_url || 'https://apimitra.in/app/services'}`);
+        } else {
+          console.warn(`⚠️ API Mitra schemes endpoint notice (${apiErr.message}). Engaging fallback catalog...`);
+        }
       }
+    } else {
+      console.log(`ℹ️ API_MITRA_API_KEY not configured or empty. Using verified government schemes catalog.`);
     }
 
-    // 3. If live government endpoint returned records, combine with verified key schemes
+    // 3. If live API Mitra returned records, combine with verified key schemes
     if (liveRecords.length > 0) {
       // Merge with verified catalog to ensure key flagship schemes (PM-Kisan, PMFBY, KCC) are always accessible
       const existingNames = new Set(liveRecords.map((r) => r.name.toLowerCase().trim()));
@@ -383,7 +389,6 @@ export const getSchemes = async (req: Request, res: Response) => {
     let finalSchemes: GovernmentSchemeItem[] = [];
 
     if (dbSchemes.length > 0) {
-      // Map DB schemes and merge with verified catalog
       const dbMapped: GovernmentSchemeItem[] = dbSchemes.map((s) => ({
         id: s.id,
         name: s.name,
@@ -396,7 +401,6 @@ export const getSchemes = async (req: Request, res: Response) => {
         funding: 'Direct Subsidy / Support',
       }));
 
-      // Combine with our enriched catalog to make sure all categories & apply links are present
       const nameMap = new Map<string, GovernmentSchemeItem>();
       for (const scheme of VERIFIED_GOV_SCHEMES) {
         nameMap.set(scheme.name.toLowerCase().trim(), scheme);
@@ -404,7 +408,6 @@ export const getSchemes = async (req: Request, res: Response) => {
       for (const s of dbMapped) {
         const key = s.name.toLowerCase().trim();
         if (nameMap.has(key)) {
-          // Keep the enriched data
           const existing = nameMap.get(key)!;
           nameMap.set(key, { ...existing, id: s.id });
         } else {
@@ -440,6 +443,29 @@ export const getSchemeById = async (req: Request, res: Response) => {
 
     if (found) {
       return res.json(found);
+    }
+
+    // Try direct API Mitra lookup by slug or id if API key is present
+    const apiKey = getApiMitraKey();
+    if (apiKey && apiKey.length > 0 && id) {
+      try {
+        const mitraRes = await axios.get(`${API_MITRA_SCHEMES_URL}/${encodeURIComponent(id)}`, {
+          headers: {
+            'x-api-key': apiKey,
+            'Accept': 'application/json',
+          },
+          timeout: 10000,
+          httpsAgent,
+        });
+
+        if (mitraRes.data && (mitraRes.data.data || mitraRes.data.scheme_name)) {
+          const raw = mitraRes.data.data || mitraRes.data;
+          const parsed = parseApiMitraSchemeRecord(raw, 0);
+          return res.json(parsed);
+        }
+      } catch (mErr) {
+        // Continue to Prisma DB lookup
+      }
     }
 
     const numId = Number(id);
@@ -502,3 +528,4 @@ function filterSchemes(
 
   return filtered;
 }
+

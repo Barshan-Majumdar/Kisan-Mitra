@@ -9,7 +9,10 @@ import {
   RefreshCw,
   ShieldCheck,
   Building2,
-  Calendar
+  Calendar,
+  Info,
+  X,
+  MapPinned
 } from 'lucide-react';
 import { Input } from '../components/ui/Input';
 import { Card } from '../components/ui/Card';
@@ -76,12 +79,12 @@ export const MarketPrices: React.FC = () => {
         trend: item.trend || 'stable',
       }));
 
-      if (mappedData.length > 0) {
-        setMarketPrices(mappedData);
-        setIsLiveGovFeed(mappedData.some(m => m.isLiveGovData));
-      }
+      // Always update prices, even when empty, so cleared or zero-result queries accurately clear previous results
+      setMarketPrices(mappedData);
+      setIsLiveGovFeed(mappedData.some(m => m.isLiveGovData));
     } catch (error) {
       console.error('Failed to fetch market prices:', error);
+      setMarketPrices([]);
     } finally {
       setLoading(false);
     }
@@ -99,19 +102,38 @@ export const MarketPrices: React.FC = () => {
     setSortConfig({ key, direction });
   };
 
+  // Derive unique active districts currently reported in the active state dataset
+  const availableDistricts = React.useMemo(() => {
+    const set = new Set<string>();
+    marketPrices.forEach((item) => {
+      if (item.district && item.district.trim().length > 0) {
+        set.add(item.district.trim());
+      }
+    });
+    return Array.from(set).sort();
+  }, [marketPrices]);
+
   const filteredData = marketPrices.filter((item) => {
     const cropName = item.commodity || item.crop?.name || '';
     const marketName = item.marketName || item.market || '';
     const districtName = item.district || '';
     const varietyName = item.variety || '';
-    const query = searchTerm.toLowerCase();
+    const query = searchTerm.toLowerCase().trim();
+    const distQuery = selectedDistrict.toLowerCase().trim();
 
-    return (
+    // Check if item strictly matches the selected district (if specified)
+    const matchesDistrict = !distQuery ||
+      districtName.toLowerCase().includes(distQuery) ||
+      marketName.toLowerCase().includes(distQuery);
+
+    // Check if item matches the user search term
+    const matchesSearch = !query ||
       cropName.toLowerCase().includes(query) ||
       marketName.toLowerCase().includes(query) ||
       districtName.toLowerCase().includes(query) ||
-      varietyName.toLowerCase().includes(query)
-    );
+      varietyName.toLowerCase().includes(query);
+
+    return matchesDistrict && matchesSearch;
   });
 
   const sortedData = React.useMemo(() => {
@@ -184,8 +206,8 @@ export const MarketPrices: React.FC = () => {
       {/* Main Table Card */}
       <Card padding="none" className="overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-card animate-slide-up w-full">
         {/* Filters Tray */}
-        <div className="p-4 sm:p-5 border-b border-stone-200/80 bg-[#FAF9F5] flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
-          <div className="flex flex-col sm:flex-row gap-3 flex-1 w-full">
+        <div className="p-4 sm:p-5 border-b border-stone-200/80 bg-[#FAF9F5] flex flex-col gap-3">
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
             {/* State Selector */}
             <div className="w-full sm:w-52 shrink-0">
               <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">State / Province</label>
@@ -204,15 +226,26 @@ export const MarketPrices: React.FC = () => {
             </div>
 
             {/* District Filter Input */}
-            <div className="w-full sm:w-44 shrink-0">
+            <div className="w-full sm:w-56 shrink-0">
               <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">District (Optional)</label>
-              <input
-                type="text"
-                placeholder="e.g. Nadia, Indore"
-                value={selectedDistrict}
-                onChange={(e) => setSelectedDistrict(e.target.value)}
-                className="w-full px-3.5 py-2.5 border border-stone-200/90 rounded-2xl text-xs sm:text-sm font-medium text-stone-800 focus:outline-none focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 bg-white shadow-soft placeholder:text-stone-400"
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="e.g. Murshidabad, Howrah"
+                  value={selectedDistrict}
+                  onChange={(e) => setSelectedDistrict(e.target.value)}
+                  className="w-full px-3.5 py-2.5 pr-8 border border-stone-200/90 rounded-2xl text-xs sm:text-sm font-medium text-stone-800 focus:outline-none focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 bg-white shadow-soft placeholder:text-stone-400 [&::-webkit-calendar-picker-indicator]:hidden"
+                />
+                {selectedDistrict && (
+                  <button
+                    onClick={() => setSelectedDistrict('')}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700 rounded-full hover:bg-stone-100 transition-colors"
+                    title="Clear district"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* Keyword Search Input */}
@@ -227,6 +260,41 @@ export const MarketPrices: React.FC = () => {
               />
             </div>
           </div>
+
+          {/* Quick Active Reporting District Pills */}
+          {availableDistricts.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5 pt-2.5 border-t border-stone-200/60 text-xs">
+              <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex items-center gap-1 mr-1">
+                <MapPinned className="h-3.5 w-3.5 text-emerald-600" /> Active APMCs in {selectedState}:
+              </span>
+              <button
+                onClick={() => setSelectedDistrict('')}
+                className={`px-2.5 py-1 rounded-xl text-xs font-semibold transition-all ${
+                  !selectedDistrict
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-white hover:bg-stone-200 text-stone-600 border border-stone-200'
+                }`}
+              >
+                All Mandis
+              </button>
+              {availableDistricts.map((dist) => {
+                const isSelected = selectedDistrict.toLowerCase().trim() === dist.toLowerCase().trim();
+                return (
+                  <button
+                    key={dist}
+                    onClick={() => setSelectedDistrict(dist)}
+                    className={`px-2.5 py-1 rounded-xl text-xs font-semibold transition-all ${
+                      isSelected
+                        ? 'bg-emerald-600 text-white shadow-xs'
+                        : 'bg-white hover:bg-stone-200 text-stone-700 border border-stone-200'
+                    }`}
+                  >
+                    {dist}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Market Rates Data Table - 100% Fit, Zero Horizontal Scroll on Desktop */}
@@ -300,9 +368,95 @@ export const MarketPrices: React.FC = () => {
                 </tr>
               ) : sortedData.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-stone-500">
-                    <p className="text-sm font-semibold text-stone-700">No mandi records found for {selectedState}.</p>
-                    <p className="text-xs text-stone-400 mt-1">Try clearing the district filter or selecting a different state.</p>
+                  <td colSpan={5} className="py-12 px-4 sm:px-6 text-center">
+                    {selectedDistrict && selectedDistrict.toLowerCase().includes('kolkata') ? (
+                      <div className="max-w-2xl mx-auto p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-50/90 to-emerald-50/40 border border-amber-200/90 text-left shadow-soft animate-fade-in">
+                        <div className="flex items-start gap-3.5">
+                          <div className="p-2.5 bg-amber-100/90 rounded-2xl text-amber-800 shrink-0 mt-0.5 shadow-xs">
+                            <Building2 className="h-5 w-5" />
+                          </div>
+                          <div className="space-y-2 flex-1">
+                            <div className="flex flex-wrap items-center justify-between gap-2">
+                              <h3 className="text-base font-extrabold text-stone-900 tracking-tight">
+                                No Direct APMC Mandis in Kolkata District
+                              </h3>
+                              <span className="px-2.5 py-0.5 rounded-full bg-amber-200/60 text-amber-900 text-[11px] font-bold">
+                                Urban Municipal District
+                              </span>
+                            </div>
+                            <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                              <strong>Kolkata is a metropolitan urban district</strong> and does not have agricultural crop harvesting mandis registered on the Government of India's <strong>AGMARKNET</strong> portal.
+                            </p>
+                            <p className="text-xs text-stone-600 leading-relaxed">
+                              Fresh produce for Kolkata's major consumer and wholesale markets (Posta, Sealdah Koley Market, Mechua) arrives via APMC wholesale mandis located across neighboring agricultural districts:
+                            </p>
+                            
+                            <div className="pt-2">
+                              <span className="text-[11px] font-bold text-stone-800 uppercase tracking-wider block mb-2">
+                                Recommended Nearby Wholesale APMC Mandis:
+                              </span>
+                              <div className="flex flex-wrap gap-2">
+                                <button
+                                  onClick={() => setSelectedDistrict('Howrah')}
+                                  className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
+                                >
+                                  📍 Howrah Mandi
+                                </button>
+                                <button
+                                  onClick={() => setSelectedDistrict('North 24 Parganas')}
+                                  className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
+                                >
+                                  📍 North 24 Parganas
+                                </button>
+                                <button
+                                  onClick={() => setSelectedDistrict('Hooghly')}
+                                  className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
+                                >
+                                  📍 Hooghly
+                                </button>
+                                <button
+                                  onClick={() => setSelectedDistrict('Nadia')}
+                                  className="px-3 py-1.5 rounded-xl bg-white border border-stone-200/90 text-xs font-bold text-stone-800 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 shadow-soft transition-all"
+                                >
+                                  📍 Nadia
+                                </button>
+                                <button
+                                  onClick={() => setSelectedDistrict('')}
+                                  className="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 shadow-soft transition-all"
+                                >
+                                  🌾 Show All West Bengal Mandis
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : selectedDistrict ? (
+                      <div className="max-w-md mx-auto p-6 rounded-3xl bg-stone-50 border border-stone-200/80 text-center shadow-soft animate-fade-in space-y-3">
+                        <div className="inline-flex p-3 bg-stone-100 rounded-2xl text-stone-600">
+                          <Info className="h-5 w-5" />
+                        </div>
+                        <h3 className="text-sm font-bold text-stone-800">
+                          No APMC arrivals recorded for "{selectedDistrict}" today
+                        </h3>
+                        <p className="text-xs text-stone-500 leading-relaxed">
+                          Daily mandi arrivals depend on reports submitted by local Agricultural Produce Market Committees to the Ministry of Agriculture (AGMARKNET).
+                        </p>
+                        <div className="flex flex-wrap justify-center gap-2 pt-1">
+                          <button
+                            onClick={() => setSelectedDistrict('')}
+                            className="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 transition-colors shadow-soft"
+                          >
+                            View All {selectedState} Mandis
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="space-y-1">
+                        <p className="text-sm font-semibold text-stone-700">No mandi records found for {selectedState}.</p>
+                        <p className="text-xs text-stone-400">Try clearing the search query or selecting a different state.</p>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ) : (

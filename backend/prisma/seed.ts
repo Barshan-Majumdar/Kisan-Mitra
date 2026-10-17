@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -590,7 +591,7 @@ async function main() {
       duration: '80-95 days',
       waterRequirement: 'Low',
       description: 'Sesame / Til. Category: Oilseed. National Benchmark Yield: 0.33 Tonnes/ha. Growth duration: 80-95 days. Water requirement: Low. Widely cultivated across India under recommended agronomic packages.',
-      imageUrl: 'https://images.unsplash.com/photo-1508873696983-2df5293cb395?w=800',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Sa_white_sesame_seeds.jpg/960px-Sa_white_sesame_seeds.jpg',
       soils: ["Red/red-yellow soil (proxy)", "Alluvial plains (proxy)", "Black cotton/regur (proxy)"],
       seasons: ["Kharif", "Summer"],
       benchmarkPrice: 8635,
@@ -602,7 +603,7 @@ async function main() {
       duration: '75-90 days',
       waterRequirement: 'Low',
       description: 'Small Millets (Kodo, Kutki, Kangni). Category: Cereal. National Benchmark Yield: 0.6 Tonnes/ha. Growth duration: 75-90 days. Water requirement: Low. Widely cultivated across India under recommended agronomic packages.',
-      imageUrl: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Indian_millets_commonly_used_in_kitchen.jpg/960px-Indian_millets_commonly_used_in_kitchen.jpg',
       soils: ["Red/red-yellow soil (proxy)", "Mountain/forest soil (proxy)"],
       seasons: ["Kharif", "Rabi"],
       benchmarkPrice: 3200,
@@ -614,7 +615,7 @@ async function main() {
       duration: '90-105 days',
       waterRequirement: 'Medium',
       description: 'Soybean (Soyabean). Category: Oilseed. National Benchmark Yield: 1.0 Tonnes/ha. Growth duration: 90-105 days. Water requirement: Medium. Widely cultivated across India under recommended agronomic packages.',
-      imageUrl: 'https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?w=800',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Soybean.USDA.jpg/960px-Soybean.USDA.jpg',
       soils: ["Black cotton/regur (proxy)", "Red/red-yellow soil (proxy)", "Alluvial plains (proxy)"],
       seasons: ["Kharif", "Whole Year"],
       benchmarkPrice: 4600,
@@ -626,7 +627,7 @@ async function main() {
       duration: '300-365 days',
       waterRequirement: 'Very High',
       description: 'Sugarcane / Ganna. Category: Sugar Crop. National Benchmark Yield: 53.12 Tonnes/ha. Growth duration: 300-365 days. Water requirement: Very High. Widely cultivated across India under recommended agronomic packages.',
-      imageUrl: 'https://images.unsplash.com/photo-1589923188900-85dae523342b?w=800',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Sugarcane_field_of_Kachirapalayam.jpg/960px-Sugarcane_field_of_Kachirapalayam.jpg',
       soils: ["Alluvial plains (proxy)", "Black cotton/regur (proxy)", "Red/red-yellow soil (proxy)"],
       seasons: ["Whole Year", "Kharif"],
       benchmarkPrice: 340,
@@ -638,7 +639,7 @@ async function main() {
       duration: '90-100 days',
       waterRequirement: 'Medium',
       description: 'Sunflower / Surajmukhi. Category: Oilseed. National Benchmark Yield: 0.8 Tonnes/ha. Growth duration: 90-100 days. Water requirement: Medium. Widely cultivated across India under recommended agronomic packages.',
-      imageUrl: 'https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=800',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Common_sunflower_%28Helianthus_annuus%29.jpg/960px-Common_sunflower_%28Helianthus_annuus%29.jpg',
       soils: ["Black cotton/regur (proxy)", "Red/red-yellow soil (proxy)", "Alluvial plains (proxy)"],
       seasons: ["Kharif", "Rabi", "Summer"],
       benchmarkPrice: 6760,
@@ -650,7 +651,7 @@ async function main() {
       duration: '110-130 days',
       waterRequirement: 'Medium',
       description: 'Sweet Potato / Shakarkand. Category: Horticulture Vegetable. National Benchmark Yield: 8.21 Tonnes/ha. Growth duration: 110-130 days. Water requirement: Medium. Widely cultivated across India under recommended agronomic packages.',
-      imageUrl: 'https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?w=800',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ipomoea_batatas_-_Tubers.jpg/960px-Ipomoea_batatas_-_Tubers.jpg',
       soils: ["Alluvial plains (proxy)", "Red/red-yellow soil (proxy)"],
       seasons: ["Whole Year", "Kharif"],
       benchmarkPrice: 2200,

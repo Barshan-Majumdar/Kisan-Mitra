@@ -64,7 +64,7 @@ export const getMarketPrices = async (req: Request, res: Response) => {
 
     // 1. Check in-memory cache first (instant response, zero government server latency)
     const cached = mandiCache.get(cacheKey);
-    if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS && cached.records.length > 0) {
+    if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
       console.log(`⚡ Serving ${cached.records.length} Mandi quotes from memory cache for [${cacheKey}]`);
       return res.json(cached.records);
     }
@@ -91,15 +91,13 @@ export const getMarketPrices = async (req: Request, res: Response) => {
         console.log(`🌾 Querying data.gov.in Mandi API (State: "${stateKey}", District: "${districtKey}")`);
         let response = await fetchWithRetry(DATA_GOV_BASE_URL, queryParams);
 
-        // If district-specific query returned 0 records, relax to state-wide quotes
-        if (
-          (!response.data || !Array.isArray(response.data.records) || response.data.records.length === 0) &&
-          queryParams['filters[district]']
-        ) {
-          console.log(`⚠️ 0 records for district "${districtKey}". Relaxing query to state-level: "${stateKey}"...`);
-          const relaxedParams = { ...queryParams };
-          delete relaxedParams['filters[district]'];
-          response = await fetchWithRetry(DATA_GOV_BASE_URL, relaxedParams);
+        // If a specific district was requested and returned 0 records, do NOT silently replace with other districts!
+        if (cleanDistrict && cleanDistrict !== 'All') {
+          if (!response.data || !Array.isArray(response.data.records) || response.data.records.length === 0) {
+            console.log(`ℹ️ 0 active mandi records for district "${districtKey}" in ${stateKey}. Respecting district query.`);
+            mandiCache.set(cacheKey, { timestamp: Date.now(), records: [] });
+            return res.json([]);
+          }
         }
 
         if (response.data && Array.isArray(response.data.records) && response.data.records.length > 0) {
@@ -135,20 +133,30 @@ export const getMarketPrices = async (req: Request, res: Response) => {
             };
           });
 
+          // Strictly filter by district if user specified one
+          let finalRecords = liveRecords;
+          if (cleanDistrict && cleanDistrict !== 'All') {
+            const dLower = cleanDistrict.toLowerCase().trim();
+            finalRecords = liveRecords.filter((r: any) =>
+              (r.district && r.district.toLowerCase().includes(dLower)) ||
+              (r.marketName && r.marketName.toLowerCase().includes(dLower))
+            );
+          }
+
           // Save to fast cache and resilient state backup
-          mandiCache.set(cacheKey, { timestamp: Date.now(), records: liveRecords });
+          mandiCache.set(cacheKey, { timestamp: Date.now(), records: finalRecords });
           lastGoodStateCache.set(stateKey, liveRecords);
           if (stateKey !== 'All') {
             lastGoodStateCache.set('All', liveRecords);
           }
 
-          return res.json(liveRecords);
+          return res.json(finalRecords);
         }
       } catch (govErr: any) {
         console.warn(`⚠️ data.gov.in request issue (${govErr.message}). Engaging resilient cache defense...`);
 
         // Check if we have cached records for this key (even if TTL passed)
-        if (cached && cached.records && cached.records.length > 0) {
+        if (cached && cached.records) {
           console.log(`🛡️ Serving previous live cache for [${cacheKey}] during government network glitch.`);
           return res.json(cached.records);
         }
@@ -156,6 +164,15 @@ export const getMarketPrices = async (req: Request, res: Response) => {
         // Check if we have state-level live quotes stored from earlier
         const stateQuotes = lastGoodStateCache.get(stateKey) || lastGoodStateCache.get('West Bengal') || lastGoodStateCache.get('All');
         if (stateQuotes && stateQuotes.length > 0) {
+          if (cleanDistrict && cleanDistrict !== 'All') {
+            const dLower = cleanDistrict.toLowerCase().trim();
+            const districtFiltered = stateQuotes.filter((r: any) =>
+              (r.district && r.district.toLowerCase().includes(dLower)) ||
+              (r.marketName && r.marketName.toLowerCase().includes(dLower))
+            );
+            console.log(`🛡️ Serving district-filtered (${districtFiltered.length} quotes) from state live cache for "${districtKey}".`);
+            return res.json(districtFiltered);
+          }
           console.log(`🛡️ Serving resilient state live cache (${stateQuotes.length} quotes) for "${stateKey}".`);
           return res.json(stateQuotes);
         }
@@ -164,8 +181,8 @@ export const getMarketPrices = async (req: Request, res: Response) => {
 
     // 3. Fallback to Prisma database if no API key or remote API is unavailable
     let whereClause: any = {};
-    if (district && String(district) !== 'All') {
-      whereClause.district = String(district);
+    if (cleanDistrict && cleanDistrict !== 'All') {
+      whereClause.district = { contains: cleanDistrict, mode: 'insensitive' };
     }
 
     let prices = await prisma.marketPrice.findMany({
@@ -179,8 +196,8 @@ export const getMarketPrices = async (req: Request, res: Response) => {
       take: Number(limit) || 50,
     });
 
-    // If district has 0 records in local DB, relax to general produce records so table is never empty!
-    if (prices.length === 0) {
+    // Only relax to general produce if NO specific district was requested by the user
+    if (prices.length === 0 && (!cleanDistrict || cleanDistrict === 'All')) {
       prices = await prisma.marketPrice.findMany({
         include: {
           crop: true,

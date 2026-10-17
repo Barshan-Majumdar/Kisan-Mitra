@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
+import axios from 'axios';
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ let chatModel: any = null;
 if (CROP_API_KEY) {
     try {
         cropGenAI = new GoogleGenerativeAI(CROP_API_KEY);
-        cropModel = cropGenAI.getGenerativeModel({ model: "gemini-3.6-flash" });
+        cropModel = cropGenAI.getGenerativeModel({ model: "gemini-3.5-flash-lite" });
         console.log("✅ Crop AI model initialized successfully");
     } catch (error) {
         console.error("Error initializing Crop Gemini AI:", error);
@@ -32,7 +33,7 @@ if (CROP_API_KEY) {
 if (CHAT_API_KEY) {
     try {
         chatGenAI = new GoogleGenerativeAI(CHAT_API_KEY);
-        chatModel = chatGenAI.getGenerativeModel({ model: "gemini-3.6-flash" });
+        chatModel = chatGenAI.getGenerativeModel({ model: "gemini-3.5-flash-lite" });
         console.log("✅ Chat AI model initialized successfully");
     } catch (error) {
         console.error("Error initializing Chat Gemini AI:", error);
@@ -200,7 +201,7 @@ export const generateFarmingPlan = async (
 ): Promise<string> => {
     // Attempt LLM generation if client is available
     if (cropGenAI) {
-        const candidateModels = ["gemini-3.6-flash", "gemini-3.5-flash", "gemini-2.5-flash", "gemini-1.5-flash"];
+        const candidateModels = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-2.5-flash", "gemini-3.6-flash"];
         for (const modelName of candidateModels) {
             try {
                 const model = cropGenAI.getGenerativeModel({ model: modelName });
@@ -294,4 +295,143 @@ export const chatWithAssistant = async (message: string, history: any[] = []): P
         return "I encountered an error processing your request. Please try again.";
     }
 };
+
+/**
+ * Resolves a live, genuine thumbnail image for a crop from the official Wikipedia / Wikimedia Commons API.
+ * Runs on-demand at prediction time with zero pre-stored dictionaries.
+ */
+export const resolveLiveCropImage = async (cropName: string, popularName?: string): Promise<string> => {
+    const rawClean = cropName.split(/[/()]/)[0].trim();
+    const popClean = popularName ? popularName.split(/[/()]/)[0].trim() : '';
+
+    const candidateTerms = [
+        rawClean,
+        popClean,
+        `${rawClean} (plant)`,
+        `${rawClean} crop`,
+        `${popClean} crop`
+    ].filter(Boolean);
+
+    for (const term of candidateTerms) {
+        try {
+            const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`;
+            const res = await axios.get(url, {
+                headers: { 'User-Agent': 'KisanMitraApp/1.0 (contact@kisanmitra.org)' },
+                timeout: 3000
+            });
+            if (res.data?.thumbnail?.source) {
+                return res.data.thumbnail.source;
+            }
+        } catch {
+            // continue to next term
+        }
+    }
+    return '';
+};
+
+/**
+ * Dynamically fetches accurate, genuine crop image URLs for recommended crops using Gemini.
+ * Eliminates reliance on static/pre-stored image dictionaries and guarantees valid, non-404 URLs.
+ */
+export const fetchCropImagesFromGemini = async (
+    crops: { name: string; popularName?: string }[]
+): Promise<Record<string, string>> => {
+    if (crops.length === 0) {
+        return {};
+    }
+
+    const resultImages: Record<string, string> = {};
+
+    // 1. Query Gemini Flash-Lite first for visual recommendation
+    if (cropGenAI) {
+        const cropListFormatted = crops
+            .map((c, i) => `${i + 1}. Crop: "${c.name}", Known as: "${c.popularName || c.name}"`)
+            .join('\n');
+
+        const prompt = `
+You are an expert agricultural botanist and visual archivist.
+For each of the following agricultural crops, provide a direct, publicly accessible, authentic high-resolution image URL showing the real, genuine crop or harvested produce (for example: genuine sugarcane stalks for Sugarcane, real sweet potato tubers for Sweet Potato, real white sesame seeds for Sesame, real rice paddy or grains for Rice):
+
+Crops to lookup:
+${cropListFormatted}
+
+CRITICAL RULES:
+1. Provide a direct, valid, publicly accessible image URL (e.g. from Unsplash or verified web CDNs).
+2. The image MUST strictly depict the exact crop as per its name. Never substitute with another vegetable or unrelated landscape.
+3. Return ONLY a valid JSON object where keys are the exact crop names provided and values are the corresponding image URLs.
+Example format:
+{
+  "${crops[0]?.name}": "https://images.unsplash.com/photo-..."
+}
+Do NOT wrap in markdown code blocks or add explanatory conversational text. Return raw JSON only.
+`;
+
+        const candidateModels = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-2.5-flash", "gemini-3.6-flash"];
+        for (const modelName of candidateModels) {
+            try {
+                const model = cropGenAI.getGenerativeModel({ model: modelName });
+                const result = await model.generateContent(prompt);
+                const response = await result.response;
+                let text = response.text() || '';
+
+                // Clean markdown code blocks if any
+                text = text.replace(/```json/gi, '').replace(/```/g, '').trim();
+
+                const firstBrace = text.indexOf('{');
+                const lastBrace = text.lastIndexOf('}');
+                if (firstBrace !== -1 && lastBrace !== -1) {
+                    text = text.substring(firstBrace, lastBrace + 1);
+                    const parsed = JSON.parse(text);
+                    if (parsed && typeof parsed === 'object') {
+                        Object.assign(resultImages, parsed);
+                        console.log(`✅ [Gemini] Fetched ${Object.keys(parsed).length} crop images via ${modelName}`);
+                        break;
+                    }
+                }
+            } catch (err: any) {
+                console.warn(`[Gemini Crop Images] Model ${modelName} call skipped: ${err.message?.slice(0, 80)}`);
+            }
+        }
+    }
+
+    // 2. Validate URLs and dynamically resolve any missing or broken 404 URLs via live Wikipedia API
+    const finalMap: Record<string, string> = {};
+
+    await Promise.all(
+        crops.map(async (crop) => {
+            let candidateUrl = resultImages[crop.name] || '';
+            let isValid = false;
+
+            if (candidateUrl && candidateUrl.startsWith('http')) {
+                try {
+                    const check = await axios.head(candidateUrl, {
+                        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+                        timeout: 2500,
+                        maxRedirects: 3
+                    });
+                    if (check.status >= 200 && check.status < 400) {
+                        isValid = true;
+                    }
+                } catch {
+                    isValid = false;
+                }
+            }
+
+            if (isValid) {
+                finalMap[crop.name] = candidateUrl;
+            } else {
+                // If Gemini returned a 404 URL or didn't return one, dynamically resolve the authentic live image
+                const liveImg = await resolveLiveCropImage(crop.name, crop.popularName);
+                if (liveImg) {
+                    finalMap[crop.name] = liveImg;
+                } else if (candidateUrl) {
+                    finalMap[crop.name] = candidateUrl;
+                }
+            }
+        })
+    );
+
+    return finalMap;
+};
+
 

@@ -13,7 +13,8 @@ import {
   MessageCircle,
   X,
   ArrowRight,
-  SlidersHorizontal
+  SlidersHorizontal,
+  Sparkles
 } from 'lucide-react';
 
 interface CommandPaletteProps {
@@ -30,6 +31,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       category: 'Agronomy Workflows',
       items: [
         { title: 'Recommend Crops for My Soil', desc: 'Run multi-stage AI model calibrated for 50 crops', path: '/input', icon: Sprout },
+        { title: 'Crop Recommendation History', desc: 'Inspect past recommended crop baskets and generate plans', path: '/recommendations', icon: Sparkles },
         { title: 'Calibrate Soil & Microclimate', desc: 'Directly modify N-P-K, pH, and environmental telemetry', path: '/calibrate', icon: SlidersHorizontal },
         { title: 'Advisory Records & Timelines', desc: 'Inspect past seasonal schedules and fertilizer plans', path: '/advisory-history', icon: ScrollText },
         { title: 'Crop Health & Disease Diagnostics', desc: 'Scan visual symptoms and receive treatment plans', path: '/disease', icon: ScanLine },

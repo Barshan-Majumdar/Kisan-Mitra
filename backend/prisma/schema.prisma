@@ -16,6 +16,8 @@ model User {
   soilData   SoilData[]
   tasks      Task[]
   advisories CropAdvisory[]
+  recommendationHistories RecommendationHistory[]
+  diseaseHistories DiseaseHistory[]
 }
 
 
@@ -152,4 +154,58 @@ model DistrictCrop {
   maxTemp     Float
   
   @@unique([district, cropId, seasonId])
+}
+
+model RecommendationHistory {
+  id                    Int      @id @default(autoincrement())
+  userId                Int?
+  userEmail             String?
+  state                 String
+  district              String
+  season                String
+  cultivatedArea        Float    @default(2.0)
+  areaUnit              String?  @default("Hectares")
+  soilType              String?
+  irrigationType        String?
+  nitrogen              Float?
+  phosphorus            Float?
+  potassium             Float?
+  ph                    Float?
+  temperature           Float?
+  humidity              Float?
+  rainfall              Float?
+  topPrediction         String
+  recommendedCrops      Json     // Array of recommended crops (rank, crop_name, popular_indian_name, confidence_pct, expected_yield_tonnes_per_ha, expected_total_harvest_tonnes, cropDetails, etc.)
+  farmSummary           Json?    // Location, season, cultivated_area_ha, soil_type
+  stage1Domains         Json?    // High-level category breakdown
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  user                  User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userEmail])
+  @@index([createdAt])
+}
+
+model DiseaseHistory {
+  id                    Int      @id @default(autoincrement())
+  userId                Int?
+  userEmail             String?
+  crop                  String
+  disease               String
+  isHealthy             Boolean  @default(false)
+  confidence            Float
+  pathogen              String?
+  severity              String?
+  symptoms              String?
+  chemicalTreatment     String?
+  organicTreatment      String?
+  prevention            String?
+  imageUrl              String?  @db.Text
+  differentialDiagnosis Json?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  user                  User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userEmail])
+  @@index([createdAt])
 }
