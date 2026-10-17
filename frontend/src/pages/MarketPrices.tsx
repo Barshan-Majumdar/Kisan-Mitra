@@ -51,7 +51,7 @@ export const MarketPrices: React.FC = () => {
   const [marketPrices, setMarketPrices] = useState<MarketPrice[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null);
+  const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({ key: '', direction: 'asc' });
   const [isLiveGovFeed, setIsLiveGovFeed] = useState<boolean>(false);
 
   // Automatically sync state from live browser location if available
@@ -96,7 +96,7 @@ export const MarketPrices: React.FC = () => {
 
   const handleSort = (key: string) => {
     let direction: 'asc' | 'desc' = 'asc';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
       direction = 'desc';
     }
     setSortConfig({ key, direction });
@@ -137,7 +137,7 @@ export const MarketPrices: React.FC = () => {
   });
 
   const sortedData = React.useMemo(() => {
-    if (!sortConfig) return filteredData;
+    if (!sortConfig || !sortConfig.key) return filteredData;
     return [...filteredData].sort((a, b) => {
       // @ts-expect-error - Dynamic key access
       const aValue = a[sortConfig.key] || a.commodity || a.crop?.name || '';
