@@ -40,8 +40,8 @@ export const MainLayout: React.FC = () => {
 
         {/* Modern Curved Stage Canvas (Detached Floating Workspace) */}
         <div className="flex-1 min-h-0 bg-white rounded-none lg:rounded-[1.375rem] border-0 lg:border border-stone-200/90 shadow-none lg:shadow-island flex flex-col overflow-hidden relative transition-all duration-300">
-          <main className="flex-1 overflow-y-auto p-2.5 sm:p-3.5 lg:p-4 custom-scrollbar">
-            <div className="mx-auto max-w-7xl pb-4">
+          <main className="flex-1 overflow-y-auto p-2.5 sm:p-3.5 lg:p-4 xl:p-5 custom-scrollbar">
+            <div className="w-full max-w-[1440px] xl:max-w-[1560px] 2xl:max-w-[1680px] mr-auto pb-4">
               <Outlet />
             </div>
           </main>
