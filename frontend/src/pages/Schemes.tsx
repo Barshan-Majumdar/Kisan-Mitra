@@ -78,19 +78,19 @@ export const Schemes: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in px-1 pb-10">
+    <div className="space-y-6 animate-fade-in w-full max-w-full pb-10">
       {/* Header section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div className="space-y-1">
+        <div className="space-y-1 min-w-0">
           <div className="flex items-center gap-2">
-            <span className="p-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/60 inline-flex">
+            <span className="p-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/60 inline-flex shrink-0">
               <Landmark className="h-5 w-5 text-emerald-700" />
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
               Agricultural Subsidies & Schemes
             </h2>
           </div>
-          <p className="text-sm text-stone-600">
+          <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
             Live official central and state government agricultural financial aid, subsidies, and direct benefit transfer (DBT) portals.
           </p>
         </div>
@@ -106,17 +106,17 @@ export const Schemes: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="space-y-3.5">
-        <div className="flex flex-col sm:flex-row gap-3">
+      <div className="space-y-3.5 w-full">
+        <div className="flex flex-col sm:flex-row gap-3 w-full">
           {/* Search box */}
-          <div className="relative flex-1">
+          <div className="relative flex-1 min-w-0">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by scheme name, keyword, crop insurance, or subsidy details..."
-              className="w-full pl-10 pr-4 py-2.5 text-sm bg-white border border-stone-200/80 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 text-stone-900 placeholder:text-stone-400 transition-all"
+              className="w-full pl-10 pr-12 py-2.5 text-xs sm:text-sm bg-white border border-stone-200/80 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 text-stone-900 placeholder:text-stone-400 transition-all"
             />
             {searchQuery && (
               <button
@@ -130,7 +130,7 @@ export const Schemes: React.FC = () => {
         </div>
 
         {/* Category Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-0.5">
           <Filter className="h-4 w-4 text-stone-400 shrink-0 ml-1 hidden sm:block" />
           {CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat;
@@ -138,7 +138,7 @@ export const Schemes: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`text-xs font-bold px-3.5 py-1.5 rounded-2xl whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                className={`text-xs font-bold px-3.5 py-1.5 rounded-2xl whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
                   isSelected
                     ? 'bg-stone-900 text-white shadow-sm ring-2 ring-stone-900/10'
                     : 'bg-white text-stone-600 border border-stone-200 hover:border-stone-300 hover:bg-stone-50'
@@ -153,11 +153,11 @@ export const Schemes: React.FC = () => {
 
       {/* Content Grid */}
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 py-6">
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
-              className="p-6 rounded-3xl bg-white border border-stone-200/80 shadow-card animate-pulse space-y-4"
+              className="p-4 sm:p-5 lg:p-6 rounded-3xl bg-white border border-stone-200/80 shadow-card animate-pulse space-y-4"
             >
               <div className="h-6 bg-stone-200/70 rounded-xl w-3/4"></div>
               <div className="h-4 bg-stone-200/50 rounded-lg w-full"></div>
@@ -187,83 +187,88 @@ export const Schemes: React.FC = () => {
           </Button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           {filteredSchemes.map((scheme) => (
             <Card
               key={scheme.id}
-              className="group flex flex-col p-6 rounded-3xl border border-stone-200/80 bg-white shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+              className="group flex flex-col p-4 sm:p-5 lg:p-6 rounded-3xl border border-stone-200/80 bg-white shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden min-w-0"
             >
               {/* Top Row: Category + Status Badge */}
-              <div className="flex items-center justify-between gap-2 mb-2.5">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-700 border border-stone-200/70">
+              <div className="flex flex-wrap items-start justify-between gap-2 mb-2.5">
+                <div className="flex flex-wrap items-center gap-1.5 min-w-0 flex-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-700 border border-stone-200/70 break-words">
                     {scheme.category || 'Agricultural Aid'}
                   </span>
                   {scheme.state && scheme.state !== 'National' && (
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70">
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70 shrink-0">
                       {scheme.state}
                     </span>
                   )}
                 </div>
-                <Badge variant="success" size="sm">
+                <Badge variant="success" size="sm" className="shrink-0 whitespace-nowrap">
                   Active DBT
                 </Badge>
               </div>
 
               {/* Scheme Name */}
-              <h3 className="text-lg font-black text-stone-900 tracking-tight line-clamp-2 mb-2 group-hover:text-emerald-800 transition-colors">
+              <h3 className="text-base sm:text-lg font-black text-stone-900 tracking-tight line-clamp-2 mb-2 group-hover:text-emerald-800 transition-colors break-words leading-snug">
                 {scheme.name}
               </h3>
 
               {/* Funding / Subsidy Tag */}
               {scheme.funding && (
-                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 bg-emerald-50/80 px-2.5 py-1 rounded-xl border border-emerald-200/60 mb-3 self-start">
-                  <Banknote className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
-                  <span>{scheme.funding}</span>
+                <div className="inline-flex items-start sm:items-center gap-1.5 text-xs font-bold text-emerald-800 bg-emerald-50/80 px-2.5 py-1 rounded-xl border border-emerald-200/60 mb-3 self-start max-w-full">
+                  <Banknote className="h-3.5 w-3.5 text-emerald-700 shrink-0 mt-0.5 sm:mt-0" />
+                  <span className="break-words leading-tight">{scheme.funding}</span>
                 </div>
               )}
 
               {/* Description */}
-              <p className="text-stone-600 text-sm mb-5 line-clamp-3 leading-relaxed flex-1">
+              <p className="text-stone-600 text-xs sm:text-sm mb-4 sm:mb-5 line-clamp-3 leading-relaxed flex-1 break-words">
                 {scheme.description}
               </p>
 
               {/* Details & Info Boxes */}
               <div className="space-y-2 mt-auto">
-                <div className="flex items-center text-xs text-stone-600 p-2.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/70">
-                  <Info className="h-4 w-4 mr-2 text-emerald-700 shrink-0" />
-                  <span className="font-bold mr-1 text-stone-800">Eligibility:</span>
-                  <span className="truncate">
+                <div className="flex flex-col sm:flex-row sm:items-center text-xs text-stone-600 p-2.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/70 gap-1 sm:gap-1.5">
+                  <div className="flex items-center gap-1.5 shrink-0 text-stone-800 font-bold">
+                    <Info className="h-4 w-4 text-emerald-700 shrink-0" />
+                    <span>Eligibility:</span>
+                  </div>
+                  <span className="text-stone-700 min-w-0 line-clamp-2 sm:truncate break-words leading-snug">
                     {scheme.eligibilityCriteria || scheme.eligibility || 'All active farmers'}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-stone-600 p-2.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/70">
-                  <div className="flex items-center min-w-0">
-                    <Calendar className="h-4 w-4 mr-2 text-emerald-700 shrink-0" />
-                    <span className="font-bold mr-1 text-stone-800">Deadline:</span>
-                    <span className="truncate">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs text-stone-600 p-2.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/70 gap-1.5 sm:gap-2">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <Calendar className="h-4 w-4 text-emerald-700 shrink-0" />
+                    <span className="font-bold text-stone-800 shrink-0">Deadline:</span>
+                    <span className="text-stone-700 font-medium break-words">
                       {scheme.deadline ? new Date(scheme.deadline).toLocaleDateString() : 'Ongoing / Open Year-Round'}
                     </span>
                   </div>
                   {scheme.source && (
-                    <span className="text-[10px] text-stone-500 font-medium truncate ml-2 hidden sm:inline">
-                      {scheme.source.split('(')[0]}
-                    </span>
+                    <div className="flex items-center gap-1 min-w-0 sm:ml-auto">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 sm:hidden shrink-0">Dept:</span>
+                      <span className="text-[11px] sm:text-[10px] text-stone-500 font-medium break-words leading-tight">
+                        {scheme.source.split('(')[0].trim()}
+                      </span>
+                    </div>
                   )}
                 </div>
 
                 {/* Primary Action Buttons: Apply Now & Inspect Guidelines */}
-                <div className="pt-2 flex items-center gap-2.5">
+                <div className="pt-2 flex flex-col min-[340px]:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5">
                   <button
-                    className="flex-1 py-2.5 px-4 rounded-xl font-bold text-xs text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 transition-colors shadow-xs flex items-center justify-center cursor-pointer text-center"
+                    className="flex-1 py-2.5 px-4 rounded-xl font-bold text-xs text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 transition-colors shadow-xs flex items-center justify-center cursor-pointer text-center whitespace-nowrap min-h-[38px]"
                     onClick={(e) => handleApplyClick(scheme.applicationLink, e)}
                   >
                     Apply Now
                   </button>
                   <Button
                     variant="outline"
-                    className="flex-1 rounded-xl font-bold text-xs py-2.5 text-stone-700 hover:text-stone-900 border-stone-300"
+                    className="flex-1 rounded-xl font-bold text-xs py-2.5 text-stone-700 hover:text-stone-900 border-stone-300 min-h-[38px]"
                     onClick={() => setSelectedScheme(scheme)}
                   >
                     Guidelines
