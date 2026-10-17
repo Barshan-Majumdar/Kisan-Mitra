@@ -414,26 +414,38 @@ export const DiseaseDetect: React.FC = () => {
           </p>
         </div>
 
-        {/* Model Specs Pill */}
-        <div className="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-2xl bg-emerald-50 border border-emerald-200/80 text-emerald-800 self-start sm:self-auto shrink-0 shadow-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-          </span>
-          <span>model_v1.pt (98.3% Val Acc)</span>
+        {/* Model Specs & Badges */}
+        <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto shrink-0 pt-1 sm:pt-0">
+          <div className="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-2xl bg-emerald-50 border border-emerald-200/80 text-emerald-800 shadow-sm shrink-0">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+            </span>
+            <span>model_v1.pt (98.3% Val Acc)</span>
+          </div>
+
+          {/* On mobile: companion badge right next to model_v1.pt */}
+          <button
+            type="button"
+            onClick={() => setShowCatalogModal(true)}
+            className="sm:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-white hover:bg-emerald-50 border border-stone-200/80 text-xs font-semibold text-stone-700 hover:text-emerald-800 shadow-sm transition-all active:scale-95 shrink-0"
+          >
+            <HelpCircle className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
+            <span>38 Supported Diseases</span>
+          </button>
         </div>
       </div>
 
-      {/* Primary Navigation Tabs: Diagnostic Scanner vs History & Supported Diseases */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 border-b border-stone-200/80 pb-2.5 sm:pb-1">
-        <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
+      {/* Primary Navigation Tabs: Segmented Track on Mobile & Desktop */}
+      <div className="flex items-center justify-between border-b border-stone-200/80 pb-2.5">
+        <div className="grid grid-cols-2 sm:flex sm:items-center p-1 rounded-2xl bg-stone-100/90 border border-stone-200/80 w-full sm:w-auto gap-1">
           <button
             type="button"
             onClick={() => setActiveTab('detect')}
-            className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all ${
+            className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
               activeTab === 'detect'
                 ? 'bg-emerald-800 text-white shadow-soft'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
             }`}
           >
             <Camera className="h-4 w-4 shrink-0" />
@@ -443,10 +455,10 @@ export const DiseaseDetect: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveTab('history')}
-            className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all ${
+            className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
               activeTab === 'history'
                 ? 'bg-emerald-800 text-white shadow-soft'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
             }`}
           >
             <History className="h-4 w-4 shrink-0" />
@@ -461,10 +473,11 @@ export const DiseaseDetect: React.FC = () => {
           </button>
         </div>
 
+        {/* On desktop: aligned cleanly on the right of the navigation row */}
         <button
           type="button"
           onClick={() => setShowCatalogModal(true)}
-          className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-2xl bg-[#FAF9F5] sm:bg-transparent hover:bg-emerald-50 border border-stone-200/80 sm:border-stone-200/60 text-xs font-semibold text-stone-700 hover:text-emerald-800 transition-all self-start sm:self-auto shadow-sm sm:shadow-none"
+          className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-white hover:bg-emerald-50 border border-stone-200/80 text-xs font-semibold text-stone-700 hover:text-emerald-800 shadow-soft transition-all active:scale-95 shrink-0"
         >
           <HelpCircle className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
           <span>38 Supported Diseases</span>
