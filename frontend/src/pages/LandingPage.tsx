@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Sprout,
@@ -6,22 +6,69 @@ import {
   Sparkles,
   TrendingUp,
   Landmark,
-  CheckCircle2,
-  CalendarCheck,
   MessageSquareCode,
   ScanEye,
   Activity,
   Layers,
   ChevronDown,
-  ChevronRight,
   LineChart,
+  Check,
+  CalendarCheck,
+  MapPin,
 } from 'lucide-react';
 import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 import { LanguageToggle } from '../components/LanguageToggle';
 
+// 4-Step Interactive Agronomy Pipeline Stepper matching reference layout
+const PIPELINE_STEPS = [
+  {
+    step: '01',
+    title: 'Calibrate Soil',
+    description: 'N-P-K, pH & edaphic moisture telemetry',
+    icon: Layers,
+    metric: 'Optimal N: 90kg/ha • pH 6.8',
+    route: '/calibrate',
+  },
+  {
+    step: '02',
+    title: 'Neural Pathology',
+    description: 'PyTorch vision scan across 50+ crop diseases',
+    icon: ScanEye,
+    metric: 'YOLO11m • 120ms leaf inference',
+    route: '/disease',
+  },
+  {
+    step: '03',
+    title: 'Crop Recommendation',
+    description: 'Dual-stage agronomic climate match',
+    icon: Sprout,
+    metric: 'Rice (Oryza sativa) • 96.8% Match',
+    route: '/recommendations',
+  },
+  {
+    step: '04',
+    title: 'Market & DBT Schemes',
+    description: 'Live APMC rates & verified welfare portal',
+    icon: TrendingUp,
+    metric: 'AGMARKNET Mandi • ₹3,850/Qtl',
+    route: '/market',
+  },
+];
+
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeStep, setActiveStep] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+
+  // Auto-cycle through the 4-step pipeline when not hovered
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % PIPELINE_STEPS.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -29,14 +76,87 @@ export const LandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F4F3EE] text-stone-900 font-sans selection:bg-emerald-100 selection:text-emerald-900 relative overflow-x-hidden">
-      {/* Background Decorative Mesh Gradients */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[650px] pointer-events-none overflow-hidden -z-10">
-        <div className="absolute top-[-100px] left-[15%] w-[450px] h-[450px] rounded-full bg-emerald-300/20 blur-[120px]" />
-        <div className="absolute top-[80px] right-[10%] w-[500px] h-[500px] rounded-full bg-lime-300/15 blur-[140px]" />
-        <div className="absolute top-[280px] left-[40%] w-[350px] h-[350px] rounded-full bg-amber-200/20 blur-[130px]" />
+      {/* Subtle Engineering Grid Backdrop with Radial Mask */}
+      <div className="absolute inset-0 engineering-grid pointer-events-none -z-10" />
+
+      {/* Physical Archival Paper / Film-Grain Noise Texture */}
+      <div className="absolute inset-0 noise-overlay pointer-events-none -z-10 opacity-65" />
+
+      {/* Ambient Radial Mesh Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[780px] pointer-events-none overflow-hidden -z-20">
+        <div className="absolute top-[-80px] left-[15%] w-[520px] h-[520px] rounded-full bg-emerald-400/20 blur-[130px]" />
+        <div className="absolute top-[80px] right-[8%] w-[580px] h-[580px] rounded-full bg-gradient-to-br from-emerald-300/25 via-teal-200/20 to-lime-200/20 blur-[140px]" />
+        <div className="absolute top-[340px] left-[30%] w-[420px] h-[420px] rounded-full bg-amber-100/20 blur-[140px]" />
       </div>
 
-      {/* Floating Modern Header / Navbar */}
+      {/* Floating Decorative Elements (Dashed Radar Orbits, Twinkling Stars, Crosses, Dot Matrix) */}
+      <div className="absolute inset-0 max-w-7xl mx-auto pointer-events-none -z-10 overflow-hidden">
+        {/* Top-Left Dashed Radar Circle with Center Crosshair */}
+        <div className="absolute top-20 left-4 sm:left-8 opacity-45">
+          <svg className="w-28 h-28 sm:w-36 sm:h-36 text-emerald-800 animate-spin-slow" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="44" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 6" fill="none" />
+            <circle cx="50" cy="50" r="28" stroke="currentColor" strokeWidth="0.8" strokeDasharray="2 4" fill="none" opacity="0.6" />
+            <line x1="50" y1="42" x2="50" y2="58" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+            <line x1="42" y1="50" x2="58" y2="50" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+          </svg>
+        </div>
+
+        {/* Twinkling Star Sparkle (Top-Center) */}
+        <div className="absolute top-28 left-[38%] animate-twinkle text-emerald-600/50">
+          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+          </svg>
+        </div>
+
+        {/* Twinkling Star Sparkle (Mid-Right) */}
+        <div className="absolute top-[380px] right-[48%] animate-twinkle text-emerald-500/40" style={{ animationDelay: '1.5s' }}>
+          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+          </svg>
+        </div>
+
+        {/* Top-Right Dot Matrix (4x4) */}
+        <div className="absolute top-16 right-6 sm:right-12 grid grid-cols-4 gap-2.5 opacity-30">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span key={i} className="h-1.5 w-1.5 rounded-full bg-emerald-800" />
+          ))}
+        </div>
+
+        {/* Mid-Left Floating Plus Mark */}
+        <div className="absolute top-52 left-6 sm:left-12 animate-float-slow text-emerald-800/40 font-mono text-xl select-none">
+          +
+        </div>
+
+        {/* Mid-Right Floating Plus Mark */}
+        <div className="absolute top-[480px] right-8 sm:right-20 animate-float-reverse text-emerald-800/40 font-mono text-2xl select-none">
+          +
+        </div>
+
+        {/* Mid-Right 3x3 Dot Matrix */}
+        <div className="absolute top-[420px] right-4 sm:right-8 grid grid-cols-3 gap-2.5 opacity-25">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <span key={i} className="h-1.5 w-1.5 rounded-full bg-emerald-800" />
+          ))}
+        </div>
+
+        {/* Bottom-Left 4x4 Dot Matrix */}
+        <div className="absolute top-[680px] left-6 sm:left-16 grid grid-cols-4 gap-2.5 opacity-25">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span key={i} className="h-1.5 w-1.5 rounded-full bg-emerald-800" />
+          ))}
+        </div>
+
+        {/* Bottom-Right Dashed Radar Circle */}
+        <div className="absolute top-[600px] right-6 sm:right-16 opacity-35">
+          <svg className="w-32 h-32 sm:w-44 sm:h-44 text-emerald-800 animate-spin-slow" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="1.2" strokeDasharray="5 7" fill="none" />
+            <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 5" fill="none" opacity="0.5" />
+            <circle cx="50" cy="50" r="16" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" fill="none" opacity="0.3" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Floating Pill Navbar (Always stuck at top with frosted glass island pill) */}
       <header className="fixed top-2 sm:top-4 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 pointer-events-none">
         <nav className="mx-auto max-w-6xl rounded-full bg-white/90 backdrop-blur-xl border border-white/80 px-2.5 min-[360px]:px-3.5 sm:px-5 md:px-6 py-1.5 sm:py-2.5 flex items-center justify-between shadow-[0_12px_36px_rgba(0,0,0,0.05),inset_0_1px_1.5px_rgba(255,255,255,1),inset_0_-1px_1px_rgba(0,0,0,0.02)] ring-1 ring-black/[0.04] hover:border-emerald-200/90 transition-all duration-300 pointer-events-auto">
           {/* Left Brand Identity */}
@@ -106,190 +226,430 @@ export const LandingPage: React.FC = () => {
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-12 sm:pt-16 pb-16 px-4 sm:px-6 relative">
-        <div className="mx-auto max-w-5xl text-center space-y-6">
-          {/* Status Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-stone-200/90 shadow-soft text-xs font-bold text-stone-800">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-            </span>
-            <span className="text-stone-600">Dual-Stage AI Agronomy</span>
-            <span className="text-stone-300">•</span>
-            <span className="text-emerald-800 font-extrabold">Govt Data Integrated</span>
-          </div>
+      {/* Hero Section: 2-Column Split Layout matching the reference image */}
+      <section className="pt-20 sm:pt-28 pb-14 sm:pb-20 px-3.5 sm:px-6 relative">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
 
-          {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-stone-900 leading-[1.08]">
-            Intelligent Farming for <br className="hidden sm:block" />
-            <span className="bg-gradient-to-r from-emerald-800 via-emerald-600 to-lime-600 bg-clip-text text-transparent">
-              Higher Yields & Profitability
-            </span>
-          </h1>
+            {/* Left Column: Typography, Tag, Underline, Three Radiant Sparks, CTAs */}
+            <div className="lg:col-span-7 space-y-5 sm:space-y-7">
+              {/* Announcement Pill Tag */}
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 p-1 pr-3 rounded-full bg-white/90 backdrop-blur-md border border-stone-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,1)] ring-1 ring-black/[0.03] text-xs text-stone-700 group hover:border-emerald-300 transition-all cursor-default max-w-full overflow-hidden">
+                <span className="font-mono bg-gradient-to-r from-emerald-800 to-emerald-950 text-white font-bold text-[9.5px] sm:text-[11px] px-2 sm:px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 shadow-sm shrink-0">
+                  <Sparkles className="h-3 w-3 text-emerald-300" />
+                  Autonomous
+                </span>
+                <span className="text-stone-600 font-medium text-[11px] sm:text-sm flex items-center gap-1 truncate">
+                  <span className="truncate">Watch the AI diagnose crops in real-time</span>
+                  {/* <ArrowRight className="h-3.5 w-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-1 transition-all shrink-0" /> */}
+                </span>
+              </div>
 
-          {/* Subtitle */}
-          <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-stone-600 leading-relaxed font-normal">
-            Precision soil chemistry analysis, PyTorch leaf disease diagnostics, live APMC mandi rates from{' '}
-            <span className="font-semibold text-stone-800">data.gov.in</span>, and direct welfare subsidies via{' '}
-            <span className="font-semibold text-stone-800">API Mitra</span>—unified into a single, farmer-first workspace.
-          </p>
+              {/* Main Headline with Fraunces Display Serif, Organic Brush Underline and Three Radiant Lines */}
+              <h1 className="font-display text-3xl min-[380px]:text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-normal tracking-tight text-stone-900 leading-[1.08] sm:leading-[1.02] select-none text-balance">
+                <span className="block text-stone-950 font-normal">Understand</span>
+                <span className="relative inline-block text-emerald-800 my-1 font-semibold italic">
+                  any harvest
 
-          {/* CTA Buttons */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <SignedOut>
-              <Link
-                to="/signup"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
-              >
-                <span>Get Started Free</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/login"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-stone-800 bg-white hover:bg-stone-50 border border-stone-200/90 shadow-soft hover:shadow-card transition-all flex items-center justify-center gap-2"
-              >
-                <span>Sign In to Portal</span>
-                <ChevronRight className="h-4 w-4 text-stone-400" />
-              </Link>
-            </SignedOut>
+                  {/* Three Slanted Radiant Sparks - Positioned at upper-right shoulder of the word */}
+                  <span className="absolute -top-1 sm:-top-2 md:-top-3 left-[calc(100%+6px)] sm:left-[calc(100%+10px)] md:left-[calc(100%+12px)] pointer-events-none select-none not-italic">
+                    <svg
+                      className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 text-emerald-500 animate-spark-radiant overflow-visible filter drop-shadow-[0_0_6px_rgba(34,197,94,0.45)]"
+                      viewBox="0 0 32 28"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {/* 3 radiant sparks fanning outward from lower-left to upper-right */}
+                      <line x1="5" y1="22" x2="10" y2="8" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" className="text-emerald-600" />
+                      <line x1="13" y1="21" x2="21" y2="9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-emerald-500" />
+                      <line x1="20" y1="22" x2="29" y2="16" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" className="text-emerald-400" />
+                    </svg>
+                  </span>
 
-            <SignedIn>
-              <button
-                onClick={() => navigate('/dashboard')}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-sm sm:text-base text-white bg-emerald-800 hover:bg-emerald-700 shadow-card hover:shadow-card-hover transition-all flex items-center justify-center gap-2"
-              >
-                <span>Enter Farmer Workspace</span>
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </SignedIn>
-          </div>
+                  {/* Organic Curved Hand-Drawn Brush Underline (matching reference) */}
+                  <svg
+                    className="absolute -bottom-2 sm:-bottom-3.5 left-0 w-full h-3.5 sm:h-6 text-emerald-500 overflow-visible pointer-events-none filter drop-shadow-[0_1.5px_2px_rgba(22,101,52,0.18)] not-italic"
+                    viewBox="0 0 320 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M 4 16 Q 80 22 160 17 Q 240 12 316 15 Q 245 20 160 21 Q 75 22 6 17"
+                      fill="currentColor"
+                      opacity="0.95"
+                    />
+                    <path
+                      d="M 10 18 C 90 22 195 18 310 16"
+                      stroke="currentColor"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                      className="animate-draw-underline"
+                    />
+                  </svg>
+                </span>
+                <span className="block text-stone-950 font-normal">in seconds.</span>
+              </h1>
 
-          {/* Trust Metrics Bar */}
-          <div className="pt-6 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm font-semibold text-stone-600">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
-              <span>Higher Prediction Accuracy</span>
+              {/* Refined Agronomy Subtitle */}
+              <p className="max-w-xl text-stone-600 text-xs min-[400px]:text-sm sm:text-base md:text-lg leading-relaxed font-normal text-pretty">
+                A refined, intelligent agronomy layer over Indian agriculture. Diagnose plant pathologies, calibrate edaphic soil chemistry, and discover live APMC mandi prices seamlessly in real time.
+              </p>
+
+              {/* Action Buttons (Pill shaped with Button-in-Button trailing arrow) */}
+              <div className="pt-2 flex flex-col min-[440px]:flex-row items-stretch min-[440px]:items-center gap-3 sm:gap-3.5">
+                <SignedOut>
+                  <Link
+                    to="/signup"
+                    className="relative overflow-hidden w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#0d3b24] via-[#14532d] to-[#0a2e1c] hover:from-[#14532d] hover:via-[#15803d] hover:to-[#14532d] border border-emerald-500/40 hover:border-emerald-400/80 shadow-[0_10px_25px_-4px_rgba(20,83,45,0.45),inset_0_1px_1.5px_rgba(255,255,255,0.35)] hover:shadow-[0_14px_34px_-4px_rgba(22,101,52,0.6),inset_0_1px_2px_rgba(255,255,255,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group"
+                  >
+                    <span className="absolute inset-0 noise-overlay opacity-30 pointer-events-none rounded-full" />
+                    <span className="relative z-10 tracking-tight">Deploy Advisor</span>
+                    <span className="relative z-10 w-6 h-6 rounded-full bg-white/15 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:translate-x-1 transition-all duration-300 shadow-xs">
+                      <ArrowRight className="h-3.5 w-3.5 text-emerald-100 group-hover:text-emerald-950 transition-colors duration-300" />
+                    </span>
+                  </Link>
+                  <a
+                    href="#technology"
+                    className="w-full min-[440px]:w-auto px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-stone-700 bg-white/95 hover:bg-white border border-stone-200/90 hover:border-emerald-300/80 shadow-[0_2px_8px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,1)] hover:shadow-card hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <span>View Architecture</span>
+                  </a>
+                </SignedOut>
+
+                <SignedIn>
+                  <button
+                    onClick={() => navigate('/dashboard')}
+                    className="relative overflow-hidden w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#0d3b24] via-[#14532d] to-[#0a2e1c] hover:from-[#14532d] hover:via-[#15803d] hover:to-[#14532d] border border-emerald-500/40 hover:border-emerald-400/80 shadow-[0_10px_25px_-4px_rgba(20,83,45,0.45),inset_0_1px_1.5px_rgba(255,255,255,0.35)] hover:shadow-[0_14px_34px_-4px_rgba(22,101,52,0.6),inset_0_1px_2px_rgba(255,255,255,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group"
+                  >
+                    <span className="absolute inset-0 noise-overlay opacity-30 pointer-events-none rounded-full" />
+                    <span className="relative z-10 tracking-tight">Enter Farmer Workspace</span>
+                    <span className="relative z-10 w-6 h-6 rounded-full bg-white/15 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:translate-x-1 transition-all duration-300 shadow-xs">
+                      <ArrowRight className="h-3.5 w-3.5 text-emerald-100 group-hover:text-emerald-950 transition-colors duration-300" />
+                    </span>
+                  </button>
+                  <a
+                    href="#platform"
+                    className="w-full min-[440px]:w-auto px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-stone-700 bg-white/95 hover:bg-white border border-stone-200/90 hover:border-emerald-300/80 shadow-[0_2px_8px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,1)] hover:shadow-card hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 text-center"
+                  >
+                    Explore Features
+                  </a>
+                </SignedIn>
+              </div>
+
+              {/* Trust Metric Micro-Badges */}
+              <div className="pt-3 flex flex-wrap items-center gap-3 sm:gap-5 text-[11px] sm:text-xs font-semibold text-stone-500">
+                <span className="flex items-center gap-1.5">
+                  <span className="h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
+                    <Check className="h-3 w-3 stroke-[3]" />
+                  </span>
+                  <span>Higher Prediction Accuracy</span>
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
+                    <Check className="h-3 w-3 stroke-[3]" />
+                  </span>
+                  <span>50+ Indian Crops</span>
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
+                    <Check className="h-3 w-3 stroke-[3]" />
+                  </span>
+                  <span>100% Free for Farmers</span>
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
-              <span>50+ Supported Indian Crops</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
-              <span>100% Free for Farmers</span>
+
+            {/* Right Column: 4-Step Interactive Workflow Pipeline Stepper */}
+            <div
+              className="lg:col-span-5 relative"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {/* Dedicated Luminous Ambient Glow Halo behind the Stepper Stack */}
+              <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-br from-emerald-400/20 via-teal-300/15 to-lime-200/20 rounded-[2.5rem] blur-3xl pointer-events-none -z-10" />
+
+              {/* Stepper Card Stack with strictly bounded connecting line */}
+              <div className="relative space-y-3 sm:space-y-3.5">
+                {/* Vertical Connecting Line strictly bounded behind cards between Card 01 and Card 04 */}
+                <div className="absolute left-[33px] sm:left-[43px] top-[40px] sm:top-[44px] bottom-[40px] sm:bottom-[44px] w-[2px] bg-stone-200/90 z-0 overflow-hidden rounded-full pointer-events-none">
+                  {/* Progress Fill */}
+                  <div
+                    className="w-full bg-emerald-600 transition-all duration-500 rounded-full"
+                    style={{ height: `${((activeStep + 1) / PIPELINE_STEPS.length) * 100}%` }}
+                  />
+                  {/* Glowing light pulse particle strictly clipped within the line */}
+                  <div className="absolute w-2 h-6 -left-[3px] rounded-full bg-gradient-to-b from-emerald-300 via-emerald-400 to-emerald-600 shadow-[0_0_8px_rgba(34,197,94,0.9)] animate-line-pulse pointer-events-none" />
+                </div>
+
+                {PIPELINE_STEPS.map((item, idx) => {
+                  const isActive = activeStep === idx;
+                  const Icon = item.icon;
+
+                  return (
+                    <div
+                      key={item.step}
+                      onClick={() => setActiveStep(idx)}
+                      className={`relative z-10 group p-3.5 sm:p-4.5 rounded-[1.5rem] sm:rounded-[1.75rem] border transition-all duration-300 cursor-pointer flex flex-col gap-2 sm:gap-2.5 overflow-hidden ${isActive
+                          ? 'bg-gradient-to-br from-[#EDF9F1] via-[#F7FCF9] to-[#E3F4EA] border-emerald-500/70 active-bezel-card ring-2 ring-emerald-500/25 -translate-x-0.5 sm:-translate-x-1 scale-[1.01]'
+                          : 'bg-gradient-to-b from-white/95 via-[#FCFBF8]/95 to-[#FAF8F3]/90 backdrop-blur-md border-stone-200/80 double-bezel-card ring-1 ring-black/[0.03] hover:-translate-x-0.5 hover:border-emerald-300/80 hover:shadow-[0_14px_32px_rgba(22,101,52,0.07),inset_0_1px_1.5px_rgba(255,255,255,1)]'
+                        }`}
+                    >
+                      {/* Micro Texture Pattern Overlay for Active Card */}
+                      {isActive && (
+                        <>
+                          <div className="absolute inset-0 topo-pattern opacity-70 pointer-events-none rounded-[1.5rem] sm:rounded-[1.75rem]" />
+                          <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none rounded-[1.5rem] sm:rounded-[1.75rem]" />
+                        </>
+                      )}
+
+                      <div className="relative z-10 flex items-center justify-between gap-2.5 sm:gap-3">
+                        {/* Left Icon Badge & Text Content */}
+                        <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+                          {/* Standalone Step Icon */}
+                          <div className="relative z-20 shrink-0 flex items-center justify-center w-7 h-7 sm:w-10 sm:h-10">
+                            <Icon
+                              className={`transition-all duration-300 ${isActive
+                                  ? 'h-5 w-5 sm:h-7 sm:w-7 text-emerald-800 scale-105'
+                                  : 'h-4.5 w-4.5 sm:h-6 sm:w-6 text-stone-400 group-hover:text-emerald-700'
+                                }`}
+                            />
+                          </div>
+
+                          {/* Step Counter & Text */}
+                          <div className="min-w-0 space-y-0.5">
+                            <div className="flex items-center gap-1.5 sm:gap-2">
+                              <span
+                                className={`text-[9.5px] sm:text-[11px] font-mono font-bold tracking-wider px-1.5 sm:px-2 py-0.5 rounded-md ${isActive
+                                    ? 'bg-emerald-100/90 text-emerald-950 border border-emerald-200/80 shadow-xs'
+                                    : 'bg-[#F2EFEA] text-stone-600 border border-stone-200/60'
+                                  }`}
+                              >
+                                {item.step}
+                              </span>
+                              <span className={isActive ? 'text-emerald-400 font-bold' : 'text-stone-300'}>•</span>
+                              <h3 className={`text-xs sm:text-sm font-display font-medium truncate tracking-tight ${isActive ? 'text-stone-950' : 'text-stone-900'}`}>
+                                {item.title}
+                              </h3>
+                            </div>
+                            <p className={`text-[10.5px] sm:text-xs truncate font-medium ${isActive ? 'text-emerald-900/80' : 'text-stone-500'}`}>
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Right Status Indicator Dot */}
+                        <div className="shrink-0 pl-1">
+                          {isActive ? (
+                            <span className="relative flex h-3 w-3 sm:h-3.5 sm:w-3.5">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-3 w-3 sm:h-3.5 sm:w-3.5 bg-emerald-600 ring-2 ring-white shadow-xs"></span>
+                            </span>
+                          ) : (
+                            <span className="block h-2 w-2 rounded-full bg-stone-300 group-hover:bg-emerald-400 transition-colors shadow-xs" />
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Expanded Interactive Telemetry Row for Active Step */}
+                      {isActive && (
+                        <div className="relative z-10 pt-2 sm:pt-2.5 flex items-center justify-between gap-1.5 sm:gap-2 border-t border-emerald-200/60 mt-1">
+                          <span className="font-mono inline-flex items-center gap-1 sm:gap-1.5 text-[9px] min-[380px]:text-[10px] sm:text-[11px] font-semibold text-emerald-950 bg-white/90 backdrop-blur-xs border border-emerald-300/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-[inset_0_1px_1px_rgba(255,255,255,1),0_1px_3px_rgba(0,0,0,0.04)] whitespace-nowrap min-w-0 max-w-[58%] min-[380px]:max-w-none">
+                            <Sparkles className="h-3 w-3 text-emerald-600 shrink-0" />
+                            <span className="truncate">{item.metric}</span>
+                          </span>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(item.route);
+                            }}
+                            className="inline-flex items-center gap-1 sm:gap-1.5 text-[9.5px] min-[380px]:text-[10px] sm:text-[11px] font-bold text-white bg-gradient-to-r from-emerald-800 to-emerald-900 hover:from-emerald-700 hover:to-emerald-800 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full shadow-[0_4px_14px_rgba(22,101,52,0.3),inset_0_1px_1px_rgba(255,255,255,0.25)] transition-all active:scale-95 group/btn whitespace-nowrap shrink-0"
+                          >
+                            <span>Open Tool</span>
+                            <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-white/20 flex items-center justify-center group-hover/btn:translate-x-0.5 transition-transform shrink-0">
+                              <ArrowRight className="h-2 w-2 sm:h-2.5 sm:w-2.5 text-white" />
+                            </span>
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Stepper Helper Footer */}
+              <div className="mt-3.5 flex flex-wrap items-center justify-between gap-1.5 px-2 text-[11px] font-medium text-stone-500">
+                <span className="font-mono flex items-center gap-1.5 text-[9px] sm:text-[10px] uppercase tracking-wider truncate">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(34,197,94,0.8)] shrink-0"></span>
+                  <span className="truncate">Autonomous Agronomic Pipeline</span>
+                </span>
+                <span className="text-emerald-900 font-mono font-bold bg-emerald-50/90 border border-emerald-200/80 px-2 sm:px-2.5 py-0.5 rounded-full text-[9px] sm:text-[10px] shadow-xs shrink-0">
+                  Stage {activeStep + 1} of 4
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Live Interactive Workspace Preview Showcase Card */}
-        <div className="mt-12 sm:mt-16 mx-auto max-w-6xl">
-          <div className="relative rounded-[1.375rem] bg-white p-4 sm:p-6 lg:p-8 border border-stone-200/90 shadow-island overflow-hidden">
+        <div id="platform" className="scroll-mt-28 mt-12 sm:mt-24 mx-auto max-w-6xl">
+          <div className="relative rounded-2xl sm:rounded-[1.5rem] bg-white p-3.5 sm:p-7 lg:p-9 border border-stone-200/90 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.07)] overflow-hidden">
             {/* Top Workspace Header Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-stone-100 gap-3">
-              <div className="flex items-center gap-3">
-                <div className="h-3 w-3 rounded-full bg-rose-400" />
-                <div className="h-3 w-3 rounded-full bg-amber-400" />
-                <div className="h-3 w-3 rounded-full bg-emerald-400" />
-                <span className="text-xs font-bold text-stone-400 ml-2">kisan-mitra.workspace / live-preview</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 sm:pb-6 border-b border-stone-100 gap-2.5 sm:gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-rose-400/90" />
+                  <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-400/90" />
+                  <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-400/90" />
+                </div>
+                <span className="text-[11px] sm:text-xs font-mono font-bold text-stone-400 ml-1 sm:ml-2 truncate">
+                  kisan-mitra.workspace / live-preview
+                </span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200/60 self-start sm:self-auto">
-                <Activity className="h-3.5 w-3.5 text-emerald-600 animate-pulse" />
-                <span>Live Agro-Sensor & Yield Engine</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-mono font-bold text-stone-500 bg-stone-100 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full shrink-0">
+                  <MapPin className="h-3 w-3 text-emerald-700" /> Nadia, WB
+                </span>
+                <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-emerald-50 text-emerald-800 text-[10px] sm:text-xs font-bold border border-emerald-200/60 min-w-0 max-w-full">
+                  <Activity className="h-3.5 w-3.5 text-emerald-600 animate-pulse shrink-0" />
+                  <span className="truncate">Real-time Agro-Sensor Telemetry Active</span>
+                </span>
               </div>
             </div>
 
             {/* Micro Dashboard Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 pt-4 sm:pt-6">
               {/* Card 1: Crop Recommendation Match */}
-              <div className="p-5 rounded-3xl bg-[#FAF9F5] border border-stone-200/70 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
-                    Dual-Stage AI Output
-                  </span>
-                  <span className="text-xs font-black text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full">
-                    96.8% Match
-                  </span>
-                </div>
+              <div
+                onClick={() => navigate('/recommendations')}
+                className="group p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/70 hover:border-emerald-300 hover:shadow-card transition-all cursor-pointer flex flex-col justify-between space-y-3 sm:space-y-4"
+              >
                 <div>
-                  <h4 className="text-xl font-extrabold text-stone-900">Rice (Oryza sativa)</h4>
-                  <p className="text-xs text-stone-500 mt-1">Recommended for Alluvial Loam • Nadia, WB</p>
-                </div>
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-semibold text-stone-600">
-                    <span>Soil Nitrogen (N: 90 kg/ha)</span>
-                    <span className="text-emerald-700 font-bold">Optimal</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-stone-500">
+                      Dual-Stage AI Output
+                    </span>
+                    <span className="text-[11px] sm:text-xs font-mono font-bold text-emerald-800 bg-emerald-100/90 px-2.5 py-0.5 rounded-full border border-emerald-200/60">
+                      96.8% Match
+                    </span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-stone-200 overflow-hidden">
-                    <div className="h-full bg-emerald-600 rounded-full w-[94%]" />
+                  <div className="mt-2.5 sm:mt-3">
+                    <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 group-hover:text-emerald-800 transition-colors">
+                      Rice (Oryza sativa)
+                    </h4>
+                    <p className="text-xs text-stone-500 mt-1">Recommended for Alluvial Loam • Monsoon Cycle</p>
                   </div>
                 </div>
-                <div className="pt-2 flex items-center justify-between text-xs text-stone-600">
-                  <span>Harvest Window:</span>
-                  <span className="font-bold text-stone-900">110-120 Days</span>
+
+                <div className="space-y-3">
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-xs font-semibold text-stone-600">
+                      <span>Soil Nitrogen (N: 90 kg/ha)</span>
+                      <span className="font-mono text-emerald-800 font-bold">Optimal</span>
+                    </div>
+                    <div className="w-full h-2 rounded-full bg-stone-200 overflow-hidden">
+                      <div className="h-full bg-emerald-600 rounded-full w-[94%]" />
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between text-xs text-stone-600 border-t border-stone-200/60">
+                    <span className="font-medium">Harvest Window:</span>
+                    <span className="font-mono font-bold text-stone-900">110-120 Days</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs font-bold text-emerald-800 group-hover:translate-x-0.5 transition-transform">
+                    <span>Launch Recommender</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
               </div>
 
               {/* Card 2: Plant Disease Diagnostic */}
-              <div className="p-5 rounded-3xl bg-[#FAF9F5] border border-stone-200/70 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
-                    PyTorch Computer Vision
-                  </span>
-                  <span className="text-xs font-black text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-full">
-                    Detected
-                  </span>
-                </div>
+              <div
+                onClick={() => navigate('/disease')}
+                className="group p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/70 hover:border-emerald-300 hover:shadow-card transition-all cursor-pointer flex flex-col justify-between space-y-3 sm:space-y-4"
+              >
                 <div>
-                  <h4 className="text-xl font-extrabold text-stone-900">Rice Leaf Blast</h4>
-                  <p className="text-xs text-stone-500 mt-1">Magnaporthe oryzae • Moderate Severity</p>
-                </div>
-                <div className="p-3 rounded-2xl bg-white border border-stone-200/80 text-xs text-stone-700 space-y-1">
-                  <div className="font-bold text-emerald-800 flex items-center gap-1">
-                    <Sparkles className="h-3 w-3" />
-                    Recommended Prescription:
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-stone-500">
+                      PyTorch Computer Vision
+                    </span>
+                    <span className="text-[11px] sm:text-xs font-mono font-bold text-amber-800 bg-amber-100/90 px-2.5 py-0.5 rounded-full border border-amber-200/60">
+                      Detected
+                    </span>
                   </div>
-                  <p className="text-[11px] leading-relaxed text-stone-600">
-                    Foliar spray of Tricyclazole 75% WP @ 0.6g/L + Neem oil 2ml/L.
-                  </p>
+                  <div className="mt-2.5 sm:mt-3">
+                    <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 group-hover:text-emerald-800 transition-colors">
+                      Rice Leaf Blast
+                    </h4>
+                    <p className="text-xs text-stone-500 mt-1">Magnaporthe oryzae • Moderate Severity</p>
+                  </div>
                 </div>
-                <div className="pt-1 flex items-center justify-between text-xs text-stone-600">
-                  <span>Scan Time:</span>
-                  <span className="font-bold text-emerald-700">120ms (YOLO11m)</span>
+
+                <div className="space-y-3">
+                  <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white border border-stone-200/80 text-xs text-stone-700 space-y-1">
+                    <div className="font-bold text-emerald-800 flex items-center gap-1">
+                      <Sparkles className="h-3 w-3" />
+                      Recommended Remedy:
+                    </div>
+                    <p className="text-[11px] leading-relaxed text-stone-600">
+                      Foliar spray of Tricyclazole 75% WP @ 0.6g/L + Neem oil 2ml/L.
+                    </p>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between text-xs text-stone-600 border-t border-stone-200/60">
+                    <span className="font-medium">Scan Time:</span>
+                    <span className="font-mono font-bold text-emerald-800">120ms (YOLO11m)</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs font-bold text-emerald-800 group-hover:translate-x-0.5 transition-transform">
+                    <span>Launch Leaf Scanner</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
               </div>
 
               {/* Card 3: Mandi Rates & Govt Welfare */}
-              <div className="p-5 rounded-3xl bg-[#FAF9F5] border border-stone-200/70 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
-                    APMC & Welfare Aid
-                  </span>
-                  <span className="text-xs font-black text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-full">
-                    Live Rates
-                  </span>
-                </div>
+              <div
+                onClick={() => navigate('/market')}
+                className="group p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/70 hover:border-emerald-300 hover:shadow-card transition-all cursor-pointer flex flex-col justify-between space-y-3 sm:space-y-4"
+              >
                 <div>
-                  <div className="flex items-baseline justify-between">
-                    <h4 className="text-xl font-extrabold text-stone-900">₹3,850 / Qtl</h4>
-                    <span className="text-xs font-bold text-emerald-600 flex items-center">
-                      <TrendingUp className="h-3 w-3 mr-0.5" /> +4.2%
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-stone-500">
+                      APMC & Welfare Aid
+                    </span>
+                    <span className="text-[11px] sm:text-xs font-mono font-bold text-blue-800 bg-blue-100/90 px-2.5 py-0.5 rounded-full border border-blue-200/60">
+                      Live Rates
                     </span>
                   </div>
-                  <p className="text-xs text-stone-500 mt-1">Ranaghat Mandi (AGMARKNET data.gov.in)</p>
-                </div>
-
-                <div className="p-3 rounded-2xl bg-white border border-stone-200/80 space-y-1">
-                  <div className="flex items-center justify-between text-xs font-bold text-stone-800">
-                    <span>PM-KISAN DBT Scheme</span>
-                    <span className="text-emerald-700">Active</span>
+                  <div className="mt-2.5 sm:mt-3">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <h4 className="font-display text-xl sm:text-2xl font-medium text-stone-900 group-hover:text-emerald-800 transition-colors">
+                        ₹3,850 / Qtl
+                      </h4>
+                      <span className="text-xs font-mono font-bold text-emerald-600 flex items-center shrink-0">
+                        <TrendingUp className="h-3 w-3 mr-0.5" /> +4.2%
+                      </span>
+                    </div>
+                    <p className="text-xs text-stone-500 mt-1">Ranaghat Mandi (AGMARKNET data.gov.in)</p>
                   </div>
-                  <p className="text-[11px] text-stone-500">₹6,000 / yr income support via API Mitra</p>
                 </div>
 
-                <div className="pt-1 flex items-center justify-between text-xs text-stone-600">
-                  <span>Official Application:</span>
-                  <span className="font-bold text-emerald-700 underline">1-Click Portal</span>
+                <div className="space-y-3">
+                  <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white border border-stone-200/80 space-y-1">
+                    <div className="flex items-center justify-between text-xs font-bold text-stone-800">
+                      <span className="font-display font-medium">PM-KISAN DBT Scheme</span>
+                      <span className="font-mono text-emerald-800 font-bold">Active</span>
+                    </div>
+                    <p className="text-[11px] text-stone-500">₹6,000 / yr income support via API Mitra</p>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between text-xs text-stone-600 border-t border-stone-200/60">
+                    <span className="font-medium">Direct Portal:</span>
+                    <span className="font-bold text-emerald-800 underline">Official Gateway</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs font-bold text-emerald-800 group-hover:translate-x-0.5 transition-transform">
+                    <span>Explore Mandi & Grants</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -297,7 +657,7 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Features Pillars (Bento Grid) */}
+      {/* Core Platform Pillars (Bento Grid) */}
       <section id="features" className="py-20 px-4 sm:px-6 bg-white border-y border-stone-200/80">
         <div className="mx-auto max-w-6xl space-y-12">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
