@@ -100,8 +100,11 @@ export const getPrediction = async (req: Request, res: Response): Promise<void> 
     }
 
     const runPredictionTask = async () => {
-      // Determine target AI Service endpoint
-      const PRIMARY_AI_URL = process.env.CROP_PREDICTION_API_URL || 'http://127.0.0.1:8000/predict';
+      // Determine target AI Service endpoint (auto-appends /predict if only base URL is provided)
+      const rawAiUrl = (process.env.CROP_PREDICTION_API_URL || 'http://127.0.0.1:8000/predict').trim();
+      const PRIMARY_AI_URL = rawAiUrl.endsWith('/predict') 
+        ? rawAiUrl 
+        : `${rawAiUrl.replace(/\/+$/, '')}/predict`;
       const REMOTE_FALLBACK_URL = 'https://crop-model-api.onrender.com/predict';
 
       console.log('🚀 Sending crop advisory request to AI Service:', modelInput.State, modelInput.District, modelInput.Crop_Season);
