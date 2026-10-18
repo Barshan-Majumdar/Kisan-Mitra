@@ -6,8 +6,6 @@ import fs from 'fs';
 import os from 'os';
 import prisma from '../prisma';
 
-import { diagnoseDiseaseWithGemini } from '../services/geminiService';
-
 const getAiServiceBase = (): string => {
   const url = process.env.AI_SERVICE_URL || process.env.CROP_PREDICTION_API_URL || 'https://barshan249-kisan-mitra.hf.space';
   return url.replace(/\/predict\/?$/, '').replace(/\/+$/, '');
@@ -183,40 +181,10 @@ export const predictCropDisease = async (req: Request, res: Response): Promise<v
       }
     }
 
-    // 3. Multimodal Botanical Vision Diagnostic Fallback via Google Gemini Vision
-    console.log('🤖 Engaging Google Gemini Multimodal Vision for plant pathology diagnosis...');
-    try {
-      const geminiResult = await diagnoseDiseaseWithGemini(image);
-      if (geminiResult && geminiResult.crop) {
-        console.log(`✅ Diagnosis via Gemini Multimodal Vision: ${geminiResult.crop} - ${geminiResult.disease} (${geminiResult.confidence}%)`);
-        const formatted = await persistAndFormatDiagnosis(geminiResult, image, userEmail);
-        res.json(formatted);
-        return;
-      }
-    } catch (geminiErr: any) {
-      console.error('❌ Gemini Vision diagnosis error:', geminiErr.message);
-    }
-
-    // 4. Safe botanical diagnostic fallback if all vision services encounter errors
-    const safeFallback = {
-      success: true,
-      crop: 'Agricultural Crop',
-      disease: 'Foliar Leaf Spot / Nutrient Deficiency',
-      isHealthy: false,
-      confidence: 82.0,
-      pathogen: 'Fungi / Nutrient Stress',
-      severity: 'Moderate',
-      symptoms: 'Observed irregular chlorotic spots, foliar discoloration, and margin leaf necrosis.',
-      chemicalTreatment: 'Apply broad-spectrum protective fungicide Mancozeb 75 WP at 2.5 g/L or Copper Oxychloride 50 WP at 3.0 g/L.',
-      organicTreatment: 'Spray bio-fungicide Pseudomonas fluorescens at 5 ml/L or Neem oil (1500 ppm) at 3 ml/L with liquid soap emulsifier.',
-      prevention: 'Maintain adequate plant spacing for aeration, avoid overhead sprinkler wetting of foliage, and practice crop rotation.',
-      differentialDiagnosis: [
-        { disease: 'Cercospora Leaf Spot', probability: 45 },
-        { disease: 'Potassium / Micronutrient Deficiency', probability: 35 }
-      ]
-    };
-    const formatted = await persistAndFormatDiagnosis(safeFallback, image, userEmail);
-    res.json(formatted);
+    res.status(502).json({
+      success: false,
+      error: 'PyTorch foliar diagnosis model (model_v1.pt) is currently unavailable. Please ensure the AI microservice is reachable.',
+    });
   } catch (err: any) {
     console.error('❌ Disease prediction controller error:', err);
     res.status(500).json({
