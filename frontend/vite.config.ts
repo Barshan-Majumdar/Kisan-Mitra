@@ -6,4 +6,16 @@ export default defineConfig({
   plugins: [
     react()
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-clerk': ['@clerk/clerk-react'],
+          'vendor-icons': ['lucide-react'],
+          'vendor-katex': ['katex']
+        }
+      }
+    }
+  }
 })
