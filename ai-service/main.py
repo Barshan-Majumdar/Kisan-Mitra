@@ -27,9 +27,14 @@ from pydantic import BaseModel, Field
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# File Paths
-CROP_MODEL_PATH = os.path.join(BASE_DIR, "random_forest_crop_model.pkl")
-CAT_MODEL_PATH = os.path.join(BASE_DIR, "random_forest_category_model.pkl")
+# File Paths (Check high-compression .joblib first, fallback to .pkl)
+CROP_MODEL_PATH = os.path.join(BASE_DIR, "random_forest_crop_model.joblib")
+if not os.path.exists(CROP_MODEL_PATH):
+    CROP_MODEL_PATH = os.path.join(BASE_DIR, "random_forest_crop_model.pkl")
+
+CAT_MODEL_PATH = os.path.join(BASE_DIR, "random_forest_category_model.joblib")
+if not os.path.exists(CAT_MODEL_PATH):
+    CAT_MODEL_PATH = os.path.join(BASE_DIR, "random_forest_category_model.pkl")
 META_PATH = os.path.join(BASE_DIR, "rf_model_bundle_metadata.json")
 YIELD_PATH = os.path.join(BASE_DIR, "crop_yield_reference.json")
 BASELINE_PATH = os.path.join(BASE_DIR, "regional_soil_baselines.json")
@@ -85,8 +90,7 @@ async def lifespan(app: FastAPI):
     # 6. Stage 1 Category Model
     if os.path.exists(CAT_MODEL_PATH):
         try:
-            with open(CAT_MODEL_PATH, "rb") as f:
-                ai_resources["cat_model"] = pickle.load(f)
+            ai_resources["cat_model"] = joblib.load(CAT_MODEL_PATH)
             print("[AI Service] Stage 1 Category Model loaded (89.5% accuracy).")
         except Exception as e:
             print(f"[AI Service] Failed to load category model: {e}")
@@ -94,9 +98,8 @@ async def lifespan(app: FastAPI):
     # 7. Stage 2 50-Crop Random Forest Model
     if os.path.exists(CROP_MODEL_PATH):
         try:
-            print("[AI Service] Loading 2.59 GB Stage 2 Specific Crop Model (this may take ~10-15s)...")
-            with open(CROP_MODEL_PATH, "rb") as f:
-                ai_resources["crop_model"] = pickle.load(f)
+            print("[AI Service] Loading Stage 2 Specific Crop Model...")
+            ai_resources["crop_model"] = joblib.load(CROP_MODEL_PATH)
             print("[AI Service] Stage 2 Specific Crop Model loaded successfully (94.4% Top-3 advisory).")
         except Exception as e:
             print(f"[AI Service] Failed to load crop model: {e}")
