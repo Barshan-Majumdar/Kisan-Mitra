@@ -13,6 +13,10 @@ import {
   ChevronDown,
   LineChart,
   Check,
+  Zap,
+  BarChart3,
+  Database,
+  Cpu,
   CreditCard,
   ShieldCheck,
   MapPin,
@@ -1178,40 +1182,76 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Technology & Architecture Section */}
-      <section id="technology" className="py-20 px-4 sm:px-6">
+      <section id="technology" className="scroll-mt-28 py-12 sm:py-20 px-3.5 sm:px-6 bg-[#F4F3EE]">
         <div className="mx-auto max-w-6xl">
-          <div className="rounded-[1.5rem] bg-gradient-to-br from-[#0c261b] via-[#133c2a] to-[#1c543c] p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-island">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="rounded-2xl sm:rounded-[1.75rem] bg-gradient-to-br from-[#0c261b] via-[#123827] to-[#1a4a35] p-5 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-island">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/15 rounded-full blur-[100px] pointer-events-none" />
 
-            <div className="max-w-2xl space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-emerald-200">
-                <Layers className="h-3.5 w-3.5 text-emerald-300" />
-                <span>Modern Open Engineering</span>
+            <div className="max-w-2xl space-y-3 sm:space-y-4">
+              <div className="font-mono inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-emerald-200 max-w-full truncate">
+                <Layers className="h-3.5 w-3.5 text-emerald-300 shrink-0" />
+                <span className="truncate">Modern Open Agronomic Engineering</span>
               </div>
-              <h3 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+              <h3 className="font-display text-2xl min-[400px]:text-3xl sm:text-5xl font-normal tracking-tight leading-tight text-white text-balance">
                 Architected for High Precision in Rural Realities
               </h3>
-              <p className="text-emerald-100/90 text-sm sm:text-base leading-relaxed">
+              <p className="text-emerald-100/90 text-xs sm:text-base leading-relaxed">
                 Kisan Mitra utilizes dual-stage machine learning trained on official Area-Production-Yield (APY) datasets, PyTorch convolutional vision models, and official government APIs.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 border-t border-white/15 mt-10">
+            {/* Architecture Stack Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-6 sm:pt-10 mt-6 sm:mt-10 border-t border-white/15">
+              <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-1.5 text-emerald-300 font-bold text-[11px] sm:text-xs font-mono uppercase mb-1.5 sm:mb-2">
+                  <Cpu className="h-4 w-4 shrink-0" /> Vision CNN
+                </div>
+                <h5 className="font-display font-medium text-white text-sm sm:text-base">PyTorch YOLO11m</h5>
+                <p className="text-[11px] sm:text-xs text-emerald-100/70 mt-1 leading-snug">120ms leaf affliction inference on edge</p>
+              </div>
+
+              <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-1.5 text-emerald-300 font-bold text-[11px] sm:text-xs font-mono uppercase mb-1.5 sm:mb-2">
+                  <BarChart3 className="h-4 w-4 shrink-0" /> Dual-Stage ML
+                </div>
+                <h5 className="font-display font-medium text-white text-sm sm:text-base">Random Forest APY</h5>
+                <p className="text-[11px] sm:text-xs text-emerald-100/70 mt-1 leading-snug">Multi-crop ranking calibrated to soil N-P-K</p>
+              </div>
+
+              <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-1.5 text-emerald-300 font-bold text-[11px] sm:text-xs font-mono uppercase mb-1.5 sm:mb-2">
+                  <Database className="h-4 w-4 shrink-0" /> Live Pipelines
+                </div>
+                <h5 className="font-display font-medium text-white text-sm sm:text-base">AGMARKNET & API Mitra</h5>
+                <p className="text-[11px] sm:text-xs text-emerald-100/70 mt-1 leading-snug">Direct sync with data.gov.in & myScheme</p>
+              </div>
+
+              <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-1.5 text-emerald-300 font-bold text-[11px] sm:text-xs font-mono uppercase mb-1.5 sm:mb-2">
+                  <Zap className="h-4 w-4 shrink-0" /> AI Advisory
+                </div>
+                <h5 className="font-display font-medium text-white text-sm sm:text-base">Google Gemini Flash</h5>
+                <p className="text-[11px] sm:text-xs text-emerald-100/70 mt-1 leading-snug">Trilingual agronomic reasoning 24/7</p>
+              </div>
+            </div>
+
+            {/* Live Metrics Strip */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-6 sm:pt-10 border-t border-white/15 mt-6 sm:mt-8">
               <div>
-                <div className="text-3xl sm:text-4xl font-black text-emerald-300">75+</div>
-                <div className="text-xs sm:text-sm text-emerald-100/80 mt-1">Disease Classes Detected</div>
+                <div className="font-display text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-normal text-emerald-300">75+</div>
+                <div className="text-[11px] sm:text-sm text-emerald-100/80 mt-0.5 sm:mt-1 leading-tight">Disease Classes Detected</div>
               </div>
               <div>
-                <div className="text-3xl sm:text-4xl font-black text-emerald-300">3,000+</div>
-                <div className="text-xs sm:text-sm text-emerald-100/80 mt-1">Live APMC Mandis</div>
+                <div className="font-display text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-normal text-emerald-300">3,000+</div>
+                <div className="text-[11px] sm:text-sm text-emerald-100/80 mt-0.5 sm:mt-1 leading-tight">Live APMC Mandis</div>
               </div>
               <div>
-                <div className="text-3xl sm:text-4xl font-black text-emerald-300">4,700+</div>
-                <div className="text-xs sm:text-sm text-emerald-100/80 mt-1">Welfare Schemes</div>
+                <div className="font-display text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-normal text-emerald-300">4,700+</div>
+                <div className="text-[11px] sm:text-sm text-emerald-100/80 mt-0.5 sm:mt-1 leading-tight">Welfare Schemes</div>
               </div>
               <div>
-                <div className="text-3xl sm:text-4xl font-black text-emerald-300">&lt; 1.2s</div>
-                <div className="text-xs sm:text-sm text-emerald-100/80 mt-1">Model Inference Speed</div>
+                <div className="font-display text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-normal text-emerald-300">&lt; 1.2s</div>
+                <div className="text-[11px] sm:text-sm text-emerald-100/80 mt-0.5 sm:mt-1 leading-tight">Global Model Inference</div>
               </div>
             </div>
           </div>
@@ -1219,22 +1259,22 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Frequently Asked Questions */}
-      <section id="faq" className="py-20 px-4 sm:px-6 bg-white border-t border-stone-200/80">
-        <div className="mx-auto max-w-4xl space-y-10">
+      <section id="faq" className="scroll-mt-28 py-12 sm:py-20 px-3.5 sm:px-6 bg-white border-t border-stone-200/80">
+        <div className="mx-auto max-w-4xl space-y-8 sm:space-y-10">
           <div className="text-center space-y-2">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-800">
+            <h2 className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full inline-block">
               Answers & Transparency
             </h2>
-            <h3 className="text-3xl font-extrabold text-stone-900 tracking-tight">
+            <h3 className="font-display text-2xl min-[400px]:text-3xl sm:text-4xl font-normal text-stone-900 tracking-tight text-balance">
               Frequently Asked Questions
             </h3>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {[
               {
                 q: 'How does Kisan Mitra recommend the best crops for my field?',
-                a: 'Kisan Mitra evaluates your soil nitrogen (N), phosphorus (P), potassium (K), soil pH, and your geographic climate (temperature, humidity, seasonal rainfall). Our dual-stage Random Forest model cross-references these with regional historical yield data to output the top 5 optimal crops with confidence scores.',
+                a: 'Kisan Mitra evaluates your soil nitrogen (N), phosphorus (P), potassium (K), soil pH, and your geographic climate (temperature, humidity, seasonal rainfall). Our dual-stage model cross-references these with regional historical yield data to output the top 5 optimal crops with confidence scores.',
               },
               {
                 q: 'Where do the live Mandi prices and Government Schemes come from?',
@@ -1257,21 +1297,20 @@ export const LandingPage: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className="rounded-3xl border border-stone-200/80 bg-[#FAF9F5] p-5 sm:p-6 transition-all"
+                  className="rounded-2xl sm:rounded-3xl border border-stone-200/80 bg-[#FAF9F5] p-3.5 sm:p-6 transition-all"
                 >
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full flex items-center justify-between text-left gap-4 cursor-pointer"
+                    className="w-full flex items-center justify-between text-left gap-3 cursor-pointer"
                   >
-                    <span className="font-bold text-base sm:text-lg text-stone-900">{faq.q}</span>
+                    <span className="font-display font-medium text-sm sm:text-base md:text-lg text-stone-900 leading-snug">{faq.q}</span>
                     <ChevronDown
-                      className={`h-5 w-5 text-stone-500 shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 text-emerald-700' : ''
-                      }`}
+                      className={`h-4 w-4 sm:h-5 sm:w-5 text-stone-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-emerald-800' : ''
+                        }`}
                     />
                   </button>
                   {isOpen && (
-                    <div className="pt-3 text-sm text-stone-600 leading-relaxed border-t border-stone-200/60 mt-3">
+                    <div className="pt-2.5 sm:pt-3 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-200/60 mt-2.5 sm:mt-3 font-body">
                       {faq.a}
                     </div>
                   )}
@@ -1282,7 +1321,7 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Call to Action Banner */}
+      {/* Call to Action Banner (Double-Bezel Hardware Card with Atmospheric Depth & Mesh Gradients) */}
       <section className="py-16 px-4 sm:px-6">
         <div className="mx-auto max-w-5xl rounded-[1.375rem] bg-emerald-800 p-8 sm:p-14 text-center text-white space-y-6 shadow-island relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-600/30 rounded-full blur-[90px] pointer-events-none" />
