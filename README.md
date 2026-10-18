@@ -24,7 +24,9 @@
 *   **🏛️ Government Welfare Schemes & Subsidies**: Centralized, searchable repository of national and state schemes (PM-KISAN, PMFBY, KCC, Soil Health Card, PMKSY). Provides eligibility criteria and direct one-click links to apply on official government portals.
 *   **🌦️ Hyperlocal Weather Telemetry**: Up-to-date weather forecasts including temperature, humidity, precipitation likelihood, wind metrics, and proactive farm warnings.
 *   **🤖 Multilingual Gemini Farm Copilot**: 24/7 interactive agricultural assistant powered by Google Gemini, answering queries on pest management, irrigation schedules, and seasonal practices in conversational language.
-*   **✅ Farm Activity & Task Planner**: Structured farming calendar for scheduling sowing, irrigation, fertigation, and harvesting tasks with automated audit history tracking.
+*   **🎨 Editorial Agronomy Design System**: Tailored agricultural interface featuring Fraunces serif display, IBM Plex Mono technical telemetry badges, paper noise textures, and ultra-responsive layout engineering.
+*   **⚡ Interactive 4-Step Pipeline Simulator**: Real-time interactive agronomy demo directly on the landing page simulating soil calibration, satellite NDVI telemetry, leaf pathology diagnosis, and APMC market yields.
+*   **🌐 Seamless Bilingual Support**: Full English and Bengali (`বাং`) localization across the platform with one-click navbar toggle.
 *   **🔐 Secure Authentication**: Frictionless, secure user authentication and profile management powered by **Clerk**.
 
 ---
@@ -33,7 +35,7 @@
 
 | Layer | Technologies |
 | :--- | :--- |
-| **Frontend** | [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Vite](https://vitejs.dev/), [Tailwind CSS v4](https://tailwindcss.com/), [Lucide React](https://lucide.dev/), [Clerk Auth](https://clerk.com/), [React Router DOM](https://reactrouter.com/) |
+| **Frontend** | [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Vite](https://vitejs.dev/) (Rollup Code Splitting), [Tailwind CSS v4](https://tailwindcss.com/), Fraunces & IBM Plex Mono Typography, [Lucide React](https://lucide.dev/), [Clerk Auth](https://clerk.com/), [React Router DOM](https://reactrouter.com/) |
 | **Backend API Gateway** | [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/), [TypeScript](https://www.typescriptlang.org/), [Prisma ORM](https://www.prisma.io/), [Axios](https://axios-http.com/) |
 | **Database** | [PostgreSQL](https://www.postgresql.org/) (Compatible with Neon, Supabase, AWS RDS, Local) |
 | **AI Vision Microservice** | [Python 3.10+](https://www.python.org/), [FastAPI](https://fastapi.tiangolo.com/), [Uvicorn](https://www.uvicorn.org/), [PyTorch](https://pytorch.org/), [Torchvision](https://pytorch.org/vision/), [timm](https://github.com/huggingface/pytorch-image-models) |
