@@ -1,0 +1,18 @@
+{
+  "name": "Kisan Mitra — Autonomous AI Agronomy",
+  "short_name": "Kisan Mitra",
+  "description": "Next-generation autonomous AI agronomy, crop pathology diagnosis, and APMC mandi market intelligence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F3EE",
+  "theme_color": "#14532d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
