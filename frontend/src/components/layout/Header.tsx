@@ -1,4 +1,4 @@
-import { Menu, Bell, Sprout, Search } from 'lucide-react';
+import { Menu, Sprout, Search } from 'lucide-react';
 import { UserButton, useUser } from '@clerk/clerk-react';
 import { useWeather } from '../../context/WeatherContext';
 import { WeatherIcon } from '../WeatherIcon';
@@ -102,15 +102,7 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
           )}
         </div>
 
-        {/* Notification Bell */}
-        <button
-          type="button"
-          className="p-2 sm:p-2.5 text-stone-600 hover:text-emerald-800 bg-white hover:bg-[#FAF9F5] border border-stone-200/80 rounded-2xl shadow-soft transition-all active:scale-95 relative shrink-0"
-        >
-          <span className="sr-only">View notifications</span>
-          <Bell className="h-4 w-4" aria-hidden="true" />
-          <span className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 h-2 w-2 rounded-full bg-emerald-600 ring-2 ring-white"></span>
-        </button>
+
 
         {/* Farmer Profile Pill */}
         <div className="flex items-center gap-1.5 sm:gap-2 pl-1.5 sm:pl-2 pr-2.5 sm:pr-3 py-1 sm:py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:border-stone-300 transition-all shrink-0">

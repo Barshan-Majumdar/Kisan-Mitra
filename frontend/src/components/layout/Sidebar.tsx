@@ -12,7 +12,6 @@ import {
   ScrollText,
   MessageCircle,
   Command,
-  Activity,
   Sparkles
 } from 'lucide-react';
 import { LanguageToggle } from '../LanguageToggle';
@@ -187,23 +186,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenComma
         </div>
 
         {/* Bottom Micro-Dock */}
-        <div className="space-y-3 pt-3 border-t border-stone-200/70 shrink-0">
-          {/* Telemetry Status Capsule */}
-          <div className="p-3 rounded-2xl bg-white border border-stone-200/80 shadow-soft space-y-1.5">
-            <div className="flex items-center justify-between text-[11px] font-bold text-stone-700">
-              <span className="flex items-center gap-1.5">
-                <Activity className="h-3.5 w-3.5 text-emerald-600" />
-                Agronomy Sensors
-              </span>
-              <span className="text-emerald-700 font-mono text-[10px] bg-emerald-50 px-1.5 py-0.5 rounded-full">
-                ONLINE
-              </span>
-            </div>
-            <div className="text-[10px] text-stone-500 font-medium">
-              50 Models Synchronized • Kharif 2026
-            </div>
-          </div>
-
+        <div className="pt-3 border-t border-stone-200/70 shrink-0">
           {/* Language Switcher */}
           <div className="flex justify-center">
             <LanguageToggle />

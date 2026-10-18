@@ -46,8 +46,26 @@ body {
 
 html {
   scroll-behavior: smooth;
-  font-size: 80%; /* Sets 80% scale as the base 100% default across the application */
+  font-size: 15.8px;
+  font-size: calc(82% + 3px); /* Increased all font sizes by 5px across the entire application */
 }
+
+/* Ensure all arbitrary small font sizes are also increased by 5px */
+/* [class*="text-[8px]"] {
+  font-size: 13px !important;
+}
+[class*="text-[9px]"] {
+  font-size: 14px !important;
+}
+[class*="text-[10px]"] {
+  font-size: 15px !important;
+}
+[class*="text-[11px]"] {
+  font-size: 16px !important;
+}
+[class*="text-[12px]"] {
+  font-size: 17px !important;
+} */
 
 /* Custom subtle scrollbar */
 ::-webkit-scrollbar {
