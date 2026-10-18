@@ -183,3 +183,177 @@ html {
 .animate-pulse-glow {
   animation: pulseGlow 2.5s ease-in-out infinite;
 }
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatSlowReverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sparkRadiant {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(34, 197, 94, 0.3));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08) translate(1px, -1px);
+    filter: drop-shadow(0 0 5px rgba(34, 197, 94, 0.5));
+  }
+}
+
+@keyframes drawStroke {
+  from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes linePulseGlow {
+  0% {
+    top: 0px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  45% {
+    top: calc(100% - 24px);
+    opacity: 1;
+  }
+  50% {
+    top: calc(100% - 24px);
+    opacity: 0.75;
+  }
+  55% {
+    top: calc(100% - 24px);
+    opacity: 1;
+  }
+  90% {
+    top: 0px;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    opacity: 0;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes activeCardGlow {
+  0%, 100% {
+    box-shadow: 0 12px 35px -8px rgba(22, 101, 52, 0.15), 0 0 0 1px rgba(74, 222, 128, 0.4);
+  }
+  50% {
+    box-shadow: 0 18px 45px -8px rgba(22, 101, 52, 0.25), 0 0 0 2px rgba(34, 197, 94, 0.7);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatSlowReverse 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 60s linear infinite;
+}
+
+.animate-spark-radiant {
+  animation: sparkRadiant 2.2s ease-in-out infinite;
+}
+
+.animate-draw-underline {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawStroke 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.animate-line-pulse {
+  animation: linePulseGlow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-active-card {
+  animation: activeCardGlow 4s ease-in-out infinite;
+}
+
+.engineering-grid {
+  background-image: 
+    linear-gradient(to right, rgba(22, 101, 52, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(22, 101, 52, 0.09) 1px, transparent 1px),
+    linear-gradient(to right, rgba(22, 101, 52, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(22, 101, 52, 0.035) 1px, transparent 1px);
+  background-size: 76px 76px, 76px 76px, 19px 19px, 19px 19px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 32%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 32%, #000 60%, transparent 100%);
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.1   0 0 0 0 0.1   0 0 0 0 0.1  0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+}
+
+.dot-matrix-pattern {
+  background-image: radial-gradient(rgba(22, 101, 52, 0.14) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+.topo-pattern {
+  background-image: radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.08) 0, transparent 40%),
+                    radial-gradient(circle at 0% 0%, rgba(22, 101, 52, 0.06) 0, transparent 40%);
+}
+
+.double-bezel-card {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.03),
+    0 10px 30px -4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1.5px rgba(255, 255, 255, 1),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.02);
+}
+
+.active-bezel-card {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.02),
+    0 20px 48px -8px rgba(16, 185, 129, 0.22),
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 0 28px rgba(16, 185, 129, 0.07);
+}
