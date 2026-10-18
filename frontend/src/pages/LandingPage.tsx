@@ -13,7 +13,6 @@ import {
   ChevronDown,
   LineChart,
   Check,
-  CalendarCheck,
   MapPin,
 } from 'lucide-react';
 import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
@@ -658,115 +657,217 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Core Platform Pillars (Bento Grid) */}
-      <section id="features" className="py-20 px-4 sm:px-6 bg-white border-y border-stone-200/80">
-        <div className="mx-auto max-w-6xl space-y-12">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-800">
-              End-to-End Agronomy Platform
+      <section id="features" className="scroll-mt-28 py-12 sm:py-20 px-4 sm:px-6 bg-white border-y border-stone-200/80">
+        <div className="mx-auto max-w-6xl space-y-8 sm:space-y-12">
+          <div className="text-center space-y-2.5 sm:space-y-3 max-w-2xl mx-auto">
+            <h2 className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full inline-block">
+              Comprehensive Agronomic Workspace
             </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
-              Six Specialized Tools Built for Bharat's Farmers
+            <h3 className="font-display text-2xl min-[400px]:text-3xl sm:text-4xl md:text-5xl font-normal text-stone-900 tracking-tight leading-tight text-balance">
+              Six Specialized Engines Built for Bharat's Farmers
             </h3>
-            <p className="text-stone-600 text-sm sm:text-base">
+            <p className="text-stone-600 text-xs sm:text-base leading-relaxed">
               Everything required to plan, diagnose, harvest, and sell—powered by AI models tailored to Indian geography.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
             {/* Feature 1 */}
-            <div className="p-7 rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all group">
-              <div className="h-12 w-12 rounded-2xl bg-emerald-100/80 text-emerald-800 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
-                <Sparkles className="h-6 w-6" />
+            <div
+              onClick={() => navigate('/recommendations')}
+              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-emerald-300 transition-all flex flex-col justify-between group cursor-pointer"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4 gap-2">
+                  <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                    <Sparkles className="h-4.5 w-4.5 sm:h-5.5 sm:w-5.5" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-850 bg-white/90 px-2.5 py-0.5 rounded-full border border-emerald-200/80 shadow-xs shrink-0">
+                    Dual-Stage ML
+                  </span>
+                </div>
+                <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 mb-1.5 group-hover:text-emerald-800 transition-colors leading-snug">
+                  Dual-Stage Crop Recommendation
+                </h4>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                  Analyzes soil chemistry (N-P-K, pH) alongside localized rainfall and temperatures to rank the top 5 highest-yielding crops.
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-stone-900 mb-2">Dual-Stage AI Crop Matching</h4>
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                Analyzes soil chemistry (N-P-K, pH) alongside localized rainfall and temperatures to rank the top 5 highest-yielding crops.
-              </p>
-              <div className="text-xs font-bold text-emerald-700 flex items-center gap-1">
-                <span>Multi-Crop Decision Trees</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+              <div className="pt-3 sm:pt-3.5 border-t border-stone-200/70 flex items-center justify-between text-xs font-bold gap-2">
+                <span className="font-mono text-[10px] sm:text-[11px] text-stone-600 bg-white/90 border border-stone-200/80 px-2 sm:px-2.5 py-0.5 rounded-md shadow-xs truncate">
+                  50+ Crops Supported
+                </span>
+                <span className="flex items-center gap-1 text-[11px] sm:text-xs text-emerald-800 group-hover:translate-x-0.5 transition-transform shrink-0 font-bold">
+                  <span>Launch</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
             </div>
 
             {/* Feature 2 */}
-            <div className="p-7 rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all group">
-              <div className="h-12 w-12 rounded-2xl bg-amber-100/80 text-amber-800 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
-                <ScanEye className="h-6 w-6" />
+            <div
+              onClick={() => navigate('/disease')}
+              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-amber-300 transition-all flex flex-col justify-between group cursor-pointer"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4 gap-2">
+                  <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                    <ScanEye className="h-4.5 w-4.5 sm:h-5.5 sm:w-5.5" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-amber-900 bg-white/90 px-2.5 py-0.5 rounded-full border border-amber-200/80 shadow-xs shrink-0">
+                    YOLO11m • 120ms
+                  </span>
+                </div>
+                <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 mb-1.5 group-hover:text-amber-900 transition-colors leading-snug">
+                  Leaf Pathology Vision Scanner
+                </h4>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                  Instant PyTorch classifier identifies 75+ crop afflictions from leaf photos with organic and chemical treatment advice.
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-stone-900 mb-2">Leaf Disease Vision Diagnostics</h4>
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                Instant PyTorch & YOLO11m classifier identifies 75+ crop afflictions from leaf photos with organic and chemical treatment advice.
-              </p>
-              <div className="text-xs font-bold text-emerald-700 flex items-center gap-1">
-                <span>Computer Vision Inference</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+              <div className="pt-3 sm:pt-3.5 border-t border-stone-200/70 flex items-center justify-between text-xs font-bold gap-2">
+                <span className="font-mono text-[10px] sm:text-[11px] text-stone-600 bg-white/90 border border-stone-200/80 px-2 sm:px-2.5 py-0.5 rounded-md shadow-xs truncate">
+                  75+ Afflictions
+                </span>
+                <span className="flex items-center gap-1 text-[11px] sm:text-xs text-amber-900 group-hover:translate-x-0.5 transition-transform shrink-0 font-bold">
+                  <span>Launch</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
             </div>
 
             {/* Feature 3 */}
-            <div className="p-7 rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all group">
-              <div className="h-12 w-12 rounded-2xl bg-blue-100/80 text-blue-800 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
-                <LineChart className="h-6 w-6" />
+            <div
+              onClick={() => navigate('/calibrate')}
+              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-teal-300 transition-all flex flex-col justify-between group cursor-pointer"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4 gap-2">
+                  <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                    <Layers className="h-4.5 w-4.5 sm:h-5.5 sm:w-5.5" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-teal-900 bg-white/90 px-2.5 py-0.5 rounded-full border border-teal-200/80 shadow-xs shrink-0">
+                    Edaphic NPK
+                  </span>
+                </div>
+                <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 mb-1.5 group-hover:text-teal-900 transition-colors leading-snug">
+                  Edaphic Soil Chemistry Calibrator
+                </h4>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                  Condition field soil with macro & micronutrient corrections tailored to your field's soil texture and crop targets.
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-stone-900 mb-2">Live APMC Mandi Rates</h4>
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                Direct integration with official <span className="font-semibold text-stone-800">data.gov.in</span> AGMARKNET wholesale rates across 3,000+ Indian mandis.
-              </p>
-              <div className="text-xs font-bold text-emerald-700 flex items-center gap-1">
-                <span>Real-Time Market Discovery</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+              <div className="pt-3 sm:pt-3.5 border-t border-stone-200/70 flex items-center justify-between text-xs font-bold gap-2">
+                <span className="font-mono text-[10px] sm:text-[11px] text-stone-600 bg-white/90 border border-stone-200/80 px-2 sm:px-2.5 py-0.5 rounded-md shadow-xs truncate">
+                  Soil Conditioning
+                </span>
+                <span className="flex items-center gap-1 text-[11px] sm:text-xs text-teal-900 group-hover:translate-x-0.5 transition-transform shrink-0 font-bold">
+                  <span>Launch</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
             </div>
 
             {/* Feature 4 */}
-            <div className="p-7 rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all group">
-              <div className="h-12 w-12 rounded-2xl bg-purple-100/80 text-purple-800 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
-                <Landmark className="h-6 w-6" />
+            <div
+              onClick={() => navigate('/market')}
+              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-blue-300 transition-all flex flex-col justify-between group cursor-pointer"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4 gap-2">
+                  <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                    <LineChart className="h-4.5 w-4.5 sm:h-5.5 sm:w-5.5" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-blue-900 bg-white/90 px-2.5 py-0.5 rounded-full border border-blue-200/80 shadow-xs shrink-0">
+                    AGMARKNET
+                  </span>
+                </div>
+                <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 mb-1.5 group-hover:text-blue-900 transition-colors leading-snug">
+                  Live APMC Mandi Rates
+                </h4>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                  Direct integration with official <span className="font-semibold text-stone-800">data.gov.in</span> wholesale rates across 3,000+ Indian mandis.
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-stone-900 mb-2">Govt Subsidies & Schemes</h4>
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                Powered by <span className="font-semibold text-stone-800">API Mitra</span> & myScheme. Explore PM-KISAN, PMFBY, KCC, and state grants with direct official application links.
-              </p>
-              <div className="text-xs font-bold text-emerald-700 flex items-center gap-1">
-                <span>4,700+ Verified Schemes</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+              <div className="pt-3 sm:pt-3.5 border-t border-stone-200/70 flex items-center justify-between text-xs font-bold gap-2">
+                <span className="font-mono text-[10px] sm:text-[11px] text-stone-600 bg-white/90 border border-stone-200/80 px-2 sm:px-2.5 py-0.5 rounded-md shadow-xs truncate">
+                  3,000+ Mandis
+                </span>
+                <span className="flex items-center gap-1 text-[11px] sm:text-xs text-blue-900 group-hover:translate-x-0.5 transition-transform shrink-0 font-bold">
+                  <span>Launch</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
             </div>
 
             {/* Feature 5 */}
-            <div className="p-7 rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all group">
-              <div className="h-12 w-12 rounded-2xl bg-emerald-100/80 text-emerald-800 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
-                <CalendarCheck className="h-6 w-6" />
+            <div
+              onClick={() => navigate('/schemes')}
+              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-purple-300 transition-all flex flex-col justify-between group cursor-pointer"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4 gap-2">
+                  <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                    <Landmark className="h-4.5 w-4.5 sm:h-5.5 sm:w-5.5" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-purple-900 bg-white/90 px-2.5 py-0.5 rounded-full border border-purple-200/80 shadow-xs shrink-0">
+                    API Mitra
+                  </span>
+                </div>
+                <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 mb-1.5 group-hover:text-purple-900 transition-colors leading-snug">
+                  Govt Subsidies & Welfare Aid
+                </h4>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                  Powered by API Mitra & myScheme. Explore PM-KISAN, PMFBY, KCC, and state grants with direct official application links.
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-stone-900 mb-2">120-Day Farming Action Schedule</h4>
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                Converts your recommended crop into an automated stage-by-stage action plan with checklist tracking from sowing to harvest.
-              </p>
-              <div className="text-xs font-bold text-emerald-700 flex items-center gap-1">
-                <span>Seasonal Task Automation</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+              <div className="pt-3 sm:pt-3.5 border-t border-stone-200/70 flex items-center justify-between text-xs font-bold gap-2">
+                <span className="font-mono text-[10px] sm:text-[11px] text-stone-600 bg-white/90 border border-stone-200/80 px-2 sm:px-2.5 py-0.5 rounded-md shadow-xs truncate">
+                  4,700+ Schemes
+                </span>
+                <span className="flex items-center gap-1 text-[11px] sm:text-xs text-purple-900 group-hover:translate-x-0.5 transition-transform shrink-0 font-bold">
+                  <span>Launch</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
             </div>
 
             {/* Feature 6 */}
-            <div className="p-7 rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all group">
-              <div className="h-12 w-12 rounded-2xl bg-stone-200/80 text-stone-800 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
-                <MessageSquareCode className="h-6 w-6" />
+            <div
+              onClick={() => navigate('/chatbot')}
+              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-emerald-300 transition-all flex flex-col justify-between group cursor-pointer"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4 gap-2">
+                  <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                    <MessageSquareCode className="h-4.5 w-4.5 sm:h-5.5 sm:w-5.5" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-850 bg-white/90 px-2.5 py-0.5 rounded-full border border-emerald-200/80 shadow-xs shrink-0">
+                    Gemini AI
+                  </span>
+                </div>
+                <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 mb-1.5 group-hover:text-emerald-800 transition-colors leading-snug">
+                  Multilingual AI Agronomist
+                </h4>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                  Ask questions in English, Hindi, or Bengali. Powered by Google Gemini for fertilizer dosages, soil conditioning, and pest remediation.
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-stone-900 mb-2">Multilingual AI Agronomist</h4>
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                Ask questions in English, Hindi, or Bengali. Powered by Google Gemini 2.5 Flash for fertilizer dosages, soil conditioning, and pest remediation.
-              </p>
-              <div className="text-xs font-bold text-emerald-700 flex items-center gap-1">
-                <span>24/7 Agro Advisory</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+              <div className="pt-3 sm:pt-3.5 border-t border-stone-200/70 flex items-center justify-between text-xs font-bold gap-2">
+                <span className="font-mono text-[10px] sm:text-[11px] text-stone-600 bg-white/90 border border-stone-200/80 px-2 sm:px-2.5 py-0.5 rounded-md shadow-xs truncate">
+                  24/7 Advisory
+                </span>
+                <span className="flex items-center gap-1 text-[11px] sm:text-xs text-emerald-800 group-hover:translate-x-0.5 transition-transform shrink-0 font-bold">
+                  <span>Launch</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Technology & Architecture Section */}
+      {/* Dedicated Government Subsidies & Welfare Schemes Section */}
       <section id="technology" className="py-20 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="rounded-[1.5rem] bg-gradient-to-br from-[#0c261b] via-[#133c2a] to-[#1c543c] p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-island">
