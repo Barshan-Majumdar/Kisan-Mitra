@@ -106,7 +106,7 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
 
         {/* Farmer Profile Pill */}
         <div className="flex items-center gap-1.5 sm:gap-2 pl-1.5 sm:pl-2 pr-2.5 sm:pr-3 py-1 sm:py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:border-stone-300 transition-all shrink-0">
-          <UserButton afterSignOutUrl="/login" />
+          <UserButton afterSignOutUrl="/" />
           <div className="hidden sm:flex flex-col text-left pr-0.5 min-w-0">
             <span className="text-xs font-bold text-stone-800 leading-tight truncate max-w-[70px] sm:max-w-[90px] xl:max-w-[110px]">
               {user?.firstName || 'Farmer'}
