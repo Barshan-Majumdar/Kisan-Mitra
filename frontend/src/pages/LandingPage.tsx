@@ -13,6 +13,8 @@ import {
   ChevronDown,
   LineChart,
   Check,
+  CreditCard,
+  ShieldCheck,
   MapPin,
 } from 'lucide-react';
 import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
@@ -868,6 +870,314 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Dedicated Government Subsidies & Welfare Schemes Section */}
+      <section id="schemes" className="scroll-mt-28 py-12 sm:py-20 px-4 sm:px-6 bg-[#FAF9F5] border-b border-stone-200/80">
+        <div className="mx-auto max-w-6xl space-y-8 sm:space-y-12">
+          <div className="text-center space-y-2.5 sm:space-y-3 max-w-2xl mx-auto">
+            <h2 className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full inline-block">
+              Verified Welfare & Subsidy Portal
+            </h2>
+            <h3 className="font-display text-2xl min-[400px]:text-3xl sm:text-4xl md:text-5xl font-normal text-stone-900 tracking-tight leading-tight text-balance">
+              Direct Government Welfare Without Middlemen
+            </h3>
+            <p className="text-stone-600 text-xs sm:text-base leading-relaxed">
+              Powered by official API Mitra & myScheme. Direct DBT transfers, crop insurance coverage, and subsidized agricultural credit.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
+            {/* Scheme Card 1 */}
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-emerald-300 transition-all flex flex-col justify-between group">
+              <div className="space-y-3 sm:space-y-3.5">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className="h-8 w-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-xs">
+                      <Landmark className="h-4 w-4" />
+                    </div>
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/50 truncate">
+                      Direct DBT
+                    </span>
+                  </div>
+                  <span className="font-mono text-[11px] sm:text-xs font-bold text-emerald-950 bg-white/90 border border-emerald-200/80 px-2.5 py-0.5 rounded-full shrink-0 shadow-xs">
+                    ₹6,000 / yr
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 group-hover:text-emerald-800 transition-colors">
+                    PM-KISAN Samman Nidhi
+                  </h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mt-1">
+                    Direct income support of ₹6,000 annually deposited in three equal installments of ₹2,000 into verified bank accounts.
+                  </p>
+                </div>
+
+                <div className="space-y-1.5 pt-0.5">
+                  <div className="flex items-center gap-2 text-[11px] sm:text-xs text-stone-600">
+                    <Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                    <span>100% Central Government Funded</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[11px] sm:text-xs text-stone-600">
+                    <Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                    <span>Direct Beneficiary Transfer (DBT)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-3.5 sm:pt-5 border-t border-stone-200/60 mt-3.5 sm:mt-5">
+                <button
+                  onClick={() => navigate('/schemes')}
+                  className="w-full py-2.5 px-3.5 rounded-xl font-bold text-xs text-emerald-900 bg-white hover:bg-emerald-50 border border-emerald-300/80 shadow-xs transition-all flex items-center justify-center gap-1.5 group-hover:border-emerald-400"
+                >
+                  <span>Check Eligibility & Apply</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
+            </div>
+
+            {/* Scheme Card 2 */}
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-blue-300 transition-all flex flex-col justify-between group">
+              <div className="space-y-3 sm:space-y-3.5">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className="h-8 w-8 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center shrink-0 shadow-xs">
+                      <ShieldCheck className="h-4 w-4" />
+                    </div>
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-blue-800 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200/50 truncate">
+                      Crop Insurance
+                    </span>
+                  </div>
+                  <span className="font-mono text-[11px] sm:text-xs font-bold text-blue-950 bg-white/90 border border-blue-200/80 px-2.5 py-0.5 rounded-full shrink-0 shadow-xs">
+                    1.5% – 2% Rate
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 group-hover:text-blue-900 transition-colors">
+                    PM Fasal Bima (PMFBY)
+                  </h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mt-1">
+                    Comprehensive non-preventable risk insurance covering drought, flood, hailstorms, pests, and post-harvest crop loss.
+                  </p>
+                </div>
+
+                <div className="space-y-1.5 pt-0.5">
+                  <div className="flex items-center gap-2 text-[11px] sm:text-xs text-stone-600">
+                    <Check className="h-3.5 w-3.5 text-blue-600 shrink-0" />
+                    <span>Affordable subsidized farmer premium</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[11px] sm:text-xs text-stone-600">
+                    <Check className="h-3.5 w-3.5 text-blue-600 shrink-0" />
+                    <span>Fast localized claim settlements</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-3.5 sm:pt-5 border-t border-stone-200/60 mt-3.5 sm:mt-5">
+                <button
+                  onClick={() => navigate('/schemes')}
+                  className="w-full py-2.5 px-3.5 rounded-xl font-bold text-xs text-blue-900 bg-white hover:bg-blue-50 border border-blue-300/80 shadow-xs transition-all flex items-center justify-center gap-1.5 group-hover:border-blue-400"
+                >
+                  <span>Explore Insurance Coverage</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
+            </div>
+
+            {/* Scheme Card 3 */}
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:shadow-card hover:border-purple-300 transition-all flex flex-col justify-between group">
+              <div className="space-y-3 sm:space-y-3.5">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className="h-8 w-8 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center shrink-0 shadow-xs">
+                      <CreditCard className="h-4 w-4" />
+                    </div>
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200/50 truncate">
+                      Credit Facility
+                    </span>
+                  </div>
+                  <span className="font-mono text-[11px] sm:text-xs font-bold text-purple-950 bg-white/90 border border-purple-200/80 px-2.5 py-0.5 rounded-full shrink-0 shadow-xs">
+                    4% Interest
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="font-display text-lg sm:text-xl font-medium text-stone-900 group-hover:text-purple-900 transition-colors">
+                    Kisan Credit Card (KCC)
+                  </h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mt-1">
+                    Low-interest institutional working capital up to ₹3,00,000 for purchasing certified seeds, organic fertilizers, and farm equipment.
+                  </p>
+                </div>
+
+                <div className="space-y-1.5 pt-0.5">
+                  <div className="flex items-center gap-2 text-[11px] sm:text-xs text-stone-600">
+                    <Check className="h-3.5 w-3.5 text-purple-600 shrink-0" />
+                    <span>3% Prompt Repayment Incentive</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[11px] sm:text-xs text-stone-600">
+                    <Check className="h-3.5 w-3.5 text-purple-600 shrink-0" />
+                    <span>Zero collateral requirement up to ₹1.6L</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-3.5 sm:pt-5 border-t border-stone-200/60 mt-3.5 sm:mt-5">
+                <button
+                  onClick={() => navigate('/schemes')}
+                  className="w-full py-2.5 px-3.5 rounded-xl font-bold text-xs text-purple-900 bg-white hover:bg-purple-50 border border-purple-300/80 shadow-xs transition-all flex items-center justify-center gap-1.5 group-hover:border-purple-400"
+                >
+                  <span>Apply for Kisan Card</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Scheme Banner Bar */}
+          <div className="rounded-2xl bg-white p-4 sm:p-5 border border-stone-200/90 shadow-soft flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3.5 sm:gap-4">
+            <div className="flex items-start sm:items-center gap-3">
+              <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+                <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5" />
+              </div>
+              <div className="space-y-0.5">
+                <h5 className="font-display text-sm sm:text-base font-medium text-stone-900">
+                  Over 4,700 Verified Schemes Integrated via API Mitra
+                </h5>
+                <p className="text-[11px] sm:text-xs text-stone-500">
+                  Find solar pumps (PM-KUSUM), drip irrigation subsidies, and state-specific welfare grants.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => navigate('/schemes')}
+              className="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-full font-bold text-xs text-white bg-emerald-800 hover:bg-emerald-700 shadow-soft transition-all shrink-0 flex items-center justify-center gap-1.5"
+            >
+              <span>Search All 4,700+ Schemes</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Dedicated Real-Time APMC Mandi Discovery Section */}
+      <section id="mandi" className="scroll-mt-28 py-12 sm:py-20 px-4 sm:px-6 bg-white border-b border-stone-200/80">
+        <div className="mx-auto max-w-6xl space-y-8 sm:space-y-12">
+          <div className="text-center space-y-2.5 sm:space-y-3 max-w-2xl mx-auto">
+            <h2 className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full inline-block">
+              Real-Time Wholesale Market Discovery
+            </h2>
+            <h3 className="font-display text-2xl min-[400px]:text-3xl sm:text-4xl md:text-5xl font-normal text-stone-900 tracking-tight leading-tight text-balance">
+              Official AGMARKNET Mandi Commodity Rates
+            </h3>
+            <p className="text-stone-600 text-xs sm:text-base leading-relaxed">
+              Synced directly with data.gov.in. Compare real-time modal prices across nearby markets to get maximum value for your harvest.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
+            {/* Commodity 1 */}
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all space-y-2.5 sm:space-y-3">
+              <div className="flex items-center justify-between gap-1.5">
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-stone-500 uppercase truncate">Paddy (Rice)</span>
+                <span className="inline-flex items-center text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/90 px-1.5 sm:px-2 py-0.5 rounded-full shrink-0">
+                  <TrendingUp className="h-3 w-3 mr-0.5" /> +4.2%
+                </span>
+              </div>
+              <div>
+                <div className="font-display text-2xl sm:text-3xl font-medium text-stone-900">₹3,850</div>
+                <div className="text-[11px] sm:text-xs text-stone-500 font-medium">per Quintal (Modal)</div>
+              </div>
+              <div className="pt-2 border-t border-stone-200/60 text-xs text-stone-600 space-y-1">
+                <div className="flex items-center gap-1 font-semibold text-stone-800">
+                  <MapPin className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
+                  <span className="truncate">Burdwan APMC, WB</span>
+                </div>
+                <div className="font-mono text-[10px] sm:text-[11px] text-stone-500">Daily Arrival: 140 Qtl</div>
+              </div>
+            </div>
+
+            {/* Commodity 2 */}
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all space-y-2.5 sm:space-y-3">
+              <div className="flex items-center justify-between gap-1.5">
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-stone-500 uppercase truncate">Wheat (Gehun)</span>
+                <span className="inline-flex items-center text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/90 px-1.5 sm:px-2 py-0.5 rounded-full shrink-0">
+                  <TrendingUp className="h-3 w-3 mr-0.5" /> +1.8%
+                </span>
+              </div>
+              <div>
+                <div className="font-display text-2xl sm:text-3xl font-medium text-stone-900">₹2,420</div>
+                <div className="text-[11px] sm:text-xs text-stone-500 font-medium">per Quintal (Modal)</div>
+              </div>
+              <div className="pt-2 border-t border-stone-200/60 text-xs text-stone-600 space-y-1">
+                <div className="flex items-center gap-1 font-semibold text-stone-800">
+                  <MapPin className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
+                  <span className="truncate">Indore APMC, MP</span>
+                </div>
+                <div className="font-mono text-[10px] sm:text-[11px] text-stone-500">Daily Arrival: 320 Qtl</div>
+              </div>
+            </div>
+
+            {/* Commodity 3 */}
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all space-y-2.5 sm:space-y-3">
+              <div className="flex items-center justify-between gap-1.5">
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-stone-500 uppercase truncate">Mustard (Sarson)</span>
+                <span className="inline-flex items-center text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/90 px-1.5 sm:px-2 py-0.5 rounded-full shrink-0">
+                  <TrendingUp className="h-3 w-3 mr-0.5" /> +2.6%
+                </span>
+              </div>
+              <div>
+                <div className="font-display text-2xl sm:text-3xl font-medium text-stone-900">₹5,480</div>
+                <div className="text-[11px] sm:text-xs text-stone-500 font-medium">per Quintal (Modal)</div>
+              </div>
+              <div className="pt-2 border-t border-stone-200/60 text-xs text-stone-600 space-y-1">
+                <div className="flex items-center gap-1 font-semibold text-stone-800">
+                  <MapPin className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
+                  <span className="truncate">Karnal APMC, HR</span>
+                </div>
+                <div className="font-mono text-[10px] sm:text-[11px] text-stone-500">Daily Arrival: 85 Qtl</div>
+              </div>
+            </div>
+
+            {/* Commodity 4 */}
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/80 hover:border-emerald-300 hover:shadow-card transition-all space-y-2.5 sm:space-y-3">
+              <div className="flex items-center justify-between gap-1.5">
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-stone-500 uppercase truncate">Potato (Jyoti)</span>
+                <span className="inline-flex items-center text-[10px] font-mono font-bold text-stone-600 bg-stone-200/80 px-1.5 sm:px-2 py-0.5 rounded-full shrink-0">
+                  -0.8%
+                </span>
+              </div>
+              <div>
+                <div className="font-display text-2xl sm:text-3xl font-medium text-stone-900">₹1,180</div>
+                <div className="text-[11px] sm:text-xs text-stone-500 font-medium">per Quintal (Modal)</div>
+              </div>
+              <div className="pt-2 border-t border-stone-200/60 text-xs text-stone-600 space-y-1">
+                <div className="flex items-center gap-1 font-semibold text-stone-800">
+                  <MapPin className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
+                  <span className="truncate">Ranaghat APMC, WB</span>
+                </div>
+                <div className="font-mono text-[10px] sm:text-[11px] text-stone-500">Daily Arrival: 260 Qtl</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mandi Helper Bar */}
+          <div className="p-3.5 sm:p-5 rounded-2xl bg-[#FAF9F5] border border-stone-200/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
+            <div className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-stone-600">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+              <span>Official AGMARKNET wholesale rates updated every 2 hours from data.gov.in</span>
+            </div>
+            <button
+              onClick={() => navigate('/market')}
+              className="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-full font-bold text-xs text-emerald-900 bg-white hover:bg-emerald-50 border border-stone-300 shadow-soft transition-all flex items-center justify-center gap-1.5"
+            >
+              <span>Explore 3,000+ Mandis Live</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology & Architecture Section */}
       <section id="technology" className="py-20 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="rounded-[1.5rem] bg-gradient-to-br from-[#0c261b] via-[#133c2a] to-[#1c543c] p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-island">
