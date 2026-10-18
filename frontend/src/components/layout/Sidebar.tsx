@@ -97,17 +97,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenComma
           {/* Brand Card Header */}
           <div className="p-3 sm:p-3.5 rounded-3xl bg-white border border-stone-200/80 shadow-soft flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-2xl bg-gradient-to-br from-[#0c261b] to-emerald-700 flex items-center justify-center text-white shadow-soft shrink-0">
-                <Sprout className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-300" />
-              </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight whitespace-nowrap">Kisan Mitra</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                </div>
-                <div className="text-[10px] font-semibold tracking-wider text-emerald-800 uppercase">
-                  Enterprise AI v2.6
-                </div>
+              <Sprout className="h-6 w-6 sm:h-7 sm:w-7 text-emerald-700 shrink-0" />
+              <div className="flex items-center gap-1.5">
+                <span className="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight whitespace-nowrap">Kisan Mitra</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               </div>
             </div>
 
