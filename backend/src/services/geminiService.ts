@@ -434,4 +434,71 @@ Do NOT wrap in markdown code blocks or add explanatory conversational text. Retu
     return finalMap;
 };
 
+/**
+ * Multimodal Plant Pathology Diagnostic using Google Gemini Vision
+ * Analyzes crop leaf photos with high accuracy and returns clinical treatment regimens.
+ */
+export const diagnoseDiseaseWithGemini = async (base64Image: string): Promise<any> => {
+    const apiKey = process.env.GEMINI_API_KEY || process.env.GEMINI_CROP_API_KEY;
+    if (!apiKey) {
+        throw new Error('Gemini API key not configured');
+    }
+
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+
+    let mimeType = 'image/jpeg';
+    let cleanData = base64Image;
+    if (base64Image.startsWith('data:')) {
+        const match = base64Image.match(/^data:([^;]+);base64,(.+)$/);
+        if (match) {
+            mimeType = match[1];
+            cleanData = match[2];
+        }
+    }
+
+    const prompt = `
+You are an expert agricultural plant pathologist and agronomist for Indian agriculture.
+Analyze this crop leaf/foliar image with clinical botanical precision.
+Identify the crop, any pathology/disease (or confirm if healthy), pathogen type, severity, and treatments.
+
+Respond with ONLY valid JSON (no markdown formatting, no code fences):
+{
+  "success": true,
+  "crop": "Crop Name (e.g. Tomato, Rice, Potato, Corn, Apple, Wheat, Cotton, Pepper, Grape)",
+  "disease": "Disease Name (e.g. Early Blight, Late Blight, Bacterial Spot, Yellow Leaf Curl, Blast, Brown Spot, or Healthy)",
+  "isHealthy": false,
+  "confidence": 94.5,
+  "pathogen": "Fungi / Bacteria / Virus / Pest / None",
+  "severity": "Low / Moderate / Severe",
+  "symptoms": "Detailed visual symptoms observed on this leaf specimen",
+  "chemicalTreatment": "Specific chemical fungicides/insecticides and dosages (e.g. Mancozeb 75 WP at 2.5 g/L, Chlorothalonil)",
+  "organicTreatment": "Bio-fungicides and natural remedies (e.g. Trichoderma viride, Neem oil 1500 ppm at 3 ml/L, copper oxychloride)",
+  "prevention": "Preventive cultural practices (crop rotation, proper spacing, drip irrigation)",
+  "differentialDiagnosis": [
+    { "disease": "Alternative potential diagnosis 1", "probability": 15 },
+    { "disease": "Alternative potential diagnosis 2", "probability": 8 }
+  ]
+}
+`;
+
+    const result = await model.generateContent([
+        prompt,
+        {
+            inlineData: {
+                data: cleanData,
+                mimeType
+            }
+        }
+    ]);
+
+    const responseText = result.response.text().trim();
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+        throw new Error('Failed to parse structured JSON response from Gemini Vision');
+    }
+    return JSON.parse(jsonMatch[0]);
+};
+
+
 
