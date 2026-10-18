@@ -185,18 +185,18 @@ export const Dashboard: React.FC = () => {
       {/* Top Bento Row: 8 cols Hero + 4 cols Microclimate & Soil Gauge */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-3.5">
         {/* Main Hero Bento Tile (8 cols) */}
-        <div className="lg:col-span-8 relative overflow-hidden rounded-3xl sm:rounded-4xl bg-gradient-to-br from-[#0c261b] via-[#123626] to-[#1a4a35] text-white p-4 sm:p-5 lg:p-6 shadow-island border border-emerald-900/30 flex flex-col justify-between min-h-[220px] sm:min-h-[235px]">
+        <div className="lg:col-span-8 relative overflow-hidden rounded-3xl sm:rounded-3xl bg-gradient-to-br from-[#0c261b] via-[#123626] to-[#1a4a35] text-white p-4 sm:p-5 lg:p-6 shadow-island border border-emerald-900/30 flex flex-col justify-between min-h-[220px] sm:min-h-[235px] min-w-0">
           {/* Subtle isometric soil contour overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
           <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* Top Status Capsule */}
           <div className="relative z-10 flex items-center justify-between flex-wrap gap-2">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-0.5 text-xs font-semibold text-emerald-200 backdrop-blur-md border border-white/15">
-              <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              {weather.isLiveLocation ? 'Live GPS Microclimate Connected' : 'Precision Agronomy Engine Active'}
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 sm:px-3 py-0.5 text-[11px] sm:text-xs font-semibold text-emerald-200 backdrop-blur-md border border-white/15 max-w-full">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+              <span className="truncate">{weather.isLiveLocation ? 'Live GPS Microclimate Connected' : 'Precision Agronomy Engine Active'}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               <div className="text-[10px] font-mono text-emerald-200/80 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
                 {stats?.completedTasks ? `${stats.completedTasks} Tasks Done` : 'Model Sync: 50 Crops'}
               </div>
@@ -221,32 +221,32 @@ export const Dashboard: React.FC = () => {
 
           {/* Bottom Action Tray & Telemetry */}
           <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2.5 border-t border-white/10">
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2 sm:gap-2.5">
               <button
                 onClick={() => navigate('/input')}
-                className="inline-flex items-center justify-center rounded-xl bg-white px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold text-emerald-950 shadow-soft hover:bg-[#FAF9F5] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-xl bg-white px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-bold text-emerald-950 shadow-soft hover:bg-[#FAF9F5] transition-all transform hover:scale-[1.02] active:scale-[0.98] shrink-0"
               >
-                <Sparkles className="mr-1.5 h-3.5 w-3.5 text-emerald-700" />
-                Run Crop Advisory
+                <Sparkles className="mr-1.5 h-3.5 w-3.5 text-emerald-700 shrink-0" />
+                <span>Run Crop Advisory</span>
               </button>
               <button
                 onClick={() => navigate('/recommendations')}
-                className="inline-flex items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-xs sm:text-sm font-semibold text-white backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-xl bg-white/10 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all active:scale-[0.98] shrink-0"
               >
-                Recommendations History
-                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                <span>Recommendations History</span>
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5 shrink-0" />
               </button>
               <button
                 onClick={() => navigate('/market')}
-                className="inline-flex items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-xs sm:text-sm font-semibold text-white backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-xl bg-white/10 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all active:scale-[0.98] shrink-0"
               >
-                Mandi Rates
-                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                <span>Mandi Rates</span>
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5 shrink-0" />
               </button>
             </div>
 
-            <div className="hidden sm:flex items-center gap-2.5 text-xs text-emerald-200/90 font-medium">
-              <span>District: <strong className="text-white">{weather.district || 'India'}</strong></span>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-emerald-200/90 font-medium pt-1 sm:pt-0">
+              <span className="truncate max-w-[180px] sm:max-w-none">District: <strong className="text-white">{weather.district || 'India'}</strong></span>
               <span className="text-emerald-400/40">•</span>
               <span>Temp: <strong className="text-white font-mono">{weather.temperature.toFixed(1)}°C</strong></span>
             </div>
@@ -254,14 +254,14 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* Microclimate & Soil Telemetry Bento (4 cols) - 100% Dynamic Open-Meteo */}
-        <div className="lg:col-span-4 rounded-3xl sm:rounded-4xl bg-[#FAF9F5] border border-stone-200/90 p-3.5 sm:p-4 shadow-soft flex flex-col justify-between min-h-[220px] sm:min-h-[235px]">
+        <div className="lg:col-span-4 rounded-3xl sm:rounded-3xl bg-[#FAF9F5] border border-stone-200/90 p-3.5 sm:p-4 shadow-soft flex flex-col justify-between min-h-[220px] sm:min-h-[235px] min-w-0">
           <div className="space-y-2 sm:space-y-2.5">
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Live Microclimate</span>
                 <h3 className="font-extrabold text-stone-900 text-sm sm:text-base">Field Telemetry</h3>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 shrink-0">
                 <button
                   type="button"
                   onClick={weather.requestLiveLocation}
@@ -284,8 +284,8 @@ export const Dashboard: React.FC = () => {
             </div>
 
             {/* GPS Location Pill */}
-            <div className="flex items-center justify-between px-2.5 py-1 rounded-xl bg-white border border-stone-200/80 text-[11px] shadow-soft">
-              <span className="flex items-center gap-1.5 font-bold text-stone-800 truncate pr-2">
+            <div className="flex items-center justify-between px-2.5 py-1 rounded-xl bg-white border border-stone-200/80 text-[11px] shadow-soft min-w-0">
+              <span className="flex items-center gap-1.5 font-bold text-stone-800 truncate pr-2 min-w-0">
                 <MapPin className="h-3 w-3 text-emerald-700 shrink-0" />
                 <span className="truncate">{weather.district ? `${weather.district}, ${weather.state || 'India'}` : weather.locationName}</span>
               </span>
@@ -302,18 +302,18 @@ export const Dashboard: React.FC = () => {
                 <span className="text-xl sm:text-2xl font-extrabold text-stone-900 font-mono tracking-tight">
                   {weather.temperature.toFixed(1)}°C
                 </span>
-                <span className="text-[10.5px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                <span className="text-[10.5px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60 shrink-0">
                   {weather.condition}
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-2 mt-1.5 pt-1.5 border-t border-stone-100 text-[11px]">
-                <div className="flex items-center gap-1.5 text-stone-600">
-                  <CloudRain className="h-3.5 w-3.5 text-sky-500" />
-                  <span>Hum: <strong className="font-mono text-stone-900">{weather.humidity}%</strong></span>
+                <div className="flex items-center gap-1.5 text-stone-600 min-w-0">
+                  <CloudRain className="h-3.5 w-3.5 text-sky-500 shrink-0" />
+                  <span className="truncate">Hum: <strong className="font-mono text-stone-900">{weather.humidity}%</strong></span>
                 </div>
-                <div className="flex items-center gap-1.5 text-stone-600">
-                  <Wind className="h-3.5 w-3.5 text-stone-400" />
-                  <span>Wind: <strong className="font-mono text-stone-900">{weather.windSpeed.toFixed(1)} km/h</strong></span>
+                <div className="flex items-center gap-1.5 text-stone-600 min-w-0">
+                  <Wind className="h-3.5 w-3.5 text-stone-400 shrink-0" />
+                  <span className="truncate">Wind: <strong className="font-mono text-stone-900">{weather.windSpeed.toFixed(1)} km/h</strong></span>
                 </div>
               </div>
             </div>
@@ -321,10 +321,10 @@ export const Dashboard: React.FC = () => {
             {/* Quick Soil Gauges */}
             <div className="space-y-1">
               <div className="flex items-center justify-between text-xs">
-                <span className="text-stone-600 font-semibold flex items-center gap-1 text-[11px]">
-                  <Droplets className="h-3 w-3 text-sky-600" /> Soil Moisture
+                <span className="text-stone-600 font-semibold flex items-center gap-1 text-[11px] truncate pr-1">
+                  <Droplets className="h-3 w-3 text-sky-600 shrink-0" /> Soil Moisture
                 </span>
-                <span className="font-mono font-bold text-stone-800 text-[10.5px]">
+                <span className="font-mono font-bold text-stone-800 text-[10.5px] shrink-0">
                   {weather.soilMoisturePercent}% • {weather.soilMoistureStatus}
                 </span>
               </div>
@@ -336,10 +336,10 @@ export const Dashboard: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-between text-xs pt-0.5">
-                <span className="text-stone-600 font-semibold flex items-center gap-1 text-[11px]">
-                  <Gauge className="h-3 w-3 text-emerald-600" /> Soil pH Balance
+                <span className="text-stone-600 font-semibold flex items-center gap-1 text-[11px] truncate pr-1">
+                  <Gauge className="h-3 w-3 text-emerald-600 shrink-0" /> Soil pH Balance
                 </span>
-                <span className="font-mono font-bold text-stone-800 text-[10.5px]">
+                <span className="font-mono font-bold text-stone-800 text-[10.5px] shrink-0">
                   {soilData?.ph ? `${soilData.ph.toFixed(1)} (${soilData.phStatus || 'Neutral'})` : '6.8 (Neutral)'}
                 </span>
               </div>
@@ -360,26 +360,26 @@ export const Dashboard: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-2 pt-1.5 border-t border-stone-200/70 text-[10px] text-stone-500 flex items-center justify-between font-medium">
+          <div className="mt-2 pt-1.5 border-t border-stone-200/70 text-[10px] text-stone-500 flex flex-wrap items-center justify-between gap-1 font-medium">
             <span>Sowing Window: <strong className="text-stone-800">{weather.sowingWindow}</strong></span>
-            <span className="text-emerald-700 font-bold">{weather.sowingStatus}</span>
+            <span className="text-emerald-700 font-bold shrink-0">{weather.sowingStatus}</span>
           </div>
         </div>
       </div>
 
       {/* Middle Bento Row: 3 Dynamic Intelligence Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
         {/* Card 1: APMC Mandi Key Commodity Prices (100% Live data.gov.in) */}
-        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/80 shadow-soft hover:shadow-card-hover transition-all flex flex-col justify-between">
+        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/80 shadow-soft hover:shadow-card-hover transition-all flex flex-col justify-between min-w-0">
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400">
+              <div className="min-w-0 pr-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block truncate">
                   APMC Mandi • {weather.district ? `${weather.district}` : 'District Spot Rates'}
                 </span>
                 <h4 className="font-bold text-stone-900 text-sm sm:text-base">Key Commodity Prices</h4>
               </div>
-              <div className="p-1.5 bg-emerald-50 rounded-xl text-emerald-700">
+              <div className="p-1.5 bg-emerald-50 rounded-xl text-emerald-700 shrink-0">
                 <TrendingUp className="h-4 w-4" />
               </div>
             </div>
@@ -392,8 +392,8 @@ export const Dashboard: React.FC = () => {
                 </div>
               ) : topMandiQuotes.length > 0 ? (
                 topMandiQuotes.map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-2 rounded-xl bg-[#FAF9F5] border border-stone-100 text-xs hover:border-emerald-200 transition-colors">
-                    <div className="pr-2 min-w-0">
+                  <div key={idx} className="flex items-center justify-between p-2 rounded-xl bg-[#FAF9F5] border border-stone-100 text-xs hover:border-emerald-200 transition-colors min-w-0">
+                    <div className="pr-2 min-w-0 flex-1">
                       <span className="font-bold text-stone-800 block truncate">{item.commodity || item.crop?.name}</span>
                       <span className="text-[10px] text-stone-400 block truncate">
                         {item.marketName || item.market} {item.district ? `(${item.district})` : ''}
@@ -424,14 +424,14 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* Card 2: Soil Nutrients Diagnostic (100% Dynamic Agro-climatic Calibration) */}
-        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/80 shadow-soft hover:shadow-card-hover transition-all flex flex-col justify-between">
+        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/80 shadow-soft hover:shadow-card-hover transition-all flex flex-col justify-between min-w-0">
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400">Nutrient Matrix</span>
                 <h4 className="font-bold text-stone-900 text-sm sm:text-base">Active Soil Status</h4>
               </div>
-              <div className="p-1.5 bg-sky-50 rounded-xl text-sky-700">
+              <div className="p-1.5 bg-sky-50 rounded-xl text-sky-700 shrink-0">
                 <Sprout className="h-4 w-4" />
               </div>
             </div>
@@ -445,35 +445,35 @@ export const Dashboard: React.FC = () => {
                 </div>
               ) : (
                 <>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-stone-600 font-medium">Nitrogen (N)</span>
-                    <span className={`font-mono font-bold ${
+                  <div className="flex items-center justify-between gap-2 text-xs">
+                    <span className="text-stone-600 font-medium shrink-0">Nitrogen (N)</span>
+                    <span className={`font-mono font-bold text-right truncate ${
                       soilData?.nitrogenStatus === 'High' ? 'text-emerald-700' :
                       soilData?.nitrogenStatus === 'Deficient' ? 'text-rose-700' : 'text-emerald-700'
                     }`}>
                       {soilData?.nitrogen ?? 172} kg/ha • {soilData?.nitrogenStatus || 'Optimal'}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-stone-600 font-medium">Phosphorus (P)</span>
-                    <span className={`font-mono font-bold ${
+                  <div className="flex items-center justify-between gap-2 text-xs">
+                    <span className="text-stone-600 font-medium shrink-0">Phosphorus (P)</span>
+                    <span className={`font-mono font-bold text-right truncate ${
                       soilData?.phosphorusStatus === 'Deficient' ? 'text-rose-700' :
                       soilData?.phosphorusStatus === 'Rich' ? 'text-emerald-700' : 'text-amber-700'
                     }`}>
                       {soilData?.phosphorus ?? 38} kg/ha • {soilData?.phosphorusStatus || 'Moderate'}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-stone-600 font-medium">Potassium (K)</span>
-                    <span className={`font-mono font-bold ${
+                  <div className="flex items-center justify-between gap-2 text-xs">
+                    <span className="text-stone-600 font-medium shrink-0">Potassium (K)</span>
+                    <span className={`font-mono font-bold text-right truncate ${
                       soilData?.potassiumStatus === 'Deficient' ? 'text-rose-700' : 'text-emerald-700'
                     }`}>
                       {soilData?.potassium ?? 195} kg/ha • {soilData?.potassiumStatus || 'Optimal'}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-xs pt-1 border-t border-stone-100">
-                    <span className="text-stone-600 font-medium">Reaction (pH)</span>
-                    <span className="font-mono font-bold text-stone-800">
+                  <div className="flex items-center justify-between gap-2 text-xs pt-1 border-t border-stone-100">
+                    <span className="text-stone-600 font-medium shrink-0">Reaction (pH)</span>
+                    <span className="font-mono font-bold text-stone-800 text-right truncate">
                       {soilData?.ph ?? 6.8} • {soilData?.phStatus || 'Optimal'}
                     </span>
                   </div>
@@ -493,7 +493,7 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* Card 3: Active Operations & Tasks (100% Dynamic User Task Management) */}
-        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/80 shadow-soft hover:shadow-card-hover transition-all flex flex-col justify-between">
+        <div className="md:col-span-2 lg:col-span-1 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/80 shadow-soft hover:shadow-card-hover transition-all flex flex-col justify-between min-w-0">
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div>
@@ -502,7 +502,7 @@ export const Dashboard: React.FC = () => {
                   Pending Tasks ({tasksLoading ? '...' : pendingTasks.length})
                 </h4>
               </div>
-              <div className="p-1.5 bg-amber-50 rounded-xl text-amber-700">
+              <div className="p-1.5 bg-amber-50 rounded-xl text-amber-700 shrink-0">
                 <Calendar className="h-4 w-4" />
               </div>
             </div>
@@ -515,7 +515,7 @@ export const Dashboard: React.FC = () => {
                 </div>
               ) : pendingTasks.length > 0 ? (
                 pendingTasks.slice(0, 2).map((t) => (
-                  <div key={t.id} className="p-2 rounded-xl bg-[#FAF9F5] border border-stone-100 flex items-start gap-2 hover:bg-[#F2F1E8] transition-colors group">
+                  <div key={t.id} className="p-2 rounded-xl bg-[#FAF9F5] border border-stone-100 flex items-start gap-2 hover:bg-[#F2F1E8] transition-colors group min-w-0">
                     <button
                       type="button"
                       onClick={(e) => handleToggleTask(t.id, e)}
@@ -526,9 +526,9 @@ export const Dashboard: React.FC = () => {
                     </button>
                     <div className="min-w-0 flex-1">
                       <span className="text-xs font-bold text-stone-800 block truncate">{t.task}</span>
-                      <span className="text-[10px] text-stone-500 flex items-center gap-1.5 mt-0.5">
-                        <span className="font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.2 rounded-full border border-emerald-100 text-[9px]">{t.category}</span>
-                        <span>Due {new Date(t.dueDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>
+                      <span className="text-[10px] text-stone-500 flex items-center gap-1.5 mt-0.5 flex-wrap">
+                        <span className="font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.2 rounded-full border border-emerald-100 text-[9px] shrink-0">{t.category}</span>
+                        <span className="shrink-0">Due {new Date(t.dueDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>
                       </span>
                     </div>
                   </div>
@@ -553,7 +553,7 @@ export const Dashboard: React.FC = () => {
 
       {/* Bottom Row: 4 Curved Agronomic Tool Modules */}
       <div className="space-y-3 pt-1">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-base sm:text-lg font-extrabold text-stone-900 tracking-tight">Core Agronomic Modules</h3>
           <span className="text-[11px] text-stone-500 font-medium">Click to launch specialized workflow</span>
         </div>
@@ -563,14 +563,14 @@ export const Dashboard: React.FC = () => {
             <div
               key={feature.title}
               onClick={() => navigate(feature.path)}
-              className="group cursor-pointer rounded-2xl sm:rounded-3xl border border-stone-200/80 bg-white hover:border-emerald-300 shadow-soft hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5 p-4 sm:p-5 flex flex-col justify-between"
+              className="group cursor-pointer rounded-2xl sm:rounded-3xl border border-stone-200/80 bg-white hover:border-emerald-300 shadow-soft hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5 p-4 sm:p-5 flex flex-col justify-between min-w-0"
             >
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <div className={`p-2.5 rounded-xl ${feature.color} group-hover:scale-105 transition-transform shadow-soft`}>
+                  <div className={`p-2.5 rounded-xl ${feature.color} group-hover:scale-105 transition-transform shadow-soft shrink-0`}>
                     <feature.icon className="h-4 w-4" />
                   </div>
-                  <span className="text-[9.5px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-stone-100 text-stone-600">
+                  <span className="text-[9.5px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-stone-100 text-stone-600 shrink-0">
                     {feature.badge}
                   </span>
                 </div>

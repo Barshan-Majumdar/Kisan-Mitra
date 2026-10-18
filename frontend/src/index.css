@@ -46,6 +46,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  font-size: 80%; /* Sets 80% scale as the base 100% default across the application */
 }
 
 /* Custom subtle scrollbar */
@@ -66,30 +67,30 @@ html {
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-2xl px-5 py-2.5 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-600/30 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98];
-    min-height: 44px;
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-600/30 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98];
+    min-height: 2.5rem;
   }
 
   .card {
-    @apply bg-white rounded-3xl shadow-card border border-stone-200/80 overflow-hidden hover:shadow-card-hover transition-all duration-300;
+    @apply bg-white rounded-2xl shadow-card border border-stone-200/80 overflow-hidden hover:shadow-card-hover transition-all duration-300;
   }
 
   .card-island {
-    @apply bg-white rounded-4xl shadow-island border border-stone-200/90 overflow-hidden transition-all duration-300;
+    @apply bg-white rounded-3xl shadow-island border border-stone-200/90 overflow-hidden transition-all duration-300;
   }
 
   .glass-panel {
-    @apply bg-white/85 backdrop-blur-md border border-stone-200/60 shadow-glass rounded-3xl;
+    @apply bg-white/85 backdrop-blur-md border border-stone-200/60 shadow-glass rounded-2xl;
   }
 
   .form-input {
-    @apply block w-full rounded-2xl border-stone-200/90 bg-[#FAF9F5] py-2.5 px-4 text-stone-900 shadow-none ring-1 ring-inset ring-stone-200/80 placeholder:text-stone-400 focus:bg-white focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 transition-all;
-    min-height: 44px;
+    @apply block w-full rounded-xl border-stone-200/90 bg-[#FAF9F5] py-2 px-3.5 text-stone-900 shadow-none ring-1 ring-inset ring-stone-200/80 placeholder:text-stone-400 focus:bg-white focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 transition-all;
+    min-height: 2.5rem;
   }
 
   .btn-primary {
-    @apply flex w-full justify-center rounded-2xl bg-primary-700 px-4 py-2.5 text-sm font-semibold leading-6 text-white shadow-soft hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 active:scale-[0.98];
-    min-height: 44px;
+    @apply flex w-full justify-center rounded-xl bg-primary-700 px-4 py-2 text-sm font-semibold leading-6 text-white shadow-soft hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 active:scale-[0.98];
+    min-height: 2.5rem;
   }
 
   .card-hover {
@@ -97,8 +98,8 @@ html {
   }
 
   .touch-target {
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
   }
 }
 

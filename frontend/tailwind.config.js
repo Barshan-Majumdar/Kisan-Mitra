@@ -37,11 +37,11 @@ export default {
                 },
             },
             borderRadius: {
-                '2xl': '1.25rem',
-                '3xl': '1.75rem',
-                '4xl': '2.25rem',
-                '5xl': '2.75rem',
-                '6xl': '3.25rem',
+                '2xl': '0.875rem',
+                '3xl': '1.125rem',
+                '4xl': '1.375rem',
+                '5xl': '1.625rem',
+                '6xl': '1.875rem',
             },
             boxShadow: {
                 'soft': '0 2px 12px -2px rgba(28, 41, 31, 0.04), 0 4px 6px -2px rgba(28, 41, 31, 0.02)',

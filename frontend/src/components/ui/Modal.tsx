@@ -46,7 +46,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, 
       
       {/* Centered Modal Card */}
       <div className={cn(
-        "relative w-full max-w-lg transform rounded-3xl bg-white p-6 sm:p-8 shadow-dock border border-stone-200/90 transition-all animate-scale-in z-10 my-auto",
+        "relative w-full max-w-lg transform rounded-2xl bg-white p-6 sm:p-8 shadow-dock border border-stone-200/90 transition-all animate-scale-in z-10 my-auto",
         className
       )}>
         <div className="flex items-center justify-between mb-5">

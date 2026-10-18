@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -24,6 +24,8 @@ interface CommandPaletteProps {
 
 export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
   const [query, setQuery] = useState('');
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   const commands = [
@@ -54,25 +56,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
     }
   ];
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        if (isOpen) {
-          onClose();
-        } else {
-          // handled by parent or state
-        }
-      } else if (e.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
   const filteredCategories = commands.map(cat => ({
     ...cat,
     items: cat.items.filter(item =>
@@ -81,11 +64,43 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
     )
   })).filter(cat => cat.items.length > 0);
 
+  const flatItems = filteredCategories.flatMap(cat => cat.items);
+
   const handleSelect = (path: string) => {
     onClose();
     navigate(path);
   };
 
+  // 1. Keyboard shortcuts & navigation hook (ESC, Cmd+K, ArrowUp, ArrowDown, Enter)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (isOpen) {
+          onClose();
+        }
+      } else if (e.key === 'Escape' && isOpen) {
+        onClose();
+      } else if (isOpen && flatItems.length > 0) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          setSelectedIndex(prev => (prev + 1) % flatItems.length);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          setSelectedIndex(prev => (prev - 1 + flatItems.length) % flatItems.length);
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (flatItems[selectedIndex]) {
+            handleSelect(flatItems[selectedIndex].path);
+          }
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose, flatItems, selectedIndex]);
+
+  // 2. Lock body scroll when palette is active
   useEffect(() => {
     if (!isOpen) return;
     const originalOverflow = document.body.style.overflow;
@@ -95,10 +110,35 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
     };
   }, [isOpen]);
 
+  // 3. Auto-focus search input on open and reset state on close
+  useEffect(() => {
+    if (isOpen) {
+      setSelectedIndex(0);
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    } else {
+      setQuery('');
+      setSelectedIndex(0);
+    }
+  }, [isOpen]);
+
+  // 4. Reset selection when query changes
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [query]);
+
+  // CRITICAL: Single early return AFTER all hooks have executed
   if (!isOpen) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-start justify-center pt-16 sm:pt-20 px-4 overflow-y-auto">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Command Menu"
+      className="fixed inset-0 z-[9999] flex items-start justify-center pt-16 sm:pt-20 px-4 overflow-y-auto"
+    >
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-stone-900/50 backdrop-blur-md transition-opacity animate-fade-in"
@@ -112,17 +152,18 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         <div className="flex items-center px-5 py-4 border-b border-stone-100 bg-[#FAF9F5]">
           <Search className="h-5 w-5 text-stone-400 mr-3 flex-shrink-0" />
           <input
+            ref={inputRef}
             type="text"
             placeholder="Type a command or search crops, mandi rates, advisory... (ESC to exit)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            autoFocus
             className="w-full bg-transparent text-stone-900 placeholder:text-stone-400 focus:outline-none text-base font-medium"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="p-1 text-stone-400 hover:text-stone-600 rounded-lg"
+              className="p-1 text-stone-400 hover:text-stone-600 rounded-lg mr-1"
+              aria-label="Clear search"
             >
               <X className="h-4 w-4" />
             </button>
@@ -147,28 +188,49 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   {cat.category}
                 </div>
                 <div className="space-y-1">
-                  {cat.items.map((item, itemIdx) => (
-                    <button
-                      key={itemIdx}
-                      onClick={() => handleSelect(item.path)}
-                      className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-[#FAF9F5] border border-transparent hover:border-stone-200/80 transition-all text-left group active:scale-[0.99]"
-                    >
-                      <div className="flex items-center gap-3.5">
-                        <div className="p-2.5 rounded-xl bg-stone-100 group-hover:bg-emerald-700 group-hover:text-white text-stone-600 transition-colors shadow-soft">
-                          <item.icon className="h-4 w-4" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-bold text-stone-800 group-hover:text-emerald-900 transition-colors">
-                            {item.title}
+                  {cat.items.map((item) => {
+                    const isSelected = flatItems[selectedIndex]?.path === item.path;
+                    return (
+                      <button
+                        key={item.path}
+                        onClick={() => handleSelect(item.path)}
+                        onMouseEnter={() => {
+                          const idx = flatItems.findIndex(i => i.path === item.path);
+                          if (idx !== -1) setSelectedIndex(idx);
+                        }}
+                        className={`w-full flex items-center justify-between p-3 rounded-2xl border transition-all text-left group active:scale-[0.99] ${
+                          isSelected
+                            ? 'bg-[#F2EFE9] border-stone-300 text-stone-900 shadow-sm'
+                            : 'hover:bg-[#FAF9F5] border-transparent hover:border-stone-200/80 text-stone-800'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3.5">
+                          <div className={`p-2.5 rounded-xl transition-colors shadow-soft ${
+                            isSelected
+                              ? 'bg-emerald-700 text-white'
+                              : 'bg-stone-100 group-hover:bg-emerald-700 group-hover:text-white text-stone-600'
+                          }`}>
+                            <item.icon className="h-4 w-4" />
                           </div>
-                          <div className="text-xs text-stone-500 font-medium">
-                            {item.desc}
+                          <div>
+                            <div className={`text-sm font-bold transition-colors ${
+                              isSelected ? 'text-emerald-950 font-extrabold' : 'text-stone-800 group-hover:text-emerald-900'
+                            }`}>
+                              {item.title}
+                            </div>
+                            <div className="text-xs text-stone-500 font-medium">
+                              {item.desc}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <ArrowRight className="h-4 w-4 text-stone-300 group-hover:text-emerald-700 opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1" />
-                    </button>
-                  ))}
+                        <ArrowRight className={`h-4 w-4 text-emerald-700 transition-all transform ${
+                          isSelected
+                            ? 'opacity-100 translate-x-1'
+                            : 'opacity-0 group-hover:opacity-100 group-hover:translate-x-1 text-stone-300 group-hover:text-emerald-700'
+                        }`} />
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             ))
@@ -182,7 +244,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
             <span>AI Model Stage: 50 Validated Crops</span>
           </div>
           <div className="flex items-center gap-3">
-            <span>Navigation: Click or Enter</span>
+            <span className="hidden sm:inline">Use ↑↓ to navigate, Enter to select</span>
+            <span className="sm:hidden">Tap to select</span>
           </div>
         </div>
       </div>

@@ -113,34 +113,36 @@ export const FarmerInput: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6 animate-fade-in px-1">
-      <div className="space-y-1">
+    <div className="w-full max-w-xl mx-auto space-y-5 sm:space-y-6 animate-fade-in px-1 sm:px-2 min-w-0">
+      <div className="space-y-1.5 sm:space-y-2 text-center">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-800">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
           Step 1 of 3: Farm Diagnostics
         </div>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-stone-900 tracking-tight leading-tight">
           Field & Agronomic Parameters
         </h2>
-        <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+        <p className="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-lg mx-auto">
           Specify your regional location, soil type, and irrigation capabilities to compute AI recommendations.
         </p>
       </div>
 
-      <Card padding="lg" className="border border-stone-200/80 rounded-3xl shadow-card bg-white">
-        <form onSubmit={handleSubmit} className="space-y-6">
+      <Card padding="none" className="p-4 sm:p-6 md:p-8 border border-stone-200/80 rounded-3xl shadow-card bg-white min-w-0">
+        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
 
           {/* State and District Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
             {/* State Selection */}
-            <div className="space-y-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Select State</label>
+            <div className="space-y-1.5 min-w-0">
+              <label htmlFor="farm-state" className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Select State</label>
               <div className="relative">
-                <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10" />
+                <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10 shrink-0" />
                 <select
+                  id="farm-state"
+                  name="state"
                   value={formData.state}
                   onChange={(e) => handleStateChange(e.target.value)}
-                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium"
+                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium min-h-[44px]"
                   required
                 >
                   {statesList.map((st) => (
@@ -156,14 +158,16 @@ export const FarmerInput: React.FC = () => {
             </div>
 
             {/* District Selection */}
-            <div className="space-y-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Select District</label>
+            <div className="space-y-1.5 min-w-0">
+              <label htmlFor="farm-district" className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Select District</label>
               <div className="relative">
-                <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10" />
+                <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10 shrink-0" />
                 <select
+                  id="farm-district"
+                  name="district"
                   value={formData.district}
                   onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium"
+                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium min-h-[44px]"
                   required
                 >
                   <option value="">-- Choose District --</option>
@@ -181,16 +185,18 @@ export const FarmerInput: React.FC = () => {
           </div>
 
           {/* Crop Season & Soil Type */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
             {/* Season Selection */}
-            <div className="space-y-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Crop Season</label>
+            <div className="space-y-1.5 min-w-0">
+              <label htmlFor="farm-season" className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Crop Season</label>
               <div className="relative">
-                <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10" />
+                <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10 shrink-0" />
                 <select
+                  id="farm-season"
+                  name="season"
                   value={formData.season}
                   onChange={(e) => setFormData({ ...formData, season: e.target.value })}
-                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium"
+                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium min-h-[44px]"
                   required
                 >
                   {seasonsList.map((s) => (
@@ -206,14 +212,16 @@ export const FarmerInput: React.FC = () => {
             </div>
 
             {/* Soil Type Selection */}
-            <div className="space-y-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Soil Classification</label>
+            <div className="space-y-1.5 min-w-0">
+              <label htmlFor="farm-soil" className="block text-xs font-semibold uppercase tracking-wider text-stone-600">Soil Classification</label>
               <div className="relative">
-                <Layers className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10" />
+                <Layers className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none z-10 shrink-0" />
                 <select
+                  id="farm-soil"
+                  name="soilType"
                   value={formData.soilType}
                   onChange={(e) => setFormData({ ...formData, soilType: e.target.value })}
-                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium"
+                  className="w-full pl-10 pr-9 py-3 text-sm rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none appearance-none truncate transition-all text-stone-900 font-medium min-h-[44px]"
                   required
                 >
                   {soilTypesList.map((s) => (
@@ -230,13 +238,15 @@ export const FarmerInput: React.FC = () => {
           </div>
 
           {/* Farm Landholding Area */}
-          <div className="space-y-2">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
+          <div className="space-y-1.5 min-w-0">
+            <label htmlFor="farm-area" className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
               Cultivated Field Area
             </label>
-            <div className="flex gap-3">
-              <div className="flex-1">
+            <div className="flex flex-row gap-2.5 sm:gap-3 min-w-0">
+              <div className="flex-1 min-w-0">
                 <Input
+                  id="farm-area"
+                  name="area"
                   type="number"
                   step="0.1"
                   min="0.1"
@@ -247,18 +257,26 @@ export const FarmerInput: React.FC = () => {
                   required
                 />
               </div>
-              <div className="w-36">
+              <div className="w-28 sm:w-32 md:w-36 shrink-0 relative">
                 <select
+                  id="farm-area-unit"
+                  name="areaUnit"
+                  aria-label="Cultivated Area Unit"
                   value={formData.areaUnit}
                   onChange={(e) => setFormData({ ...formData, areaUnit: e.target.value })}
-                  className="w-full h-[46px] px-3.5 py-2.5 text-sm font-semibold rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none text-stone-800 transition-all"
+                  className="w-full h-[46px] pl-3 sm:pl-3.5 pr-8 py-2.5 text-xs sm:text-sm font-semibold rounded-2xl border border-stone-200/90 bg-[#FAF9F5] focus:bg-white focus:ring-4 focus:ring-emerald-600/10 focus:border-emerald-600 outline-none text-stone-800 transition-all appearance-none cursor-pointer"
                 >
                   <option value="Acres">Acres</option>
                   <option value="Hectares">Hectares</option>
                 </select>
+                <div className="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="h-4 w-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </div>
             </div>
-            <p className="text-xs text-stone-500 font-medium">
+            <p className="text-[11px] sm:text-xs text-stone-500 font-medium leading-relaxed pt-0.5">
               {formData.areaUnit === 'Acres'
                 ? `Standard conversion: ≈ ${(parseFloat(formData.area || '0') / 2.47105).toFixed(2)} Hectares (used for precise nutrient dosages)`
                 : `Standard conversion: ≈ ${(parseFloat(formData.area || '0') * 2.47105).toFixed(2)} Acres`}
@@ -266,28 +284,41 @@ export const FarmerInput: React.FC = () => {
           </div>
 
           {/* Irrigation Availability */}
-          <div className="space-y-2.5">
+          <div className="space-y-2 min-w-0">
             <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
               Irrigation Infrastructure
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div 
+              role="radiogroup" 
+              aria-label="Irrigation Infrastructure"
+              className="grid grid-cols-1 min-[340px]:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3"
+            >
               {IRRIGATION_TYPES.map((item) => {
                 const isSelected = formData.irrigationType === item.id;
                 return (
                   <div
                     key={item.id}
+                    role="radio"
+                    aria-checked={isSelected}
+                    tabIndex={0}
                     onClick={() => setFormData({ ...formData, irrigationType: item.id })}
+                    onKeyDown={(e) => {
+                      if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        setFormData({ ...formData, irrigationType: item.id });
+                      }
+                    }}
                     className={`
-                      cursor-pointer rounded-2xl border p-3.5 text-center transition-all duration-200 select-none
+                      cursor-pointer rounded-2xl border p-2.5 sm:p-3 text-center transition-all duration-200 select-none min-w-0 flex flex-col justify-center items-center focus:outline-none focus:ring-2 focus:ring-emerald-600/40
                       ${isSelected
                         ? 'border-emerald-700 bg-emerald-50 text-emerald-900 ring-2 ring-emerald-700/20 shadow-soft font-semibold'
                         : 'border-stone-200/90 bg-[#FAF9F5] hover:border-stone-300 hover:bg-stone-100/60 text-stone-700'
                       }
                     `}
                   >
-                    <Droplets className={`mx-auto h-5 w-5 mb-1.5 ${isSelected ? 'text-emerald-700' : 'text-stone-400'}`} />
-                    <span className="text-xs sm:text-sm font-semibold block leading-tight">{item.label}</span>
-                    <span className="text-[10px] text-stone-500 block mt-1">{item.sub}</span>
+                    <Droplets className={`mx-auto h-4 w-4 sm:h-5 sm:w-5 mb-1 sm:mb-1.5 shrink-0 ${isSelected ? 'text-emerald-700' : 'text-stone-400'}`} />
+                    <span className="text-xs sm:text-sm font-semibold block leading-tight break-words">{item.label}</span>
+                    <span className="text-[10px] sm:text-[11px] text-stone-500 block mt-0.5 sm:mt-1 leading-tight">{item.sub}</span>
                   </div>
                 );
               })}
@@ -295,14 +326,15 @@ export const FarmerInput: React.FC = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-3">
+          <div className="pt-2 sm:pt-3">
             <Button
               type="submit"
-              className="w-full text-base py-3.5 font-bold rounded-2xl"
+              className="w-full text-sm sm:text-base py-3 sm:py-3.5 font-bold rounded-2xl shadow-soft hover:shadow-card transition-all active:scale-[0.98] min-h-[48px] flex items-center justify-center gap-2"
               size="lg"
               isLoading={isLoading}
             >
-              Fetch Field Environmental Profile <ArrowRight className="ml-2 h-5 w-5" />
+              <span className="truncate sm:whitespace-normal">Fetch Field Environmental Profile</span>
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
             </Button>
           </div>
         </form>

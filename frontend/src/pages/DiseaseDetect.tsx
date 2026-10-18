@@ -399,60 +399,72 @@ export const DiseaseDetect: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6 animate-fade-in px-1 pb-12">
       {/* Top Header section */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <span className="p-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/60 inline-flex">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
+        <div className="space-y-1 min-w-0">
+          <div className="flex items-start sm:items-center gap-2.5">
+            <span className="p-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/60 inline-flex shrink-0 mt-0.5 sm:mt-0">
               <Microscope className="h-5 w-5 text-emerald-700" />
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
               AI Foliar Pathology Diagnostic
             </h2>
           </div>
-          <p className="text-sm text-stone-600">
+          <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
             Computer vision leaf & stem diagnostic powered by fine-tuned <span className="font-semibold text-stone-800">model_v1.pt (EfficientNet-B0)</span> with precision curative fungicide prescriptions.
           </p>
         </div>
 
-        {/* Model Specs Pill */}
-        <div className="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-2xl bg-emerald-50 border border-emerald-200/80 text-emerald-800 self-start sm:self-auto shrink-0 shadow-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-          </span>
-          <span>model_v1.pt (98.3% Val Acc)</span>
+        {/* Model Specs & Badges */}
+        <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto shrink-0 pt-1 sm:pt-0">
+          <div className="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-2xl bg-emerald-50 border border-emerald-200/80 text-emerald-800 shadow-sm shrink-0">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+            </span>
+            <span>model_v1.pt (98.3% Val Acc)</span>
+          </div>
+
+          {/* On mobile: companion badge right next to model_v1.pt */}
+          <button
+            type="button"
+            onClick={() => setShowCatalogModal(true)}
+            className="sm:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-white hover:bg-emerald-50 border border-stone-200/80 text-xs font-semibold text-stone-700 hover:text-emerald-800 shadow-sm transition-all active:scale-95 shrink-0"
+          >
+            <HelpCircle className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
+            <span>38 Supported Diseases</span>
+          </button>
         </div>
       </div>
 
-      {/* Primary Navigation Tabs: Diagnostic Scanner vs History */}
-      <div className="flex items-center justify-between border-b border-stone-200/80 pb-1">
-        <div className="flex gap-2">
+      {/* Primary Navigation Tabs: Segmented Track on Mobile & Desktop */}
+      <div className="flex items-center justify-between border-b border-stone-200/80 pb-2.5">
+        <div className="grid grid-cols-2 sm:flex sm:items-center p-1 rounded-2xl bg-stone-100/90 border border-stone-200/80 w-full sm:w-auto gap-1">
           <button
             type="button"
             onClick={() => setActiveTab('detect')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl font-bold text-sm transition-all ${
+            className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
               activeTab === 'detect'
                 ? 'bg-emerald-800 text-white shadow-soft'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
             }`}
           >
-            <Camera className="h-4 w-4" />
+            <Camera className="h-4 w-4 shrink-0" />
             <span>Leaf Scanner</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('history')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl font-bold text-sm transition-all ${
+            className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
               activeTab === 'history'
                 ? 'bg-emerald-800 text-white shadow-soft'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
             }`}
           >
-            <History className="h-4 w-4" />
+            <History className="h-4 w-4 shrink-0" />
             <span>Diagnostic History</span>
             {history.length > 0 && (
-              <span className={`px-2 py-0.5 rounded-full text-xs font-extrabold ${
+              <span className={`px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-extrabold ${
                 activeTab === 'history' ? 'bg-white/20 text-white' : 'bg-stone-200 text-stone-700'
               }`}>
                 {history.length}
@@ -461,15 +473,15 @@ export const DiseaseDetect: React.FC = () => {
           </button>
         </div>
 
-        <Button
-          variant="outline"
-          size="sm"
-          className="rounded-2xl text-xs font-semibold text-stone-700 hidden sm:flex items-center gap-1.5"
+        {/* On desktop: aligned cleanly on the right of the navigation row */}
+        <button
+          type="button"
           onClick={() => setShowCatalogModal(true)}
+          className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-white hover:bg-emerald-50 border border-stone-200/80 text-xs font-semibold text-stone-700 hover:text-emerald-800 shadow-soft transition-all active:scale-95 shrink-0"
         >
-          <HelpCircle className="h-3.5 w-3.5 text-emerald-700" />
+          <HelpCircle className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
           <span>38 Supported Diseases</span>
-        </Button>
+        </button>
       </div>
 
       {/* TAB 1: DIAGNOSTIC SCANNER & RESULT VIEW */}
@@ -478,21 +490,21 @@ export const DiseaseDetect: React.FC = () => {
           {/* Main Upload & Scanning Zone (shown when no active diagnosis) */}
           {!diagnosis ? (
             <div className="space-y-6">
-              <Card padding="lg" className="rounded-3xl border border-stone-200/80 bg-white shadow-card overflow-hidden">
-                <div className="py-8 sm:py-10 flex flex-col items-center text-center">
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-[#FAF9F5] border border-stone-200/90 flex items-center justify-center shadow-soft">
-                      <Camera className="h-10 w-10 text-emerald-700" />
+              <Card padding="none" className="p-5 sm:p-8 lg:p-10 rounded-3xl border border-stone-200/80 bg-white shadow-card overflow-hidden">
+                <div className="flex flex-col items-center text-center">
+                  <div className="relative mb-5 sm:mb-6">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-3xl bg-[#FAF9F5] border border-stone-200/90 flex items-center justify-center shadow-soft">
+                      <Camera className="h-8 w-8 sm:h-10 sm:w-10 text-emerald-700" />
                     </div>
-                    <div className="absolute -top-1.5 -right-1.5 w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center shadow-soft">
-                      <Sparkles className="h-3.5 w-3.5" />
+                    <div className="absolute -top-1 -right-1 sm:-top-1.5 sm:-right-1.5 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center shadow-soft">
+                      <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                     </div>
                   </div>
 
                   <h3 className="text-xl sm:text-2xl font-black text-stone-900 mb-2 tracking-tight">
                     Scan Crop Foliage for Symptoms
                   </h3>
-                  <p className="text-stone-500 text-xs sm:text-sm max-w-md mb-8">
+                  <p className="text-stone-500 text-xs sm:text-sm max-w-md mb-6 sm:mb-8 leading-relaxed px-1">
                     Upload or snap a sharp photo of an affected leaf, lesion, or shoot. The neural classifier isolates necrosis, mildew, chlorosis, and viral mosaics.
                   </p>
 
@@ -514,23 +526,23 @@ export const DiseaseDetect: React.FC = () => {
                   />
 
                   {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md justify-center">
+                  <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 w-full max-w-md justify-center px-1">
                     <Button
                       size="lg"
-                      className="rounded-2xl font-bold py-4 text-sm bg-emerald-800 hover:bg-emerald-700 shadow-md flex-1"
+                      className="rounded-2xl font-bold py-3.5 sm:py-4 text-xs sm:text-sm bg-emerald-800 hover:bg-emerald-700 shadow-md w-full sm:flex-1 justify-center whitespace-nowrap"
                       onClick={() => cameraInputRef.current?.click()}
                     >
-                      <Camera className="mr-2 h-4 w-4" />
+                      <Camera className="mr-2 h-4 w-4 shrink-0" />
                       Take Photo with Camera
                     </Button>
 
                     <Button
                       size="lg"
                       variant="outline"
-                      className="rounded-2xl font-bold py-4 text-sm border-stone-300 hover:bg-stone-50 flex-1"
+                      className="rounded-2xl font-bold py-3.5 sm:py-4 text-xs sm:text-sm border-stone-300 hover:bg-stone-50 w-full sm:flex-1 justify-center whitespace-nowrap"
                       onClick={() => fileInputRef.current?.click()}
                     >
-                      <UploadCloud className="mr-2 h-4 w-4 text-emerald-700" />
+                      <UploadCloud className="mr-2 h-4 w-4 text-emerald-700 shrink-0" />
                       Upload Leaf Image
                     </Button>
                   </div>
@@ -539,30 +551,30 @@ export const DiseaseDetect: React.FC = () => {
 
               {/* Instant 1-Click Interactive Foliage Samples */}
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 flex items-center gap-1.5">
-                    <Sparkles className="h-3.5 w-3.5 text-amber-600" />
+                    <Sparkles className="h-3.5 w-3.5 text-amber-600 shrink-0" />
                     <span>Instant Foliage Demos (1-Click Test)</span>
                   </h4>
                   <span className="text-[11px] text-stone-400">Click any card to analyze</span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
                   {PRESET_SAMPLES.map((sample, idx) => (
                     <button
                       key={sample.name}
                       type="button"
                       onClick={() => handleSampleClick(idx)}
                       disabled={analyzing}
-                      className="group p-3 rounded-2xl border border-stone-200/80 bg-white hover:border-emerald-500/80 hover:shadow-card transition-all text-left flex flex-col items-center disabled:opacity-50"
+                      className="group p-2.5 sm:p-3 rounded-2xl border border-stone-200/80 bg-white hover:border-emerald-500/80 hover:shadow-card transition-all text-left flex flex-col items-center disabled:opacity-50 min-w-0"
                     >
-                      <div className="w-16 h-16 rounded-xl bg-[#FAF9F5] p-1 mb-2 border border-stone-100 group-hover:scale-105 transition-transform flex items-center justify-center">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-[#FAF9F5] p-1 mb-2 border border-stone-100 group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
                         {sample.svg}
                       </div>
-                      <span className="font-extrabold text-stone-900 text-xs text-center line-clamp-1">
+                      <span className="font-extrabold text-stone-900 text-xs text-center line-clamp-2 break-words leading-tight">
                         {sample.name}
                       </span>
-                      <span className="text-[10px] text-stone-500 font-medium">
+                      <span className="text-[10px] text-stone-500 font-medium text-center mt-0.5 line-clamp-1">
                         {sample.hint}
                       </span>
                     </button>
@@ -574,7 +586,7 @@ export const DiseaseDetect: React.FC = () => {
 
           {/* Analyzing Loading Spinner */}
           {analyzing && (
-            <Card padding="lg" className="rounded-3xl border border-stone-200/80 bg-white text-center py-14 shadow-card space-y-4">
+            <Card padding="none" className="p-8 sm:p-12 rounded-3xl border border-stone-200/80 bg-white text-center shadow-card space-y-4">
               <div className="relative inline-flex items-center justify-center">
                 <div className="w-16 h-16 rounded-full border-4 border-emerald-200 border-t-emerald-800 animate-spin" />
                 <Microscope className="h-7 w-7 text-emerald-800 absolute" />
@@ -592,7 +604,7 @@ export const DiseaseDetect: React.FC = () => {
 
           {/* Error Message */}
           {error && (
-            <Card padding="md" className="rounded-2xl border border-red-200 bg-red-50 text-red-800 flex items-start gap-3">
+            <Card padding="none" className="p-4 sm:p-5 rounded-2xl border border-red-200 bg-red-50 text-red-800 flex items-start gap-3">
               <AlertTriangle className="h-5 w-5 text-red-600 shrink-0 mt-0.5" />
               <div className="text-xs sm:text-sm">
                 <p className="font-bold">Pathology Analysis Notice</p>
@@ -605,9 +617,9 @@ export const DiseaseDetect: React.FC = () => {
           {diagnosis && (
             <div className="space-y-6 animate-fade-in">
               {/* Preserved Confirmation Pill */}
-              <div className="flex items-center justify-between bg-emerald-50/90 border border-emerald-200/70 p-3 rounded-2xl">
-                <div className="flex items-center gap-2 text-xs font-bold text-emerald-900">
-                  <CheckCircle className="h-4 w-4 text-emerald-700" />
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-emerald-50/90 border border-emerald-200/70 p-3 sm:p-3.5 rounded-2xl">
+                <div className="flex items-center gap-2 text-xs font-bold text-emerald-900 min-w-0 flex-wrap">
+                  <CheckCircle className="h-4 w-4 text-emerald-700 shrink-0" />
                   <span>Preserved to your Diagnostic History</span>
                   {diagnosis.createdAt && (
                     <span className="text-emerald-700/80 font-normal">({formatDate(diagnosis.createdAt)})</span>
@@ -616,18 +628,19 @@ export const DiseaseDetect: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setActiveTab('history')}
-                  className="text-xs font-extrabold text-emerald-800 hover:text-emerald-950 underline flex items-center gap-1"
+                  className="text-xs font-extrabold text-emerald-800 hover:text-emerald-950 underline flex items-center gap-1 shrink-0 self-start sm:self-auto"
                 >
-                  View All History <ArrowRight className="h-3 w-3" />
+                  <span>View All History</span>
+                  <ArrowRight className="h-3 w-3" />
                 </button>
               </div>
 
               {/* Primary Pathology Card */}
-              <Card padding="lg" className="rounded-3xl border border-stone-200/80 bg-white shadow-card overflow-hidden">
-                <div className="flex flex-col md:flex-row gap-6 items-start">
+              <Card padding="none" className="p-4 sm:p-6 lg:p-8 rounded-3xl border border-stone-200/80 bg-white shadow-card overflow-hidden">
+                <div className="flex flex-col md:flex-row gap-5 sm:gap-6 items-start">
                   {/* Leaf Thumbnail */}
                   {selectedImage && (
-                    <div className="w-full md:w-56 h-56 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shrink-0 relative shadow-soft">
+                    <div className="w-full md:w-56 h-48 sm:h-56 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shrink-0 relative shadow-soft">
                       <img
                         src={selectedImage}
                         alt="Crop leaf sample"
@@ -644,23 +657,23 @@ export const DiseaseDetect: React.FC = () => {
                   )}
 
                   {/* Details column */}
-                  <div className="flex-1 space-y-3 w-full">
+                  <div className="flex-1 space-y-3 w-full min-w-0">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
                         {diagnosis.crop}
                       </span>
 
-                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200/70 flex items-center gap-1">
+                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200/70 flex items-center gap-1 shrink-0">
                         <Activity className="h-3 w-3" />
                         {diagnosis.confidence}% Confidence
                       </span>
                     </div>
 
                     <div>
-                      <h3 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+                      <h3 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight break-words">
                         {diagnosis.disease}
                       </h3>
-                      <p className="text-xs font-semibold text-stone-500 mt-0.5">
+                      <p className="text-xs font-semibold text-stone-500 mt-0.5 break-words">
                         Pathogen Etiology: <span className="text-stone-800">{diagnosis.pathogen}</span>
                       </p>
                     </div>
@@ -668,12 +681,12 @@ export const DiseaseDetect: React.FC = () => {
                     {/* Symptoms Description */}
                     <div className="text-stone-700 text-xs sm:text-sm leading-relaxed bg-[#FAF9F5] p-3.5 rounded-2xl border border-stone-200/70">
                       <span className="font-bold text-stone-900 block mb-1">Key Visual Symptoms:</span>
-                      <p className="text-stone-600">{cleanSuggestionText(diagnosis.symptoms)}</p>
+                      <p className="text-stone-600 break-words">{cleanSuggestionText(diagnosis.symptoms)}</p>
                     </div>
 
                     {/* Model Attribution */}
-                    <div className="flex items-center gap-2 text-[11px] text-stone-500 font-medium">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
+                    <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-stone-500 font-medium">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
                       <span>Validated by <span className="font-semibold text-stone-700">model_v1.pt</span> (Trained on 38-Class PlantVillage foliar dataset)</span>
                     </div>
                   </div>
@@ -681,9 +694,9 @@ export const DiseaseDetect: React.FC = () => {
               </Card>
 
               {/* CURATIVE TREATMENT PLANS GRID */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                 {/* 1. Chemical Treatment Prescription */}
-                <Card padding="md" className="rounded-3xl border border-stone-200/80 bg-white shadow-card space-y-3.5">
+                <Card padding="none" className="p-4 sm:p-5 rounded-3xl border border-stone-200/80 bg-white shadow-card space-y-3.5">
                   <div className="flex items-center justify-between border-b border-rose-100 pb-2.5">
                     <div className="flex items-center gap-2 text-rose-800 font-extrabold text-sm">
                       <div className="p-1.5 rounded-xl bg-rose-50 border border-rose-200/60 text-rose-700">
@@ -707,15 +720,15 @@ export const DiseaseDetect: React.FC = () => {
                             {parsedItems.map((item) => (
                               <div
                                 key={item.id}
-                                className="p-2.5 rounded-xl bg-rose-50/50 border border-rose-100 flex items-center justify-between gap-2 text-xs"
+                                className="p-2.5 rounded-xl bg-rose-50/50 border border-rose-100 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 text-xs"
                               >
-                                <div className="flex items-center gap-2">
-                                  <span className={`px-2 py-0.5 rounded-lg text-[10px] font-extrabold ${
+                                <div className="flex items-center gap-2 min-w-0">
+                                  <span className={`px-2 py-0.5 rounded-lg text-[10px] font-extrabold shrink-0 ${
                                     item.type === 'curative' ? 'bg-rose-200 text-rose-900' : 'bg-stone-200 text-stone-800'
                                   }`}>
                                     {item.label}
                                   </span>
-                                  <span className="font-bold text-stone-900">{item.remedy}</span>
+                                  <span className="font-bold text-stone-900 break-words">{item.remedy}</span>
                                 </div>
                                 {item.dosage && (
                                   <span className="px-2 py-0.5 rounded-lg bg-white border border-rose-200/80 font-extrabold text-rose-800 text-[11px] shrink-0 shadow-soft">
@@ -731,17 +744,17 @@ export const DiseaseDetect: React.FC = () => {
                     return null;
                   })()}
 
-                  {/* Clean text description (with zero @ or special characters) */}
+                  {/* Clean text description */}
                   <div className="p-3.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/70">
                     <span className="text-[11px] font-semibold text-stone-500 block mb-1">Prescription Details:</span>
-                    <p className="text-stone-700 text-xs sm:text-sm leading-relaxed font-medium">
+                    <p className="text-stone-700 text-xs sm:text-sm leading-relaxed font-medium break-words">
                       {cleanSuggestionText(diagnosis.chemicalTreatment)}
                     </p>
                   </div>
                 </Card>
 
                 {/* 2. Organic & Biological Remedy */}
-                <Card padding="md" className="rounded-3xl border border-stone-200/80 bg-white shadow-card space-y-3.5">
+                <Card padding="none" className="p-4 sm:p-5 rounded-3xl border border-stone-200/80 bg-white shadow-card space-y-3.5">
                   <div className="flex items-center justify-between border-b border-emerald-100 pb-2.5">
                     <div className="flex items-center gap-2 text-emerald-800 font-extrabold text-sm">
                       <div className="p-1.5 rounded-xl bg-emerald-50 border border-emerald-200/60 text-emerald-700">
@@ -765,13 +778,13 @@ export const DiseaseDetect: React.FC = () => {
                             {parsedItems.map((item) => (
                               <div
                                 key={item.id}
-                                className="p-2.5 rounded-xl bg-emerald-50/50 border border-emerald-100 flex items-center justify-between gap-2 text-xs"
+                                className="p-2.5 rounded-xl bg-emerald-50/50 border border-emerald-100 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 text-xs"
                               >
-                                <div className="flex items-center gap-2">
-                                  <span className="px-2 py-0.5 rounded-lg text-[10px] font-extrabold bg-emerald-200 text-emerald-900">
+                                <div className="flex items-center gap-2 min-w-0">
+                                  <span className="px-2 py-0.5 rounded-lg text-[10px] font-extrabold bg-emerald-200 text-emerald-900 shrink-0">
                                     {item.label}
                                   </span>
-                                  <span className="font-bold text-stone-900">{item.remedy}</span>
+                                  <span className="font-bold text-stone-900 break-words">{item.remedy}</span>
                                 </div>
                                 {item.dosage && (
                                   <span className="px-2 py-0.5 rounded-lg bg-white border border-emerald-200/80 font-extrabold text-emerald-800 text-[11px] shrink-0 shadow-soft">
@@ -787,10 +800,10 @@ export const DiseaseDetect: React.FC = () => {
                     return null;
                   })()}
 
-                  {/* Clean text description (with zero @ or special characters) */}
+                  {/* Clean text description */}
                   <div className="p-3.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/70">
                     <span className="text-[11px] font-semibold text-stone-500 block mb-1">Biological Guidelines:</span>
-                    <p className="text-stone-700 text-xs sm:text-sm leading-relaxed font-medium">
+                    <p className="text-stone-700 text-xs sm:text-sm leading-relaxed font-medium break-words">
                       {cleanSuggestionText(diagnosis.organicTreatment)}
                     </p>
                   </div>
@@ -798,21 +811,21 @@ export const DiseaseDetect: React.FC = () => {
               </div>
 
               {/* 3. Preventive Cultural Practices Card */}
-              <Card padding="md" className="rounded-3xl border border-stone-200/80 bg-white shadow-card space-y-2.5">
+              <Card padding="none" className="p-4 sm:p-5 rounded-3xl border border-stone-200/80 bg-white shadow-card space-y-2.5">
                 <div className="flex items-center gap-2 text-amber-800 font-extrabold text-sm border-b border-amber-100 pb-2">
                   <div className="p-1.5 rounded-xl bg-amber-50 border border-amber-200/60 text-amber-700">
                     <ShieldCheck className="h-4 w-4" />
                   </div>
                   <h4>Preventive & Cultural Agronomy Guidelines</h4>
                 </div>
-                <p className="text-stone-700 text-xs sm:text-sm leading-relaxed p-3.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/70 font-medium">
+                <p className="text-stone-700 text-xs sm:text-sm leading-relaxed p-3.5 rounded-2xl bg-[#FAF9F5] border border-stone-200/70 font-medium break-words">
                   {cleanSuggestionText(diagnosis.prevention)}
                 </p>
               </Card>
 
               {/* Differential Diagnosis (Top-3 Probability Spectrum) */}
               {diagnosis.differentialDiagnosis && diagnosis.differentialDiagnosis.length > 1 && (
-                <Card padding="md" className="rounded-3xl border border-stone-200/80 bg-white shadow-card space-y-3">
+                <Card padding="none" className="p-4 sm:p-5 rounded-3xl border border-stone-200/80 bg-white shadow-card space-y-3">
                   <div className="flex items-center gap-2 text-stone-800 font-extrabold text-sm border-b border-stone-100 pb-2">
                     <div className="p-1.5 rounded-xl bg-stone-100 border border-stone-200 text-stone-700">
                       <Layers className="h-4 w-4" />
@@ -823,11 +836,11 @@ export const DiseaseDetect: React.FC = () => {
                   <div className="space-y-2.5">
                     {diagnosis.differentialDiagnosis.map((alt, idx) => (
                       <div key={alt.className} className="p-3 rounded-2xl bg-[#FAF9F5] border border-stone-200/70 space-y-1.5">
-                        <div className="flex justify-between items-center text-xs">
-                          <span className="font-bold text-stone-900">
+                        <div className="flex justify-between items-center text-xs gap-2">
+                          <span className="font-bold text-stone-900 truncate">
                             #{idx + 1} {alt.crop} — {alt.disease}
                           </span>
-                          <span className="font-extrabold text-stone-700">
+                          <span className="font-extrabold text-stone-700 shrink-0">
                             {alt.confidence}%
                           </span>
                         </div>
@@ -850,7 +863,7 @@ export const DiseaseDetect: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button
                   size="lg"
-                  className="rounded-2xl font-bold py-3.5 bg-emerald-800 hover:bg-emerald-700 flex-1 shadow-md"
+                  className="rounded-2xl font-bold py-3.5 bg-emerald-800 hover:bg-emerald-700 flex-1 shadow-md w-full sm:w-auto"
                   onClick={handleReset}
                 >
                   <RotateCcw className="mr-2 h-4 w-4" />
@@ -860,7 +873,7 @@ export const DiseaseDetect: React.FC = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="rounded-2xl font-bold py-3.5 border-stone-300 text-stone-700 hover:text-stone-900"
+                  className="rounded-2xl font-bold py-3.5 border-stone-300 text-stone-700 hover:text-stone-900 w-full sm:w-auto"
                   onClick={() => setActiveTab('history')}
                 >
                   <History className="mr-2 h-4 w-4 text-emerald-700" />
@@ -876,24 +889,24 @@ export const DiseaseDetect: React.FC = () => {
       {activeTab === 'history' && (
         <div className="space-y-5 animate-fade-in">
           {/* Search & Filter Bar */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-4 rounded-3xl border border-stone-200/80 shadow-soft">
-            <div className="relative flex-1">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-3.5 sm:p-4 rounded-3xl border border-stone-200/80 shadow-soft">
+            <div className="relative flex-1 min-w-0">
               <Search className="h-4 w-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Search history by crop or disease (e.g. Tomato, Early Blight)..."
+                placeholder="Search history by crop or disease..."
                 value={historySearch}
                 onChange={(e) => setHistorySearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-[#FAF9F5] border border-stone-200 text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
               />
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 justify-between sm:justify-start">
               <div className="flex bg-[#FAF9F5] p-1 rounded-2xl border border-stone-200">
                 <button
                   type="button"
                   onClick={() => setHistoryFilter('all')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                     historyFilter === 'all' ? 'bg-white text-stone-900 shadow-soft' : 'text-stone-600'
                   }`}
                 >
@@ -902,7 +915,7 @@ export const DiseaseDetect: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setHistoryFilter('diseased')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                     historyFilter === 'diseased' ? 'bg-white text-rose-700 shadow-soft' : 'text-stone-600'
                   }`}
                 >
@@ -911,7 +924,7 @@ export const DiseaseDetect: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setHistoryFilter('healthy')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                     historyFilter === 'healthy' ? 'bg-white text-emerald-800 shadow-soft' : 'text-stone-600'
                   }`}
                 >
@@ -922,7 +935,7 @@ export const DiseaseDetect: React.FC = () => {
               <Button
                 variant="outline"
                 size="sm"
-                className="rounded-2xl text-xs font-bold"
+                className="rounded-2xl text-xs font-bold shrink-0"
                 onClick={() => {
                   handleReset();
                   setActiveTab('detect');
@@ -936,12 +949,12 @@ export const DiseaseDetect: React.FC = () => {
 
           {/* History List or Empty State */}
           {historyLoading ? (
-            <Card padding="lg" className="rounded-3xl border border-stone-200/80 bg-white text-center py-12">
+            <Card padding="none" className="p-8 sm:p-12 rounded-3xl border border-stone-200/80 bg-white text-center shadow-card">
               <div className="w-10 h-10 rounded-full border-4 border-emerald-200 border-t-emerald-800 animate-spin mx-auto mb-3" />
               <p className="text-xs text-stone-500 font-semibold">Loading your pathology history records...</p>
             </Card>
           ) : filteredHistory.length === 0 ? (
-            <Card padding="lg" className="rounded-3xl border border-stone-200/80 bg-white text-center py-16 shadow-card space-y-4">
+            <Card padding="none" className="p-8 sm:p-16 rounded-3xl border border-stone-200/80 bg-white text-center shadow-card space-y-4">
               <div className="w-16 h-16 rounded-3xl bg-stone-100 flex items-center justify-center mx-auto text-stone-400">
                 <Microscope className="h-8 w-8 text-stone-400" />
               </div>
@@ -964,72 +977,75 @@ export const DiseaseDetect: React.FC = () => {
               </Button>
             </Card>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3.5 sm:space-y-4">
               {filteredHistory.map((item) => (
                 <Card
                   key={item.id}
-                  padding="md"
-                  className="rounded-3xl border border-stone-200/80 bg-white hover:border-emerald-600/60 transition-all shadow-card hover:shadow-md cursor-pointer overflow-hidden group"
+                  padding="none"
+                  className="p-3.5 sm:p-4 rounded-3xl border border-stone-200/80 bg-white hover:border-emerald-600/60 transition-all shadow-card hover:shadow-md cursor-pointer overflow-hidden group"
                   onClick={() => handleSelectHistoryItem(item)}
                 >
-                  <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                    {/* Thumbnail */}
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shrink-0 relative">
-                      {item.imageUrl ? (
-                        <img
-                          src={item.imageUrl}
-                          alt={item.crop}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-stone-400">
-                          <Microscope className="h-8 w-8 text-stone-300" />
-                        </div>
-                      )}
-                      <div className="absolute top-1 left-1">
-                        <span className={`px-1.5 py-0.5 rounded-full text-[9px] font-black ${
-                          item.isHealthy ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'
-                        }`}>
-                          {item.isHealthy ? 'Healthy' : (item.severity || 'Infected')}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Metadata & Diagnosis */}
-                    <div className="flex-1 space-y-1.5 min-w-0">
-                      <div className="flex flex-wrap items-center justify-between gap-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-black text-stone-900 uppercase tracking-wide">
-                            {item.crop}
-                          </span>
-                          <span className="text-stone-300">•</span>
-                          <span className="text-xs text-stone-500 font-medium flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            {formatDate(item.createdAt)}
+                  <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 items-start sm:items-center">
+                    {/* Top/Left: Thumbnail & metadata */}
+                    <div className="flex items-start gap-3 sm:gap-4 w-full sm:w-auto flex-1 min-w-0">
+                      {/* Thumbnail */}
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shrink-0 relative shadow-soft">
+                        {item.imageUrl ? (
+                          <img
+                            src={item.imageUrl}
+                            alt={item.crop}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-stone-400">
+                            <Microscope className="h-8 w-8 text-stone-300" />
+                          </div>
+                        )}
+                        <div className="absolute top-1 left-1">
+                          <span className={`px-1.5 py-0.5 rounded-full text-[9px] font-black ${
+                            item.isHealthy ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'
+                          }`}>
+                            {item.isHealthy ? 'Healthy' : (item.severity || 'Infected')}
                           </span>
                         </div>
-
-                        <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70">
-                          {item.confidence}% Match
-                        </span>
                       </div>
 
-                      <h4 className="text-base sm:text-lg font-black text-stone-900 tracking-tight group-hover:text-emerald-800 transition-colors">
-                        {item.disease}
-                      </h4>
+                      {/* Metadata & Diagnosis */}
+                      <div className="flex-1 space-y-1 min-w-0">
+                        <div className="flex flex-wrap items-center justify-between gap-1">
+                          <div className="flex items-center gap-1.5 text-xs">
+                            <span className="font-black text-stone-900 uppercase tracking-wide">
+                              {item.crop}
+                            </span>
+                            <span className="text-stone-300">•</span>
+                            <span className="text-stone-500 font-medium flex items-center gap-1">
+                              <Calendar className="h-3 w-3 shrink-0" />
+                              <span className="truncate">{formatDate(item.createdAt)}</span>
+                            </span>
+                          </div>
 
-                      {/* Brief remedy snippet */}
-                      <p className="text-xs text-stone-600 line-clamp-1">
-                        <span className="font-semibold text-stone-700">Prescription: </span>
-                        {cleanSuggestionText(item.chemicalTreatment || item.organicTreatment || item.symptoms || 'Diagnostic report saved')}
-                      </p>
+                          <span className="text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70 shrink-0">
+                            {item.confidence}% Match
+                          </span>
+                        </div>
+
+                        <h4 className="text-sm sm:text-base md:text-lg font-black text-stone-900 tracking-tight group-hover:text-emerald-800 transition-colors break-words">
+                          {item.disease}
+                        </h4>
+
+                        {/* Brief remedy snippet */}
+                        <p className="text-xs text-stone-600 line-clamp-1 break-words">
+                          <span className="font-semibold text-stone-700">Prescription: </span>
+                          {cleanSuggestionText(item.chemicalTreatment || item.organicTreatment || item.symptoms || 'Diagnostic report saved')}
+                        </p>
+                      </div>
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
+                    <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-2.5 border-t border-stone-100 sm:border-0 sm:pt-0 shrink-0">
                       <Button
                         size="sm"
-                        className="rounded-2xl font-bold text-xs bg-emerald-800 hover:bg-emerald-700 text-white"
+                        className="rounded-2xl font-bold text-xs bg-emerald-800 hover:bg-emerald-700 text-white flex-1 sm:flex-none justify-center"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleSelectHistoryItem(item);
@@ -1045,6 +1061,7 @@ export const DiseaseDetect: React.FC = () => {
                         disabled={deletingId === item.id}
                         className="p-2 rounded-xl text-stone-400 hover:text-rose-600 hover:bg-rose-50 transition-colors disabled:opacity-50"
                         title="Delete record"
+                        aria-label="Delete record"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>

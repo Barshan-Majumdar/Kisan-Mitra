@@ -350,17 +350,17 @@ export const CropRecommendation: React.FC = () => {
   return (
     <div className="space-y-6 pb-24 sm:pb-8 animate-fade-in">
       {/* Top Header & View Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-xl bg-emerald-100 text-emerald-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3.5 sm:gap-4">
+        <div className="space-y-1 min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            <span className="p-1.5 rounded-xl bg-emerald-100 text-emerald-800 shrink-0">
               <Sparkles className="h-5 w-5" />
             </span>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-stone-900 tracking-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-stone-900 tracking-tight leading-snug">
               Crop Recommendations & Evaluation History
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-stone-600">
+          <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
             {activeTab === 'history'
               ? 'Browse previous agro-climatic submissions, inspect recommended 5-crop baskets, and generate custom farming plans.'
               : 'Ranked crop recommendations tailored to your exact landholding, soil nutrients, and climatic conditions.'}
@@ -368,23 +368,23 @@ export const CropRecommendation: React.FC = () => {
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="flex items-center gap-2.5 shrink-0 self-start md:self-center">
           {activeTab === 'detail' ? (
             <Button
               variant="outline"
-              className="rounded-2xl text-xs sm:text-sm font-bold border-stone-200 hover:bg-stone-100"
+              className="rounded-2xl text-xs sm:text-sm font-bold border-stone-200 hover:bg-stone-100 min-h-[42px]"
               onClick={() => setActiveTab('history')}
             >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              All Saved Recommendations ({historyList.length})
+              <ChevronLeft className="h-4 w-4 mr-1 shrink-0" />
+              <span>All Saved Recommendations ({historyList.length})</span>
             </Button>
           ) : (
             <Button
-              className="rounded-2xl text-xs sm:text-sm font-bold bg-emerald-800 hover:bg-emerald-700 shadow-sm"
+              className="rounded-2xl text-xs sm:text-sm font-bold bg-emerald-800 hover:bg-emerald-700 shadow-sm min-h-[42px] w-full min-[400px]:w-auto"
               onClick={() => navigate('/input')}
             >
-              <Plus className="h-4 w-4 mr-1.5" />
-              New Recommendation
+              <Plus className="h-4 w-4 mr-1.5 shrink-0" />
+              <span>New Recommendation</span>
             </Button>
           )}
         </div>
@@ -394,30 +394,31 @@ export const CropRecommendation: React.FC = () => {
       {/* MODE 1: HISTORY VIEW (Cards of past recommendation queries)    */}
       {/* ============================================================== */}
       {activeTab === 'history' && (
-        <div className="space-y-5">
+        <div className="space-y-4 sm:space-y-5">
           {/* Filter & Search Bar */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 bg-white rounded-3xl border border-stone-200/80 shadow-soft">
-            <div className="relative flex-1">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400" />
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 p-3 sm:p-3.5 bg-white rounded-3xl border border-stone-200/80 shadow-soft">
+            <div className="relative flex-1 min-w-0 w-full lg:w-auto">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 shrink-0" />
               <input
                 type="text"
                 placeholder="Search by district, state, or crop..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-700"
+                className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-700 min-h-[42px]"
               />
             </div>
 
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
-              <span className="text-xs font-semibold text-stone-500 mr-1 hidden sm:inline">Season:</span>
+            <div className="flex flex-wrap items-center gap-1.5 pt-0.5 lg:pt-0">
+              <span className="text-xs font-semibold text-stone-500 mr-1 shrink-0">Season:</span>
               {['All', 'Kharif', 'Rabi', 'Summer', 'Whole Year'].map((s) => (
                 <button
                   key={s}
+                  type="button"
                   onClick={() => setSeasonFilter(s)}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-xl whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 text-xs font-bold rounded-xl whitespace-nowrap transition-all cursor-pointer min-h-[36px] flex items-center justify-center ${
                     seasonFilter === s
                       ? 'bg-emerald-800 text-white shadow-xs'
-                      : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                      : 'bg-stone-100 text-stone-600 hover:bg-stone-200 active:scale-95'
                   }`}
                 >
                   {s}
@@ -433,15 +434,15 @@ export const CropRecommendation: React.FC = () => {
               <p className="text-xs text-stone-500 font-semibold">Loading recommendation history...</p>
             </div>
           ) : filteredHistory.length === 0 ? (
-            <div className="text-center py-16 px-4 bg-white rounded-3xl border border-dashed border-stone-300 space-y-4">
-              <div className="h-14 w-14 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center mx-auto">
-                <Sprout className="h-7 w-7" />
+            <div className="text-center py-10 sm:py-14 md:py-16 px-4 sm:px-6 bg-white rounded-3xl border border-dashed border-stone-300 space-y-4 max-w-2xl mx-auto w-full min-w-0 shadow-soft">
+              <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center mx-auto shrink-0">
+                <Sprout className="h-6 w-6 sm:h-7 sm:w-7" />
               </div>
               <div className="max-w-md mx-auto space-y-1">
-                <h3 className="text-lg font-extrabold text-stone-900 tracking-tight">
+                <h3 className="text-base sm:text-lg font-extrabold text-stone-900 tracking-tight leading-snug">
                   No Recommendation Records Found
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-500">
+                <p className="text-xs sm:text-sm text-stone-500 leading-relaxed">
                   {searchQuery || seasonFilter !== 'All'
                     ? 'No queries matched your search criteria. Try resetting the filters.'
                     : 'Start your first farm diagnostics to evaluate crop suitability, view harvest projections, and generate farming plans.'}
@@ -449,14 +450,14 @@ export const CropRecommendation: React.FC = () => {
               </div>
               <Button
                 onClick={() => navigate('/input')}
-                className="rounded-2xl font-bold bg-emerald-800 hover:bg-emerald-700 shadow-sm text-xs sm:text-sm"
+                className="rounded-2xl font-bold bg-emerald-800 hover:bg-emerald-700 shadow-sm text-xs sm:text-sm px-5 py-3 min-h-[44px] w-full sm:w-auto inline-flex items-center justify-center"
               >
-                <Plus className="h-4 w-4 mr-1.5" />
-                Run First Crop Recommendation
+                <Plus className="h-4 w-4 mr-1.5 shrink-0" />
+                <span>Run First Crop Recommendation</span>
               </Button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
               {filteredHistory.map((item) => {
                 const recCrops: Stage2CropRecommendation[] = (item.recommendedCrops as any) || [];
 
@@ -464,14 +465,14 @@ export const CropRecommendation: React.FC = () => {
                   <Card
                     key={item.id}
                     padding="none"
-                    className="overflow-hidden bg-white border border-stone-200/90 rounded-3xl shadow-card hover:shadow-card-hover hover:border-emerald-400 transition-all cursor-pointer group flex flex-col justify-between"
+                    className="overflow-hidden bg-white border border-stone-200/90 rounded-3xl shadow-card hover:shadow-card-hover hover:border-emerald-400 transition-all cursor-pointer group flex flex-col justify-between min-w-0"
                     onClick={() => handleSelectHistoryItem(item)}
                   >
-                    <div className="p-5 sm:p-6 space-y-4">
+                    <div className="p-4 sm:p-5 lg:p-6 space-y-3.5 sm:space-y-4 min-w-0">
                       {/* Card Header: Timestamp & Season */}
-                      <div className="flex items-center justify-between gap-2 border-b border-stone-100 pb-3">
-                        <div className="flex items-center gap-2 text-stone-500 text-xs">
-                          <Calendar className="h-3.5 w-3.5 text-emerald-800" />
+                      <div className="flex items-center justify-between gap-2 border-b border-stone-100 pb-3 flex-wrap">
+                        <div className="flex items-center gap-1.5 sm:gap-2 text-stone-500 text-xs flex-wrap">
+                          <Calendar className="h-3.5 w-3.5 text-emerald-800 shrink-0" />
                           <span className="font-semibold text-stone-700">
                             {new Date(item.createdAt).toLocaleDateString('en-IN', {
                               day: 'numeric',
@@ -488,14 +489,15 @@ export const CropRecommendation: React.FC = () => {
                           </span>
                         </div>
 
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1.5 shrink-0">
                           <span className="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
                             {item.season}
                           </span>
                           <button
                             onClick={(e) => handleDeleteHistory(item.id, e)}
-                            className="p-1 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors ml-1"
+                            className="p-1.5 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors ml-1 focus:outline-none focus:ring-2 focus:ring-red-400"
                             title="Delete this record"
+                            aria-label="Delete this record"
                           >
                             <Trash2 className="h-3.5 w-3.5" />
                           </button>
@@ -503,37 +505,37 @@ export const CropRecommendation: React.FC = () => {
                       </div>
 
                       {/* Submitted Conditions Grid */}
-                      <div className="grid grid-cols-2 gap-3 text-xs">
-                        <div className="space-y-0.5">
+                      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 text-xs min-w-0">
+                        <div className="space-y-0.5 min-w-0">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 flex items-center gap-1">
-                            <MapPin className="h-3 w-3 text-emerald-700" /> Location
+                            <MapPin className="h-3 w-3 text-emerald-700 shrink-0" /> Location
                           </span>
                           <p className="font-bold text-stone-900 truncate">
                             {item.district}, {item.state}
                           </p>
                         </div>
 
-                        <div className="space-y-0.5">
+                        <div className="space-y-0.5 min-w-0">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 flex items-center gap-1">
-                            <Ruler className="h-3 w-3 text-emerald-700" /> Farm Area
+                            <Ruler className="h-3 w-3 text-emerald-700 shrink-0" /> Farm Area
                           </span>
-                          <p className="font-bold text-stone-900">
+                          <p className="font-bold text-stone-900 truncate">
                             {item.cultivatedArea} {item.areaUnit || 'Hectares'}
                           </p>
                         </div>
 
-                        <div className="space-y-0.5">
+                        <div className="space-y-0.5 min-w-0">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 flex items-center gap-1">
-                            <Layers className="h-3 w-3 text-emerald-700" /> Soil Archetype
+                            <Layers className="h-3 w-3 text-emerald-700 shrink-0" /> Soil Archetype
                           </span>
                           <p className="font-semibold text-stone-700 truncate">
                             {item.soilType?.replace(' (proxy)', '') || 'Regional Soil'}
                           </p>
                         </div>
 
-                        <div className="space-y-0.5">
+                        <div className="space-y-0.5 min-w-0">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 flex items-center gap-1">
-                            <Droplets className="h-3 w-3 text-emerald-700" /> Irrigation
+                            <Droplets className="h-3 w-3 text-emerald-700 shrink-0" /> Irrigation
                           </span>
                           <p className="font-semibold text-stone-700 truncate">
                             {item.irrigationType?.replace(' (proxy)', '') || 'Standard'}
@@ -591,12 +593,12 @@ export const CropRecommendation: React.FC = () => {
                     </div>
 
                     {/* Card Action Footer */}
-                    <div className="px-5 py-3 bg-stone-50 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-emerald-800 group-hover:bg-emerald-50/50 transition-colors">
-                      <span className="flex items-center gap-1.5">
-                        <Sparkles className="h-3.5 w-3.5 text-emerald-700" />
-                        Inspect 5 Crops & Generate Plan
+                    <div className="px-4 sm:px-5 py-3 bg-stone-50 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-emerald-800 group-hover:bg-emerald-50/50 transition-colors gap-2">
+                      <span className="flex items-center gap-1.5 truncate">
+                        <Sparkles className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
+                        <span className="truncate">Inspect 5 Crops & Generate Plan</span>
                       </span>
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Card>
                 );
@@ -628,32 +630,32 @@ export const CropRecommendation: React.FC = () => {
                 )}
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-                <div>
+              <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-xs sm:text-sm">
+                <div className="min-w-0">
                   <span className="text-stone-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5 text-emerald-700" /> Location
+                    <MapPin className="h-3.5 w-3.5 text-emerald-700 shrink-0" /> Location
                   </span>
                   <p className="font-bold text-stone-900 mt-1 truncate">{farmSummary.location}</p>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-stone-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                    <Calendar className="h-3.5 w-3.5 text-emerald-700" /> Season & Area
+                    <Calendar className="h-3.5 w-3.5 text-emerald-700 shrink-0" /> Season & Area
                   </span>
-                  <p className="font-bold text-stone-900 mt-1">
+                  <p className="font-bold text-stone-900 mt-1 truncate">
                     {farmSummary.season} • {farmSummary.cultivated_area_ha} ha ({farmSummary.cultivated_area_acres || (farmSummary.cultivated_area_ha * 2.47).toFixed(1)} ac)
                   </p>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-stone-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                    <Layers className="h-3.5 w-3.5 text-emerald-700" /> Soil Archetype
+                    <Layers className="h-3.5 w-3.5 text-emerald-700 shrink-0" /> Soil Archetype
                   </span>
                   <p className="font-bold text-stone-900 mt-1 truncate">{farmSummary.soil_type.replace(' (proxy)', '')}</p>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-stone-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" /> Data Source
+                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-700 shrink-0" /> Data Source
                   </span>
-                  <p className="font-bold text-stone-900 mt-1">
+                  <p className="font-bold text-stone-900 mt-1 truncate">
                     {farmSummary.npk_used?.source || 'Regional Baseline'}
                   </p>
                 </div>
@@ -664,18 +666,18 @@ export const CropRecommendation: React.FC = () => {
           {/* Stage 1: Agricultural Domain / Category Overview */}
           {stage1Domains.length > 0 && (
             <Card padding="sm" className="bg-[#FAF9F5] border border-stone-200/80 rounded-2xl shadow-soft">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-2 py-1">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 px-2 py-1">
                 <div className="flex items-center gap-2">
                   <span className="text-stone-700 font-bold text-xs uppercase tracking-wider">
                     Stage 1 Agronomic Taxonomy:
                   </span>
                   <span className="text-xs text-stone-500">ML Category Fit</span>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {stage1Domains.map((dom, idx) => (
                     <span
                       key={dom.category}
-                      className={`text-xs px-3 py-1 rounded-full font-semibold transition-all ${
+                      className={`text-xs px-2.5 sm:px-3 py-1 rounded-full font-semibold transition-all ${
                         idx === 0
                           ? 'bg-emerald-800 text-white shadow-soft'
                           : 'bg-white text-stone-700 border border-stone-200/90'
@@ -691,7 +693,7 @@ export const CropRecommendation: React.FC = () => {
 
           {/* Stage 2: Ranked Recommendations List */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
               <h3 className="text-lg sm:text-xl font-extrabold text-stone-900 tracking-tight">
                 Ranked Recommendations for Your Land
               </h3>
@@ -707,7 +709,7 @@ export const CropRecommendation: React.FC = () => {
                   <Card
                     key={crop.id}
                     padding="none"
-                    className={`overflow-hidden transition-all duration-300 cursor-pointer rounded-3xl border ${
+                    className={`overflow-hidden transition-all duration-300 cursor-pointer rounded-3xl border min-w-0 ${
                       isSelected
                         ? 'ring-2 ring-emerald-600/40 shadow-card-hover border-emerald-600 bg-emerald-50/15'
                         : 'hover:shadow-card-hover hover:border-stone-300 bg-white border-stone-200/80 shadow-card'
@@ -717,9 +719,9 @@ export const CropRecommendation: React.FC = () => {
                       setSelectedCropName(crop.name);
                     }}
                   >
-                    <div className="flex flex-col sm:flex-row">
+                    <div className="flex flex-col sm:flex-row min-w-0">
                       {/* Crop Image */}
-                      <div className="h-48 sm:h-auto sm:w-52 lg:w-60 shrink-0 relative bg-stone-100 overflow-hidden">
+                      <div className="h-44 sm:h-auto sm:w-48 md:w-52 lg:w-60 shrink-0 relative bg-stone-100 overflow-hidden">
                         <img
                           src={crop.imageUrl || 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&auto=format&fit=crop&q=80'}
                           alt={crop.name}
@@ -739,10 +741,10 @@ export const CropRecommendation: React.FC = () => {
                       </div>
 
                       {/* Crop Content */}
-                      <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-3">
+                      <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-1 justify-between gap-3 min-w-0">
                         <div>
                           {/* Name & Confidence Badge */}
-                          <div className="flex justify-between items-start gap-2 mb-1.5">
+                          <div className="flex justify-between items-start gap-2 mb-1.5 flex-wrap sm:flex-nowrap">
                             <div>
                               <h4 className="text-xl sm:text-2xl font-extrabold text-stone-900 tracking-tight leading-snug">
                                 {crop.popularIndianName || crop.name}
@@ -762,25 +764,25 @@ export const CropRecommendation: React.FC = () => {
 
                           {/* Harvest Production Metrics Box */}
                           {(crop.expectedYieldTonnesPerHa !== undefined || crop.expectedTotalHarvestTonnes !== undefined) && (
-                            <div className="grid grid-cols-2 gap-3 my-3 p-3 rounded-2xl bg-[#FAF9F5] border border-stone-200/80">
-                              <div className="flex items-center gap-2.5">
-                                <div className="p-1.5 bg-emerald-100/70 rounded-xl text-emerald-800">
-                                  <TrendingUp className="h-4 w-4 shrink-0" />
+                            <div className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-2.5 sm:gap-3 my-2.5 sm:my-3 p-2.5 sm:p-3 rounded-2xl bg-[#FAF9F5] border border-stone-200/80">
+                              <div className="flex items-center gap-2.5 min-w-0">
+                                <div className="p-1.5 bg-emerald-100/70 rounded-xl text-emerald-800 shrink-0">
+                                  <TrendingUp className="h-4 w-4" />
                                 </div>
-                                <div>
-                                  <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider block">Expected Yield</span>
+                                <div className="min-w-0">
+                                  <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider block truncate">Expected Yield</span>
                                   <span className="font-bold text-stone-900 text-xs sm:text-sm">
                                     {crop.expectedYieldTonnesPerHa || 2.5} T / ha
                                   </span>
                                 </div>
                               </div>
 
-                              <div className="flex items-center gap-2.5">
-                                <div className="p-1.5 bg-emerald-100/70 rounded-xl text-emerald-800">
-                                  <Sparkles className="h-4 w-4 shrink-0" />
+                              <div className="flex items-center gap-2.5 min-w-0">
+                                <div className="p-1.5 bg-emerald-100/70 rounded-xl text-emerald-800 shrink-0">
+                                  <Sparkles className="h-4 w-4" />
                                 </div>
-                                <div>
-                                  <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider block">Total Projected</span>
+                                <div className="min-w-0">
+                                  <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider block truncate">Total Projected</span>
                                   <span className="font-extrabold text-emerald-800 text-xs sm:text-sm">
                                     {crop.expectedTotalHarvestTonnes || (Number(currentContext.area || 2.0) * 2.5).toFixed(1)} Tonnes
                                   </span>

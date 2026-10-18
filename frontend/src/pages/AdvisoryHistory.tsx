@@ -128,26 +128,27 @@ export const AdvisoryHistory: React.FC = () => {
             Precision farming guides and nutrient schedules generated for your farm plots.
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:gap-2.5 w-full sm:w-auto shrink-0">
           <button
             onClick={fetchAdvisories}
-            className="p-3 rounded-2xl bg-white border border-stone-200/80 hover:bg-[#FAF9F5] text-stone-600 shadow-soft transition-all active:scale-95"
+            className="p-3 rounded-2xl bg-white border border-stone-200/80 hover:bg-[#FAF9F5] text-stone-600 shadow-soft transition-all active:scale-95 shrink-0"
             title="Refresh advisories"
+            aria-label="Refresh advisories"
           >
-            <RefreshCw className="h-4 w-4" />
+            <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin text-emerald-700' : ''}`} />
           </button>
           <button
             onClick={() => navigate('/input')}
-            className="inline-flex items-center justify-center rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 text-sm shadow-soft hover:shadow-card active:scale-[0.98] transition-all"
+            className="flex-1 sm:flex-none inline-flex items-center justify-center rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 text-sm shadow-soft hover:shadow-card active:scale-[0.98] transition-all whitespace-nowrap"
           >
-            <Plus className="h-4 w-4 mr-2" />
+            <Plus className="h-4 w-4 mr-2 shrink-0" />
             New Advisory
           </button>
         </div>
       </div>
 
       {history.length === 0 ? (
-        <Card className="p-8 sm:p-12 text-center rounded-3xl border border-stone-200/80 bg-white shadow-soft">
+        <Card className="p-6 sm:p-12 text-center rounded-3xl border border-stone-200/80 bg-white shadow-soft">
           <div className="inline-flex p-4 rounded-3xl bg-emerald-50 text-emerald-700 mb-4 border border-emerald-200/60">
             <Sprout className="h-8 w-8" />
           </div>
@@ -157,7 +158,7 @@ export const AdvisoryHistory: React.FC = () => {
           </p>
           <button
             onClick={() => navigate('/input')}
-            className="inline-flex items-center justify-center rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3 text-sm shadow-soft hover:shadow-card active:scale-[0.98] transition-all"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3 text-sm shadow-soft hover:shadow-card active:scale-[0.98] transition-all"
           >
             <Sparkles className="h-4 w-4 mr-2" />
             Generate First Advisory
@@ -172,66 +173,83 @@ export const AdvisoryHistory: React.FC = () => {
             className="rounded-3xl border border-stone-200/80 bg-white shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden"
           >
             <div
-              className="p-5 sm:p-6 flex items-center justify-between cursor-pointer hover:bg-[#FAF9F5]/70 transition-colors"
+              className="p-4 sm:p-5 lg:p-6 flex flex-col md:flex-row md:items-center justify-between gap-3.5 sm:gap-4 cursor-pointer hover:bg-[#FAF9F5]/70 transition-colors"
               onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
             >
-              <div className="flex items-center gap-4">
-                <div className={`h-12 w-12 rounded-2xl flex items-center justify-center shadow-soft shrink-0 ${
+              {/* SECTION A — ADVISORY INFORMATION */}
+              <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0 flex-1">
+                <div className={`h-11 w-11 sm:h-12 sm:w-12 rounded-2xl flex items-center justify-center shadow-soft shrink-0 mt-0.5 sm:mt-0 ${
                   item.status === 'active' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200/80' : 'bg-stone-100 text-stone-600 border border-stone-200'
                 }`}>
                   <Calendar className="h-5 w-5" />
                 </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-extrabold text-stone-900 tracking-tight">{item.crop} Advisory</h3>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
+                <div className="min-w-0 flex-1 space-y-1">
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-1 sm:gap-2">
+                    <h3 className="text-base sm:text-lg font-extrabold text-stone-900 tracking-tight break-words">
+                      {item.crop} Advisory
+                    </h3>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60 inline-block w-fit break-words">
                       {item.stage || 'Agronomy'}
                     </span>
                   </div>
-                  <div className="flex items-center text-xs text-stone-500 gap-2.5 mt-1 font-medium">
-                    <span className="flex items-center">
-                      <MapPin className="h-3 w-3 mr-1 text-stone-400" />
-                      {item.location}
+                  <div className="flex flex-wrap items-center text-xs text-stone-500 gap-2 sm:gap-2.5 font-medium">
+                    <span className="flex items-center min-w-0">
+                      <MapPin className="h-3 w-3 mr-1 text-stone-400 shrink-0" />
+                      <span className="break-words">{item.location}</span>
                     </span>
-                    <span>•</span>
-                    <span>{new Date(item.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                    <span className="text-stone-300">•</span>
+                    <span className="shrink-0">{new Date(item.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
+              {/* SECTION B — ACTION CONTROLS */}
+              <div
+                className="flex items-center justify-between md:justify-end gap-2.5 pt-3 border-t border-stone-100 md:border-0 md:pt-0 shrink-0"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleAddTask(item)}
-                    className="px-3.5 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100/80 rounded-full border border-emerald-200/80 transition-all active:scale-95 shadow-sm"
+                    className="px-3.5 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100/80 rounded-full border border-emerald-200/80 transition-all active:scale-95 shadow-sm whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
                   >
                     Add Task
                   </button>
                   <button
                     onClick={() => handleRemoveAdvisory(item.id)}
-                    className="px-3 py-1.5 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100/80 rounded-full border border-rose-200/80 transition-all active:scale-95"
+                    className="px-3 py-1.5 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100/80 rounded-full border border-rose-200/80 transition-all active:scale-95 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-rose-500/40"
                   >
                     Remove
                   </button>
                 </div>
-                <div className="p-2 rounded-2xl bg-[#FAF9F5] border border-stone-200/80 text-stone-500">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setExpandedId(expandedId === item.id ? null : item.id);
+                  }}
+                  className="p-2 rounded-2xl bg-[#FAF9F5] border border-stone-200/80 text-stone-500 hover:text-emerald-700 hover:border-emerald-200 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                  title={expandedId === item.id ? "Hide details" : "View details"}
+                  aria-label={expandedId === item.id ? "Hide details" : "View details"}
+                  aria-expanded={expandedId === item.id}
+                >
                   <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${expandedId === item.id ? 'rotate-90 text-emerald-700' : ''}`} />
-                </div>
+                </button>
               </div>
             </div>
 
             {/* Expanded Content: The AI Plan */}
             {expandedId === item.id && (
               <div
-                className="px-6 pb-6 pt-2 border-t border-stone-100 text-stone-700 text-sm leading-relaxed cursor-text bg-[#FCFCFA]"
+                className="px-4 sm:px-6 pb-5 sm:pb-6 pt-2 border-t border-stone-100 text-stone-700 text-sm leading-relaxed cursor-text bg-[#FCFCFA]"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="flex items-center justify-between mb-4 pt-4 border-b border-stone-200/60 pb-3">
-                  <h4 className="font-bold text-stone-900 text-base flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                    Detailed Agronomic Schedule & Field Strategy
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-4 pt-4 border-b border-stone-200/60 pb-3">
+                  <h4 className="font-bold text-stone-900 text-sm sm:text-base flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0"></span>
+                    <span>Detailed Agronomic Schedule & Field Strategy</span>
                   </h4>
-                  <span className="text-xs bg-white text-stone-700 font-semibold px-3 py-1 rounded-full border border-stone-200/80 shadow-soft">
+                  <span className="text-xs bg-white text-stone-700 font-semibold px-3 py-1 rounded-full border border-stone-200/80 shadow-soft w-fit shrink-0">
                     Precision Protocol
                   </span>
                 </div>
@@ -280,9 +298,9 @@ export const AdvisoryHistory: React.FC = () => {
                 </div>
               </div>
             )}
-            </Card>
-          ))}
-        </div>
+          </Card>
+        ))}
+      </div>
       )}
     </div>
   );

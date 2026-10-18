@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
@@ -25,6 +25,40 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenCommandPalette }) => {
   const { t } = useTranslation();
+
+  // Escape key to close mobile drawer
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, setIsOpen]);
+
+  // Lock body scroll when mobile drawer is open to prevent page shifting
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  // Clean up drawer state if window is resized to desktop (>= 1024px)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isOpen, setIsOpen]);
   
   const menuItems = [
     { icon: LayoutDashboard, label: t('dashboard'), path: '/dashboard', badge: 'Live' },
@@ -43,28 +77,33 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenComma
       {/* Mobile Backdrop Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-40 lg:hidden animate-fade-in"
+          className="fixed inset-0 bg-stone-900/50 backdrop-blur-sm z-40 lg:hidden animate-fade-in"
           onClick={() => setIsOpen(false)}
+          aria-hidden="true"
         />
       )}
 
-      {/* Floating Curved Navigation Island */}
+      {/* Floating Curved Navigation Island / Mobile Drawer */}
       <aside
+        id="main-sidebar"
+        role="dialog"
+        aria-modal={isOpen ? "true" : undefined}
+        aria-label="Main Navigation"
         className={`
-          fixed top-3.5 left-3.5 bottom-3.5 w-72 bg-[#FAF9F5] border border-stone-200/90 shadow-island rounded-[2.5rem] z-30 flex flex-col justify-between p-4 transition-all duration-300 ease-in-out
-          ${isOpen ? 'translate-x-0' : '-translate-x-[calc(100%+1.5rem)] lg:translate-x-0'}
+          fixed top-3.5 left-3.5 bottom-3.5 w-72 max-w-[calc(100vw-1.75rem)] bg-[#FAF9F5] border border-stone-200/90 shadow-island rounded-[1.25rem] z-50 flex flex-col justify-between p-3.5 sm:p-4 transition-transform duration-300 ease-in-out
+          ${isOpen ? 'translate-x-0' : '-translate-x-[calc(100%+2rem)] lg:translate-x-0'}
         `}
       >
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-3 sm:space-y-4 flex-1 min-h-0 overflow-hidden">
           {/* Brand Card Header */}
-          <div className="p-3.5 rounded-3xl bg-white border border-stone-200/80 shadow-soft flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-[#0c261b] to-emerald-700 flex items-center justify-center text-white shadow-soft">
-                <Sprout className="h-5 w-5 text-emerald-300" />
+          <div className="p-3 sm:p-3.5 rounded-3xl bg-white border border-stone-200/80 shadow-soft flex items-center justify-between shrink-0">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-2xl bg-gradient-to-br from-[#0c261b] to-emerald-700 flex items-center justify-center text-white shadow-soft shrink-0">
+                <Sprout className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-300" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-base font-extrabold text-stone-900 tracking-tight">Kisan Mitra</span>
+                  <span className="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight whitespace-nowrap">Kisan Mitra</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 </div>
                 <div className="text-[10px] font-semibold tracking-wider text-emerald-800 uppercase">
@@ -74,21 +113,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenComma
             </div>
 
             <button
+              type="button"
               onClick={() => setIsOpen(false)}
-              className="lg:hidden p-2 hover:bg-stone-100 rounded-xl transition-colors text-stone-500"
+              className="lg:hidden p-2 hover:bg-stone-100 rounded-xl transition-colors text-stone-500 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 cursor-pointer"
+              aria-label="Close navigation"
             >
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
 
           {/* Quick Command Bar Trigger */}
           {onOpenCommandPalette && (
             <button
+              type="button"
               onClick={() => {
                 setIsOpen(false);
                 onOpenCommandPalette();
               }}
-              className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-white/70 hover:bg-white border border-stone-200/80 hover:border-emerald-300 text-stone-500 hover:text-stone-800 text-xs font-semibold shadow-soft transition-all active:scale-[0.98] group"
+              className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-white/70 hover:bg-white border border-stone-200/80 hover:border-emerald-300 text-stone-500 hover:text-stone-800 text-xs font-semibold shadow-soft transition-all active:scale-[0.98] group shrink-0"
             >
               <div className="flex items-center gap-2">
                 <Command className="h-3.5 w-3.5 text-stone-400 group-hover:text-emerald-700 transition-colors" />
@@ -101,7 +143,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenComma
           )}
 
           {/* Navigation Links */}
-          <nav className="space-y-1 overflow-y-auto max-h-[calc(100vh-320px)] custom-scrollbar pr-1">
+          <nav className="space-y-1 overflow-y-auto flex-1 min-h-0 custom-scrollbar pr-1">
             {menuItems.map((item) => (
               <NavLink
                 key={item.path}
@@ -145,7 +187,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenComma
         </div>
 
         {/* Bottom Micro-Dock */}
-        <div className="space-y-3 pt-3 border-t border-stone-200/70">
+        <div className="space-y-3 pt-3 border-t border-stone-200/70 shrink-0">
           {/* Telemetry Status Capsule */}
           <div className="p-3 rounded-2xl bg-white border border-stone-200/80 shadow-soft space-y-1.5">
             <div className="flex items-center justify-between text-[11px] font-bold text-stone-700">
