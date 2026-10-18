@@ -151,10 +151,8 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode }) => {
           </Link>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5">
-              <div className="bg-emerald-800 p-1.5 rounded-xl text-white shadow-soft">
-                <Sprout className="h-4 w-4 text-emerald-300" />
-              </div>
+            <div className="flex items-center gap-2">
+              <Sprout className="h-5 w-5 text-emerald-700 shrink-0" />
               <span className="text-sm font-black tracking-tight text-stone-900">Kisan Mitra</span>
             </div>
             <LanguageToggle />
