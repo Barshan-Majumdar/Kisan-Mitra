@@ -2,6 +2,7 @@ import { Menu, Sprout, Search } from 'lucide-react';
 import { UserButton, useUser } from '@clerk/clerk-react';
 import { useWeather } from '../../context/WeatherContext';
 import { WeatherIcon } from '../WeatherIcon';
+import { LanguageToggle } from '../LanguageToggle';
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -12,6 +13,8 @@ interface HeaderProps {
 export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = false }: HeaderProps) => {
   const { user } = useUser();
   const weather = useWeather();
+
+  const isMac = typeof window !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
   return (
     <header className="sticky top-0 z-30 shrink-0 flex h-16 items-center justify-between border border-stone-200/80 bg-white/95 backdrop-blur-md px-3 sm:px-4 lg:px-5 transition-all duration-300 shadow-soft mx-2.5 mt-2.5 mb-2 sm:mx-3 sm:mt-3 sm:mb-2.5 lg:mx-0 lg:mt-0 lg:mb-3 min-w-0" style={{ borderRadius: 'clamp(14px, 1.25vw, 20px)' }}>
@@ -66,13 +69,13 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
             </span>
           </div>
           <kbd className="hidden sm:inline-flex shrink-0 items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono font-bold text-stone-500 bg-white border border-stone-200 rounded-md shadow-sm ml-1.5">
-            ⌘K
+            {isMac ? '⌘K' : 'Ctrl K'}
           </kbd>
         </button>
       </div>
 
-      {/* Right Area: Telemetry, Notifications & User Pill */}
-      <div className="flex items-center gap-1.5 sm:gap-2.5 lg:gap-2.5 xl:gap-3 shrink-0">
+      {/* Right Area: Telemetry, Language, Notifications & User Pill */}
+      <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 shrink-0">
         {/* Mobile Search Button */}
         <button
           type="button"
@@ -99,6 +102,9 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
             </span>
           )}
         </div>
+
+        {/* Workspace Bilingual Language Toggle */}
+        <LanguageToggle />
 
 
 
