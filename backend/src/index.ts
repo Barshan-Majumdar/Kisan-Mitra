@@ -26,9 +26,8 @@ app.get('/health', async (req, res) => {
   }
 });
 
-// Local development server start
-// This block will be ignored by Vercel because Vercel handles the server start
-if (process.env.NODE_ENV !== 'production') {
+// Start server on Render, Docker, or local environments (skips only on Vercel serverless)
+if (!process.env.VERCEL) {
   const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
