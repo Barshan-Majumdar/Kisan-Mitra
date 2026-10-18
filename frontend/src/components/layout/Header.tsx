@@ -32,10 +32,8 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
         </button>
 
         {/* Mobile Brand Title */}
-        <div className="flex lg:hidden items-center gap-2 shrink-0">
-          <div className="bg-emerald-700 p-1.5 rounded-xl text-white shadow-soft shrink-0">
-            <Sprout className="h-4 w-4" />
-          </div>
+        <div className="flex lg:hidden items-center gap-1.5 shrink-0">
+          <Sprout className="h-5 w-5 text-emerald-700 shrink-0" />
           <span className="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight whitespace-nowrap hidden min-[360px]:inline">Kisan Mitra</span>
         </div>
 
