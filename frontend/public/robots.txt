@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /sso-callback/
+
+Sitemap: https://agro-kisan-mitra.vercel.app/sitemap.xml
