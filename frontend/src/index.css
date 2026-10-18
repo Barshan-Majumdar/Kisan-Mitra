@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -23,11 +23,17 @@
   --color-offwhite-300: #EBEAE3;
   --color-canvas: #F4F3EE;
 
-  --font-sans: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
 }
 
 /* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -38,10 +44,23 @@ body {
     radial-gradient(at 10% 10%, rgba(22, 101, 52, 0.03) 0px, transparent 50%),
     radial-gradient(at 90% 90%, rgba(21, 128, 61, 0.03) 0px, transparent 50%);
   color: #1c1917;
-  font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
 }
 
 html {
