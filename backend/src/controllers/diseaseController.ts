@@ -116,7 +116,7 @@ export const predictCropDisease = async (req: Request, res: Response): Promise<v
       const apiResp = await axios.post(
         `${aiBase}/predict-disease`,
         { image },
-        { timeout: 8000 }
+        { timeout: 25000 }
       );
 
       if (apiResp.data && apiResp.data.success) {
