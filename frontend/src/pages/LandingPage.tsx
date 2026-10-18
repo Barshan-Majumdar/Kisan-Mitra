@@ -13,13 +13,13 @@ import {
   ChevronDown,
   LineChart,
   Check,
-  Zap,
-  BarChart3,
-  Database,
-  Cpu,
-  CreditCard,
   ShieldCheck,
+  CreditCard,
   MapPin,
+  Cpu,
+  Database,
+  BarChart3,
+  Zap,
 } from 'lucide-react';
 import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 import { LanguageToggle } from '../components/LanguageToggle';
@@ -1322,68 +1322,128 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Call to Action Banner (Double-Bezel Hardware Card with Atmospheric Depth & Mesh Gradients) */}
-      <section className="py-16 px-4 sm:px-6">
-        <div className="mx-auto max-w-5xl rounded-[1.375rem] bg-emerald-800 p-8 sm:p-14 text-center text-white space-y-6 shadow-island relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-600/30 rounded-full blur-[90px] pointer-events-none" />
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
-            Ready to Cultivate Smarter Yields?
-          </h3>
-          <p className="max-w-2xl mx-auto text-emerald-100 text-sm sm:text-base leading-relaxed">
-            Join thousands of progressive agriculturalists across India utilizing AI agronomy to maximize seasonal profitability.
-          </p>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <SignedOut>
-              <Link
-                to="/signup"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-sm sm:text-base text-emerald-900 bg-white hover:bg-emerald-50 active:bg-stone-100 shadow-soft transition-all"
-              >
-                Create Free Farmer Account
-              </Link>
-              <Link
-                to="/login"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-sm sm:text-base text-white border border-white/30 hover:bg-white/10 transition-all"
-              >
-                Sign In
-              </Link>
-            </SignedOut>
-            <SignedIn>
-              <button
-                onClick={() => navigate('/dashboard')}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-sm sm:text-base text-emerald-900 bg-white hover:bg-emerald-50 shadow-soft transition-all"
-              >
-                Open Farmer Dashboard →
-              </button>
-            </SignedIn>
+      <section className="py-12 sm:py-20 px-3.5 sm:px-6">
+        <div className="mx-auto max-w-5xl p-1.5 sm:p-2 rounded-2xl sm:rounded-[2.25rem] bg-stone-200/50 border border-stone-200/80 shadow-[0_30px_70px_-20px_rgba(12,38,27,0.25)]">
+          <div className="relative rounded-[calc(1rem-0.125rem)] sm:rounded-[calc(2.25rem-0.5rem)] overflow-hidden bg-gradient-to-br from-[#0c261b] via-[#123827] to-[#1a4a35] p-5 sm:p-14 lg:p-16 text-center text-white space-y-5 sm:space-y-7 border border-emerald-500/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
+
+            {/* Engineering Grid Texture Inside Card */}
+            <div className="absolute inset-0 engineering-grid pointer-events-none opacity-20" />
+
+            {/* Ambient Radial Mesh Glows Inside Card */}
+            <div className="absolute top-[-50px] right-[-50px] w-[450px] h-[450px] bg-emerald-400/20 rounded-full blur-[110px] pointer-events-none" />
+            <div className="absolute bottom-[-60px] left-[-60px] w-[380px] h-[380px] bg-lime-300/15 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-emerald-500/10 rounded-full blur-[90px] pointer-events-none" />
+
+            {/* Subtle Floating Decorative Background Accents */}
+            <div className="absolute top-6 left-8 opacity-25 pointer-events-none hidden sm:block">
+              <svg className="w-20 h-20 text-emerald-300 animate-spin-slow" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 6" fill="none" />
+                <circle cx="50" cy="50" r="24" stroke="currentColor" strokeWidth="0.8" strokeDasharray="2 4" fill="none" opacity="0.6" />
+              </svg>
+            </div>
+            <div className="absolute bottom-8 right-10 opacity-30 text-emerald-300 font-mono text-xl pointer-events-none select-none hidden sm:block animate-float-slow">
+              +
+            </div>
+
+            {/* Eyebrow Chip */}
+            <div className="relative z-10 flex justify-center">
+              <span className="font-mono inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-widest text-emerald-300 shadow-sm backdrop-blur-sm max-w-full truncate">
+                <Sparkles className="h-3.5 w-3.5 text-emerald-300 shrink-0" />
+                <span>Autonomous Indian Agronomy</span>
+              </span>
+            </div>
+
+            {/* Headline */}
+            <div className="relative z-10 space-y-2.5 sm:space-y-3">
+              <h3 className="font-display text-2xl min-[400px]:text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.12] sm:leading-[1.08] text-balance">
+                Ready to Cultivate{' '}
+                <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-emerald-100 to-lime-200">
+                  Smarter Yields?
+                </span>
+              </h3>
+              <p className="max-w-2xl mx-auto text-emerald-100/90 text-xs sm:text-base md:text-lg leading-relaxed font-normal">
+                Join thousands of progressive agriculturalists across India utilizing AI agronomy to optimize seasonal fertilizer inputs, detect pathologies, and sell at optimal mandi rates.
+              </p>
+            </div>
+
+            {/* Action Buttons (Button-in-Button Architecture) */}
+            <div className="relative z-10 pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
+              <SignedOut>
+                <Link
+                  to="/signup"
+                  className="w-full sm:w-auto px-5 sm:px-8 py-3.5 sm:py-4 rounded-full font-extrabold text-xs sm:text-base text-emerald-950 bg-white hover:bg-emerald-50 shadow-[0_12px_32px_rgba(0,0,0,0.25)] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 sm:gap-3 group"
+                >
+                  <span>Create Free Farmer Account</span>
+                  <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-emerald-900/10 flex items-center justify-center group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform shrink-0">
+                    <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-900" />
+                  </span>
+                </Link>
+                <Link
+                  to="/login"
+                  className="w-full sm:w-auto px-5 sm:px-7 py-3.5 sm:py-4 rounded-full font-bold text-xs sm:text-base text-white bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/30 backdrop-blur-sm active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                >
+                  <span>Sign In to Portal</span>
+                </Link>
+              </SignedOut>
+              <SignedIn>
+                <button
+                  onClick={() => navigate('/dashboard')}
+                  className="w-full sm:w-auto px-5 sm:px-8 py-3.5 sm:py-4 rounded-full font-extrabold text-xs sm:text-base text-emerald-950 bg-white hover:bg-emerald-50 shadow-[0_12px_32px_rgba(0,0,0,0.25)] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 sm:gap-3 group"
+                >
+                  <span>Open Farmer Workspace</span>
+                  <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-emerald-900/10 flex items-center justify-center group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform shrink-0">
+                    <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-900" />
+                  </span>
+                </button>
+              </SignedIn>
+            </div>
+
+            {/* Trust Proof Micro-Row */}
+            <div className="relative z-10 pt-3.5 sm:pt-4 border-t border-white/10 flex flex-col min-[480px]:flex-row flex-wrap items-center justify-center gap-2 sm:gap-6 text-[11px] sm:text-xs text-emerald-200/80 font-medium">
+              <span className="flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-emerald-300 shrink-0" /> 100% Free Forever for Farmers
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-emerald-300 shrink-0" /> English & Bengali Bilingual
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-emerald-300 shrink-0" /> Official AGMARKNET & API Mitra
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Modern Footer */}
-      <footer className="border-t border-stone-200/80 bg-white py-12 px-4 sm:px-6">
-        <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-stone-500">
-          <div className="flex items-center gap-2.5">
-            <div className="bg-emerald-800 p-1.5 rounded-xl text-white shadow-soft">
-              <Sprout className="h-4 w-4 text-emerald-300" />
-            </div>
-            <span className="font-extrabold text-stone-900 text-sm">Kisan Mitra Agronomy</span>
+      <footer className="border-t border-stone-200/80 bg-white py-8 sm:py-12 px-3.5 sm:px-6">
+        <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 text-xs text-stone-500 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-2">
+            <Sprout className="h-5 w-5 text-emerald-700 shrink-0" />
+            <span className="font-display font-medium text-stone-900 text-sm sm:text-base">Kisan Mitra Agronomy</span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 font-semibold text-stone-600">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-semibold text-stone-600 text-[11px] sm:text-xs">
+            <a href="#platform" className="hover:text-emerald-800 transition-colors">
+              Platform
+            </a>
             <a href="#features" className="hover:text-emerald-800 transition-colors">
               Features
             </a>
-            <a href="#technology" className="hover:text-emerald-800 transition-colors">
-              Technology
-            </a>
             <a href="#schemes" className="hover:text-emerald-800 transition-colors">
-              Government Subsidies
+              Govt Schemes
             </a>
             <a href="#mandi" className="hover:text-emerald-800 transition-colors">
-              APMC Mandi Prices
+              APMC Mandi
+            </a>
+            <a href="#technology" className="hover:text-emerald-800 transition-colors">
+              Architecture
+            </a>
+            <a href="#faq" className="hover:text-emerald-800 transition-colors">
+              FAQ
             </a>
           </div>
 
-          <p>© 2026 Kisan Mitra. Data-driven agronomy for Indian agriculture.</p>
+          <p className="text-[11px] sm:text-xs">© 2026 Kisan Mitra. Data-driven agronomy for Indian agriculture.</p>
         </div>
       </footer>
     </div>
