@@ -37,32 +37,23 @@ export const LandingPage: React.FC = () => {
       </div>
 
       {/* Floating Modern Header / Navbar */}
-      <header className="sticky top-3.5 z-50 px-4 sm:px-6">
-        <nav className="mx-auto max-w-7xl rounded-full bg-white/85 backdrop-blur-md border border-stone-200/80 px-4 sm:px-6 py-2.5 flex items-center justify-between shadow-card transition-all duration-300">
-          {/* Logo & Brand */}
-          <Link to="/" className="flex items-center gap-2.5 group cursor-pointer">
-            <div className="bg-emerald-800 p-2 rounded-2xl text-white shadow-soft group-hover:scale-105 transition-transform">
-              <Sprout className="h-5 w-5 text-emerald-300" />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="text-base sm:text-lg font-extrabold tracking-tight text-stone-900">
-                  Kisan Mitra
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                  AI 2.0
-                </span>
-              </div>
-            </div>
+      <header className="fixed top-2 sm:top-4 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 pointer-events-none">
+        <nav className="mx-auto max-w-6xl rounded-full bg-white/90 backdrop-blur-xl border border-white/80 px-2.5 min-[360px]:px-3.5 sm:px-5 md:px-6 py-1.5 sm:py-2.5 flex items-center justify-between shadow-[0_12px_36px_rgba(0,0,0,0.05),inset_0_1px_1.5px_rgba(255,255,255,1),inset_0_-1px_1px_rgba(0,0,0,0.02)] ring-1 ring-black/[0.04] hover:border-emerald-200/90 transition-all duration-300 pointer-events-auto">
+          {/* Left Brand Identity */}
+          <Link to="/" className="flex items-center gap-1 sm:gap-2 group cursor-pointer shrink-0 min-w-0">
+            <Sprout className="h-4.5 w-4.5 sm:h-6 sm:w-6 text-emerald-700 group-hover:text-emerald-800 group-hover:scale-110 transition-transform duration-200 shrink-0" />
+            <span className="font-display text-sm min-[360px]:text-base sm:text-lg md:text-xl font-medium tracking-tight text-stone-900 truncate">
+              Kisan Mitra
+            </span>
           </Link>
 
-          {/* Nav Center Links (Desktop) */}
-          <div className="hidden lg:flex items-center gap-6 text-xs font-bold text-stone-600">
-            <a href="#features" className="hover:text-emerald-800 transition-colors">
-              Platform Features
+          {/* Center Navigation Links (Desktop) */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-semibold text-stone-600">
+            <a href="#platform" className="hover:text-emerald-800 transition-colors">
+              Platform
             </a>
-            <a href="#technology" className="hover:text-emerald-800 transition-colors">
-              AI Technology
+            <a href="#features" className="hover:text-emerald-800 transition-colors">
+              Features
             </a>
             <a href="#schemes" className="hover:text-emerald-800 transition-colors">
               Govt Schemes
@@ -70,40 +61,44 @@ export const LandingPage: React.FC = () => {
             <a href="#mandi" className="hover:text-emerald-800 transition-colors">
               APMC Mandi
             </a>
+            <a href="#technology" className="hover:text-emerald-800 transition-colors">
+              Architecture
+            </a>
             <a href="#faq" className="hover:text-emerald-800 transition-colors">
               FAQ
             </a>
           </div>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-1 min-[360px]:gap-1.5 sm:gap-2.5 shrink-0">
             <LanguageToggle />
 
             <SignedOut>
               <Link
                 to="/login"
-                className="hidden sm:inline-flex px-4 py-2 rounded-full text-xs font-bold text-stone-700 hover:text-stone-900 hover:bg-stone-100 transition-colors"
+                className="hidden md:inline-flex items-center px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold text-stone-700 hover:text-stone-950 bg-white/90 hover:bg-white border border-stone-300/90 hover:border-stone-400 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all active:scale-95"
               >
                 Sign In
               </Link>
               <Link
                 to="/signup"
-                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 shadow-soft transition-all hover:shadow-card hover:-translate-y-0.5"
+                className="relative overflow-hidden inline-flex items-center gap-1 sm:gap-1.5 px-2.5 min-[360px]:px-3.5 sm:px-4.5 md:px-5 py-1 min-[360px]:py-1.5 sm:py-2 rounded-full text-[10.5px] min-[360px]:text-[11px] sm:text-xs font-bold text-white bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-900 hover:from-emerald-700 hover:to-emerald-800 border border-emerald-600/70 shadow-[0_4px_14px_rgba(22,101,52,0.32),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all active:scale-95 group shrink-0 whitespace-nowrap"
               >
-                <span>Get Started</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+                <span className="absolute inset-0 noise-overlay opacity-25 pointer-events-none rounded-full" />
+                <span className="relative z-10">Get Started</span>
+                <ArrowRight className="relative z-10 h-3 w-3 text-emerald-200 group-hover:translate-x-0.5 transition-transform hidden min-[400px]:inline-block" />
               </Link>
             </SignedOut>
 
             <SignedIn>
               <button
                 onClick={() => navigate('/dashboard')}
-                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-emerald-800 hover:bg-emerald-700 shadow-soft transition-all"
+                className="inline-flex items-center gap-1 px-2.5 min-[360px]:px-3.5 sm:px-5 py-1 min-[360px]:py-1.5 sm:py-2 rounded-full text-[10.5px] min-[360px]:text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-700 shadow-soft transition-all shrink-0"
               >
-                <span>Dashboard</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+                <span>Workspace</span>
+                <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
               </button>
-              <div className="ml-1">
+              <div className="ml-0.5 sm:ml-1 shrink-0">
                 <UserButton afterSignOutUrl="/" />
               </div>
             </SignedIn>
