@@ -14,6 +14,7 @@ import { DiseaseDetect } from './pages/DiseaseDetect';
 import { MarketPrices } from './pages/MarketPrices';
 import { AdvisoryHistory } from './pages/AdvisoryHistory';
 import { SoilCalibration } from './pages/SoilCalibration';
+import { NotFound } from './pages/NotFound';
 
 import { SignedIn, SignedOut, AuthenticateWithRedirectCallback } from '@clerk/clerk-react';
 import { WeatherProvider } from './context/WeatherContext';
@@ -117,8 +118,8 @@ function App() {
           <Route path="/market" element={<MarketPrices />} />
         </Route>
 
-        {/* Fallback to Landing Page */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* 404 Route Unreachable */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
