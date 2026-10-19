@@ -1,4 +1,4 @@
-# 🌾 Kisan Mitra (किसान मित्र)
+# 🌾 Kisan Mitra
 
 > **AI-Powered Agricultural Advisory, Farm Management & Precision Intelligence Platform for Indian Farmers**
 
@@ -11,7 +11,7 @@
 [![Google Gemini](https://img.shields.io/badge/GenAI-Google%20Gemini-8E75C2?logo=google&logoColor=white)](https://aistudio.google.com/)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](LICENSE)
 
-**Kisan Mitra** is an end-to-end, full-stack agricultural advisory platform built to empower Indian farmers with data-driven decision-making. It integrates a **Two-Stage Random Forest** crop recommendation engine, **EfficientNet-B0** deep learning plant disease diagnosis, **Google Gemini** generative AI advisory, live government market data from `data.gov.in`, and a bilingual (English/Bengali) interface — bridging the gap between agricultural science and field-level execution.
+**Kisan Mitra** is an end-to-end, full-stack agricultural advisory platform built to empower Indian farmers with data-driven decision-making. It integrates a **Two-Stage Random Forest** crop recommendation engine, **EfficientNet-B0** deep learning plant disease diagnosis, **Google Gemini** generative AI advisory, live government market data from `data.gov.in` — bridging the gap between agricultural science and field-level execution.
 
 ---
 
@@ -47,7 +47,6 @@
 | **🏛️ Government Schemes** | Searchable repository of national and state schemes (PM-KISAN, PMFBY, KCC, PMKSY, Soil Health Card). Direct one-click links to official government portals. |
 | **🌦️ Weather Telemetry** | Hyperlocal weather forecasts: temperature, humidity, precipitation, wind metrics, and proactive farm warnings. |
 | **🤖 Gemini Farm Copilot** | 24/7 agricultural assistant powered by Google Gemini. Answers pest management, irrigation, seasonal practice queries. Strictly agriculture-scoped. |
-| **🌐 Bilingual Support** | Full English and Bengali (`বাংলা`) localization with one-click navbar toggle via `i18next`. |
 | **🔐 Clerk Authentication** | Secure user authentication with OAuth SSO support via **Clerk**. |
 | **⚡ Landing Page Simulator** | Interactive 4-step agronomy pipeline demo (Soil Calibration → Satellite NDVI → Leaf Pathology → APMC Market Yields) directly on the public landing page. |
 
