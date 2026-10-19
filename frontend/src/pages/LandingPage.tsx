@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
 import {
   Sprout,
   ArrowRight,
@@ -23,6 +24,333 @@ import {
 } from 'lucide-react';
 import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 import { LanguageToggle } from '../components/LanguageToggle';
+import heroBgImage from '../assets/hero-bg.jpg';
+
+// Interactive GSAP Magnetic & Micro-interaction CTA Buttons
+interface HeroPrimaryButtonProps {
+  to?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+  className?: string;
+}
+
+const HeroPrimaryButton: React.FC<HeroPrimaryButtonProps> = ({
+  to,
+  onClick,
+  children,
+  className = '',
+}) => {
+  const buttonRef = useRef<HTMLElement | null>(null);
+  const badgeRef = useRef<HTMLSpanElement | null>(null);
+  const arrowRef = useRef<HTMLSpanElement | null>(null);
+  const shimmerRef = useRef<HTMLSpanElement | null>(null);
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (e.pointerType === 'touch') return;
+    const btn = buttonRef.current;
+    if (!btn) return;
+
+    const rect = btn.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) * 0.22;
+    const y = (e.clientY - rect.top - rect.height / 2) * 0.22;
+
+    gsap.to(btn, {
+      x,
+      y,
+      duration: 0.25,
+      ease: 'power2.out',
+      overwrite: 'auto',
+    });
+
+    if (badgeRef.current) {
+      gsap.to(badgeRef.current, {
+        x: x * 0.45,
+        y: y * 0.45,
+        duration: 0.25,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    }
+  };
+
+  const handlePointerEnter = (e: React.PointerEvent) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (e.pointerType === 'touch') return;
+
+    if (shimmerRef.current) {
+      gsap.fromTo(
+        shimmerRef.current,
+        { x: '-120%', opacity: 0.5 },
+        { x: '220%', opacity: 0, duration: 0.75, ease: 'power2.out', overwrite: 'auto' }
+      );
+    }
+
+    if (badgeRef.current) {
+      gsap.to(badgeRef.current, {
+        scale: 1.08,
+        duration: 0.2,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    }
+
+    if (arrowRef.current) {
+      gsap.to(arrowRef.current, {
+        x: 2.5,
+        duration: 0.2,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    }
+  };
+
+  const handlePointerLeave = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const btn = buttonRef.current;
+    if (!btn) return;
+
+    gsap.to(btn, {
+      x: 0,
+      y: 0,
+      scale: 1,
+      duration: 0.65,
+      ease: 'elastic.out(1, 0.4)',
+      overwrite: 'auto',
+    });
+
+    if (badgeRef.current) {
+      gsap.to(badgeRef.current, {
+        x: 0,
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+        ease: 'elastic.out(1, 0.45)',
+        overwrite: 'auto',
+      });
+    }
+
+    if (arrowRef.current) {
+      gsap.to(arrowRef.current, {
+        x: 0,
+        duration: 0.35,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    }
+  };
+
+  const handlePointerDown = () => {
+    const btn = buttonRef.current;
+    if (!btn) return;
+    gsap.to(btn, {
+      scale: 0.955,
+      duration: 0.12,
+      ease: 'power1.out',
+      overwrite: 'auto',
+    });
+  };
+
+  const handlePointerUp = () => {
+    const btn = buttonRef.current;
+    if (!btn) return;
+    gsap.to(btn, {
+      scale: 1,
+      duration: 0.3,
+      ease: 'back.out(2)',
+      overwrite: 'auto',
+    });
+  };
+
+  const buttonClasses = `relative inline-flex items-center justify-center gap-3 sm:gap-3.5 w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#0C2B19] via-[#123E25] to-[#0A2616] border border-emerald-600/35 ring-1 ring-black/10 shadow-[0_8px_24px_-4px_rgba(11,42,24,0.38),0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1.5px_rgba(255,255,255,0.24),inset_0_-1px_1px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_28px_-4px_rgba(11,42,24,0.48),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-shadow duration-300 select-none overflow-hidden group cursor-pointer will-change-transform ${className}`;
+
+  const content = (
+    <>
+      {/* Specular Shimmer Beam */}
+      <span
+        ref={shimmerRef}
+        className="absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none transform -skew-x-12 -translate-x-[150%]"
+        aria-hidden="true"
+      />
+      {/* Subtle paper noise texture */}
+      <span className="absolute inset-0 noise-overlay opacity-20 pointer-events-none rounded-full" />
+      {/* Button label */}
+      <span className="relative z-10 tracking-tight font-semibold sm:font-bold">{children}</span>
+      {/* Button-in-button circular arrow badge */}
+      <span
+        ref={badgeRef}
+        className="relative z-10 w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center shadow-[0_2px_6px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.9)] ring-1 ring-black/[0.04] shrink-0 will-change-transform"
+      >
+        <span ref={arrowRef} className="inline-flex items-center justify-center will-change-transform">
+          <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#0C2B19] stroke-[2.4]" />
+        </span>
+      </span>
+    </>
+  );
+
+  if (to) {
+    return (
+      <Link
+        to={to}
+        ref={buttonRef as any}
+        onPointerMove={handlePointerMove}
+        onPointerEnter={handlePointerEnter}
+        onPointerLeave={handlePointerLeave}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        className={buttonClasses}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      onClick={onClick}
+      ref={buttonRef as any}
+      onPointerMove={handlePointerMove}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      className={buttonClasses}
+    >
+      {content}
+    </button>
+  );
+};
+
+interface HeroSecondaryButtonProps {
+  href?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+  className?: string;
+}
+
+const HeroSecondaryButton: React.FC<HeroSecondaryButtonProps> = ({
+  href,
+  onClick,
+  children,
+  className = '',
+}) => {
+  const buttonRef = useRef<HTMLElement | null>(null);
+  const shimmerRef = useRef<HTMLSpanElement | null>(null);
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (e.pointerType === 'touch') return;
+    const btn = buttonRef.current;
+    if (!btn) return;
+
+    const rect = btn.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) * 0.18;
+    const y = (e.clientY - rect.top - rect.height / 2) * 0.18;
+
+    gsap.to(btn, {
+      x,
+      y,
+      duration: 0.25,
+      ease: 'power2.out',
+      overwrite: 'auto',
+    });
+  };
+
+  const handlePointerEnter = (e: React.PointerEvent) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (e.pointerType === 'touch') return;
+
+    if (shimmerRef.current) {
+      gsap.fromTo(
+        shimmerRef.current,
+        { x: '-120%', opacity: 0.4 },
+        { x: '220%', opacity: 0, duration: 0.7, ease: 'power2.out', overwrite: 'auto' }
+      );
+    }
+  };
+
+  const handlePointerLeave = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const btn = buttonRef.current;
+    if (!btn) return;
+
+    gsap.to(btn, {
+      x: 0,
+      y: 0,
+      scale: 1,
+      duration: 0.6,
+      ease: 'elastic.out(1, 0.4)',
+      overwrite: 'auto',
+    });
+  };
+
+  const handlePointerDown = () => {
+    const btn = buttonRef.current;
+    if (!btn) return;
+    gsap.to(btn, {
+      scale: 0.965,
+      duration: 0.12,
+      ease: 'power1.out',
+      overwrite: 'auto',
+    });
+  };
+
+  const handlePointerUp = () => {
+    const btn = buttonRef.current;
+    if (!btn) return;
+    gsap.to(btn, {
+      scale: 1,
+      duration: 0.3,
+      ease: 'back.out(2)',
+      overwrite: 'auto',
+    });
+  };
+
+  const buttonClasses = `relative inline-flex items-center justify-center w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-semibold text-xs sm:text-sm text-[#1A201C] bg-white/95 hover:bg-white border border-stone-200/90 hover:border-emerald-400/80 shadow-[0_2px_12px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,1),inset_0_-1px_1px_rgba(0,0,0,0.02)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,1)] transition-colors duration-250 select-none overflow-hidden group cursor-pointer will-change-transform ${className}`;
+
+  const content = (
+    <>
+      <span
+        ref={shimmerRef}
+        className="absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-emerald-100/35 to-transparent pointer-events-none transform -skew-x-12 -translate-x-[150%]"
+        aria-hidden="true"
+      />
+      <span className="relative z-10 tracking-tight font-semibold sm:font-bold">{children}</span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        ref={buttonRef as any}
+        onPointerMove={handlePointerMove}
+        onPointerEnter={handlePointerEnter}
+        onPointerLeave={handlePointerLeave}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        className={buttonClasses}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      onClick={onClick}
+      ref={buttonRef as any}
+      onPointerMove={handlePointerMove}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      className={buttonClasses}
+    >
+      {content}
+    </button>
+  );
+};
 
 // 4-Step Interactive Agronomy Pipeline Stepper matching reference layout
 const PIPELINE_STEPS = [
@@ -66,6 +394,113 @@ export const LandingPage: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
 
+  // Scroll reveal for lower mission section
+  const missionRef = useRef<HTMLDivElement>(null);
+  const [missionVisible, setMissionVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Respect user reduced-motion preferences
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) {
+      setMissionVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMissionVisible(true);
+          observer.disconnect(); // Trigger once on scroll into view
+        }
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    if (missionRef.current) {
+      observer.observe(missionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-hide navbar on scroll down, reveal ONLY when cursor touches top of the website
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isCursorNearTop, setIsCursorNearTop] = useState<boolean>(false);
+  const [isHoveringNav, setIsHoveringNav] = useState<boolean>(false);
+  const isHoveringNavRef = useRef<boolean>(false);
+  const isScrollingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isScrollingRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 30;
+      setIsScrolled(scrolled);
+
+      if (scrolled) {
+        // While scrolling down the page, keep navbar hidden
+        setIsCursorNearTop(false);
+        setIsHoveringNav(false);
+        isHoveringNavRef.current = false;
+      }
+
+      // Mark as currently scrolling to prevent accidental mouse triggers during scroll wheel
+      isScrollingRef.current = true;
+      if (isScrollingTimeoutRef.current) {
+        clearTimeout(isScrollingTimeoutRef.current);
+      }
+      isScrollingTimeoutRef.current = setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 200);
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      // If user scrolls down anywhere on the page, immediately hide navbar
+      if (e.deltaY > 0 && window.scrollY > 15) {
+        setIsCursorNearTop(false);
+        setIsHoveringNav(false);
+        isHoveringNavRef.current = false;
+        isScrollingRef.current = true;
+        if (isScrollingTimeoutRef.current) {
+          clearTimeout(isScrollingTimeoutRef.current);
+        }
+        isScrollingTimeoutRef.current = setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 200);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('wheel', handleWheel, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('wheel', handleWheel);
+      if (isScrollingTimeoutRef.current) {
+        clearTimeout(isScrollingTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // If actively scrolling, ignore mouse movement
+      if (isScrollingRef.current) return;
+
+      // Reveal navbar ONLY when cursor touches the top edge of the website (<= 20px)
+      if (e.clientY <= 20) {
+        setIsCursorNearTop(true);
+      } else if (e.clientY > 95 && !isHoveringNavRef.current) {
+        // Cursor moved down into the page content below navbar
+        setIsCursorNearTop(false);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const showNavbar = !isScrolled || isCursorNearTop || isHoveringNav;
+
   // Auto-cycle through the 4-step pipeline when not hovered
   useEffect(() => {
     if (isPaused) return;
@@ -87,82 +522,37 @@ export const LandingPage: React.FC = () => {
       {/* Physical Archival Paper / Film-Grain Noise Texture */}
       <div className="absolute inset-0 noise-overlay pointer-events-none -z-10 opacity-65" />
 
-      {/* Ambient Radial Mesh Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[780px] pointer-events-none overflow-hidden -z-20">
-        <div className="absolute top-[-80px] left-[15%] w-[520px] h-[520px] rounded-full bg-emerald-400/20 blur-[130px]" />
-        <div className="absolute top-[80px] right-[8%] w-[580px] h-[580px] rounded-full bg-gradient-to-br from-emerald-300/25 via-teal-200/20 to-lime-200/20 blur-[140px]" />
-        <div className="absolute top-[340px] left-[30%] w-[420px] h-[420px] rounded-full bg-amber-100/20 blur-[140px]" />
-      </div>
+      {/* Top Edge Invisible Trigger Strip (detects cursor touching top of window while scrolled down) */}
+      {isScrolled && !showNavbar && (
+        <div
+          className="fixed top-0 left-0 right-0 h-4 z-50 pointer-events-auto cursor-default"
+          onMouseEnter={() => {
+            if (!isScrollingRef.current) {
+              setIsCursorNearTop(true);
+            }
+          }}
+          onTouchStart={() => setIsCursorNearTop(true)}
+          aria-hidden="true"
+        />
+      )}
 
-      {/* Floating Decorative Elements (Dashed Radar Orbits, Twinkling Stars, Crosses, Dot Matrix) */}
-      <div className="absolute inset-0 max-w-7xl mx-auto pointer-events-none -z-10 overflow-hidden">
-        {/* Top-Left Dashed Radar Circle with Center Crosshair */}
-        <div className="absolute top-20 left-4 sm:left-8 opacity-45">
-          <svg className="w-28 h-28 sm:w-36 sm:h-36 text-emerald-800 animate-spin-slow" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="44" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 6" fill="none" />
-            <circle cx="50" cy="50" r="28" stroke="currentColor" strokeWidth="0.8" strokeDasharray="2 4" fill="none" opacity="0.6" />
-            <line x1="50" y1="42" x2="50" y2="58" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-            <line x1="42" y1="50" x2="58" y2="50" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-          </svg>
-        </div>
-
-        {/* Twinkling Star Sparkle (Top-Center) */}
-        <div className="absolute top-28 left-[38%] animate-twinkle text-emerald-600/50">
-          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
-          </svg>
-        </div>
-
-        {/* Twinkling Star Sparkle (Mid-Right) */}
-        <div className="absolute top-[380px] right-[48%] animate-twinkle text-emerald-500/40" style={{ animationDelay: '1.5s' }}>
-          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
-          </svg>
-        </div>
-
-        {/* Top-Right Dot Matrix (4x4) */}
-        <div className="absolute top-16 right-6 sm:right-12 grid grid-cols-4 gap-2.5 opacity-30">
-          {Array.from({ length: 16 }).map((_, i) => (
-            <span key={i} className="h-1.5 w-1.5 rounded-full bg-emerald-800" />
-          ))}
-        </div>
-
-        {/* Mid-Left Floating Plus Mark */}
-        <div className="absolute top-52 left-6 sm:left-12 animate-float-slow text-emerald-800/40 font-mono text-xl select-none">
-          +
-        </div>
-
-        {/* Mid-Right Floating Plus Mark */}
-        <div className="absolute top-[480px] right-8 sm:right-20 animate-float-reverse text-emerald-800/40 font-mono text-2xl select-none">
-          +
-        </div>
-
-        {/* Mid-Right 3x3 Dot Matrix */}
-        <div className="absolute top-[420px] right-4 sm:right-8 grid grid-cols-3 gap-2.5 opacity-25">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <span key={i} className="h-1.5 w-1.5 rounded-full bg-emerald-800" />
-          ))}
-        </div>
-
-        {/* Bottom-Left 4x4 Dot Matrix */}
-        <div className="absolute top-[680px] left-6 sm:left-16 grid grid-cols-4 gap-2.5 opacity-25">
-          {Array.from({ length: 16 }).map((_, i) => (
-            <span key={i} className="h-1.5 w-1.5 rounded-full bg-emerald-800" />
-          ))}
-        </div>
-
-        {/* Bottom-Right Dashed Radar Circle */}
-        <div className="absolute top-[600px] right-6 sm:right-16 opacity-35">
-          <svg className="w-32 h-32 sm:w-44 sm:h-44 text-emerald-800 animate-spin-slow" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="1.2" strokeDasharray="5 7" fill="none" />
-            <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 5" fill="none" opacity="0.5" />
-            <circle cx="50" cy="50" r="16" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" fill="none" opacity="0.3" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Floating Pill Navbar (Always stuck at top with frosted glass island pill) */}
-      <header className="fixed top-2 sm:top-4 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 pointer-events-none">
+      {/* Floating Pill Navbar (Hidden when scrolled down until cursor touches top of the website) */}
+      <header
+        onMouseEnter={() => {
+          setIsHoveringNav(true);
+          isHoveringNavRef.current = true;
+        }}
+        onMouseLeave={() => {
+          setIsHoveringNav(false);
+          isHoveringNavRef.current = false;
+          setIsCursorNearTop(false);
+        }}
+        className={`fixed top-2 sm:top-4 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${
+          showNavbar
+            ? 'translate-y-0 opacity-100 pointer-events-auto'
+            : '-translate-y-[140%] opacity-0 pointer-events-none'
+        }`}
+      >
         <nav className="mx-auto max-w-6xl rounded-full bg-white/90 backdrop-blur-xl border border-white/80 px-2.5 min-[360px]:px-3.5 sm:px-5 md:px-6 py-1.5 sm:py-2.5 flex items-center justify-between shadow-[0_12px_36px_rgba(0,0,0,0.05),inset_0_1px_1.5px_rgba(255,255,255,1),inset_0_-1px_1px_rgba(0,0,0,0.02)] ring-1 ring-black/[0.04] hover:border-emerald-200/90 transition-all duration-300 pointer-events-auto">
           {/* Left Brand Identity */}
           <Link to="/" className="flex items-center gap-1 sm:gap-2 group cursor-pointer shrink-0 min-w-0">
@@ -231,9 +621,53 @@ export const LandingPage: React.FC = () => {
         </nav>
       </header>
 
-      {/* Hero Section: 2-Column Split Layout matching the reference image */}
-      <section className="pt-20 sm:pt-28 pb-14 sm:pb-20 px-3.5 sm:px-6 relative">
-        <div className="mx-auto max-w-6xl">
+      {/* Hero Section with Scenic Panoramic Background */}
+      <section className="relative isolate pt-24 sm:pt-32 pb-24 sm:pb-32 px-3.5 sm:px-6 overflow-hidden">
+        {/* Scenic Agricultural Landscape Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          <img
+            src={heroBgImage}
+            alt="Indian agricultural landscape with farmer at dawn"
+            className="w-full h-full object-cover object-[center_35%] sm:object-[center_28%]"
+          />
+          {/* Soft atmospheric bottom fade (transparent -> #F7F5EF with subtle stops, crisp landscape clarity) */}
+          <div
+            className="absolute bottom-0 inset-x-0 h-32 sm:h-44 pointer-events-none"
+            style={{
+              background: `linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(247, 245, 239, 0.02) 40%,
+                rgba(247, 245, 239, 0.20) 70%,
+                rgba(247, 245, 239, 0.60) 90%,
+                #F7F5EF 100%
+              )`
+            }}
+          />
+          {/* Organic Double Wave Horizon Transition into Warm Ivory (#F7F5EF) */}
+          <div className="absolute -bottom-[1px] inset-x-0 w-full overflow-hidden pointer-events-none leading-none z-10">
+            <svg
+              className="relative block w-full h-16 sm:h-24 md:h-28 lg:h-32"
+              viewBox="0 0 1440 120"
+              preserveAspectRatio="none"
+            >
+              {/* Layer 1: Secondary Transition Tone (#EEECE2) with Subtle Sage Accent (#A8C3A5) */}
+              <path
+                d="M0,45 C320,115 560,18 860,62 C1140,102 1320,40 1440,28 L1440,120 L0,120 Z"
+                fill="#EEECE2"
+                stroke="#A8C3A5"
+                strokeWidth="1.2"
+                strokeOpacity="0.45"
+              />
+              {/* Layer 2: Main Lower-Section Background (#F7F5EF) Front Organic Wave */}
+              <path
+                d="M0,68 C280,128 520,38 820,78 C1120,118 1320,52 1440,42 L1440,120 L0,120 Z"
+                fill="#F7F5EF"
+              />
+            </svg>
+          </div>
+        </div>
+        <div className="relative z-10 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
 
             {/* Left Column: Typography, Tag, Underline, Three Radiant Sparks, CTAs */}
@@ -295,67 +729,49 @@ export const LandingPage: React.FC = () => {
                 <span className="block text-stone-950 font-normal">in seconds.</span>
               </h1>
 
-              {/* Refined Agronomy Subtitle */}
-              <p className="max-w-xl text-stone-600 text-xs min-[400px]:text-sm sm:text-base md:text-lg leading-relaxed font-normal text-pretty">
-                A refined, intelligent agronomy layer over Indian agriculture. Diagnose plant pathologies, calibrate edaphic soil chemistry, and discover live APMC mandi prices seamlessly in real time.
-              </p>
+              {/* Refined Agronomy Subtitle in Normal Midnight Black (Italic and Bold) */}
+              <div className="pt-0.5 pb-1 sm:pt-1.5 sm:pb-2">
+                <p className="font-hero-editorial italic font-bold max-w-xl sm:max-w-2xl text-[14px] min-[400px]:text-[15.5px] sm:text-[17px] md:text-[18px] leading-[1.68] sm:leading-[1.75] text-[#0F172A] text-pretty">
+                  A refined, intelligent agronomy layer over Indian agriculture. Diagnose plant pathologies, calibrate edaphic soil chemistry, and discover live APMC mandi prices seamlessly in real time.
+                </p>
+              </div>
 
-              {/* Action Buttons (Pill shaped with Button-in-Button trailing arrow) */}
+              {/* Action Buttons (Pill shaped with Button-in-Button trailing arrow & GSAP magnetic micro-interactions) */}
               <div className="pt-2 flex flex-col min-[440px]:flex-row items-stretch min-[440px]:items-center gap-3 sm:gap-3.5">
                 <SignedOut>
-                  <Link
-                    to="/signup"
-                    className="relative overflow-hidden w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#0d3b24] via-[#14532d] to-[#0a2e1c] hover:from-[#14532d] hover:via-[#15803d] hover:to-[#14532d] border border-emerald-500/40 hover:border-emerald-400/80 shadow-[0_10px_25px_-4px_rgba(20,83,45,0.45),inset_0_1px_1.5px_rgba(255,255,255,0.35)] hover:shadow-[0_14px_34px_-4px_rgba(22,101,52,0.6),inset_0_1px_2px_rgba(255,255,255,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group"
-                  >
-                    <span className="absolute inset-0 noise-overlay opacity-30 pointer-events-none rounded-full" />
-                    <span className="relative z-10 tracking-tight">Deploy Advisor</span>
-                    <span className="relative z-10 w-6 h-6 rounded-full bg-white/15 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:translate-x-1 transition-all duration-300 shadow-xs">
-                      <ArrowRight className="h-3.5 w-3.5 text-emerald-100 group-hover:text-emerald-950 transition-colors duration-300" />
-                    </span>
-                  </Link>
-                  <a
-                    href="#technology"
-                    className="w-full min-[440px]:w-auto px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-stone-700 bg-white/95 hover:bg-white border border-stone-200/90 hover:border-emerald-300/80 shadow-[0_2px_8px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,1)] hover:shadow-card hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <span>View Architecture</span>
-                  </a>
+                  <HeroPrimaryButton to="/signup">
+                    Deploy Advisor
+                  </HeroPrimaryButton>
+                  <HeroSecondaryButton href="#technology">
+                    View Architecture
+                  </HeroSecondaryButton>
                 </SignedOut>
 
                 <SignedIn>
-                  <button
-                    onClick={() => navigate('/dashboard')}
-                    className="relative overflow-hidden w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#0d3b24] via-[#14532d] to-[#0a2e1c] hover:from-[#14532d] hover:via-[#15803d] hover:to-[#14532d] border border-emerald-500/40 hover:border-emerald-400/80 shadow-[0_10px_25px_-4px_rgba(20,83,45,0.45),inset_0_1px_1.5px_rgba(255,255,255,0.35)] hover:shadow-[0_14px_34px_-4px_rgba(22,101,52,0.6),inset_0_1px_2px_rgba(255,255,255,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group"
-                  >
-                    <span className="absolute inset-0 noise-overlay opacity-30 pointer-events-none rounded-full" />
-                    <span className="relative z-10 tracking-tight">Enter Farmer Workspace</span>
-                    <span className="relative z-10 w-6 h-6 rounded-full bg-white/15 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:translate-x-1 transition-all duration-300 shadow-xs">
-                      <ArrowRight className="h-3.5 w-3.5 text-emerald-100 group-hover:text-emerald-950 transition-colors duration-300" />
-                    </span>
-                  </button>
-                  <a
-                    href="#platform"
-                    className="w-full min-[440px]:w-auto px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-stone-700 bg-white/95 hover:bg-white border border-stone-200/90 hover:border-emerald-300/80 shadow-[0_2px_8px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,1)] hover:shadow-card hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 text-center"
-                  >
+                  <HeroPrimaryButton onClick={() => navigate('/dashboard')}>
+                    Enter Farmer Workspace
+                  </HeroPrimaryButton>
+                  <HeroSecondaryButton href="#platform">
                     Explore Features
-                  </a>
+                  </HeroSecondaryButton>
                 </SignedIn>
               </div>
 
               {/* Trust Metric Micro-Badges */}
-              <div className="pt-3 flex flex-wrap items-center gap-3 sm:gap-5 text-[11px] sm:text-xs font-semibold text-stone-500">
-                <span className="flex items-center gap-1.5">
+              <div className="pt-3 flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-stone-700">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 backdrop-blur-xs border border-stone-200/60 shadow-xs">
                   <span className="h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
                     <Check className="h-3 w-3 stroke-[3]" />
                   </span>
                   <span>Higher Prediction Accuracy</span>
                 </span>
-                <span className="flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 backdrop-blur-xs border border-stone-200/60 shadow-xs">
                   <span className="h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
                     <Check className="h-3 w-3 stroke-[3]" />
                   </span>
                   <span>50+ Indian Crops</span>
                 </span>
-                <span className="flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 backdrop-blur-xs border border-stone-200/60 shadow-xs">
                   <span className="h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
                     <Check className="h-3 w-3 stroke-[3]" />
                   </span>
@@ -370,9 +786,6 @@ export const LandingPage: React.FC = () => {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
-              {/* Dedicated Luminous Ambient Glow Halo behind the Stepper Stack */}
-              <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-br from-emerald-400/20 via-teal-300/15 to-lime-200/20 rounded-[2.5rem] blur-3xl pointer-events-none -z-10" />
-
               {/* Stepper Card Stack with strictly bounded connecting line */}
               <div className="relative space-y-3 sm:space-y-3.5">
                 {/* Vertical Connecting Line strictly bounded behind cards between Card 01 and Card 04 */}
@@ -467,7 +880,7 @@ export const LandingPage: React.FC = () => {
                               e.stopPropagation();
                               navigate(item.route);
                             }}
-                            className="inline-flex items-center gap-1 sm:gap-1.5 text-[9.5px] min-[380px]:text-[10px] sm:text-[11px] font-bold text-white bg-gradient-to-r from-emerald-800 to-emerald-900 hover:from-emerald-700 hover:to-emerald-800 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full shadow-[0_4px_14px_rgba(22,101,52,0.3),inset_0_1px_1px_rgba(255,255,255,0.25)] transition-all active:scale-95 group/btn whitespace-nowrap shrink-0"
+                            className="inline-flex items-center gap-1 sm:gap-1.5 text-[9.5px] min-[380px]:text-[10px] sm:text-[11px] font-bold text-white bg-emerald-900 hover:bg-emerald-800 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full shadow-sm hover:shadow transition-all active:scale-95 group/btn whitespace-nowrap shrink-0"
                           >
                             <span>Open Tool</span>
                             <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-white/20 flex items-center justify-center group-hover/btn:translate-x-0.5 transition-transform shrink-0">
@@ -483,21 +896,93 @@ export const LandingPage: React.FC = () => {
 
               {/* Stepper Helper Footer */}
               <div className="mt-3.5 flex flex-wrap items-center justify-between gap-1.5 px-2 text-[11px] font-medium text-stone-500">
-                <span className="font-mono flex items-center gap-1.5 text-[9px] sm:text-[10px] uppercase tracking-wider truncate">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(34,197,94,0.8)] shrink-0"></span>
+                <span className="font-mono flex items-center gap-1.5 text-[10.5px] sm:text-[11.5px] uppercase tracking-wider truncate italic font-bold text-emerald-400 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_rgba(52,211,153,0.9)] shrink-0 not-italic"></span>
                   <span className="truncate">Autonomous Agronomic Pipeline</span>
                 </span>
-                <span className="text-emerald-900 font-mono font-bold bg-emerald-50/90 border border-emerald-200/80 px-2 sm:px-2.5 py-0.5 rounded-full text-[9px] sm:text-[10px] shadow-xs shrink-0">
+                <span className="text-emerald-900 font-mono font-bold bg-emerald-50/90 border border-emerald-200/80 px-2 sm:px-2.5 py-0.5 rounded-full text-[9.5px] sm:text-[10.5px] shadow-xs shrink-0">
                   Stage {activeStep + 1} of 4
                 </span>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Live Interactive Workspace Preview Showcase Card */}
-        <div id="platform" className="scroll-mt-28 mt-12 sm:mt-24 mx-auto max-w-6xl">
-          <div className="relative rounded-2xl sm:rounded-[1.5rem] bg-white p-3.5 sm:p-7 lg:p-9 border border-stone-200/90 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.07)] overflow-hidden">
+      {/* Lower Section: Mission Statement & Live Interactive Workspace Preview Showcase Card */}
+      <section id="platform" className="scroll-mt-28 pt-6 sm:pt-10 pb-12 sm:pb-20 px-3.5 sm:px-6 relative bg-[#F7F5EF]">
+        {/* Mission Statement Block with Scroll Reveal */}
+        <div ref={missionRef} className="mx-auto max-w-5xl px-4 sm:px-6 pt-2 sm:pt-4 pb-10 sm:pb-14 text-center">
+          {/* Eyebrow Label */}
+          <div
+            className={`scroll-reveal inline-flex items-center gap-2 mb-3.5 sm:mb-4 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+            }`}
+            style={{ transitionDelay: '0ms' }}
+          >
+            <Sprout className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#237653]" />
+            <span className="text-[11px] sm:text-[13px] font-semibold text-[#237653] tracking-[0.12em] uppercase font-sans">
+              OUR MISSION
+            </span>
+          </div>
+
+          {/* Main Heading */}
+          <h2
+            className={`scroll-reveal font-display text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium sm:font-semibold text-[#171A16] leading-[1.15] sm:leading-[1.1] max-w-[900px] mx-auto text-center tracking-tight transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+            }`}
+            style={{ transitionDelay: '130ms' }}
+          >
+            Smarter Decisions. <span className="text-[#174D38]">Healthier Harvests.</span>
+          </h2>
+
+          {/* Supporting Text */}
+          <p
+            className={`scroll-reveal mt-4 sm:mt-5 text-base sm:text-lg text-[#686D65] leading-[1.7] max-w-[700px] mx-auto text-center font-normal transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+            }`}
+            style={{ transitionDelay: '260ms' }}
+          >
+            Bridging technology and tradition for a more prosperous, sustainable and food-secure India.
+          </p>
+        </div>
+
+        {/* Precision Architectural Border Seam */}
+        <div
+          className={`scroll-reveal relative mx-auto max-w-6xl px-3.5 sm:px-6 mb-8 sm:mb-12 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+          }`}
+          style={{ transitionDelay: '390ms' }}
+        >
+          <div className="relative flex items-center justify-center">
+            {/* Full-width Hairline Border Rule */}
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+              <div className="w-full border-t border-stone-300/80" />
+            </div>
+
+            {/* Precision Border Anchor Badge */}
+            <div className="relative flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/90 shadow-[0_2px_8px_rgba(29,27,22,0.04)] text-[10.5px] sm:text-xs font-mono text-stone-600 select-none">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
+              </span>
+              <span className="font-semibold text-stone-800 tracking-wider uppercase text-[9.5px] sm:text-[10.5px]">
+                Autonomous Agronomic Workspace
+              </span>
+              <span className="text-stone-300 hidden min-[400px]:inline">|</span>
+              <span className="text-stone-500 text-[9.5px] sm:text-[10.5px] hidden min-[400px]:inline">
+                Live Sensor Telemetry
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-6xl">
+          {/* Refined Workspace Preview Showcase Card — Single-Surface Doppelrand */}
+          <div className="relative rounded-2xl sm:rounded-3xl bg-white p-3.5 sm:p-7 lg:p-9 border border-stone-200/90 shadow-[0_20px_50px_-15px_rgba(29,27,22,0.06),0_1px_3px_rgba(29,27,22,0.03)] ring-1 ring-black/[0.02] overflow-hidden">
+            {/* Top Specular Hairline Highlight */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-stone-200/80 to-transparent pointer-events-none" />
+
             {/* Top Workspace Header Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 sm:pb-6 border-b border-stone-100 gap-2.5 sm:gap-3">
               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
