@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import gsap from 'gsap';
 import {
   Sprout,
   ArrowRight,
@@ -26,7 +25,7 @@ import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 import { LanguageToggle } from '../components/LanguageToggle';
 import heroBgImage from '../assets/hero-bg.jpg';
 
-// Interactive GSAP Magnetic & Micro-interaction CTA Buttons
+// Clean & Lightweight Hero CTA Buttons with standard hover effects
 interface HeroPrimaryButtonProps {
   to?: string;
   onClick?: () => void;
@@ -40,182 +39,27 @@ const HeroPrimaryButton: React.FC<HeroPrimaryButtonProps> = ({
   children,
   className = '',
 }) => {
-  const buttonRef = useRef<HTMLElement | null>(null);
-  const badgeRef = useRef<HTMLSpanElement | null>(null);
-  const arrowRef = useRef<HTMLSpanElement | null>(null);
-  const shimmerRef = useRef<HTMLSpanElement | null>(null);
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (e.pointerType === 'touch') return;
-    const btn = buttonRef.current;
-    if (!btn) return;
-
-    const rect = btn.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) * 0.22;
-    const y = (e.clientY - rect.top - rect.height / 2) * 0.22;
-
-    gsap.to(btn, {
-      x,
-      y,
-      duration: 0.25,
-      ease: 'power2.out',
-      overwrite: 'auto',
-    });
-
-    if (badgeRef.current) {
-      gsap.to(badgeRef.current, {
-        x: x * 0.45,
-        y: y * 0.45,
-        duration: 0.25,
-        ease: 'power2.out',
-        overwrite: 'auto',
-      });
-    }
-  };
-
-  const handlePointerEnter = (e: React.PointerEvent) => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (e.pointerType === 'touch') return;
-
-    if (shimmerRef.current) {
-      gsap.fromTo(
-        shimmerRef.current,
-        { x: '-120%', opacity: 0.5 },
-        { x: '220%', opacity: 0, duration: 0.75, ease: 'power2.out', overwrite: 'auto' }
-      );
-    }
-
-    if (badgeRef.current) {
-      gsap.to(badgeRef.current, {
-        scale: 1.08,
-        duration: 0.2,
-        ease: 'power2.out',
-        overwrite: 'auto',
-      });
-    }
-
-    if (arrowRef.current) {
-      gsap.to(arrowRef.current, {
-        x: 2.5,
-        duration: 0.2,
-        ease: 'power2.out',
-        overwrite: 'auto',
-      });
-    }
-  };
-
-  const handlePointerLeave = () => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const btn = buttonRef.current;
-    if (!btn) return;
-
-    gsap.to(btn, {
-      x: 0,
-      y: 0,
-      scale: 1,
-      duration: 0.65,
-      ease: 'elastic.out(1, 0.4)',
-      overwrite: 'auto',
-    });
-
-    if (badgeRef.current) {
-      gsap.to(badgeRef.current, {
-        x: 0,
-        y: 0,
-        scale: 1,
-        duration: 0.5,
-        ease: 'elastic.out(1, 0.45)',
-        overwrite: 'auto',
-      });
-    }
-
-    if (arrowRef.current) {
-      gsap.to(arrowRef.current, {
-        x: 0,
-        duration: 0.35,
-        ease: 'power2.out',
-        overwrite: 'auto',
-      });
-    }
-  };
-
-  const handlePointerDown = () => {
-    const btn = buttonRef.current;
-    if (!btn) return;
-    gsap.to(btn, {
-      scale: 0.955,
-      duration: 0.12,
-      ease: 'power1.out',
-      overwrite: 'auto',
-    });
-  };
-
-  const handlePointerUp = () => {
-    const btn = buttonRef.current;
-    if (!btn) return;
-    gsap.to(btn, {
-      scale: 1,
-      duration: 0.3,
-      ease: 'back.out(2)',
-      overwrite: 'auto',
-    });
-  };
-
-  const buttonClasses = `relative inline-flex items-center justify-center gap-3 sm:gap-3.5 w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#0C2B19] via-[#123E25] to-[#0A2616] border border-emerald-600/35 ring-1 ring-black/10 shadow-[0_8px_24px_-4px_rgba(11,42,24,0.38),0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1.5px_rgba(255,255,255,0.24),inset_0_-1px_1px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_28px_-4px_rgba(11,42,24,0.48),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-shadow duration-300 select-none overflow-hidden group cursor-pointer will-change-transform ${className}`;
+  const buttonClasses = `relative inline-flex items-center justify-center gap-3 sm:gap-3.5 w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#0C2B19] via-[#123E25] to-[#0A2616] hover:from-[#0F351F] hover:via-[#16492C] hover:to-[#0D2E1B] border border-emerald-600/35 ring-1 ring-black/10 shadow-[0_8px_24px_-4px_rgba(11,42,24,0.38),0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1.5px_rgba(255,255,255,0.24)] hover:shadow-[0_12px_28px_-4px_rgba(11,42,24,0.48)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 select-none overflow-hidden group cursor-pointer ${className}`;
 
   const content = (
     <>
-      {/* Specular Shimmer Beam */}
-      <span
-        ref={shimmerRef}
-        className="absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none transform -skew-x-12 -translate-x-[150%]"
-        aria-hidden="true"
-      />
-      {/* Subtle paper noise texture */}
-      <span className="absolute inset-0 noise-overlay opacity-20 pointer-events-none rounded-full" />
-      {/* Button label */}
       <span className="relative z-10 tracking-tight font-semibold sm:font-bold">{children}</span>
-      {/* Button-in-button circular arrow badge */}
-      <span
-        ref={badgeRef}
-        className="relative z-10 w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center shadow-[0_2px_6px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.9)] ring-1 ring-black/[0.04] shrink-0 will-change-transform"
-      >
-        <span ref={arrowRef} className="inline-flex items-center justify-center will-change-transform">
-          <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#0C2B19] stroke-[2.4]" />
-        </span>
+      <span className="relative z-10 w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center shadow-[0_2px_6px_rgba(0,0,0,0.18)] shrink-0 group-hover:translate-x-0.5 transition-transform duration-200">
+        <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#0C2B19] stroke-[2.4]" />
       </span>
     </>
   );
 
   if (to) {
     return (
-      <Link
-        to={to}
-        ref={buttonRef as any}
-        onPointerMove={handlePointerMove}
-        onPointerEnter={handlePointerEnter}
-        onPointerLeave={handlePointerLeave}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        className={buttonClasses}
-      >
+      <Link to={to} className={buttonClasses}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button
-      onClick={onClick}
-      ref={buttonRef as any}
-      onPointerMove={handlePointerMove}
-      onPointerEnter={handlePointerEnter}
-      onPointerLeave={handlePointerLeave}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-      className={buttonClasses}
-    >
+    <button onClick={onClick} className={buttonClasses}>
       {content}
     </button>
   );
@@ -234,119 +78,22 @@ const HeroSecondaryButton: React.FC<HeroSecondaryButtonProps> = ({
   children,
   className = '',
 }) => {
-  const buttonRef = useRef<HTMLElement | null>(null);
-  const shimmerRef = useRef<HTMLSpanElement | null>(null);
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (e.pointerType === 'touch') return;
-    const btn = buttonRef.current;
-    if (!btn) return;
-
-    const rect = btn.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) * 0.18;
-    const y = (e.clientY - rect.top - rect.height / 2) * 0.18;
-
-    gsap.to(btn, {
-      x,
-      y,
-      duration: 0.25,
-      ease: 'power2.out',
-      overwrite: 'auto',
-    });
-  };
-
-  const handlePointerEnter = (e: React.PointerEvent) => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (e.pointerType === 'touch') return;
-
-    if (shimmerRef.current) {
-      gsap.fromTo(
-        shimmerRef.current,
-        { x: '-120%', opacity: 0.4 },
-        { x: '220%', opacity: 0, duration: 0.7, ease: 'power2.out', overwrite: 'auto' }
-      );
-    }
-  };
-
-  const handlePointerLeave = () => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const btn = buttonRef.current;
-    if (!btn) return;
-
-    gsap.to(btn, {
-      x: 0,
-      y: 0,
-      scale: 1,
-      duration: 0.6,
-      ease: 'elastic.out(1, 0.4)',
-      overwrite: 'auto',
-    });
-  };
-
-  const handlePointerDown = () => {
-    const btn = buttonRef.current;
-    if (!btn) return;
-    gsap.to(btn, {
-      scale: 0.965,
-      duration: 0.12,
-      ease: 'power1.out',
-      overwrite: 'auto',
-    });
-  };
-
-  const handlePointerUp = () => {
-    const btn = buttonRef.current;
-    if (!btn) return;
-    gsap.to(btn, {
-      scale: 1,
-      duration: 0.3,
-      ease: 'back.out(2)',
-      overwrite: 'auto',
-    });
-  };
-
-  const buttonClasses = `relative inline-flex items-center justify-center w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-semibold text-xs sm:text-sm text-[#1A201C] bg-white/95 hover:bg-white border border-stone-200/90 hover:border-emerald-400/80 shadow-[0_2px_12px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,1),inset_0_-1px_1px_rgba(0,0,0,0.02)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,1)] transition-colors duration-250 select-none overflow-hidden group cursor-pointer will-change-transform ${className}`;
+  const buttonClasses = `relative inline-flex items-center justify-center w-full min-[440px]:w-auto px-6 sm:px-7 py-3.5 rounded-full font-semibold text-xs sm:text-sm text-[#1A201C] bg-white hover:bg-stone-50 border border-stone-200/90 hover:border-stone-300 shadow-[0_2px_12px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,1)] hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 select-none overflow-hidden group cursor-pointer ${className}`;
 
   const content = (
-    <>
-      <span
-        ref={shimmerRef}
-        className="absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-emerald-100/35 to-transparent pointer-events-none transform -skew-x-12 -translate-x-[150%]"
-        aria-hidden="true"
-      />
-      <span className="relative z-10 tracking-tight font-semibold sm:font-bold">{children}</span>
-    </>
+    <span className="relative z-10 tracking-tight font-semibold sm:font-bold">{children}</span>
   );
 
   if (href) {
     return (
-      <a
-        href={href}
-        ref={buttonRef as any}
-        onPointerMove={handlePointerMove}
-        onPointerEnter={handlePointerEnter}
-        onPointerLeave={handlePointerLeave}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        className={buttonClasses}
-      >
+      <a href={href} className={buttonClasses}>
         {content}
       </a>
     );
   }
 
   return (
-    <button
-      onClick={onClick}
-      ref={buttonRef as any}
-      onPointerMove={handlePointerMove}
-      onPointerEnter={handlePointerEnter}
-      onPointerLeave={handlePointerLeave}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-      className={buttonClasses}
-    >
+    <button onClick={onClick} className={buttonClasses}>
       {content}
     </button>
   );
@@ -547,11 +294,10 @@ export const LandingPage: React.FC = () => {
           isHoveringNavRef.current = false;
           setIsCursorNearTop(false);
         }}
-        className={`fixed top-2 sm:top-4 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${
-          showNavbar
+        className={`fixed top-2 sm:top-4 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${showNavbar
             ? 'translate-y-0 opacity-100 pointer-events-auto'
             : '-translate-y-[140%] opacity-0 pointer-events-none'
-        }`}
+          }`}
       >
         <nav className="mx-auto max-w-6xl rounded-full bg-white/90 backdrop-blur-xl border border-white/80 px-2.5 min-[360px]:px-3.5 sm:px-5 md:px-6 py-1.5 sm:py-2.5 flex items-center justify-between shadow-[0_12px_36px_rgba(0,0,0,0.05),inset_0_1px_1.5px_rgba(255,255,255,1),inset_0_-1px_1px_rgba(0,0,0,0.02)] ring-1 ring-black/[0.04] hover:border-emerald-200/90 transition-all duration-300 pointer-events-auto">
           {/* Left Brand Identity */}
@@ -628,7 +374,20 @@ export const LandingPage: React.FC = () => {
           <img
             src={heroBgImage}
             alt="Indian agricultural landscape with farmer at dawn"
-            className="w-full h-full object-cover object-[center_35%] sm:object-[center_28%]"
+            className="opacity-100  w-full h-full object-cover object-[center_35%] sm:object-[center_28%]"
+          />
+          {/* Soft atmospheric left-to-right gradient wash to ensure pristine typography contrast */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `linear-gradient(
+                to right,
+                rgba(247, 245, 239, 0.92) 0%,
+                rgba(247, 245, 239, 0.78) 32%,
+                rgba(247, 245, 239, 0.35) 58%,
+                transparent 82%
+              )`
+            }}
           />
           {/* Soft atmospheric bottom fade (transparent -> #F7F5EF with subtle stops, crisp landscape clarity) */}
           <div
@@ -729,14 +488,19 @@ export const LandingPage: React.FC = () => {
                 <span className="block text-stone-950 font-normal">in seconds.</span>
               </h1>
 
-              {/* Refined Agronomy Subtitle in Normal Midnight Black (Italic and Bold) */}
+              {/* Refined Agronomy Subtitle with high-contrast modern typography */}
               <div className="pt-0.5 pb-1 sm:pt-1.5 sm:pb-2">
-                <p className="font-hero-editorial italic font-bold max-w-xl sm:max-w-2xl text-[14px] min-[400px]:text-[15.5px] sm:text-[17px] md:text-[18px] leading-[1.68] sm:leading-[1.75] text-[#0F172A] text-pretty">
-                  A refined, intelligent agronomy layer over Indian agriculture. Diagnose plant pathologies, calibrate edaphic soil chemistry, and discover live APMC mandi prices seamlessly in real time.
+                <p className="font-sans max-w-xl sm:max-w-2xl text-[14.5px] min-[400px]:text-[16px] sm:text-[17px] md:text-[18px] leading-[1.7] tracking-[-0.01em]  text-pretty">
+                  <span className="font-semibold text-stone-950">
+                    A refined, intelligent agronomy layer over Indian agriculture.
+                  </span>{' '}
+                  <span className="font-bold text-stone-800">
+                    Diagnose plant pathologies, calibrate edaphic soil chemistry, and discover live APMC mandi prices seamlessly in real time.
+                  </span>
                 </p>
               </div>
 
-              {/* Action Buttons (Pill shaped with Button-in-Button trailing arrow & GSAP magnetic micro-interactions) */}
+              {/* Action Buttons (Pill shaped with clean standard hover effects) */}
               <div className="pt-2 flex flex-col min-[440px]:flex-row items-stretch min-[440px]:items-center gap-3 sm:gap-3.5">
                 <SignedOut>
                   <HeroPrimaryButton to="/signup">
@@ -808,8 +572,8 @@ export const LandingPage: React.FC = () => {
                       key={item.step}
                       onClick={() => setActiveStep(idx)}
                       className={`relative z-10 group p-3.5 sm:p-4.5 rounded-[1.5rem] sm:rounded-[1.75rem] border transition-all duration-300 cursor-pointer flex flex-col gap-2 sm:gap-2.5 overflow-hidden ${isActive
-                          ? 'bg-gradient-to-br from-[#EDF9F1] via-[#F7FCF9] to-[#E3F4EA] border-emerald-500/70 active-bezel-card ring-2 ring-emerald-500/25 -translate-x-0.5 sm:-translate-x-1 scale-[1.01]'
-                          : 'bg-gradient-to-b from-white/95 via-[#FCFBF8]/95 to-[#FAF8F3]/90 backdrop-blur-md border-stone-200/80 double-bezel-card ring-1 ring-black/[0.03] hover:-translate-x-0.5 hover:border-emerald-300/80 hover:shadow-[0_14px_32px_rgba(22,101,52,0.07),inset_0_1px_1.5px_rgba(255,255,255,1)]'
+                        ? 'bg-gradient-to-br from-[#EDF9F1] via-[#F7FCF9] to-[#E3F4EA] border-emerald-500/70 active-bezel-card ring-2 ring-emerald-500/25 -translate-x-0.5 sm:-translate-x-1 scale-[1.01]'
+                        : 'bg-gradient-to-b from-white/95 via-[#FCFBF8]/95 to-[#FAF8F3]/90 backdrop-blur-md border-stone-200/80 double-bezel-card ring-1 ring-black/[0.03] hover:-translate-x-0.5 hover:border-emerald-300/80 hover:shadow-[0_14px_32px_rgba(22,101,52,0.07),inset_0_1px_1.5px_rgba(255,255,255,1)]'
                         }`}
                     >
                       {/* Micro Texture Pattern Overlay for Active Card */}
@@ -827,8 +591,8 @@ export const LandingPage: React.FC = () => {
                           <div className="relative z-20 shrink-0 flex items-center justify-center w-7 h-7 sm:w-10 sm:h-10">
                             <Icon
                               className={`transition-all duration-300 ${isActive
-                                  ? 'h-5 w-5 sm:h-7 sm:w-7 text-emerald-800 scale-105'
-                                  : 'h-4.5 w-4.5 sm:h-6 sm:w-6 text-stone-400 group-hover:text-emerald-700'
+                                ? 'h-5 w-5 sm:h-7 sm:w-7 text-emerald-800 scale-105'
+                                : 'h-4.5 w-4.5 sm:h-6 sm:w-6 text-stone-400 group-hover:text-emerald-700'
                                 }`}
                             />
                           </div>
@@ -838,8 +602,8 @@ export const LandingPage: React.FC = () => {
                             <div className="flex items-center gap-1.5 sm:gap-2">
                               <span
                                 className={`text-[9.5px] sm:text-[11px] font-mono font-bold tracking-wider px-1.5 sm:px-2 py-0.5 rounded-md ${isActive
-                                    ? 'bg-emerald-100/90 text-emerald-950 border border-emerald-200/80 shadow-xs'
-                                    : 'bg-[#F2EFEA] text-stone-600 border border-stone-200/60'
+                                  ? 'bg-emerald-100/90 text-emerald-950 border border-emerald-200/80 shadow-xs'
+                                  : 'bg-[#F2EFEA] text-stone-600 border border-stone-200/60'
                                   }`}
                               >
                                 {item.step}
@@ -895,11 +659,7 @@ export const LandingPage: React.FC = () => {
               </div>
 
               {/* Stepper Helper Footer */}
-              <div className="mt-3.5 flex flex-wrap items-center justify-between gap-1.5 px-2 text-[11px] font-medium text-stone-500">
-                <span className="font-mono flex items-center gap-1.5 text-[10.5px] sm:text-[11.5px] uppercase tracking-wider truncate italic font-bold text-emerald-400 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_rgba(52,211,153,0.9)] shrink-0 not-italic"></span>
-                  <span className="truncate">Autonomous Agronomic Pipeline</span>
-                </span>
+              <div className="mt-3.5 flex items-center justify-end px-2 text-[11px] font-medium text-stone-500">
                 <span className="text-emerald-900 font-mono font-bold bg-emerald-50/90 border border-emerald-200/80 px-2 sm:px-2.5 py-0.5 rounded-full text-[9.5px] sm:text-[10.5px] shadow-xs shrink-0">
                   Stage {activeStep + 1} of 4
                 </span>
@@ -915,9 +675,8 @@ export const LandingPage: React.FC = () => {
         <div ref={missionRef} className="mx-auto max-w-5xl px-4 sm:px-6 pt-2 sm:pt-4 pb-10 sm:pb-14 text-center">
           {/* Eyebrow Label */}
           <div
-            className={`scroll-reveal inline-flex items-center gap-2 mb-3.5 sm:mb-4 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
-            }`}
+            className={`scroll-reveal inline-flex items-center gap-2 mb-3.5 sm:mb-4 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+              }`}
             style={{ transitionDelay: '0ms' }}
           >
             <Sprout className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#237653]" />
@@ -928,9 +687,8 @@ export const LandingPage: React.FC = () => {
 
           {/* Main Heading */}
           <h2
-            className={`scroll-reveal font-display text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium sm:font-semibold text-[#171A16] leading-[1.15] sm:leading-[1.1] max-w-[900px] mx-auto text-center tracking-tight transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
-            }`}
+            className={`scroll-reveal font-display text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium sm:font-semibold text-[#171A16] leading-[1.15] sm:leading-[1.1] max-w-[900px] mx-auto text-center tracking-tight transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+              }`}
             style={{ transitionDelay: '130ms' }}
           >
             Smarter Decisions. <span className="text-[#174D38]">Healthier Harvests.</span>
@@ -938,9 +696,8 @@ export const LandingPage: React.FC = () => {
 
           {/* Supporting Text */}
           <p
-            className={`scroll-reveal mt-4 sm:mt-5 text-base sm:text-lg text-[#686D65] leading-[1.7] max-w-[700px] mx-auto text-center font-normal transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
-            }`}
+            className={`scroll-reveal mt-4 sm:mt-5 text-base sm:text-lg text-[#686D65] leading-[1.7] max-w-[700px] mx-auto text-center font-normal transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+              }`}
             style={{ transitionDelay: '260ms' }}
           >
             Bridging technology and tradition for a more prosperous, sustainable and food-secure India.
@@ -949,9 +706,8 @@ export const LandingPage: React.FC = () => {
 
         {/* Precision Architectural Border Seam */}
         <div
-          className={`scroll-reveal relative mx-auto max-w-6xl px-3.5 sm:px-6 mb-8 sm:mb-12 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
-          }`}
+          className={`scroll-reveal relative mx-auto max-w-6xl px-3.5 sm:px-6 mb-8 sm:mb-12 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+            }`}
           style={{ transitionDelay: '390ms' }}
         >
           <div className="relative flex items-center justify-center">

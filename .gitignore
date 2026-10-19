@@ -45,15 +45,15 @@ venv/
 scratch/
 .agents
 
-# Images & Media Assets
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.bmp
-*.svg
-*.webp
-*.ico
-*.tiff
-*.avif
-!frontend/public/favicon.svg
+# # Images & Media Assets
+# *.jpg
+# *.jpeg
+# *.png
+# *.gif
+# *.bmp
+# *.svg
+# *.webp
+# *.ico
+# *.tiff
+# *.avif
+# !frontend/public/favicon.svg
