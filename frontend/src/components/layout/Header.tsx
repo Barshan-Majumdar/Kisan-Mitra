@@ -17,9 +17,12 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
   const isMac = typeof window !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
   return (
-    <header className="sticky top-0 z-30 shrink-0 flex h-16 items-center justify-between border border-stone-200/80 bg-white/95 backdrop-blur-md px-3 sm:px-4 lg:px-5 transition-all duration-300 shadow-soft mx-2.5 mt-2.5 mb-2 sm:mx-3 sm:mt-3 sm:mb-2.5 lg:mx-0 lg:mt-0 lg:mb-3 min-w-0" style={{ borderRadius: 'clamp(14px, 1.25vw, 20px)' }}>
+    <header
+      className="sticky top-0 z-30 shrink-0 flex h-14 sm:h-16 items-center justify-between border border-stone-200/80 bg-white/95 backdrop-blur-md px-2.5 sm:px-4 lg:px-5 transition-all duration-300 shadow-soft mx-2 mt-2 mb-2 sm:mx-3 sm:mt-3 sm:mb-2.5 lg:mx-0 lg:mt-0 lg:mb-3 min-w-0"
+      style={{ borderRadius: 'clamp(14px, 1.25vw, 20px)' }}
+    >
       {/* Left Area: Mobile Menu Toggle & Brand / Desktop Breadcrumb */}
-      <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 min-w-0">
+      <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 min-w-0">
         {/* Mobile Hamburger / Navigation Toggle */}
         <button
           type="button"
@@ -27,7 +30,7 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
           aria-label={isSidebarOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={isSidebarOpen}
           aria-controls="main-sidebar"
-          className="p-2 text-stone-700 lg:hidden hover:text-emerald-700 transition-colors rounded-2xl bg-stone-100 hover:bg-stone-200/60 shrink-0 focus:outline-none focus:ring-2 focus:ring-emerald-600/40 active:scale-95 cursor-pointer flex items-center justify-center touch-target"
+          className="h-9 w-9 sm:h-10 sm:w-10 text-stone-700 lg:hidden hover:text-emerald-700 transition-colors rounded-xl sm:rounded-2xl bg-stone-100 hover:bg-stone-200/60 shrink-0 focus:outline-none focus:ring-2 focus:ring-emerald-600/40 active:scale-95 cursor-pointer flex items-center justify-center touch-target"
           onClick={onMenuClick}
         >
           <span className="sr-only">{isSidebarOpen ? "Close navigation" : "Open navigation"}</span>
@@ -35,9 +38,11 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
         </button>
 
         {/* Mobile Brand Title */}
-        <div className="flex lg:hidden items-center gap-1.5 shrink-0">
+        <div className="flex lg:hidden items-center gap-1.5 shrink-0 min-w-0">
           <Sprout className="h-5 w-5 text-emerald-700 shrink-0" />
-          <span className="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight whitespace-nowrap hidden min-[360px]:inline">Kisan Mitra</span>
+          <span className="text-xs min-[360px]:text-sm sm:text-base font-extrabold text-stone-900 tracking-tight whitespace-nowrap">
+            Kisan Mitra
+          </span>
         </div>
 
         {/* Desktop Breadcrumb & Season Status */}
@@ -76,24 +81,18 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
 
       {/* Right Area: Telemetry, Language, Notifications & User Pill */}
       <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 shrink-0">
-        {/* Mobile Search Button */}
-        <button
-          type="button"
-          onClick={onOpenCommandPalette}
-          className="md:hidden p-2 text-stone-600 hover:text-emerald-800 bg-[#FAF9F5] border border-stone-200/80 rounded-2xl shadow-soft shrink-0"
-        >
-          <Search className="h-4 w-4" />
-        </button>
-
         {/* Live Weather Capsule (Open-Meteo Dynamic Telemetry) */}
-        <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/80 text-xs font-semibold text-stone-700 shadow-soft shrink-0">
+        <div className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/80 text-xs font-semibold text-stone-700 shadow-soft shrink-0">
           <WeatherIcon
             weatherCode={weather.weatherCode}
             isDay={weather.isDay}
             size="sm"
             showContainer={false}
           />
-          <span className="font-mono text-xs whitespace-nowrap">{weather.temperature.toFixed(1)}°C</span>
+          <span className="font-mono text-xs whitespace-nowrap">
+            <span className="inline min-[360px]:hidden">{Math.round(weather.temperature)}°</span>
+            <span className="hidden min-[360px]:inline">{weather.temperature.toFixed(1)}°C</span>
+          </span>
           <span className="text-stone-300 hidden sm:inline">•</span>
           <span className="text-stone-500 font-mono text-[11px] hidden sm:inline whitespace-nowrap">{weather.humidity}% Hum</span>
           {weather.isLiveLocation && weather.district && (
@@ -106,10 +105,8 @@ export const Header = ({ onMenuClick, onOpenCommandPalette, isSidebarOpen = fals
         {/* Workspace Bilingual Language Toggle */}
         <LanguageToggle />
 
-
-
         {/* Farmer Profile Pill */}
-        <div className="flex items-center gap-1.5 sm:gap-2 pl-1.5 sm:pl-2 pr-2.5 sm:pr-3 py-1 sm:py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:border-stone-300 transition-all shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 p-0.5 sm:pl-2 sm:pr-3 sm:py-1.5 rounded-full bg-[#FAF9F5] border border-stone-200/90 shadow-soft hover:border-stone-300 transition-all shrink-0">
           <UserButton afterSignOutUrl="/" />
           <div className="hidden sm:flex flex-col text-left pr-0.5 min-w-0">
             <span className="text-xs font-bold text-stone-800 leading-tight truncate max-w-[70px] sm:max-w-[90px] xl:max-w-[110px]">
