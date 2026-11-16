@@ -77,7 +77,7 @@
 ### Platform Architectural Blueprint
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              KISAN MITRA PLATFORM                              │
+│                              KISAN MITRA PLATFORM                               │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
 │  ┌───────────────────────────────────────────────────────────────────────────┐  │
@@ -85,20 +85,20 @@
 │  │  React 18 + TypeScript + Vite + Tailwind CSS v3 + Clerk Auth              │  │
 │  │                                                                           │  │
 │  │  Pages:                                                                   │  │
-│  │  ┌──────────────┐ ┌────────────────┐ ┌──────────────┐ ┌──────────────┐   │  │
-│  │  │ Landing Page  │ │   Dashboard    │ │  Crop Reco   │ │Disease Detect│   │  │
-│  │  └──────────────┘ └────────────────┘ └──────────────┘ └──────────────┘   │  │
-│  │  ┌──────────────┐ ┌────────────────┐ ┌──────────────┐ ┌──────────────┐   │  │
-│  │  │ Soil Calibr. │ │ Market Prices  │ │   Schemes    │ │   Chatbot    │   │  │
-│  │  └──────────────┘ └────────────────┘ └──────────────┘ └──────────────┘   │  │
-│  │  ┌──────────────┐ ┌────────────────┐ ┌──────────────┐                    │  │
-│  │  │  ToDo List   │ │ Advisory Hist. │ │  Farmer I/P  │                    │  │
-│  │  └──────────────┘ └────────────────┘ └──────────────┘                    │  │
+│  │  ┌──────────────┐ ┌────────────────┐ ┌──────────────┐ ┌──────────────┐    │  │
+│  │  │ Landing Page │ │   Dashboard    │ │  Crop Reco   │ │Disease Detect│    │  │
+│  │  └──────────────┘ └────────────────┘ └──────────────┘ └──────────────┘    │  │
+│  │  ┌──────────────┐ ┌────────────────┐ ┌──────────────┐ ┌──────────────┐    │  │
+│  │  │ Soil Calibr. │ │ Market Prices  │ │   Schemes    │ │   Chatbot    │    │  │
+│  │  └──────────────┘ └────────────────┘ └──────────────┘ └──────────────┘    │  │
+│  │  ┌──────────────┐ ┌────────────────┐ ┌──────────────┐                     │  │
+│  │  │  ToDo List   │ │ Advisory Hist. │ │  Farmer I/P  │                     │  │
+│  │  └──────────────┘ └────────────────┘ └──────────────┘                     │  │
 │  └──────────────────────────────┬────────────────────────────────────────────┘  │
 │                                 │ Axios REST                                    │
 │                                 ▼                                               │
 │  ┌───────────────────────────────────────────────────────────────────────────┐  │
-│  │                    BACKEND API GATEWAY (Port 3000)                         │  │
+│  │                    BACKEND API GATEWAY (Port 3000)                        │  │
 │  │  Node.js + Express 5 + TypeScript + Prisma ORM                            │  │
 │  │                                                                           │  │
 │  │  Controllers:                                                             │  │
@@ -112,7 +112,7 @@
 │  └───────┬──────────────────────┬──────────────────────┬─────────────────────┘  │
 │          │                      │                      │                        │
 │          ▼                      ▼                      ▼                        │
-│  ┌──────────────┐   ┌─────────────────────┐   ┌──────────────────────┐         │
+│  ┌──────────────┐    ┌─────────────────────┐   ┌──────────────────────┐         │
 │  │  PostgreSQL   │   │  AI MICROSERVICE    │   │   External APIs      │         │
 │  │  (Prisma ORM) │   │  (Port 8000)        │   │                      │         │
 │  │               │   │                     │   │  • data.gov.in       │         │
@@ -130,7 +130,7 @@
 │  │  DistrictCrop │   │  GET /options       │                                    │
 │  │  Reco.History │   │  GET /health        │                                    │
 │  │  Disease.Hist │   └─────────────────────┘                                    │
-│  └──────────────┘                                                               │
+│  └───────────────┘                                                              │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -335,41 +335,41 @@ Landing Page (Public) ──→ Clerk Auth ──→ Dashboard (Protected)
                                     │        │
                                     └───┬────┘
                                         │
-                           ┌────────────▼─────────────┐
+                           ┌────────────▼──────────────┐
                            │  ENCODE CATEGORICALS      │
-                           │  (State, District, Season, │
-                           │   Soil, Irrigation → int)  │
-                           │  via rf_model_bundle_      │
-                           │  metadata.json             │
+                           │  (State, District, Season,│
+                           │   Soil, Irrigation → int) │
+                           │  via rf_model_bundle_     │
+                           │  metadata.json            │
                            └────────────┬──────────────┘
                                         │
                     ┌───────────────────▼───────────────────┐
-                    │           STAGE 1: CATEGORY RF         │
-                    │   100 trees · max_depth=16             │
-                    │   Predicts Agricultural Family (10)     │
-                    │   Accuracy: 89.51% Top-1               │
+                    │           STAGE 1: CATEGORY RF        │
+                    │   100 trees · max_depth=16            │
+                    │   Predicts Agricultural Family (10)   │
+                    │   Accuracy: 89.51% Top-1              │
                     └───────────────────┬───────────────────┘
                                         │
                     ┌───────────────────▼───────────────────┐
-                    │        STAGE 2: CROP-SPECIFIC RF       │
-                    │   140 trees · max_depth=23             │
-                    │   Smoothed class weighting (α=0.35)    │
-                    │   Predicts Top-K from 50 crops          │
-                    │   Top-3 Accuracy: 94.43%               │
+                    │        STAGE 2: CROP-SPECIFIC RF      │
+                    │   140 trees · max_depth=23            │
+                    │   Smoothed class weighting (α=0.35)   │
+                    │   Predicts Top-K from 50 crops        │
+                    │   Top-3 Accuracy: 94.43%              │
                     └───────────────────┬───────────────────┘
                                         │
                     ┌───────────────────▼───────────────────┐
-                    │         HARVEST YIELD LOOKUP           │
-                    │   crop_yield_reference.json             │
-                    │   District → State → National fallback  │
-                    │   Yield (T/ha) × Area = Total Harvest   │
+                    │         HARVEST YIELD LOOKUP          │
+                    │   crop_yield_reference.json           │
+                    │   District → State → National fallback│
+                    │   Yield (T/ha) × Area = Total Harvest │
                     └───────────────────┬───────────────────┘
                                         │
                     ┌───────────────────▼───────────────────┐
-                    │      GEMINI ADVISORY GENERATION        │
-                    │   6-section precision farming plan      │
-                    │   Multi-model cascade fallback          │
-                    │   Expert agronomic fallback (offline)   │
+                    │      GEMINI ADVISORY GENERATION       │
+                    │   6-section precision farming plan    │
+                    │   Multi-model cascade fallback        │
+                    │   Expert agronomic fallback (offline) │
                     └───────────────────────────────────────┘
 ```
 
@@ -382,12 +382,12 @@ Landing Page (Public) ──→ Clerk Auth ──→ Dashboard (Protected)
    Base64 Encode → POST /predict-disease
             │
             ▼
-   ┌─────────────────────────────┐
-   │   EfficientNet-B0 (model_v1.pt)    │
-   │   Input: 224×224 RGB tensor │
-   │   Normalize: ImageNet stats │
-   │   Output: 38-class softmax  │
-   └──────────────┬──────────────┘
+   ┌─────────────────────────────────┐
+   │   EfficientNet-B0 (model_v1.pt) │
+   │   Input: 224×224 RGB tensor     │
+   │   Normalize: ImageNet stats     │
+   │   Output: 38-class softmax      │
+   └──────────────┬──────────────────┘
                   │
                   ▼
    Top-3 Predictions + Confidence Scores
