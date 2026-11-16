@@ -1,0 +1,14 @@
+{
+  "total_test_records": 67356,
+  "category_model": {
+    "top1_accuracy_pct": 89.51
+  },
+  "crop_model": {
+    "top1_acc_pct": 74.09,
+    "top2_acc_pct": 88.97,
+    "top3_acc_pct": 94.43,
+    "top4_acc_pct": 96.92,
+    "top5_acc_pct": 98.19,
+    "top10_acc_pct": 99.77
+  }
+}

@@ -68,6 +68,13 @@
 
 ## 🏗️ System Architecture
 
+### 4-Tier High-Level Architecture Diagram
+![Figure 1: Proposed System Architecture Diagram](report_visuals/System_Architecture_Diagram.png)
+
+### Data Flow Diagram (DFD Level 0 & Level 1)
+![Figure 2: Data Flow Diagram (DFD Level 0 & Level 1)](report_visuals/Data_Flow_Diagram_Level_0_and_1.png)
+
+### Platform Architectural Blueprint
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                              KISAN MITRA PLATFORM                              │
@@ -259,6 +266,9 @@ Kisan-Mitra/
 ---
 
 ## 🔄 Workflow & Data Flow
+
+### End-to-End Algorithm Execution Flowchart
+![Figure 3: Algorithm Execution Flowchart](report_visuals/Algorithm_Execution_Flowchart.png)
 
 ### User Journey
 
@@ -463,6 +473,13 @@ Landing Page (Public) ──→ Clerk Auth ──→ Dashboard (Protected)
 | 8 | `Soil_Type` | 1.13% |
 | 9–12 | `Soil_pH`, `K`, `P`, `N` | ~1% each |
 
+#### Crop Recommendation Evaluation Visuals
+* **Stage 1 (10 Categories) Normalized Confusion Matrix**:
+![Figure 4: Crop Prediction Confusion Matrix](report_visuals/Crop_Prediction_Confusion_Matrix.png)
+
+* **Performance Metrics Across 4 Core Statistical Factors (Accuracy, Precision, Recall, F1-Score)**:
+![Figure 5: Crop Prediction Performance Metrics Across 4 Factors](report_visuals/Crop_Prediction_Performance_Metrics.png)
+
 ### 2. Disease Detection Engine (EfficientNet-B0)
 
 | Parameter | Value |
@@ -481,13 +498,29 @@ Landing Page (Public) ──→ Clerk Auth ──→ Dashboard (Protected)
 
 Each diagnosis includes: **pathogen type**, **severity rating**, **detailed symptoms**, **chemical treatment with dosage**, **organic/biological treatment**, and **prevention measures**.
 
+#### Disease Detection Evaluation Visuals
+* **38-Class Plant Pathology Confusion Matrix Heatmap**:
+![Figure 6: Disease Prediction Confusion Matrix](report_visuals/Disease_Prediction_Confusion_Matrix.png)
+
+* **Performance Metrics Across 4 Core Statistical Factors (Accuracy, Precision, Recall, F1-Score)**:
+![Figure 7: Disease Prediction Performance Metrics Across 4 Factors](report_visuals/Disease_Prediction_Performance_Metrics.png)
+
 ### 3. Evaluation Summary
 
 | Model | Architecture | Classes | Key Metric | Status |
 | :--- | :--- | :---: | :--- | :---: |
 | **Crop Recommender (Stage 2)** | Random Forest (140 trees) | 50 | 94.43% Top-3 Advisory | ✅ Active |
 | **Crop Category (Stage 1)** | Random Forest (100 trees) | 10 | 89.51% Top-1 | ✅ Active |
-| **Disease Classifier** | EfficientNet-B0 | 38 | 98.3% Validation Acc. | ✅ Active |
+| **Disease Classifier** | EfficientNet-B0 | 38 | 98.21% Test Acc (98.3% Val) | ✅ Active |
+
+#### Hardware Configuration & Empirical Latency Benchmarks
+*Empirically evaluated on AMD Ryzen 7 7435HS (8 Physical Cores, 16 Logical Processors) with 16 GB DDR5 and NVIDIA GeForce RTX 2050 Laptop GPU:*
+
+| Benchmark | Model Pipeline | Hardware Runtime | Measured Latency | Throughput |
+| :--- | :--- | :--- | :---: | :---: |
+| **Crop Advisory Recommendation** | Two-Stage RF (100 + 140 Trees) | AMD Ryzen 7 7435HS (CPU) | **69.17 ms** | ~14.5 QPS |
+| **Foliar Pathology Forward Pass** | EfficientNet-B0 (`model_v1.pt`) | AMD Ryzen 7 7435HS (CPU) | **31.84 ms** | **~31.4 FPS** |
+| **Complete Client REST Pipeline** | Express $\rightarrow$ FastAPI $\rightarrow$ PyTorch | System Bus | **< 110 ms** | Interactive Real-Time |
 
 #### Other Models Evaluated (Disease Classification)
 
