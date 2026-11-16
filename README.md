@@ -522,13 +522,6 @@ Each diagnosis includes: **pathogen type**, **severity rating**, **detailed symp
 | **Foliar Pathology Forward Pass** | EfficientNet-B0 (`model_v1.pt`) | AMD Ryzen 7 7435HS (CPU) | **31.84 ms** | **~31.4 FPS** |
 | **Complete Client REST Pipeline** | Express $\rightarrow$ FastAPI $\rightarrow$ PyTorch | System Bus | **< 110 ms** | Interactive Real-Time |
 
-#### Other Models Evaluated (Disease Classification)
-
-| Model | Architecture | Classes | Status | Repository |
-| :--- | :--- | :---: | :---: | :--- |
-| **AgriSmart AI India v1** | DINOv2 ViT-B/14 | 387 | Tested | [GitHub](https://github.com/Vatsal2008/AgriSmart-AI) |
-| **Plant Disease Classifier** | EfficientNet-B0 | 38 | ✅ Active Model | [GitHub](https://github.com/pavanmanjunath18/Plant_Disease_Classifier) |
-| **Custom Crop Disease Classifier** | YOLO11m-cls | 75 | Trained (checkpoint lost) | [Ultralytics](https://github.com/ultralytics/ultralytics) |
 
 > **Note:** The custom YOLO11m checkpoint was not recovered after the Colab runtime disconnected. The pretrained model repositories and dataset links are provided for reference. Check each project's license before redistributing its model weights or dataset images.
 
